@@ -31,28 +31,27 @@ namespace DemoUI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.panelLogo = new System.Windows.Forms.Panel();
-            this.panelTitleBar = new System.Windows.Forms.Panel();
-            this.labelTitleChildForm = new System.Windows.Forms.Label();
-            this.panelShadow = new System.Windows.Forms.Panel();
-            this.panelDesktop = new System.Windows.Forms.Panel();
-            this.iconCurChildForm = new FontAwesome.Sharp.IconPictureBox();
             this.btnThoat = new FontAwesome.Sharp.IconButton();
             this.btnHoTro = new FontAwesome.Sharp.IconButton();
             this.btnXemTKB = new FontAwesome.Sharp.IconButton();
             this.btnTaoTKB = new FontAwesome.Sharp.IconButton();
             this.btnTrangChu = new FontAwesome.Sharp.IconButton();
+            this.panelLogo = new System.Windows.Forms.Panel();
             this.btnHome = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnClose = new FontAwesome.Sharp.IconButton();
-            this.btnMaximize = new FontAwesome.Sharp.IconButton();
+            this.panelTitleBar = new System.Windows.Forms.Panel();
             this.btnMinimize = new FontAwesome.Sharp.IconButton();
+            this.btnClose = new FontAwesome.Sharp.IconButton();
+            this.labelTitleChildForm = new System.Windows.Forms.Label();
+            this.iconCurChildForm = new FontAwesome.Sharp.IconPictureBox();
+            this.panelShadow = new System.Windows.Forms.Panel();
+            this.panelDesktop = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
-            this.panelTitleBar.SuspendLayout();
-            this.panelDesktop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconCurChildForm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).BeginInit();
+            this.panelTitleBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconCurChildForm)).BeginInit();
+            this.panelDesktop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,77 +66,10 @@ namespace DemoUI
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(4);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(220, 587);
+            this.panelMenu.Size = new System.Drawing.Size(293, 922);
             this.panelMenu.TabIndex = 0;
-            // 
-            // panelLogo
-            // 
-            this.panelLogo.Controls.Add(this.btnHome);
-            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(220, 140);
-            this.panelLogo.TabIndex = 0;
-            // 
-            // panelTitleBar
-            // 
-            this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
-            this.panelTitleBar.Controls.Add(this.btnMinimize);
-            this.panelTitleBar.Controls.Add(this.btnMaximize);
-            this.panelTitleBar.Controls.Add(this.btnClose);
-            this.panelTitleBar.Controls.Add(this.labelTitleChildForm);
-            this.panelTitleBar.Controls.Add(this.iconCurChildForm);
-            this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitleBar.Location = new System.Drawing.Point(220, 0);
-            this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(763, 75);
-            this.panelTitleBar.TabIndex = 1;
-            this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
-            // 
-            // labelTitleChildForm
-            // 
-            this.labelTitleChildForm.AutoSize = true;
-            this.labelTitleChildForm.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitleChildForm.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelTitleChildForm.Location = new System.Drawing.Point(45, 31);
-            this.labelTitleChildForm.Name = "labelTitleChildForm";
-            this.labelTitleChildForm.Size = new System.Drawing.Size(35, 17);
-            this.labelTitleChildForm.TabIndex = 1;
-            this.labelTitleChildForm.Text = "Nhà";
-            // 
-            // panelShadow
-            // 
-            this.panelShadow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(58)))));
-            this.panelShadow.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelShadow.ForeColor = System.Drawing.SystemColors.Control;
-            this.panelShadow.Location = new System.Drawing.Point(220, 75);
-            this.panelShadow.Name = "panelShadow";
-            this.panelShadow.Size = new System.Drawing.Size(763, 9);
-            this.panelShadow.TabIndex = 2;
-            // 
-            // panelDesktop
-            // 
-            this.panelDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-            this.panelDesktop.Controls.Add(this.pictureBox1);
-            this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktop.Location = new System.Drawing.Point(220, 84);
-            this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(763, 503);
-            this.panelDesktop.TabIndex = 3;
-            // 
-            // iconCurChildForm
-            // 
-            this.iconCurChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
-            this.iconCurChildForm.ForeColor = System.Drawing.Color.MediumPurple;
-            this.iconCurChildForm.IconChar = FontAwesome.Sharp.IconChar.Home;
-            this.iconCurChildForm.IconColor = System.Drawing.Color.MediumPurple;
-            this.iconCurChildForm.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconCurChildForm.Location = new System.Drawing.Point(7, 24);
-            this.iconCurChildForm.Name = "iconCurChildForm";
-            this.iconCurChildForm.Size = new System.Drawing.Size(32, 32);
-            this.iconCurChildForm.TabIndex = 0;
-            this.iconCurChildForm.TabStop = false;
             // 
             // btnThoat
             // 
@@ -151,10 +83,11 @@ namespace DemoUI
             this.btnThoat.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnThoat.IconSize = 32;
             this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThoat.Location = new System.Drawing.Point(0, 380);
+            this.btnThoat.Location = new System.Drawing.Point(0, 468);
+            this.btnThoat.Margin = new System.Windows.Forms.Padding(4);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnThoat.Size = new System.Drawing.Size(220, 60);
+            this.btnThoat.Padding = new System.Windows.Forms.Padding(13, 0, 27, 0);
+            this.btnThoat.Size = new System.Drawing.Size(293, 74);
             this.btnThoat.TabIndex = 5;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -174,10 +107,11 @@ namespace DemoUI
             this.btnHoTro.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnHoTro.IconSize = 32;
             this.btnHoTro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHoTro.Location = new System.Drawing.Point(0, 320);
+            this.btnHoTro.Location = new System.Drawing.Point(0, 394);
+            this.btnHoTro.Margin = new System.Windows.Forms.Padding(4);
             this.btnHoTro.Name = "btnHoTro";
-            this.btnHoTro.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnHoTro.Size = new System.Drawing.Size(220, 60);
+            this.btnHoTro.Padding = new System.Windows.Forms.Padding(13, 0, 27, 0);
+            this.btnHoTro.Size = new System.Drawing.Size(293, 74);
             this.btnHoTro.TabIndex = 4;
             this.btnHoTro.Text = "Hướng dẫn";
             this.btnHoTro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -197,10 +131,11 @@ namespace DemoUI
             this.btnXemTKB.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnXemTKB.IconSize = 32;
             this.btnXemTKB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXemTKB.Location = new System.Drawing.Point(0, 260);
+            this.btnXemTKB.Location = new System.Drawing.Point(0, 320);
+            this.btnXemTKB.Margin = new System.Windows.Forms.Padding(4);
             this.btnXemTKB.Name = "btnXemTKB";
-            this.btnXemTKB.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnXemTKB.Size = new System.Drawing.Size(220, 60);
+            this.btnXemTKB.Padding = new System.Windows.Forms.Padding(13, 0, 27, 0);
+            this.btnXemTKB.Size = new System.Drawing.Size(293, 74);
             this.btnXemTKB.TabIndex = 3;
             this.btnXemTKB.Text = "Xem thời khóa biểu";
             this.btnXemTKB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -220,10 +155,11 @@ namespace DemoUI
             this.btnTaoTKB.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnTaoTKB.IconSize = 32;
             this.btnTaoTKB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTaoTKB.Location = new System.Drawing.Point(0, 200);
+            this.btnTaoTKB.Location = new System.Drawing.Point(0, 246);
+            this.btnTaoTKB.Margin = new System.Windows.Forms.Padding(4);
             this.btnTaoTKB.Name = "btnTaoTKB";
-            this.btnTaoTKB.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnTaoTKB.Size = new System.Drawing.Size(220, 60);
+            this.btnTaoTKB.Padding = new System.Windows.Forms.Padding(13, 0, 27, 0);
+            this.btnTaoTKB.Size = new System.Drawing.Size(293, 74);
             this.btnTaoTKB.TabIndex = 2;
             this.btnTaoTKB.Text = "Tạo thời khóa biểu";
             this.btnTaoTKB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -243,10 +179,11 @@ namespace DemoUI
             this.btnTrangChu.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnTrangChu.IconSize = 32;
             this.btnTrangChu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTrangChu.Location = new System.Drawing.Point(0, 140);
+            this.btnTrangChu.Location = new System.Drawing.Point(0, 172);
+            this.btnTrangChu.Margin = new System.Windows.Forms.Padding(4);
             this.btnTrangChu.Name = "btnTrangChu";
-            this.btnTrangChu.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnTrangChu.Size = new System.Drawing.Size(220, 60);
+            this.btnTrangChu.Padding = new System.Windows.Forms.Padding(13, 0, 27, 0);
+            this.btnTrangChu.Size = new System.Drawing.Size(293, 74);
             this.btnTrangChu.TabIndex = 1;
             this.btnTrangChu.Text = "Trang chủ";
             this.btnTrangChu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -254,68 +191,42 @@ namespace DemoUI
             this.btnTrangChu.UseVisualStyleBackColor = true;
             this.btnTrangChu.Click += new System.EventHandler(this.btnTrangChu_Click);
             // 
+            // panelLogo
+            // 
+            this.panelLogo.Controls.Add(this.btnHome);
+            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Margin = new System.Windows.Forms.Padding(4);
+            this.panelLogo.Name = "panelLogo";
+            this.panelLogo.Size = new System.Drawing.Size(293, 172);
+            this.panelLogo.TabIndex = 0;
+            // 
             // btnHome
             // 
             this.btnHome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnHome.Image = global::DemoUI.Properties.Resources.UIT2;
             this.btnHome.Location = new System.Drawing.Point(0, 0);
+            this.btnHome.Margin = new System.Windows.Forms.Padding(4);
             this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(220, 140);
+            this.btnHome.Size = new System.Drawing.Size(293, 172);
             this.btnHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnHome.TabIndex = 0;
             this.btnHome.TabStop = false;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
-            // pictureBox1
+            // panelTitleBar
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = global::DemoUI.Properties.Resources.UIT2;
-            this.pictureBox1.Location = new System.Drawing.Point(196, 116);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(379, 265);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.Times;
-            this.btnClose.IconColor = System.Drawing.Color.Gainsboro;
-            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnClose.IconSize = 24;
-            this.btnClose.Location = new System.Drawing.Point(739, 0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(24, 24);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
-            this.btnClose.MouseHover += new System.EventHandler(this.btnClose_MouseHover);
-            // 
-            // btnMaximize
-            // 
-            this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
-            this.btnMaximize.FlatAppearance.BorderSize = 0;
-            this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMaximize.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMaximize.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
-            this.btnMaximize.IconColor = System.Drawing.Color.Gainsboro;
-            this.btnMaximize.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnMaximize.IconSize = 24;
-            this.btnMaximize.Location = new System.Drawing.Point(715, 0);
-            this.btnMaximize.Name = "btnMaximize";
-            this.btnMaximize.Size = new System.Drawing.Size(24, 24);
-            this.btnMaximize.TabIndex = 3;
-            this.btnMaximize.UseVisualStyleBackColor = false;
-            this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
-            this.btnMaximize.MouseLeave += new System.EventHandler(this.btnMaximize_MouseLeave);
-            this.btnMaximize.MouseHover += new System.EventHandler(this.btnMaximize_MouseHover);
+            this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.panelTitleBar.Controls.Add(this.btnMinimize);
+            this.panelTitleBar.Controls.Add(this.btnClose);
+            this.panelTitleBar.Controls.Add(this.labelTitleChildForm);
+            this.panelTitleBar.Controls.Add(this.iconCurChildForm);
+            this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitleBar.Location = new System.Drawing.Point(293, 0);
+            this.panelTitleBar.Margin = new System.Windows.Forms.Padding(4);
+            this.panelTitleBar.Name = "panelTitleBar";
+            this.panelTitleBar.Size = new System.Drawing.Size(1534, 92);
+            this.panelTitleBar.TabIndex = 1;
             // 
             // btnMinimize
             // 
@@ -328,35 +239,122 @@ namespace DemoUI
             this.btnMinimize.IconColor = System.Drawing.Color.Gainsboro;
             this.btnMinimize.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnMinimize.IconSize = 24;
-            this.btnMinimize.Location = new System.Drawing.Point(690, 0);
+            this.btnMinimize.Location = new System.Drawing.Point(1468, 0);
+            this.btnMinimize.Margin = new System.Windows.Forms.Padding(4);
             this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(24, 24);
+            this.btnMinimize.Size = new System.Drawing.Size(32, 30);
             this.btnMinimize.TabIndex = 4;
             this.btnMinimize.UseVisualStyleBackColor = false;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             this.btnMinimize.MouseLeave += new System.EventHandler(this.btnMinimize_MouseLeave);
             this.btnMinimize.MouseHover += new System.EventHandler(this.btnMinimize_MouseHover);
             // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.btnClose.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnClose.IconSize = 24;
+            this.btnClose.Location = new System.Drawing.Point(1502, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(32, 30);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
+            this.btnClose.MouseHover += new System.EventHandler(this.btnClose_MouseHover);
+            // 
+            // labelTitleChildForm
+            // 
+            this.labelTitleChildForm.AutoSize = true;
+            this.labelTitleChildForm.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitleChildForm.ForeColor = System.Drawing.Color.Gainsboro;
+            this.labelTitleChildForm.Location = new System.Drawing.Point(60, 38);
+            this.labelTitleChildForm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTitleChildForm.Name = "labelTitleChildForm";
+            this.labelTitleChildForm.Size = new System.Drawing.Size(45, 21);
+            this.labelTitleChildForm.TabIndex = 1;
+            this.labelTitleChildForm.Text = "Nhà";
+            // 
+            // iconCurChildForm
+            // 
+            this.iconCurChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.iconCurChildForm.ForeColor = System.Drawing.Color.MediumPurple;
+            this.iconCurChildForm.IconChar = FontAwesome.Sharp.IconChar.Home;
+            this.iconCurChildForm.IconColor = System.Drawing.Color.MediumPurple;
+            this.iconCurChildForm.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconCurChildForm.IconSize = 39;
+            this.iconCurChildForm.Location = new System.Drawing.Point(9, 30);
+            this.iconCurChildForm.Margin = new System.Windows.Forms.Padding(4);
+            this.iconCurChildForm.Name = "iconCurChildForm";
+            this.iconCurChildForm.Size = new System.Drawing.Size(43, 39);
+            this.iconCurChildForm.TabIndex = 0;
+            this.iconCurChildForm.TabStop = false;
+            // 
+            // panelShadow
+            // 
+            this.panelShadow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(58)))));
+            this.panelShadow.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelShadow.ForeColor = System.Drawing.SystemColors.Control;
+            this.panelShadow.Location = new System.Drawing.Point(293, 92);
+            this.panelShadow.Margin = new System.Windows.Forms.Padding(4);
+            this.panelShadow.Name = "panelShadow";
+            this.panelShadow.Size = new System.Drawing.Size(1534, 11);
+            this.panelShadow.TabIndex = 2;
+            // 
+            // panelDesktop
+            // 
+            this.panelDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.panelDesktop.Controls.Add(this.pictureBox1);
+            this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDesktop.Location = new System.Drawing.Point(293, 103);
+            this.panelDesktop.Margin = new System.Windows.Forms.Padding(4);
+            this.panelDesktop.Name = "panelDesktop";
+            this.panelDesktop.Size = new System.Drawing.Size(1534, 819);
+            this.panelDesktop.TabIndex = 3;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = global::DemoUI.Properties.Resources.UIT2;
+            this.pictureBox1.Location = new System.Drawing.Point(521, 242);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(505, 326);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(983, 587);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1827, 922);
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panelShadow);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(1061, 728);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ứng dụng";
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnHome)).EndInit();
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
-            this.panelDesktop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iconCurChildForm)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnHome)).EndInit();
+            this.panelDesktop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -379,7 +377,6 @@ namespace DemoUI
         private System.Windows.Forms.Panel panelDesktop;
         private System.Windows.Forms.PictureBox pictureBox1;
         private FontAwesome.Sharp.IconButton btnClose;
-        private FontAwesome.Sharp.IconButton btnMaximize;
         private FontAwesome.Sharp.IconButton btnMinimize;
     }
 }

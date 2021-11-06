@@ -147,30 +147,9 @@ namespace DemoUI
             labelTitleChildForm.Text = "Nhà";
         }
 
-        // Keo tha form
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-
-        private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void btnMaximize_Click(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Normal)
-                WindowState = FormWindowState.Maximized;
-            else
-                WindowState = FormWindowState.Normal;
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -186,16 +165,6 @@ namespace DemoUI
         private void btnClose_MouseLeave(object sender, EventArgs e)
         {
             btnClose.BackColor = Color.FromArgb(26, 25, 62);
-        }
-
-        private void btnMaximize_MouseHover(object sender, EventArgs e)
-        {
-            btnMaximize.BackColor = Color.FromArgb(255, 128, 128);
-        }
-
-        private void btnMaximize_MouseLeave(object sender, EventArgs e)
-        {
-            btnMaximize.BackColor = Color.FromArgb(26, 25, 62);
         }
 
         private void btnMinimize_MouseHover(object sender, EventArgs e)
