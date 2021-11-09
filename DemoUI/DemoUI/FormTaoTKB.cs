@@ -15,14 +15,18 @@ namespace DemoUI
     public partial class FormTaoTKB : Form
     {
         DataSet ds;
+
+        // Lưu mã lớp, mã môn của tất cả các môn trong file excel
         List<string> maMonHocLT;
         List<string> maMonHocTH;
         List<string> maLopHocLT;
         List<string> maLopHocTH;
+
         List<string> danhSachMaMonDaChon;
         List<string> danhSachMonHocDaNhap;
         bool daMoFile;
         int tongTinChi;
+        int tongSoKetQua;
         public FormTaoTKB()
         {
             InitializeComponent();
@@ -56,6 +60,7 @@ namespace DemoUI
                 cbChuongTrinhDaoTao.SelectedIndex = 0;
                 labelTinChi.Text = "0";
                 tongTinChi = 0;
+                lvDisplay.Items.Clear();
 
                 try
                 {
@@ -293,6 +298,129 @@ namespace DemoUI
             {
                 MessageBox.Show("Vui lòng chọn môn học cần xóa", "Thông báo");
             }
+        }
+
+        private void btnTaoTKB_Click(object sender, EventArgs e)
+        {
+            //danhSachLopTaoTKB.Clear();
+            //for (int i = 0; i < danhSachMonHocDaNhap.Count; i++)
+            //{
+            //    bool coLichHoc = false;
+            //    foreach (DataTable dt in ds.Tables)
+            //    {
+            //        for (int j = 0; j < dt.Rows.Count; j++)
+            //        {
+            //            if (danhSachMonHocDaNhap[i] == dt.Rows[j][2].ToString())
+            //            {
+            //                if ((cbChuongTrinhDaoTao.Text == "Chính quy" && dt.Rows[j][17].ToString() == "CQUI") || (cbChuongTrinhDaoTao.Text == "Chất lượng cao" && dt.Rows[j][17].ToString() == "CLC"))
+            //                {
+            //                    if (dt.Rows[j][10].ToString() != "*" && dt.Rows[j][11].ToString() != "*")
+            //                    {
+            //                        MonHoc monHocMoi = new MonHoc(dt.Rows[j][1].ToString(), dt.Rows[j][2].ToString(), dt.Rows[j][3].ToString(), int.Parse(dt.Rows[j][7].ToString()), int.Parse(dt.Rows[j][10].ToString()), dt.Rows[j][11].ToString(), dt.Rows[j][17].ToString());
+            //                        danhSachLopTaoTKB.Add(monHocMoi);
+            //                        coLichHoc = true;
+            //                        break;
+            //                    }
+            //                }
+            //                continue;
+            //            }
+
+            //            if (danhSachMonHocDaNhap[i] == dt.Rows[j][1].ToString())
+            //            {
+
+            //            }
+            //        }
+            //    }
+
+            //    if (!coLichHoc)
+            //    {
+            //        MessageBox.Show(danhSachMonHocDaNhap[i] + " chưa có lịch hoặc sai hệ đào tạo", "Thông báo");
+            //    }
+            //}    
+
+            List<List<MonHoc>> listTKB = new List<List<MonHoc>>();
+            List<MonHoc> TKB = new List<MonHoc>();
+            bool[,] checkTKB = new bool[11, 8];
+
+            for (int i = 0; i < 11; i++)
+                for (int j = 0; j < 8; j++)
+                    checkTKB[i, j] = false;
+
+            TaoTKB(0, TKB, listTKB, checkTKB);
+            labelKetQua.Text = listTKB.Count.ToString();
+        }
+
+        private void TaoTKB(int pos, List<MonHoc> TKB, List<List<MonHoc>> listTKB, bool[,] checkTKB)
+        {
+            if (pos == danhSachMonHocDaNhap.Count)
+                return;
+
+            DataTable dt = ds.Tables[0];
+            DataRow[] rows = new DataRow[1500];
+            if (danhSachMonHocDaNhap[pos] == danhSachMaMonDaChon[pos])
+            {
+                if (cbChuongTrinhDaoTao.Text == "Chính quy")
+                    rows = dt.Select("Column1 = '" + danhSachMonHocDaNhap[pos] + "' and Column17 = 'CQUI'");
+                else
+                    rows = dt.Select("Column1 = '" + danhSachMonHocDaNhap[pos] + "' and Column17 = 'CLC'");
+            }
+            else
+            {
+                if (cbChuongTrinhDaoTao.Text == "Chính quy")
+                    rows = dt.Select("Column2 = '" + danhSachMonHocDaNhap[pos] + "' and Column17 = 'CQUI'");
+                else
+                    rows = dt.Select("Column2 = '" + danhSachMonHocDaNhap[pos] + "' and Column17 = 'CLC'");
+            }
+
+            if (rows.Length > 0)
+            {
+                for (int i = 0; i < rows.Length; i++)
+                {
+                    if (rows[i].ItemArray[10].ToString() == "*" || rows[i].ItemArray[11].ToString() == "*")
+                        continue;
+
+                    int thu = int.Parse(rows[i].ItemArray[10].ToString());
+                    string tiets = rows[i].ItemArray[11].ToString();
+                    bool coLich = true;
+
+                    for (int j = 0; j < tiets.Length; j++)
+                    {
+                        int tiet = int.Parse(tiets[j].ToString());
+                        if (checkTKB[tiet, thu] == true)
+                        {
+                            coLich = false;
+                            break;
+                        }
+                    }
+
+                    if (coLich)
+                    {
+                        for (int j = 0; j < tiets.Length; j++)
+                        {
+                            int tiet = int.Parse(tiets[j].ToString());
+                            checkTKB[tiet, thu] = true;
+                        }
+                        MonHoc mh = new MonHoc(rows[i].ItemArray[1].ToString(), rows[i].ItemArray[2].ToString(), rows[i].ItemArray[3].ToString(), int.Parse(rows[i].ItemArray[7].ToString()), int.Parse(rows[i].ItemArray[10].ToString()), rows[i].ItemArray[11].ToString(), rows[i].ItemArray[17].ToString());
+                        TKB.Add(mh);
+
+                        if (TKB.Count == danhSachMonHocDaNhap.Count)
+                            listTKB.Add(TKB);
+
+                        TaoTKB(pos + 1, TKB, listTKB, checkTKB);
+                        TKB.Remove(mh);
+                        for (int j = 0; j < tiets.Length; j++)
+                        {
+                            int tiet = int.Parse(tiets[j].ToString());
+                            checkTKB[tiet, thu] = false;
+                        }
+                    }
+                }
+            }
+            else
+                return;
+
+            //TaoTKB(pos + 1, TKB, listTKB, checkTKB);
+            //MessageBox.Show(danhSachMonHocDaNhap.Count.ToString() + " " + danhSachMaMonDaChon.Count.ToString());
         }
     }
 }
