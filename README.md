@@ -8,7 +8,7 @@
 * Báo lỗi
 
 ## Thông tin nhóm
-```bash
+```
 1. Bùi Đoàn Khánh Ân  - 20520369 - Nhóm trưởng
 2. Trương Xuân Vương  - 20520353
 3. Tôn Nữ Hoài Thương - 20521010
