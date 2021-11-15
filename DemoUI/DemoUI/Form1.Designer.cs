@@ -335,7 +335,6 @@ namespace DemoUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1827, 922);
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panelShadow);

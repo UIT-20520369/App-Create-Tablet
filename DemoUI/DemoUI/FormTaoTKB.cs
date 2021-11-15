@@ -15,6 +15,7 @@ namespace DemoUI
     public partial class FormTaoTKB : Form
     {
         DataSet ds;
+        DataTable noneDistinctTable;
 
         // Lưu mã lớp, mã môn của tất cả các môn trong file excel
         List<string> maMonHocLT;
@@ -26,7 +27,7 @@ namespace DemoUI
         List<string> danhSachMonHocDaNhap;
         bool daMoFile;
         int tongTinChi;
-        int tongSoKetQua;
+
         public FormTaoTKB()
         {
             InitializeComponent();
@@ -92,6 +93,8 @@ namespace DemoUI
                             maMonHocTH.Add(dt.Rows[i][1].ToString());
                             maLopHocTH.Add(dt.Rows[i][2].ToString());
                         }
+
+                        noneDistinctTable = ds.Tables[0].DefaultView.ToTable(true, "Column1", "Column2");
 
                         daMoFile = true;
 
@@ -302,41 +305,13 @@ namespace DemoUI
 
         private void btnTaoTKB_Click(object sender, EventArgs e)
         {
-            //danhSachLopTaoTKB.Clear();
-            //for (int i = 0; i < danhSachMonHocDaNhap.Count; i++)
-            //{
-            //    bool coLichHoc = false;
-            //    foreach (DataTable dt in ds.Tables)
-            //    {
-            //        for (int j = 0; j < dt.Rows.Count; j++)
-            //        {
-            //            if (danhSachMonHocDaNhap[i] == dt.Rows[j][2].ToString())
-            //            {
-            //                if ((cbChuongTrinhDaoTao.Text == "Chính quy" && dt.Rows[j][17].ToString() == "CQUI") || (cbChuongTrinhDaoTao.Text == "Chất lượng cao" && dt.Rows[j][17].ToString() == "CLC"))
-            //                {
-            //                    if (dt.Rows[j][10].ToString() != "*" && dt.Rows[j][11].ToString() != "*")
-            //                    {
-            //                        MonHoc monHocMoi = new MonHoc(dt.Rows[j][1].ToString(), dt.Rows[j][2].ToString(), dt.Rows[j][3].ToString(), int.Parse(dt.Rows[j][7].ToString()), int.Parse(dt.Rows[j][10].ToString()), dt.Rows[j][11].ToString(), dt.Rows[j][17].ToString());
-            //                        danhSachLopTaoTKB.Add(monHocMoi);
-            //                        coLichHoc = true;
-            //                        break;
-            //                    }
-            //                }
-            //                continue;
-            //            }
-
-            //            if (danhSachMonHocDaNhap[i] == dt.Rows[j][1].ToString())
-            //            {
-
-            //            }
-            //        }
-            //    }
-
-            //    if (!coLichHoc)
-            //    {
-            //        MessageBox.Show(danhSachMonHocDaNhap[i] + " chưa có lịch hoặc sai hệ đào tạo", "Thông báo");
-            //    }
-            //}    
+            if (!daMoFile)
+            {
+                MessageBox.Show("Vui lòng mở file", "Thông báo");
+                tbInput.Text = "";
+                tbInput.Focus();
+                return;
+            }
 
             List<List<MonHoc>> listTKB = new List<List<MonHoc>>();
             List<MonHoc> TKB = new List<MonHoc>();
@@ -348,79 +323,244 @@ namespace DemoUI
 
             TaoTKB(0, TKB, listTKB, checkTKB);
             labelKetQua.Text = listTKB.Count.ToString();
+
+            //MessageBox.Show(listTKB[3].Count.ToString());
+            //for (int i = 0; i < listTKB.Count; i++)
+            //    for (int j = 0; j < listTKB[i].Count; j++)
+            //        MessageBox.Show((i + 1).ToString() + " " + listTKB[i][j].maLopHoc + " " + listTKB[i][j].thu + " " + listTKB[i][j].tiet);
         }
 
         private void TaoTKB(int pos, List<MonHoc> TKB, List<List<MonHoc>> listTKB, bool[,] checkTKB)
         {
             if (pos == danhSachMonHocDaNhap.Count)
+            {
+                List<MonHoc> tempList = new List<MonHoc>(TKB);
+                listTKB.Add(tempList);
+                tempList = null;
                 return;
+            }
 
-            DataTable dt = ds.Tables[0];
             DataRow[] rows = new DataRow[1500];
             if (danhSachMonHocDaNhap[pos] == danhSachMaMonDaChon[pos])
-            {
-                if (cbChuongTrinhDaoTao.Text == "Chính quy")
-                    rows = dt.Select("Column1 = '" + danhSachMonHocDaNhap[pos] + "' and Column17 = 'CQUI'");
-                else
-                    rows = dt.Select("Column1 = '" + danhSachMonHocDaNhap[pos] + "' and Column17 = 'CLC'");
-            }
+                rows = noneDistinctTable.Select("Column1 = '" + danhSachMonHocDaNhap[pos] + "'");
             else
+                rows = noneDistinctTable.Select("Column2 = '" + danhSachMonHocDaNhap[pos] + "'");
+
+            for (int i = 0; i < rows.Length; i++)
             {
+                string s = rows[i].ItemArray[1].ToString();
+                DataRow[] oneSub = new DataRow[6];
                 if (cbChuongTrinhDaoTao.Text == "Chính quy")
-                    rows = dt.Select("Column2 = '" + danhSachMonHocDaNhap[pos] + "' and Column17 = 'CQUI'");
+                    oneSub = ds.Tables[0].Select("Column2 = '" + s + "' and Column17 = 'CQUI'");
                 else
-                    rows = dt.Select("Column2 = '" + danhSachMonHocDaNhap[pos] + "' and Column17 = 'CLC'");
-            }
+                    oneSub = ds.Tables[0].Select("Column2 = '" + s + "' and Column17 = 'CLC'");
 
-            if (rows.Length > 0)
-            {
-                for (int i = 0; i < rows.Length; i++)
+                bool coLich;
+
+                if (oneSub.Length > 0)
+                    coLich = true;
+                else
+                    coLich = false;
+
+                for (int j = 0; j < oneSub.Length; j++)
                 {
-                    if (rows[i].ItemArray[10].ToString() == "*" || rows[i].ItemArray[11].ToString() == "*")
-                        continue;
-
-                    int thu = int.Parse(rows[i].ItemArray[10].ToString());
-                    string tiets = rows[i].ItemArray[11].ToString();
-                    bool coLich = true;
-
-                    for (int j = 0; j < tiets.Length; j++)
+                    if (oneSub[j].ItemArray[10].ToString() == "*" || oneSub[j].ItemArray[11].ToString() == "*")
                     {
-                        int tiet = int.Parse(tiets[j].ToString());
-                        if (checkTKB[tiet, thu] == true)
+                        coLich = false;
+                        break;
+                    }
+
+                    coLich = ToggleCheckTKB(0, oneSub[j].ItemArray[10].ToString(), oneSub[j].ItemArray[11].ToString(), checkTKB);
+
+                    if (coLich == false)
+                        break;
+                }
+
+                // Kiểm tra lớp thực hành .1
+                if (coLich)
+                {
+                    // Thêm lớp lý thuyết
+                    List<MonHoc> tempList = new List<MonHoc>();
+                    for (int j = 0; j < oneSub.Length; j++)
+                    {
+                        ToggleCheckTKB(1, oneSub[j].ItemArray[10].ToString(), oneSub[j].ItemArray[11].ToString(), checkTKB);
+
+                        MonHoc mh = new MonHoc(oneSub[j].ItemArray[1].ToString(), oneSub[j].ItemArray[2].ToString(), oneSub[j].ItemArray[3].ToString(), int.Parse(oneSub[j].ItemArray[7].ToString()), int.Parse(oneSub[j].ItemArray[10].ToString()), oneSub[j].ItemArray[11].ToString(), oneSub[j].ItemArray[17].ToString());
+                        tempList.Add(mh);
+                        TKB.Add(mh);
+                        mh = null;
+                    }
+                    // ******************
+
+                    // lớp thực hành .1
+                    bool lichThucHanh1 = true;  
+                    DataRow[] thucHanh1 = new DataRow[5];
+                    if (cbChuongTrinhDaoTao.Text == "Chính quy")
+                        thucHanh1 = ds.Tables[1].Select("Column2 = '" + s + ".1' and Column17 = 'CQUI'");
+                    else
+                        thucHanh1 = ds.Tables[1].Select("Column2 = '" + s + ".1' and Column17 = 'CLC'");
+                    for (int j = 0; j < thucHanh1.Length; j++)
+                    {
+                        coLich = false;
+                        if (thucHanh1[j].ItemArray[10].ToString() == "*" || thucHanh1[j].ItemArray[11].ToString() == "*")
                         {
-                            coLich = false;
+                            lichThucHanh1 = false;
                             break;
                         }
+
+                        lichThucHanh1 = ToggleCheckTKB(0, thucHanh1[j].ItemArray[10].ToString(), thucHanh1[j].ItemArray[11].ToString(), checkTKB);
+
+                        if (lichThucHanh1 == false)
+                            break;
                     }
 
-                    if (coLich)
+                    if (lichThucHanh1 == true && coLich == false)
                     {
-                        for (int j = 0; j < tiets.Length; j++)
+                        List<MonHoc> tempListTH1 = new List<MonHoc>();
+                        for (int j = 0; j < thucHanh1.Length; j++)
                         {
-                            int tiet = int.Parse(tiets[j].ToString());
-                            checkTKB[tiet, thu] = true;
-                        }
-                        MonHoc mh = new MonHoc(rows[i].ItemArray[1].ToString(), rows[i].ItemArray[2].ToString(), rows[i].ItemArray[3].ToString(), int.Parse(rows[i].ItemArray[7].ToString()), int.Parse(rows[i].ItemArray[10].ToString()), rows[i].ItemArray[11].ToString(), rows[i].ItemArray[17].ToString());
-                        TKB.Add(mh);
+                            ToggleCheckTKB(1, thucHanh1[j].ItemArray[10].ToString(), thucHanh1[j].ItemArray[11].ToString(), checkTKB);
 
-                        if (TKB.Count == danhSachMonHocDaNhap.Count)
-                            listTKB.Add(TKB);
+                            MonHoc mh = new MonHoc(thucHanh1[j].ItemArray[1].ToString(), thucHanh1[j].ItemArray[2].ToString(), thucHanh1[j].ItemArray[3].ToString(), int.Parse(thucHanh1[j].ItemArray[7].ToString()), int.Parse(thucHanh1[j].ItemArray[10].ToString()), thucHanh1[j].ItemArray[11].ToString(), thucHanh1[j].ItemArray[17].ToString());
+                            tempListTH1.Add(mh);
+                            TKB.Add(mh);
+                            mh = null;
+                        }
 
                         TaoTKB(pos + 1, TKB, listTKB, checkTKB);
-                        TKB.Remove(mh);
-                        for (int j = 0; j < tiets.Length; j++)
-                        {
-                            int tiet = int.Parse(tiets[j].ToString());
-                            checkTKB[tiet, thu] = false;
-                        }
+
+                        for (int j = 0; j < thucHanh1.Length; j++)
+                            ToggleCheckTKB(2, thucHanh1[j].ItemArray[10].ToString(), thucHanh1[j].ItemArray[11].ToString(), checkTKB);
+
+                        for (int j = 0; j < tempListTH1.Count; j++)
+                            TKB.Remove(tempListTH1[j]);
+                        tempListTH1 = null;
                     }
+
+                    // Lớp thực hành .2
+                    coLich = true;
+                    bool lichThucHanh2 = true;
+                    DataRow[] thucHanh2 = new DataRow[5];
+                    if (cbChuongTrinhDaoTao.Text == "Chính quy")
+                        thucHanh2 = ds.Tables[1].Select("Column2 = '" + s + ".2' and Column17 = 'CQUI'");
+                    else
+                        thucHanh2 = ds.Tables[1].Select("Column2 = '" + s + ".2' and Column17 = 'CLC'");
+                    for (int j = 0; j < thucHanh2.Length; j++)
+                    {
+                        coLich = false;
+                        if (thucHanh2[j].ItemArray[10].ToString() == "*" || thucHanh2[j].ItemArray[11].ToString() == "*")
+                        {
+                            lichThucHanh2 = false;
+                            break;
+                        }
+
+                        lichThucHanh2 = ToggleCheckTKB(0, thucHanh2[j].ItemArray[10].ToString(), thucHanh2[j].ItemArray[11].ToString(), checkTKB);
+
+                        if (lichThucHanh2 == false)
+                            break;
+                    }
+
+                    if (lichThucHanh2 == true && coLich == false)
+                    {
+                        List<MonHoc> tempListTH2 = new List<MonHoc>();
+                        for (int j = 0; j < thucHanh2.Length; j++)
+                        {
+                            ToggleCheckTKB(1, thucHanh2[j].ItemArray[10].ToString(), thucHanh2[j].ItemArray[11].ToString(), checkTKB);
+
+                            MonHoc mh = new MonHoc(thucHanh2[j].ItemArray[1].ToString(), thucHanh2[j].ItemArray[2].ToString(), thucHanh2[j].ItemArray[3].ToString(), int.Parse(thucHanh2[j].ItemArray[7].ToString()), int.Parse(thucHanh2[j].ItemArray[10].ToString()), thucHanh2[j].ItemArray[11].ToString(), thucHanh2[j].ItemArray[17].ToString());
+                            tempListTH2.Add(mh);
+                            TKB.Add(mh);
+                            mh = null;
+                        }
+
+                        TaoTKB(pos + 1, TKB, listTKB, checkTKB);
+
+                        for (int j = 0; j < thucHanh2.Length; j++)
+                            ToggleCheckTKB(2, thucHanh2[j].ItemArray[10].ToString(), thucHanh2[j].ItemArray[11].ToString(), checkTKB);
+
+                        for (int j = 0; j < tempListTH2.Count; j++)
+                            TKB.Remove(tempListTH2[j]);
+                        tempListTH2 = null;
+                    }
+
+                    // Xóa lớp lí thuyết
+                    for (int j = 0; j < oneSub.Length; j++)
+                        ToggleCheckTKB(2, oneSub[j].ItemArray[10].ToString(), oneSub[j].ItemArray[11].ToString(), checkTKB);
+
+                    for (int j = 0; j < tempList.Count; j++)
+                        TKB.Remove(tempList[j]);
+                    tempList = null;
+                    // ******************
+                }
+
+                if (coLich)
+                {
+                    List<MonHoc> tempList = new List<MonHoc>();
+                    for (int j = 0; j < oneSub.Length; j++)
+                    {
+                        ToggleCheckTKB(1, oneSub[j].ItemArray[10].ToString(), oneSub[j].ItemArray[11].ToString(), checkTKB);
+
+                        MonHoc mh = new MonHoc(oneSub[j].ItemArray[1].ToString(), oneSub[j].ItemArray[2].ToString(), oneSub[j].ItemArray[3].ToString(), int.Parse(oneSub[j].ItemArray[7].ToString()), int.Parse(oneSub[j].ItemArray[10].ToString()), oneSub[j].ItemArray[11].ToString(), oneSub[j].ItemArray[17].ToString());
+                        tempList.Add(mh);
+                        TKB.Add(mh);
+                        mh = null;
+                    }
+
+                    TaoTKB(pos + 1, TKB, listTKB, checkTKB);
+
+                    for (int j = 0; j < oneSub.Length; j++)
+                        ToggleCheckTKB(2, oneSub[j].ItemArray[10].ToString(), oneSub[j].ItemArray[11].ToString(), checkTKB);
+
+                    for (int j = 0; j < tempList.Count; j++)
+                        TKB.Remove(tempList[j]);
+                    tempList = null;
                 }
             }
-            else
-                return;
+        }
 
-            //TaoTKB(pos + 1, TKB, listTKB, checkTKB);
-            //MessageBox.Show(danhSachMonHocDaNhap.Count.ToString() + " " + danhSachMaMonDaChon.Count.ToString());
+        //type = 0 kiểm tra có trùng lịch không
+        //type = 1 đánh dấu đã có lịch
+        //type = 2 đánh dấu chưa có lịch
+        public bool ToggleCheckTKB(int type, string sThu, string tiets, bool[,] checkTKB)
+        {
+            int thu = int.Parse(sThu);
+            if (type == 0)
+            {
+                for (int k = 0; k < tiets.Length; k++)
+                {
+                    int tiet = int.Parse(tiets[k].ToString());
+                    if (tiet == 0)
+                        tiet = 10;
+
+                    if (checkTKB[tiet, thu] == true)
+                        return false;
+                }
+
+                return true;
+            }
+
+            if (type == 1)
+            {
+                for (int k = 0; k < tiets.Length; k++)
+                {
+                    int tiet = int.Parse(tiets[k].ToString());
+                    if (tiet == 0)
+                        tiet = 10;
+
+                    checkTKB[tiet, thu] = true;
+                }
+                return true;
+            }
+
+            for (int k = 0; k < tiets.Length; k++)
+            {
+                int tiet = int.Parse(tiets[k].ToString());
+                if (tiet == 0)
+                    tiet = 10;
+
+                checkTKB[tiet, thu] = false;
+            }
+            return true;
         }
     }
 }

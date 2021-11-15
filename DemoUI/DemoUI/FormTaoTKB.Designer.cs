@@ -37,7 +37,6 @@ namespace DemoUI
             this.btnImport = new FontAwesome.Sharp.IconButton();
             this.panelTask = new System.Windows.Forms.Panel();
             this.btnXemTKB = new FontAwesome.Sharp.IconButton();
-            this.label9 = new System.Windows.Forms.Label();
             this.labelKetQua = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.labelTinChi = new System.Windows.Forms.Label();
@@ -145,7 +144,6 @@ namespace DemoUI
             // 
             this.panelTask.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelTask.Controls.Add(this.btnXemTKB);
-            this.panelTask.Controls.Add(this.label9);
             this.panelTask.Controls.Add(this.labelKetQua);
             this.panelTask.Controls.Add(this.label7);
             this.panelTask.Controls.Add(this.labelTinChi);
@@ -187,18 +185,6 @@ namespace DemoUI
             this.btnXemTKB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXemTKB.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnXemTKB.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label9.Location = new System.Drawing.Point(1243, 433);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(83, 27);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "kết quả";
             // 
             // labelKetQua
             // 
@@ -457,7 +443,6 @@ namespace DemoUI
         private System.Windows.Forms.Label labelTinChi;
         private System.Windows.Forms.Label labelKetQua;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label9;
         private FontAwesome.Sharp.IconButton btnXemTKB;
     }
 }
