@@ -117,6 +117,7 @@ namespace ManageSchedule
             this.btnDangNhap.TabIndex = 8;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.UseVisualStyleBackColor = false;
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
             // BoTronBtnDangNhap
             // 
