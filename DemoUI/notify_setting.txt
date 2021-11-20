@@ -1,3 +1,0 @@
-StartupShortcut: false
-NotifyIcon: true
-ShowInTaskbar: true
