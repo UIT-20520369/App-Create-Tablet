@@ -10,7 +10,7 @@ using System.ComponentModel;
 
 namespace DemoUI
 {
-    public class ToggleButton:CheckBox
+    public class ToggleButton : CheckBox
     {
         private Color onBackColor = Color.MediumSlateBlue;
         private Color onToggleColor = Color.WhiteSmoke;
@@ -45,7 +45,7 @@ namespace DemoUI
             int toggleSize = this.Height - 5;
             pevent.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             pevent.Graphics.Clear(this.Parent.BackColor);
-            
+
             if (this.Enabled)
             {
                 if (this.Checked)

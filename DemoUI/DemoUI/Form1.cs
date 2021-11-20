@@ -20,7 +20,8 @@ namespace DemoUI
         private Form curChildForm;
         string SettingFile;
         string[] setting;
-        private int borderSize = 2;
+        int borderSize = 2;
+        Size formSize;
 
         public Form1()
         {
@@ -34,8 +35,9 @@ namespace DemoUI
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
-            this.Padding = new Padding();
+            this.Padding = new Padding(borderSize);
             this.BackColor = Color.FromArgb(34, 33, 74);
+            btnMenu_Click(this, new EventArgs());
         }
 
         private class RGBColors
@@ -180,13 +182,15 @@ namespace DemoUI
 
         private void btnMaximize_Click(object sender, EventArgs e)
         {
-            if (WindowState==FormWindowState.Maximized)
+            if (WindowState == FormWindowState.Maximized)
             {
+                this.Size = formSize;
                 btnMaximize.IconChar = IconChar.WindowMaximize;
                 WindowState = FormWindowState.Normal;
             }
             else
             {
+                formSize = this.ClientSize;
                 btnMaximize.IconChar = IconChar.WindowRestore;
                 WindowState = FormWindowState.Maximized;
             }
@@ -273,6 +277,112 @@ namespace DemoUI
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            if (this.panelMenu.Width>200)
+            {
+                panelMenu.Width = 60;
+                pbxLogo.Visible = false;
+                btnMenu.Dock = DockStyle.Top;
+                foreach (Button menuButton in panelMenu.Controls.OfType<Button>())
+                {
+                    menuButton.Text = "";
+                    menuButton.ImageAlign = ContentAlignment.MiddleCenter;
+                    menuButton.Padding = new Padding(0);
+                }
+            }
+            else
+            {
+                panelMenu.Width = 220;
+                pbxLogo.Visible = true;
+                btnMenu.Dock = DockStyle.None;
+                foreach (Button menuButton in panelMenu.Controls.OfType<Button>())
+                {
+                    menuButton.Text = menuButton.Tag.ToString();
+                    menuButton.ImageAlign = ContentAlignment.MiddleLeft;
+                    menuButton.Padding = new Padding(10, 0, 0, 0);
+                }
+            }
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_NCCALCSIZE = 0x0083;
+            const int WM_SYSCOMMAND = 0x0112;
+            const int SC_MINIMIZE = 0xF020;
+            const int SC_RESTORE = 0xF120;
+            const int WM_NCHITTEST = 0x0084;
+            const int resizeAreaSize = 10;
+
+            #region Form Resize
+            const int HTCLIENT = 1;
+            const int HTLEFT = 10;
+            const int HTRIGHT = 11;
+            const int HTTOP = 12;
+            const int HTTOPLEFT = 13;
+            const int HTTOPRIGHT = 14;
+            const int HTBOTTOM = 15;
+            const int HTBOTTOMLEFT = 16;
+            const int HTBOTTOMRIGHT = 17;
+
+            if (m.Msg == WM_NCHITTEST)
+            {
+                base.WndProc(ref m);
+                if (this.WindowState == FormWindowState.Normal)
+                {
+                    if ((int)m.Result == HTCLIENT)
+                    {
+                        Point screenPoint = new Point(m.LParam.ToInt32());                          
+                        Point clientPoint = this.PointToClient(screenPoint);                     
+
+                        if (clientPoint.Y <= resizeAreaSize)
+                        {
+                            if (clientPoint.X <= resizeAreaSize)
+                                m.Result = (IntPtr)HTTOPLEFT;
+                            else if (clientPoint.X < (this.Size.Width - resizeAreaSize))
+                                m.Result = (IntPtr)HTTOP;
+                            else
+                                m.Result = (IntPtr)HTTOPRIGHT;
+                        }
+                        else if (clientPoint.Y <= (this.Size.Height - resizeAreaSize))
+                        {
+                            if (clientPoint.X <= resizeAreaSize)
+                                m.Result = (IntPtr)HTLEFT;
+                            else if (clientPoint.X > (this.Width - resizeAreaSize))
+                                m.Result = (IntPtr)HTRIGHT;
+                        }
+                        else
+                        {
+                            if (clientPoint.X <= resizeAreaSize)
+                                m.Result = (IntPtr)HTBOTTOMLEFT;
+                            else if (clientPoint.X < (this.Size.Width - resizeAreaSize))
+                                m.Result = (IntPtr)HTBOTTOM;
+                            else
+                                m.Result = (IntPtr)HTBOTTOMRIGHT;
+                        }
+                    }
+                }
+                return;
+            }
+            #endregion
+
+            if (m.Msg == WM_NCCALCSIZE && m.WParam.ToInt32() == 1)
+            {
+                return;
+            }
+
+            if (m.Msg == WM_SYSCOMMAND)
+            {
+                int wParam = (m.WParam.ToInt32() & 0xFFF0);
+
+                if (wParam == SC_MINIMIZE) 
+                    formSize = this.ClientSize;
+                if (wParam == SC_RESTORE)
+                    this.Size = formSize;
+            }
+            base.WndProc(ref m);
         }
     }
 }

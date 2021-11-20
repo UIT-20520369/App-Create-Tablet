@@ -39,8 +39,8 @@ namespace DemoUI
             this.btnTaoTKB = new FontAwesome.Sharp.IconButton();
             this.btnTrangChu = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnMenu = new FontAwesome.Sharp.IconButton();
+            this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.btnHome = new System.Windows.Forms.PictureBox();
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.btnMaximize = new FontAwesome.Sharp.IconButton();
@@ -58,7 +58,7 @@ namespace DemoUI
             this.tsmiCalendar = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).BeginInit();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconCurChildForm)).BeginInit();
@@ -100,6 +100,7 @@ namespace DemoUI
             this.btnThoat.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnThoat.Size = new System.Drawing.Size(220, 60);
             this.btnThoat.TabIndex = 6;
+            this.btnThoat.Tag = "Thoát";
             this.btnThoat.Text = "Thoát";
             this.btnThoat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -123,6 +124,7 @@ namespace DemoUI
             this.btnCaiDat.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnCaiDat.Size = new System.Drawing.Size(220, 60);
             this.btnCaiDat.TabIndex = 5;
+            this.btnCaiDat.Tag = "Cài đặt";
             this.btnCaiDat.Text = "Cài đặt";
             this.btnCaiDat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCaiDat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -146,6 +148,7 @@ namespace DemoUI
             this.btnHoTro.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnHoTro.Size = new System.Drawing.Size(220, 60);
             this.btnHoTro.TabIndex = 4;
+            this.btnHoTro.Tag = "Hướng dẫn";
             this.btnHoTro.Text = "Hướng dẫn";
             this.btnHoTro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHoTro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -169,6 +172,7 @@ namespace DemoUI
             this.btnXemTKB.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnXemTKB.Size = new System.Drawing.Size(220, 60);
             this.btnXemTKB.TabIndex = 3;
+            this.btnXemTKB.Tag = "Xem thời khóa biểu";
             this.btnXemTKB.Text = "Xem thời khóa biểu";
             this.btnXemTKB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXemTKB.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -192,6 +196,7 @@ namespace DemoUI
             this.btnTaoTKB.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnTaoTKB.Size = new System.Drawing.Size(220, 60);
             this.btnTaoTKB.TabIndex = 2;
+            this.btnTaoTKB.Tag = "Tạo thời khóa biểu";
             this.btnTaoTKB.Text = "Tạo thời khóa biểu";
             this.btnTaoTKB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTaoTKB.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -215,6 +220,7 @@ namespace DemoUI
             this.btnTrangChu.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnTrangChu.Size = new System.Drawing.Size(220, 60);
             this.btnTrangChu.TabIndex = 1;
+            this.btnTrangChu.Tag = "Trang chủ";
             this.btnTrangChu.Text = "Trang chủ";
             this.btnTrangChu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTrangChu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -223,8 +229,8 @@ namespace DemoUI
             // 
             // panelLogo
             // 
-            this.panelLogo.Controls.Add(this.iconButton1);
-            this.panelLogo.Controls.Add(this.pictureBox2);
+            this.panelLogo.Controls.Add(this.btnMenu);
+            this.panelLogo.Controls.Add(this.pbxLogo);
             this.panelLogo.Controls.Add(this.btnHome);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
@@ -232,29 +238,31 @@ namespace DemoUI
             this.panelLogo.Size = new System.Drawing.Size(220, 140);
             this.panelLogo.TabIndex = 0;
             // 
-            // iconButton1
+            // btnMenu
             // 
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Bars;
-            this.iconButton1.IconColor = System.Drawing.Color.Gainsboro;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 32;
-            this.iconButton1.Location = new System.Drawing.Point(154, 24);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(60, 60);
-            this.iconButton1.TabIndex = 2;
-            this.iconButton1.UseVisualStyleBackColor = true;
+            this.btnMenu.FlatAppearance.BorderSize = 0;
+            this.btnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenu.IconChar = FontAwesome.Sharp.IconChar.Bars;
+            this.btnMenu.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnMenu.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnMenu.IconSize = 32;
+            this.btnMenu.Location = new System.Drawing.Point(157, 0);
+            this.btnMenu.Name = "btnMenu";
+            this.btnMenu.Size = new System.Drawing.Size(60, 60);
+            this.btnMenu.TabIndex = 6;
+            this.btnMenu.UseVisualStyleBackColor = true;
+            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
-            // pictureBox2
+            // pbxLogo
             // 
-            this.pictureBox2.Image = global::DemoUI.Properties.Resources.UIT2;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 24);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(151, 105);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.pbxLogo.Image = global::DemoUI.Properties.Resources.UIT2;
+            this.pbxLogo.Location = new System.Drawing.Point(0, 12);
+            this.pbxLogo.Name = "pbxLogo";
+            this.pbxLogo.Size = new System.Drawing.Size(170, 128);
+            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxLogo.TabIndex = 1;
+            this.pbxLogo.TabStop = false;
+            this.pbxLogo.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // btnHome
             // 
@@ -450,7 +458,7 @@ namespace DemoUI
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).EndInit();
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
@@ -486,9 +494,9 @@ namespace DemoUI
         private System.Windows.Forms.ToolStripMenuItem tsmiOpen;
         private System.Windows.Forms.ToolStripMenuItem tsmiAddEvent;
         private System.Windows.Forms.ToolStripMenuItem tsmiCalendar;
-        private FontAwesome.Sharp.IconButton iconButton1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pbxLogo;
         private FontAwesome.Sharp.IconButton btnMaximize;
+        private FontAwesome.Sharp.IconButton btnMenu;
     }
 }
 
