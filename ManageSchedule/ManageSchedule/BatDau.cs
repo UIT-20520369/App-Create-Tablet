@@ -12,6 +12,7 @@ namespace ManageSchedule
 {
     public partial class BatDau : Form
     {
+        internal static bool isThoat;
         public BatDau()
         {
             InitializeComponent();
@@ -31,18 +32,22 @@ namespace ManageSchedule
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
+            isThoat = false;
             FormDangNhap dangnhap = new FormDangNhap();
             this.Hide();
             dangnhap.ShowDialog();
-            this.Show();
+            if (!isThoat)
+                this.Show();
         }
 
         private void btnDangKy_Click(object sender, EventArgs e)
         {
+            isThoat = false;
             FormDangKy dangky = new FormDangKy();
             this.Hide();
             dangky.ShowDialog();
-            this.Show();
+            if (!isThoat)
+                this.Show();
         }
     }
 }
