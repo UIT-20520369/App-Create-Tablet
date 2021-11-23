@@ -1,0 +1,5 @@
+StartupShortcut: false
+NotifyIcon: true
+ShowInTaskbar: false
+
+

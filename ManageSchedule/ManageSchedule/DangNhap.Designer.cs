@@ -89,6 +89,7 @@ namespace ManageSchedule
             this.textBoxMatKhau.PasswordChar = '*';
             this.textBoxMatKhau.Size = new System.Drawing.Size(246, 27);
             this.textBoxMatKhau.TabIndex = 6;
+            this.textBoxMatKhau.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxMatKhau_KeyDown);
             // 
             // checkBoxNhoMK
             // 

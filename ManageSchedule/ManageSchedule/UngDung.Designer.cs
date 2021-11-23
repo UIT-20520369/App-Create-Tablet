@@ -30,8 +30,9 @@ namespace ManageSchedule
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUngDung));
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.btnBaoloi = new System.Windows.Forms.Button();
+            this.btnCaiDat = new System.Windows.Forms.Button();
             this.btnDeadline = new System.Windows.Forms.Button();
             this.btnXemLich = new System.Windows.Forms.Button();
             this.btnTaoLich = new System.Windows.Forms.Button();
@@ -39,6 +40,7 @@ namespace ManageSchedule
             this.btnHome = new System.Windows.Forms.PictureBox();
             this.BoTronUngDung = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panelBar = new System.Windows.Forms.Panel();
+            this.childFormLogo = new System.Windows.Forms.PictureBox();
             this.labelChildFormText = new System.Windows.Forms.Label();
             this.btnAccount = new System.Windows.Forms.PictureBox();
             this.panelUngDung = new System.Windows.Forms.Panel();
@@ -48,20 +50,32 @@ namespace ManageSchedule
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.btnChinhSua = new System.Windows.Forms.Button();
-            this.childFormLogo = new System.Windows.Forms.PictureBox();
+            this.btnBaoloi = new System.Windows.Forms.Button();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiHuongDan = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCaiDat = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDeadline = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEvent = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).BeginInit();
             this.panelBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.childFormLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAccount)).BeginInit();
             this.panelUngDung.SuspendLayout();
             this.panelButton.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.childFormLogo)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(227)))), ((int)(((byte)(206)))));
             this.panelMenu.Controls.Add(this.btnBaoloi);
+            this.panelMenu.Controls.Add(this.btnCaiDat);
             this.panelMenu.Controls.Add(this.btnDeadline);
             this.panelMenu.Controls.Add(this.btnXemLich);
             this.panelMenu.Controls.Add(this.btnTaoLich);
@@ -73,26 +87,26 @@ namespace ManageSchedule
             this.panelMenu.Size = new System.Drawing.Size(220, 752);
             this.panelMenu.TabIndex = 0;
             // 
-            // btnBaoloi
+            // btnCaiDat
             // 
-            this.btnBaoloi.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBaoloi.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBaoloi.FlatAppearance.BorderSize = 0;
-            this.btnBaoloi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBaoloi.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBaoloi.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnBaoloi.Image = global::ManageSchedule.Properties.Resources.bug;
-            this.btnBaoloi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBaoloi.Location = new System.Drawing.Point(0, 369);
-            this.btnBaoloi.Name = "btnBaoloi";
-            this.btnBaoloi.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnBaoloi.Size = new System.Drawing.Size(220, 60);
-            this.btnBaoloi.TabIndex = 5;
-            this.btnBaoloi.Text = "  Báo lỗi";
-            this.btnBaoloi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBaoloi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnBaoloi.UseVisualStyleBackColor = true;
-            this.btnBaoloi.Click += new System.EventHandler(this.btnBaoloi_Click);
+            this.btnCaiDat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCaiDat.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCaiDat.FlatAppearance.BorderSize = 0;
+            this.btnCaiDat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCaiDat.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCaiDat.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnCaiDat.Image = global::ManageSchedule.Properties.Resources.bug;
+            this.btnCaiDat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCaiDat.Location = new System.Drawing.Point(0, 369);
+            this.btnCaiDat.Name = "btnCaiDat";
+            this.btnCaiDat.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnCaiDat.Size = new System.Drawing.Size(220, 60);
+            this.btnCaiDat.TabIndex = 5;
+            this.btnCaiDat.Text = "  Cài đặt";
+            this.btnCaiDat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCaiDat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCaiDat.UseVisualStyleBackColor = true;
+            this.btnCaiDat.Click += new System.EventHandler(this.btnCaiDat_Click);
             // 
             // btnDeadline
             // 
@@ -207,6 +221,15 @@ namespace ManageSchedule
             this.panelBar.Size = new System.Drawing.Size(1133, 73);
             this.panelBar.TabIndex = 1;
             // 
+            // childFormLogo
+            // 
+            this.childFormLogo.Location = new System.Drawing.Point(8, 21);
+            this.childFormLogo.Name = "childFormLogo";
+            this.childFormLogo.Size = new System.Drawing.Size(32, 32);
+            this.childFormLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.childFormLogo.TabIndex = 2;
+            this.childFormLogo.TabStop = false;
+            // 
             // labelChildFormText
             // 
             this.labelChildFormText.AutoSize = true;
@@ -309,14 +332,97 @@ namespace ManageSchedule
             this.btnChinhSua.Text = "Chỉnh sửa thông tin";
             this.btnChinhSua.UseVisualStyleBackColor = false;
             // 
-            // childFormLogo
+            // btnBaoloi
             // 
-            this.childFormLogo.Location = new System.Drawing.Point(8, 21);
-            this.childFormLogo.Name = "childFormLogo";
-            this.childFormLogo.Size = new System.Drawing.Size(32, 32);
-            this.childFormLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.childFormLogo.TabIndex = 2;
-            this.childFormLogo.TabStop = false;
+            this.btnBaoloi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBaoloi.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBaoloi.FlatAppearance.BorderSize = 0;
+            this.btnBaoloi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBaoloi.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBaoloi.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnBaoloi.Image = global::ManageSchedule.Properties.Resources.bug;
+            this.btnBaoloi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBaoloi.Location = new System.Drawing.Point(0, 429);
+            this.btnBaoloi.Name = "btnBaoloi";
+            this.btnBaoloi.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnBaoloi.Size = new System.Drawing.Size(220, 60);
+            this.btnBaoloi.TabIndex = 6;
+            this.btnBaoloi.Text = "  Báo lỗi";
+            this.btnBaoloi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBaoloi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBaoloi.UseVisualStyleBackColor = true;
+            this.btnBaoloi.Click += new System.EventHandler(this.btnBaoloi_Click);
+            // 
+            // notifyIcon
+            // 
+            this.notifyIcon.ContextMenuStrip = this.contextMenuStrip;
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "Ứng dụng xếp lịch học";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.DoubleClick += new System.EventHandler(this.tsmiOpen_Click);
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiHuongDan,
+            this.tsmiCaiDat,
+            this.toolStripSeparator1,
+            this.tsmiDeadline,
+            this.tsmiEvent,
+            this.toolStripSeparator2,
+            this.tsmiOpen,
+            this.tsmiExit});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(198, 148);
+            // 
+            // tsmiHuongDan
+            // 
+            this.tsmiHuongDan.Name = "tsmiHuongDan";
+            this.tsmiHuongDan.Size = new System.Drawing.Size(197, 22);
+            this.tsmiHuongDan.Text = "Hướng dẫn";
+            // 
+            // tsmiCaiDat
+            // 
+            this.tsmiCaiDat.Name = "tsmiCaiDat";
+            this.tsmiCaiDat.Size = new System.Drawing.Size(197, 22);
+            this.tsmiCaiDat.Text = "Cài đặt";
+            // 
+            // tsmiDeadline
+            // 
+            this.tsmiDeadline.CheckOnClick = true;
+            this.tsmiDeadline.Name = "tsmiDeadline";
+            this.tsmiDeadline.Size = new System.Drawing.Size(197, 22);
+            this.tsmiDeadline.Text = "Bật thông báo deadline";
+            // 
+            // tsmiEvent
+            // 
+            this.tsmiEvent.CheckOnClick = true;
+            this.tsmiEvent.Name = "tsmiEvent";
+            this.tsmiEvent.Size = new System.Drawing.Size(197, 22);
+            this.tsmiEvent.Text = "Bật thông báo event";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(194, 6);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(194, 6);
+            // 
+            // tsmiOpen
+            // 
+            this.tsmiOpen.Name = "tsmiOpen";
+            this.tsmiOpen.Size = new System.Drawing.Size(197, 22);
+            this.tsmiOpen.Text = "Mở ứng dụng";
+            this.tsmiOpen.Click += new System.EventHandler(this.tsmiOpen_Click);
+            // 
+            // tsmiExit
+            // 
+            this.tsmiExit.Name = "tsmiExit";
+            this.tsmiExit.Size = new System.Drawing.Size(197, 22);
+            this.tsmiExit.Text = "Kết thúc";
             // 
             // FormUngDung
             // 
@@ -334,10 +440,11 @@ namespace ManageSchedule
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).EndInit();
             this.panelBar.ResumeLayout(false);
             this.panelBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.childFormLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAccount)).EndInit();
             this.panelUngDung.ResumeLayout(false);
             this.panelButton.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.childFormLogo)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -351,7 +458,7 @@ namespace ManageSchedule
         private System.Windows.Forms.Button btnBangTin;
         private System.Windows.Forms.Button btnTaoLich;
         private System.Windows.Forms.Panel panelUngDung;
-        private System.Windows.Forms.Button btnBaoloi;
+        private System.Windows.Forms.Button btnCaiDat;
         private System.Windows.Forms.Button btnDeadline;
         private System.Windows.Forms.Button btnXemLich;
         private System.Windows.Forms.PictureBox btnAccount;
@@ -363,5 +470,16 @@ namespace ManageSchedule
         private System.Windows.Forms.DateTimePicker dateTimePickerGetDate;
         private System.Windows.Forms.Label labelChildFormText;
         private System.Windows.Forms.PictureBox childFormLogo;
+        private System.Windows.Forms.Button btnBaoloi;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem tsmiHuongDan;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCaiDat;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDeadline;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEvent;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem tsmiOpen;
+        private System.Windows.Forms.ToolStripMenuItem tsmiExit;
     }
 }

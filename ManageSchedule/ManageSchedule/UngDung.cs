@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace ManageSchedule
 {
@@ -20,6 +22,7 @@ namespace ManageSchedule
         private int DayOfWeek = 7;
         private List<List<Button>> matrix;
         private List<string> dateOfWeek = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+
         public FormUngDung()
         {
             InitializeComponent();
@@ -129,6 +132,13 @@ namespace ManageSchedule
             OpenChildForm(new FormCongViec(panelUngDung), 3);
         }
 
+
+        private void btnCaiDat_Click(object sender, EventArgs e)
+        {
+            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Cài đặt");
+            OpenChildForm(new FormCaiDat(), 4);
+        }
+
         private void btnBaoloi_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, Color.FromArgb(71, 139, 162), "Báo lỗi");
@@ -146,12 +156,25 @@ namespace ManageSchedule
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
             this.Close();
+
+            FormDangNhap.setting[3] = "";
+            FormDangNhap.setting[4] = "";
+            File.WriteAllLines(FormDangNhap.SettingFile, FormDangNhap.setting);
+
+            BatDau start = new BatDau();
+            start.Show();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
             BatDau.isThoat = true;
-            Application.Exit();
+            FormDangNhap.setting = File.ReadAllLines(FormDangNhap.SettingFile);
+            FormDangNhap.setting[2] = "ShowInTaskbar: false";
+            File.WriteAllLines(FormDangNhap.SettingFile, FormDangNhap.setting);
+            Visible = false;
+            ShowInTaskbar = false;
+            if (FormDangNhap.setting[0] == "StartupShortcut: false")
+                Application.Exit();
         }
 
         private void LoadMatrix()
@@ -273,6 +296,47 @@ namespace ManageSchedule
             leftBorderBtn.Visible = false;
             labelChildFormText.Text = "";
             childFormLogo.Image = null;
+        }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void FormUngDung_Load(object sender, EventArgs e)
+        {
+            string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
+            FormDangNhap.SettingFile = string.Format("{0}\\setting.txt", Path.GetFullPath(Path.Combine(RunningPath, @"..\..\")));
+            FormDangNhap.setting = System.IO.File.ReadAllLines(FormDangNhap.SettingFile);
+
+            if (FormDangNhap.setting[1] == "NotifyIcon: true")
+                notifyIcon.Visible = true;
+            else
+                notifyIcon.Visible = false;
+
+            FormDangNhap.setting[2] = "ShowInTaskbar: true";
+            File.WriteAllLines(FormDangNhap.SettingFile, FormDangNhap.setting);
+            Visible = true;
+            ShowInTaskbar = true;
+        }
+
+        private void tsmiOpen_Click(object sender, EventArgs e)
+        {
+            if (FormDangNhap.setting[2] == "ShowInTaskbar: false")
+            {
+                FormDangNhap.setting[2] = "ShowInTaskbar: true";
+                File.WriteAllLines(FormDangNhap.SettingFile, FormDangNhap.setting);
+                Visible = true;
+                ShowInTaskbar = true;
+            }
+            this.WindowState = FormWindowState.Normal;
         }
     }
 }

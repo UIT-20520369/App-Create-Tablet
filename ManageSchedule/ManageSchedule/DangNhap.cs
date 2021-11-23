@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Configuration;
+using System.IO;
 
 namespace ManageSchedule
 {
@@ -18,9 +19,16 @@ namespace ManageSchedule
         bool isShowPass = false;
         string strCon = @"Server=172.107.32.132,10763;Database=manageschedule;User=xuanvuong;Password=Vuong21@!";
         SqlConnection sqlCon = null;
+        internal static string SettingFile;
+        internal static string[] setting;
+
         public FormDangNhap()
         {
             InitializeComponent();
+
+            string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
+            SettingFile = string.Format("{0}\\setting.txt", Path.GetFullPath(Path.Combine(RunningPath, @"..\..\")));
+            setting = System.IO.File.ReadAllLines(SettingFile);
         }
 
         private void BtnTroVe_Click(object sender, EventArgs e)
@@ -44,23 +52,20 @@ namespace ManageSchedule
             }
         }
 
-        private void btnDangNhap_Click(object sender, EventArgs e)
+        internal bool KiemTraDangNhap(string _taiKhoan, string _matKhau)
         {
-            string taikhoan = textBoxTaiKhoan.Text.Trim();
-            string matkhau = textBoxMatKhau.Text.Trim();
-
-            if (taikhoan == string.Empty)
+            if (_taiKhoan == string.Empty)
             {
                 textBoxTaiKhoan.Focus();
                 MessageBox.Show("Vui lòng nhập tài khoản", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                return false;
             }
 
-            if (matkhau == string.Empty)
+            if (_matKhau == string.Empty)
             {
                 textBoxMatKhau.Focus();
                 MessageBox.Show("Vui lòng nhập mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                return false;
             }
 
             if (sqlCon == null)
@@ -85,7 +90,15 @@ namespace ManageSchedule
                     string dbTaiKhoan = reader.GetString(4);
                     string dbMatKhau = reader.GetString(5);
 
-                    if (taikhoan == dbTaiKhoan && MaHoa.VerifyHash(sha256Hash, matkhau, dbMatKhau))
+                    if (setting[3] != "" && setting[4] != "")
+                    {
+                        if (_taiKhoan == dbTaiKhoan && _matKhau == dbMatKhau)
+                        {
+                            isLogin = true;
+                            break;
+                        }
+                    }
+                    else if (_taiKhoan == dbTaiKhoan && MaHoa.VerifyHash(sha256Hash, _matKhau, dbMatKhau))
                     {
                         isLogin = true;
                         break;
@@ -96,18 +109,39 @@ namespace ManageSchedule
                 sqlCmd.Dispose();
                 sqlCon.Close();
 
-                if (!isLogin)
-                {
-                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    this.Hide();
-                    this.Close();
-                    FormUngDung ungdung = new FormUngDung();
-                    ungdung.ShowDialog();
-                }
+                return isLogin;
             }
+        }
+
+        private void btnDangNhap_Click(object sender, EventArgs e)
+        {
+            string taikhoan = textBoxTaiKhoan.Text.Trim();
+            string matkhau = textBoxMatKhau.Text.Trim();
+
+            if (!KiemTraDangNhap(taikhoan, matkhau))
+            {
+                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                this.Hide();
+                this.Close();
+
+                SHA256 sha256hash = SHA256.Create();
+                string hash = MaHoa.GetHash(sha256hash, matkhau);
+                setting[3] = taikhoan;
+                setting[4] = hash;
+                File.WriteAllLines(SettingFile, setting);
+
+                FormUngDung ungdung = new FormUngDung();
+                ungdung.ShowDialog();
+            }
+        }
+
+        private void textBoxMatKhau_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnDangNhap_Click(this, new EventArgs());
         }
     }
 }
