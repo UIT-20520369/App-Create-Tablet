@@ -192,7 +192,9 @@
     <Compile Include="FormCaiDat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCaiDat.Designer.cs" />
+    <Compile Include="FormCaiDat.Designer.cs">
+      <DependentUpon>FormCaiDat.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCongViec.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,7 +243,9 @@
     <EmbeddedResource Include="FormBaoLoi.resx">
       <DependentUpon>FormBaoLoi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCaiDat.resx" />
+    <EmbeddedResource Include="FormCaiDat.resx">
+      <DependentUpon>FormCaiDat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCongViec.resx">
       <DependentUpon>FormCongViec.cs</DependentUpon>
     </EmbeddedResource>

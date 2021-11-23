@@ -155,7 +155,7 @@ namespace ManageSchedule
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
 
             FormDangNhap.setting[3] = "";
             FormDangNhap.setting[4] = "";
