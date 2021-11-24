@@ -85,7 +85,7 @@ namespace ManageSchedule
                     string dbTaiKhoan = reader.GetString(4);
                     string dbMatKhau = reader.GetString(5);
 
-                    if (taikhoan == dbTaiKhoan && MaHoa.VerifyHash(sha256Hash, matkhau, dbMatKhau))
+                    if (textBoxTaiKhoan.Text == dbTaiKhoan && MaHoa.VerifyHash(sha256Hash, textBoxMatKhau.Text, dbMatKhau))
                     {
                         isLogin = true;
                         break;

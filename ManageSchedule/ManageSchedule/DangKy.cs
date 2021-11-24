@@ -111,7 +111,7 @@ namespace ManageSchedule
                 return;
             }
 
-            if (isEmail(email) == false)
+            if (isEmail(textBoxEmail.Text) == false)
             {
                 textBoxEmail.Text = "";
                 textBoxEmail.Focus();
@@ -119,7 +119,7 @@ namespace ManageSchedule
                 return;
             }
 
-            if (isTaiKhoan(taikhoan) == false)
+            if (isTaiKhoan(textBoxTaiKhoan.Text) == false)
             {
                 textBoxTaiKhoan.Text = "";
                 textBoxTaiKhoan.Focus();
@@ -127,7 +127,7 @@ namespace ManageSchedule
                 return;
             }
             
-            if (isMatKhau(matkhau) == false)
+            if (isMatKhau(textBoxMatKhau.Text) == false)
             {
                 textBoxMatKhau.Text = "";
                 textBoxMatKhau.Focus();
@@ -135,7 +135,7 @@ namespace ManageSchedule
                 return;
             }
 
-            if (matkhau != xacnhan)
+            if (textBoxMatKhau.Text != textBoxXacNhan.Text)
             {
                 textBoxXacNhan.Text = "";
                 textBoxXacNhan.Focus();
@@ -160,7 +160,7 @@ namespace ManageSchedule
             while (reader.Read())
             {
                 string dbTaiKhoan = reader.GetString(4);
-                if (taikhoan == dbTaiKhoan)
+                if (textBoxTaiKhoan.Text == dbTaiKhoan)
                 {
                     MessageBox.Show("Tài khoản đã được đăng kí", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     isExists = true;
@@ -183,14 +183,14 @@ namespace ManageSchedule
 
             using (SHA256 sha256hash = SHA256.Create())
             {
-                string hash = MaHoa.GetHash(sha256hash, matkhau);
+                string hash = MaHoa.GetHash(sha256hash, textBoxMatKhau.Text);
 
                 SqlCommand sqlCmdInsert = new SqlCommand();
                 sqlCmdInsert.CommandType = CommandType.Text;
                 sqlCmdInsert.CommandText = "insert into dbo.THONGTINTAIKHOAN (HoVaTen, Nganh, KhoaHoc, Email, TaiKhoan, MatKhau) values (@hoten, @nganh, @khoahoc, @email, @taikhoan, @matkhau)";
 
                 SqlParameter parHoten = new SqlParameter("@hoten", SqlDbType.NVarChar);
-                parHoten.Value = hoten;
+                parHoten.Value = textBoxHoTen.Text;
 
                 SqlParameter parNganh = new SqlParameter("@nganh", SqlDbType.NVarChar);
                 parNganh.Value = nganh;
@@ -199,10 +199,10 @@ namespace ManageSchedule
                 parKhoahoc.Value = khoa;
 
                 SqlParameter parEmail = new SqlParameter("@email", SqlDbType.VarChar);
-                parEmail.Value = email;
+                parEmail.Value = textBoxEmail.Text;
 
                 SqlParameter parTaiKhoan = new SqlParameter("@taikhoan", SqlDbType.VarChar);
-                parTaiKhoan.Value = taikhoan;
+                parTaiKhoan.Value = textBoxTaiKhoan.Text;
 
                 SqlParameter parMatKhau = new SqlParameter("@matkhau", SqlDbType.VarChar);
                 parMatKhau.Value = hash;

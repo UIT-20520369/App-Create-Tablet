@@ -37,12 +37,11 @@ namespace ManageSchedule
             this.textBoxTaiKhoan = new System.Windows.Forms.TextBox();
             this.textBoxMatKhau = new System.Windows.Forms.TextBox();
             this.checkBoxNhoMK = new System.Windows.Forms.CheckBox();
-            this.btnDangNhap = new System.Windows.Forms.Button();
-            this.BoTronBtnDangNhap = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.btnShowPass = new System.Windows.Forms.Button();
-            this.BtnTroVe = new System.Windows.Forms.Button();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.btnDangNhap = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.btnTroVe = new Bunifu.UI.WinForms.BunifuImageButton();
+            this.btnShowPass = new Bunifu.UI.WinForms.BunifuImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,29 +101,6 @@ namespace ManageSchedule
             this.checkBoxNhoMK.Text = "Ghi nhớ đăng nhập";
             this.checkBoxNhoMK.UseVisualStyleBackColor = true;
             // 
-            // btnDangNhap
-            // 
-            this.btnDangNhap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
-            this.btnDangNhap.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDangNhap.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
-            this.btnDangNhap.FlatAppearance.BorderSize = 0;
-            this.btnDangNhap.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
-            this.btnDangNhap.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
-            this.btnDangNhap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDangNhap.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangNhap.Location = new System.Drawing.Point(137, 375);
-            this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(246, 35);
-            this.btnDangNhap.TabIndex = 8;
-            this.btnDangNhap.Text = "Đăng nhập";
-            this.btnDangNhap.UseVisualStyleBackColor = false;
-            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
-            // 
-            // BoTronBtnDangNhap
-            // 
-            this.BoTronBtnDangNhap.ElipseRadius = 20;
-            this.BoTronBtnDangNhap.TargetControl = this.btnDangNhap;
-            // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
@@ -132,51 +108,12 @@ namespace ManageSchedule
             this.linkLabel1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.linkLabel1.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel1.Location = new System.Drawing.Point(188, 417);
+            this.linkLabel1.Location = new System.Drawing.Point(188, 423);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(143, 18);
             this.linkLabel1.TabIndex = 9;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Quên mật khẩu?";
-            // 
-            // btnShowPass
-            // 
-            this.btnShowPass.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnShowPass.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnShowPass.FlatAppearance.BorderSize = 0;
-            this.btnShowPass.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnShowPass.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnShowPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnShowPass.ForeColor = System.Drawing.Color.Transparent;
-            this.btnShowPass.Image = global::ManageSchedule.Properties.Resources.eye_slash_solid;
-            this.btnShowPass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnShowPass.Location = new System.Drawing.Point(385, 319);
-            this.btnShowPass.Name = "btnShowPass";
-            this.btnShowPass.Size = new System.Drawing.Size(32, 20);
-            this.btnShowPass.TabIndex = 11;
-            this.btnShowPass.TabStop = false;
-            this.btnShowPass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnShowPass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnShowPass.UseVisualStyleBackColor = true;
-            this.btnShowPass.Click += new System.EventHandler(this.btnShowPass_Click);
-            // 
-            // BtnTroVe
-            // 
-            this.BtnTroVe.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnTroVe.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnTroVe.FlatAppearance.BorderSize = 0;
-            this.BtnTroVe.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnTroVe.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnTroVe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnTroVe.Image = ((System.Drawing.Image)(resources.GetObject("BtnTroVe.Image")));
-            this.BtnTroVe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnTroVe.Location = new System.Drawing.Point(2, 2);
-            this.BtnTroVe.Name = "BtnTroVe";
-            this.BtnTroVe.Size = new System.Drawing.Size(43, 42);
-            this.BtnTroVe.TabIndex = 10;
-            this.BtnTroVe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnTroVe.UseVisualStyleBackColor = true;
-            this.BtnTroVe.Click += new System.EventHandler(this.BtnTroVe_Click);
             // 
             // pictureBoxLogo
             // 
@@ -188,16 +125,113 @@ namespace ManageSchedule
             this.pictureBoxLogo.TabIndex = 0;
             this.pictureBoxLogo.TabStop = false;
             // 
+            // btnDangNhap
+            // 
+            this.btnDangNhap.ActiveBorderThickness = 1;
+            this.btnDangNhap.ActiveCornerRadius = 20;
+            this.btnDangNhap.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
+            this.btnDangNhap.ActiveForecolor = System.Drawing.Color.Black;
+            this.btnDangNhap.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
+            this.btnDangNhap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(231)))), ((int)(((byte)(231)))));
+            this.btnDangNhap.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDangNhap.BackgroundImage")));
+            this.btnDangNhap.ButtonText = "Đăng nhập";
+            this.btnDangNhap.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDangNhap.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangNhap.ForeColor = System.Drawing.Color.SeaGreen;
+            this.btnDangNhap.IdleBorderThickness = 1;
+            this.btnDangNhap.IdleCornerRadius = 20;
+            this.btnDangNhap.IdleFillColor = System.Drawing.Color.Gainsboro;
+            this.btnDangNhap.IdleForecolor = System.Drawing.Color.Black;
+            this.btnDangNhap.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
+            this.btnDangNhap.Location = new System.Drawing.Point(137, 374);
+            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnDangNhap.Name = "btnDangNhap";
+            this.btnDangNhap.Size = new System.Drawing.Size(246, 45);
+            this.btnDangNhap.TabIndex = 8;
+            this.btnDangNhap.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
+            // 
+            // btnTroVe
+            // 
+            this.btnTroVe.ActiveImage = null;
+            this.btnTroVe.AllowAnimations = true;
+            this.btnTroVe.AllowBuffering = false;
+            this.btnTroVe.AllowToggling = false;
+            this.btnTroVe.AllowZooming = true;
+            this.btnTroVe.AllowZoomingOnFocus = false;
+            this.btnTroVe.BackColor = System.Drawing.Color.Transparent;
+            this.btnTroVe.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnTroVe.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnTroVe.ErrorImage")));
+            this.btnTroVe.FadeWhenInactive = false;
+            this.btnTroVe.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.btnTroVe.Image = global::ManageSchedule.Properties.Resources.chevron_circle;
+            this.btnTroVe.ActiveImage = null;
+            this.btnTroVe.ImageLocation = null;
+            this.btnTroVe.ImageMargin = 10;
+            this.btnTroVe.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnTroVe.ImageZoomSize = new System.Drawing.Size(50, 50);
+            this.btnTroVe.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnTroVe.InitialImage")));
+            this.btnTroVe.Location = new System.Drawing.Point(12, 12);
+            this.btnTroVe.Name = "btnTroVe";
+            this.btnTroVe.Rotation = 0;
+            this.btnTroVe.ShowActiveImage = true;
+            this.btnTroVe.ShowCursorChanges = true;
+            this.btnTroVe.ShowImageBorders = true;
+            this.btnTroVe.ShowSizeMarkers = false;
+            this.btnTroVe.Size = new System.Drawing.Size(50, 50);
+            this.btnTroVe.TabIndex = 12;
+            this.btnTroVe.ToolTipText = "";
+            this.btnTroVe.WaitOnLoad = false;
+            this.btnTroVe.ImageMargin = 10;
+            this.btnTroVe.ZoomSpeed = 10;
+            this.btnTroVe.Click += new System.EventHandler(this.BtnTroVe_Click);
+            // 
+            // btnShowPass
+            // 
+            this.btnShowPass.ActiveImage = null;
+            this.btnShowPass.AllowAnimations = true;
+            this.btnShowPass.AllowBuffering = false;
+            this.btnShowPass.AllowToggling = false;
+            this.btnShowPass.AllowZooming = false;
+            this.btnShowPass.AllowZoomingOnFocus = false;
+            this.btnShowPass.BackColor = System.Drawing.Color.Transparent;
+            this.btnShowPass.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnShowPass.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnShowPass.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnShowPass.ErrorImage")));
+            this.btnShowPass.FadeWhenInactive = false;
+            this.btnShowPass.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.btnShowPass.Image = global::ManageSchedule.Properties.Resources.eye_slash_solid;
+            this.btnShowPass.ActiveImage = null;
+            this.btnShowPass.ImageLocation = null;
+            this.btnShowPass.ImageMargin = 20;
+            this.btnShowPass.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnShowPass.ImageZoomSize = new System.Drawing.Size(40, 40);
+            this.btnShowPass.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnShowPass.InitialImage")));
+            this.btnShowPass.Location = new System.Drawing.Point(387, 308);
+            this.btnShowPass.Name = "btnShowPass";
+            this.btnShowPass.Rotation = 0;
+            this.btnShowPass.ShowActiveImage = true;
+            this.btnShowPass.ShowCursorChanges = false;
+            this.btnShowPass.ShowImageBorders = true;
+            this.btnShowPass.ShowSizeMarkers = false;
+            this.btnShowPass.Size = new System.Drawing.Size(40, 40);
+            this.btnShowPass.TabIndex = 13;
+            this.btnShowPass.ToolTipText = "";
+            this.btnShowPass.WaitOnLoad = false;
+            this.btnShowPass.ImageMargin = 20;
+            this.btnShowPass.ZoomSpeed = 10;
+            this.btnShowPass.Click += new System.EventHandler(this.btnShowPass_Click);
+            // 
             // FormDangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(231)))), ((int)(((byte)(231)))));
             this.ClientSize = new System.Drawing.Size(435, 523);
             this.Controls.Add(this.btnShowPass);
-            this.Controls.Add(this.BtnTroVe);
-            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.btnTroVe);
             this.Controls.Add(this.btnDangNhap);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.checkBoxNhoMK);
             this.Controls.Add(this.textBoxMatKhau);
             this.Controls.Add(this.textBoxTaiKhoan);
@@ -224,11 +258,10 @@ namespace ManageSchedule
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBoxNhoMK;
-        private System.Windows.Forms.Button btnDangNhap;
-        private Bunifu.Framework.UI.BunifuElipse BoTronBtnDangNhap;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Button BtnTroVe;
-        private System.Windows.Forms.Button btnShowPass;
+        private Bunifu.Framework.UI.BunifuThinButton2 btnDangNhap;
+        private Bunifu.UI.WinForms.BunifuImageButton btnTroVe;
+        private Bunifu.UI.WinForms.BunifuImageButton btnShowPass;
     }
 }
 
