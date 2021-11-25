@@ -123,6 +123,9 @@ namespace ManageSchedule
             this.btn21 = new System.Windows.Forms.Button();
             this.btnThem = new Bunifu.Framework.UI.BunifuThinButton2();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnXoaLop = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            this.labelHdt = new Bunifu.UI.WinForms.BunifuLabel();
+            this.bunifuLabel7 = new Bunifu.UI.WinForms.BunifuLabel();
             this.labelTiet = new Bunifu.UI.WinForms.BunifuLabel();
             this.labelThu = new Bunifu.UI.WinForms.BunifuLabel();
             this.labelTinChi = new Bunifu.UI.WinForms.BunifuLabel();
@@ -135,9 +138,6 @@ namespace ManageSchedule
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabel7 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.labelHdt = new Bunifu.UI.WinForms.BunifuLabel();
-            this.btnXoaLop = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvChonLop)).BeginInit();
             this.panelTKB.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -207,14 +207,14 @@ namespace ManageSchedule
             this.dtgvChonLop.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(16)))), ((int)(((byte)(18)))));
             this.dtgvChonLop.HeaderBgColor = System.Drawing.Color.Empty;
             this.dtgvChonLop.HeaderForeColor = System.Drawing.Color.White;
-            this.dtgvChonLop.Location = new System.Drawing.Point(12, 216);
+            this.dtgvChonLop.Location = new System.Drawing.Point(1, 214);
             this.dtgvChonLop.MultiSelect = false;
             this.dtgvChonLop.Name = "dtgvChonLop";
             this.dtgvChonLop.RowHeadersVisible = false;
             this.dtgvChonLop.RowTemplate.Height = 40;
             this.dtgvChonLop.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgvChonLop.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvChonLop.Size = new System.Drawing.Size(1080, 463);
+            this.dtgvChonLop.Size = new System.Drawing.Size(919, 463);
             this.dtgvChonLop.TabIndex = 0;
             this.dtgvChonLop.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Dark;
             // 
@@ -1338,6 +1338,125 @@ namespace ManageSchedule
             this.panel1.Size = new System.Drawing.Size(340, 214);
             this.panel1.TabIndex = 5;
             // 
+            // btnXoaLop
+            // 
+            this.btnXoaLop.AllowAnimations = true;
+            this.btnXoaLop.AllowMouseEffects = true;
+            this.btnXoaLop.AllowToggling = false;
+            this.btnXoaLop.AnimationSpeed = 200;
+            this.btnXoaLop.AutoGenerateColors = false;
+            this.btnXoaLop.AutoRoundBorders = false;
+            this.btnXoaLop.AutoSizeLeftIcon = true;
+            this.btnXoaLop.AutoSizeRightIcon = true;
+            this.btnXoaLop.BackColor = System.Drawing.Color.Transparent;
+            this.btnXoaLop.BackColor1 = System.Drawing.Color.DodgerBlue;
+            this.btnXoaLop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnXoaLop.BackgroundImage")));
+            this.btnXoaLop.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnXoaLop.ButtonText = "Xóa lớp";
+            this.btnXoaLop.ButtonTextMarginLeft = 0;
+            this.btnXoaLop.ColorContrastOnClick = 45;
+            this.btnXoaLop.ColorContrastOnHover = 45;
+            this.btnXoaLop.Cursor = System.Windows.Forms.Cursors.Default;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnXoaLop.CustomizableEdges = borderEdges1;
+            this.btnXoaLop.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnXoaLop.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnXoaLop.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnXoaLop.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnXoaLop.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            this.btnXoaLop.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnXoaLop.ForeColor = System.Drawing.Color.White;
+            this.btnXoaLop.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoaLop.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnXoaLop.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnXoaLop.IconMarginLeft = 11;
+            this.btnXoaLop.IconPadding = 10;
+            this.btnXoaLop.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXoaLop.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnXoaLop.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnXoaLop.IconSize = 25;
+            this.btnXoaLop.IdleBorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnXoaLop.IdleBorderRadius = 30;
+            this.btnXoaLop.IdleBorderThickness = 1;
+            this.btnXoaLop.IdleFillColor = System.Drawing.Color.DodgerBlue;
+            this.btnXoaLop.IdleIconLeftImage = null;
+            this.btnXoaLop.IdleIconRightImage = null;
+            this.btnXoaLop.IndicateFocus = false;
+            this.btnXoaLop.Location = new System.Drawing.Point(107, 172);
+            this.btnXoaLop.Name = "btnXoaLop";
+            this.btnXoaLop.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnXoaLop.OnDisabledState.BorderRadius = 30;
+            this.btnXoaLop.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnXoaLop.OnDisabledState.BorderThickness = 1;
+            this.btnXoaLop.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnXoaLop.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnXoaLop.OnDisabledState.IconLeftImage = null;
+            this.btnXoaLop.OnDisabledState.IconRightImage = null;
+            this.btnXoaLop.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnXoaLop.onHoverState.BorderRadius = 30;
+            this.btnXoaLop.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnXoaLop.onHoverState.BorderThickness = 1;
+            this.btnXoaLop.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnXoaLop.onHoverState.ForeColor = System.Drawing.Color.White;
+            this.btnXoaLop.onHoverState.IconLeftImage = null;
+            this.btnXoaLop.onHoverState.IconRightImage = null;
+            this.btnXoaLop.OnIdleState.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnXoaLop.OnIdleState.BorderRadius = 30;
+            this.btnXoaLop.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnXoaLop.OnIdleState.BorderThickness = 1;
+            this.btnXoaLop.OnIdleState.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btnXoaLop.OnIdleState.ForeColor = System.Drawing.Color.White;
+            this.btnXoaLop.OnIdleState.IconLeftImage = null;
+            this.btnXoaLop.OnIdleState.IconRightImage = null;
+            this.btnXoaLop.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnXoaLop.OnPressedState.BorderRadius = 30;
+            this.btnXoaLop.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnXoaLop.OnPressedState.BorderThickness = 1;
+            this.btnXoaLop.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnXoaLop.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnXoaLop.OnPressedState.IconLeftImage = null;
+            this.btnXoaLop.OnPressedState.IconRightImage = null;
+            this.btnXoaLop.Size = new System.Drawing.Size(102, 36);
+            this.btnXoaLop.TabIndex = 14;
+            this.btnXoaLop.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnXoaLop.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnXoaLop.TextMarginLeft = 0;
+            this.btnXoaLop.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnXoaLop.UseDefaultRadiusAndThickness = true;
+            this.btnXoaLop.Click += new System.EventHandler(this.btnXoaLop_Click);
+            // 
+            // labelHdt
+            // 
+            this.labelHdt.AllowParentOverrides = false;
+            this.labelHdt.AutoEllipsis = false;
+            this.labelHdt.CursorType = null;
+            this.labelHdt.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHdt.Location = new System.Drawing.Point(72, 142);
+            this.labelHdt.Name = "labelHdt";
+            this.labelHdt.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelHdt.Size = new System.Drawing.Size(0, 0);
+            this.labelHdt.TabIndex = 13;
+            this.labelHdt.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.labelHdt.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // bunifuLabel7
+            // 
+            this.bunifuLabel7.AllowParentOverrides = false;
+            this.bunifuLabel7.AutoEllipsis = false;
+            this.bunifuLabel7.CursorType = null;
+            this.bunifuLabel7.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuLabel7.Location = new System.Drawing.Point(20, 142);
+            this.bunifuLabel7.Name = "bunifuLabel7";
+            this.bunifuLabel7.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel7.Size = new System.Drawing.Size(46, 16);
+            this.bunifuLabel7.TabIndex = 12;
+            this.bunifuLabel7.Text = "Hệ ĐT:";
+            this.bunifuLabel7.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel7.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
             // labelTiet
             // 
             this.labelTiet.AllowParentOverrides = false;
@@ -1512,125 +1631,6 @@ namespace ManageSchedule
             this.bunifuLabel1.Text = "Mã môn:";
             this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // bunifuLabel7
-            // 
-            this.bunifuLabel7.AllowParentOverrides = false;
-            this.bunifuLabel7.AutoEllipsis = false;
-            this.bunifuLabel7.CursorType = null;
-            this.bunifuLabel7.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuLabel7.Location = new System.Drawing.Point(20, 142);
-            this.bunifuLabel7.Name = "bunifuLabel7";
-            this.bunifuLabel7.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel7.Size = new System.Drawing.Size(46, 16);
-            this.bunifuLabel7.TabIndex = 12;
-            this.bunifuLabel7.Text = "Hệ ĐT:";
-            this.bunifuLabel7.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel7.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // labelHdt
-            // 
-            this.labelHdt.AllowParentOverrides = false;
-            this.labelHdt.AutoEllipsis = false;
-            this.labelHdt.CursorType = null;
-            this.labelHdt.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelHdt.Location = new System.Drawing.Point(72, 142);
-            this.labelHdt.Name = "labelHdt";
-            this.labelHdt.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelHdt.Size = new System.Drawing.Size(0, 0);
-            this.labelHdt.TabIndex = 13;
-            this.labelHdt.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.labelHdt.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // btnXoaLop
-            // 
-            this.btnXoaLop.AllowAnimations = true;
-            this.btnXoaLop.AllowMouseEffects = true;
-            this.btnXoaLop.AllowToggling = false;
-            this.btnXoaLop.AnimationSpeed = 200;
-            this.btnXoaLop.AutoGenerateColors = false;
-            this.btnXoaLop.AutoRoundBorders = false;
-            this.btnXoaLop.AutoSizeLeftIcon = true;
-            this.btnXoaLop.AutoSizeRightIcon = true;
-            this.btnXoaLop.BackColor = System.Drawing.Color.Transparent;
-            this.btnXoaLop.BackColor1 = System.Drawing.Color.DodgerBlue;
-            this.btnXoaLop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnXoaLop.BackgroundImage")));
-            this.btnXoaLop.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnXoaLop.ButtonText = "Xóa lớp";
-            this.btnXoaLop.ButtonTextMarginLeft = 0;
-            this.btnXoaLop.ColorContrastOnClick = 45;
-            this.btnXoaLop.ColorContrastOnHover = 45;
-            this.btnXoaLop.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnXoaLop.CustomizableEdges = borderEdges1;
-            this.btnXoaLop.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnXoaLop.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnXoaLop.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnXoaLop.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnXoaLop.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            this.btnXoaLop.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnXoaLop.ForeColor = System.Drawing.Color.White;
-            this.btnXoaLop.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoaLop.IconLeftCursor = System.Windows.Forms.Cursors.Default;
-            this.btnXoaLop.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.btnXoaLop.IconMarginLeft = 11;
-            this.btnXoaLop.IconPadding = 10;
-            this.btnXoaLop.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnXoaLop.IconRightCursor = System.Windows.Forms.Cursors.Default;
-            this.btnXoaLop.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
-            this.btnXoaLop.IconSize = 25;
-            this.btnXoaLop.IdleBorderColor = System.Drawing.Color.DodgerBlue;
-            this.btnXoaLop.IdleBorderRadius = 30;
-            this.btnXoaLop.IdleBorderThickness = 1;
-            this.btnXoaLop.IdleFillColor = System.Drawing.Color.DodgerBlue;
-            this.btnXoaLop.IdleIconLeftImage = null;
-            this.btnXoaLop.IdleIconRightImage = null;
-            this.btnXoaLop.IndicateFocus = false;
-            this.btnXoaLop.Location = new System.Drawing.Point(107, 172);
-            this.btnXoaLop.Name = "btnXoaLop";
-            this.btnXoaLop.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnXoaLop.OnDisabledState.BorderRadius = 30;
-            this.btnXoaLop.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnXoaLop.OnDisabledState.BorderThickness = 1;
-            this.btnXoaLop.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnXoaLop.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnXoaLop.OnDisabledState.IconLeftImage = null;
-            this.btnXoaLop.OnDisabledState.IconRightImage = null;
-            this.btnXoaLop.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.btnXoaLop.onHoverState.BorderRadius = 30;
-            this.btnXoaLop.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnXoaLop.onHoverState.BorderThickness = 1;
-            this.btnXoaLop.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.btnXoaLop.onHoverState.ForeColor = System.Drawing.Color.White;
-            this.btnXoaLop.onHoverState.IconLeftImage = null;
-            this.btnXoaLop.onHoverState.IconRightImage = null;
-            this.btnXoaLop.OnIdleState.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.btnXoaLop.OnIdleState.BorderRadius = 30;
-            this.btnXoaLop.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnXoaLop.OnIdleState.BorderThickness = 1;
-            this.btnXoaLop.OnIdleState.FillColor = System.Drawing.Color.DodgerBlue;
-            this.btnXoaLop.OnIdleState.ForeColor = System.Drawing.Color.White;
-            this.btnXoaLop.OnIdleState.IconLeftImage = null;
-            this.btnXoaLop.OnIdleState.IconRightImage = null;
-            this.btnXoaLop.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.btnXoaLop.OnPressedState.BorderRadius = 30;
-            this.btnXoaLop.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnXoaLop.OnPressedState.BorderThickness = 1;
-            this.btnXoaLop.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.btnXoaLop.OnPressedState.ForeColor = System.Drawing.Color.White;
-            this.btnXoaLop.OnPressedState.IconLeftImage = null;
-            this.btnXoaLop.OnPressedState.IconRightImage = null;
-            this.btnXoaLop.Size = new System.Drawing.Size(102, 36);
-            this.btnXoaLop.TabIndex = 14;
-            this.btnXoaLop.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnXoaLop.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnXoaLop.TextMarginLeft = 0;
-            this.btnXoaLop.TextPadding = new System.Windows.Forms.Padding(0);
-            this.btnXoaLop.UseDefaultRadiusAndThickness = true;
-            this.btnXoaLop.Click += new System.EventHandler(this.btnXoaLop_Click);
             // 
             // FormTaoTKB
             // 

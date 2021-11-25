@@ -44,9 +44,10 @@ namespace ManageSchedule
                 for (int j = 0; j < 8; j++)
                     TKB[i, j] = string.Empty;
 
-            string dir = @"D:\ManageSchedule\ManageSchedule\Data\21-22-SEM1.xlsx";
+            string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
+            string ExcelFile = string.Format(@"{0}\Data\21-22-SEM1.xlsx", Path.GetFullPath(Path.Combine(RunningPath, @"..\..\")));
 
-            using (var stream = File.Open(dir, FileMode.Open, FileAccess.Read))
+            using (var stream = File.Open(ExcelFile, FileMode.Open, FileAccess.Read))
             {
                 IExcelDataReader reader;
 
@@ -76,22 +77,6 @@ namespace ManageSchedule
                         dt.Rows[i].ItemArray[17].ToString(),
                     });
             }
-
-            //dtgvChonLop.DataSource = ds.Tables[0];
-            //bunifuDataGridView1;
-        }
-
-        public static bool isMaMonMaLop(string input)
-        {
-            //@"^[a-zA-Z0-9.]{4,20}$" +
-            string strRegex1 =  @"(?=.*\d)(?=.*[a-z])";
-            string strRegex2 = @"(?=.*\d)(?=.*[A-Z])";
-            Regex re1 = new Regex(strRegex1);
-            Regex re2 = new Regex(strRegex2);
-            if (re1.IsMatch(input) || re2.IsMatch(input))
-                return (true);
-            else
-                return (false);
         }
 
         private void txtBoxSearch_TextChange(object sender, EventArgs e)
@@ -175,17 +160,17 @@ namespace ManageSchedule
                 {
                     if (curBtn == listButton[i][j])
                     {
-                        foreach(DataGridViewRow row in dtgvChonLop.Rows)
+                        foreach(DataRow row in ds.Tables[0].Rows)
                         {
-                            if (TKB[i + 1, j + 1] == row.Cells[2].Value.ToString())
+                            if (TKB[i + 1, j + 1] == row.ItemArray[2].ToString())
                             {
-                                labelMaMon.Text = row.Cells[1].Value.ToString();
-                                labelMaLop.Text = row.Cells[2].Value.ToString();
-                                labelTenMon.Text = row.Cells[3].Value.ToString();
-                                labelTinChi.Text = row.Cells[4].Value.ToString();
-                                labelThu.Text = row.Cells[5].Value.ToString();
-                                labelTiet.Text = row.Cells[6].Value.ToString();
-                                labelHdt.Text = row.Cells[7].Value.ToString();
+                                labelMaMon.Text = row.ItemArray[1].ToString();
+                                labelMaLop.Text = row.ItemArray[2].ToString();
+                                labelTenMon.Text = row.ItemArray[3].ToString();
+                                labelTinChi.Text = row.ItemArray[7].ToString();
+                                labelThu.Text = row.ItemArray[10].ToString();
+                                labelTiet.Text = row.ItemArray[11].ToString();
+                                labelHdt.Text = row.ItemArray[17].ToString();
                                 break;
                             }
                         }
@@ -200,27 +185,20 @@ namespace ManageSchedule
             if (s == string.Empty)
                 return;
 
-            foreach (DataGridViewRow row in dtgvChonLop.Rows)
-            {
-                if (row.Cells[2].Value.ToString() == labelMaLop.Text)
-                {
-                    for (int i = 0; i < 11; i++)
-                        for (int j = 0; j < 8; j++)
-                            if (TKB[i, j] == labelMaLop.Text)
-                            {
-                                listButton[i - 1][j - 1].BackColor = Color.Silver;
-                                TKB[i, j] = string.Empty;
-                            }
-                    labelMaMon.Text = string.Empty;
-                    labelMaLop.Text = string.Empty;
-                    labelTenMon.Text = string.Empty;
-                    labelTinChi.Text = string.Empty;
-                    labelThu.Text = string.Empty;
-                    labelTiet.Text = string.Empty;
-                    labelHdt.Text = string.Empty;
-                    break;
-                }
-            }
+            for (int i = 0; i < 11; i++)
+                for (int j = 0; j < 8; j++)
+                    if (TKB[i, j] == labelMaLop.Text)
+                    {
+                        listButton[i - 1][j - 1].BackColor = Color.Silver;
+                        TKB[i, j] = string.Empty;
+                    }
+            labelMaMon.Text = string.Empty;
+            labelMaLop.Text = string.Empty;
+            labelTenMon.Text = string.Empty;
+            labelTinChi.Text = string.Empty;
+            labelThu.Text = string.Empty;
+            labelTiet.Text = string.Empty;
+            labelHdt.Text = string.Empty;
         }
     }
 }
