@@ -16,7 +16,7 @@ namespace ManageSchedule
     public partial class FormDangNhap : Form
     {
         bool isShowPass = false;
-        string strCon = @"Server=172.107.32.132,10763;Database=manageschedule;User=xuanvuong;Password=Vuong21@!";
+        //string strCon = @"Server=209.209.40.89,19058;Database=manageschedule;User=team4;Password=Team45678";
         SqlConnection sqlCon = null;
         public FormDangNhap()
         {
@@ -48,6 +48,7 @@ namespace ManageSchedule
         {
             string taikhoan = textBoxTaiKhoan.Text.Trim();
             string matkhau = textBoxMatKhau.Text.Trim();
+            string hedaotao = string.Empty;
 
             if (taikhoan == string.Empty)
             {
@@ -64,7 +65,7 @@ namespace ManageSchedule
             }
 
             if (sqlCon == null)
-                sqlCon = new SqlConnection(strCon);
+                sqlCon = new SqlConnection(HangSo.strCon);
 
             if (sqlCon.State == ConnectionState.Closed)
                 sqlCon.Open();
@@ -82,8 +83,9 @@ namespace ManageSchedule
 
                 while (reader.Read())
                 {
-                    string dbTaiKhoan = reader.GetString(4);
-                    string dbMatKhau = reader.GetString(5);
+                    hedaotao = reader.GetString(3);
+                    string dbTaiKhoan = reader.GetString(5);
+                    string dbMatKhau = reader.GetString(6);
 
                     if (textBoxTaiKhoan.Text == dbTaiKhoan && MaHoa.VerifyHash(sha256Hash, textBoxMatKhau.Text, dbMatKhau))
                     {
@@ -104,7 +106,11 @@ namespace ManageSchedule
                 {
                     this.Hide();
                     this.Close();
-                    FormUngDung ungdung = new FormUngDung();
+                    if (hedaotao == "Chính quy")
+                        hedaotao = "CQUI";
+                    else
+                        hedaotao = "CLC";
+                    FormUngDung ungdung = new FormUngDung(hedaotao);
                     ungdung.ShowDialog();
                 }
             }

@@ -39,23 +39,28 @@ namespace ManageSchedule
             this.btnHome = new System.Windows.Forms.PictureBox();
             this.BoTronUngDung = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panelBar = new System.Windows.Forms.Panel();
+            this.btnMini = new System.Windows.Forms.Button();
+            this.childFormLogo = new System.Windows.Forms.PictureBox();
+            this.btnThoat = new System.Windows.Forms.Button();
             this.labelChildFormText = new System.Windows.Forms.Label();
             this.btnAccount = new System.Windows.Forms.PictureBox();
             this.panelUngDung = new System.Windows.Forms.Panel();
             this.dateTimePickerGetDate = new System.Windows.Forms.DateTimePicker();
             this.panelMatrix = new System.Windows.Forms.Panel();
             this.panelButton = new System.Windows.Forms.Panel();
-            this.btnThoat = new System.Windows.Forms.Button();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.btnChinhSua = new System.Windows.Forms.Button();
-            this.childFormLogo = new System.Windows.Forms.PictureBox();
+            this.BoTronBtnThoat = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.BoTronBtnMini = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.toolTipThoat = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipMini = new System.Windows.Forms.ToolTip(this.components);
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).BeginInit();
             this.panelBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.childFormLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAccount)).BeginInit();
             this.panelUngDung.SuspendLayout();
             this.panelButton.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.childFormLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -198,7 +203,9 @@ namespace ManageSchedule
             // panelBar
             // 
             this.panelBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(157)))), ((int)(((byte)(156)))));
+            this.panelBar.Controls.Add(this.btnMini);
             this.panelBar.Controls.Add(this.childFormLogo);
+            this.panelBar.Controls.Add(this.btnThoat);
             this.panelBar.Controls.Add(this.labelChildFormText);
             this.panelBar.Controls.Add(this.btnAccount);
             this.panelBar.Dock = System.Windows.Forms.DockStyle.Top;
@@ -206,6 +213,45 @@ namespace ManageSchedule
             this.panelBar.Name = "panelBar";
             this.panelBar.Size = new System.Drawing.Size(1133, 73);
             this.panelBar.TabIndex = 1;
+            // 
+            // btnMini
+            // 
+            this.btnMini.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
+            this.btnMini.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMini.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
+            this.btnMini.FlatAppearance.BorderSize = 0;
+            this.btnMini.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
+            this.btnMini.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMini.Location = new System.Drawing.Point(1091, 3);
+            this.btnMini.Name = "btnMini";
+            this.btnMini.Size = new System.Drawing.Size(15, 15);
+            this.btnMini.TabIndex = 18;
+            this.btnMini.UseVisualStyleBackColor = false;
+            this.btnMini.Click += new System.EventHandler(this.btnMini_Click);
+            // 
+            // childFormLogo
+            // 
+            this.childFormLogo.Location = new System.Drawing.Point(8, 21);
+            this.childFormLogo.Name = "childFormLogo";
+            this.childFormLogo.Size = new System.Drawing.Size(32, 32);
+            this.childFormLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.childFormLogo.TabIndex = 2;
+            this.childFormLogo.TabStop = false;
+            // 
+            // btnThoat
+            // 
+            this.btnThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnThoat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThoat.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnThoat.FlatAppearance.BorderSize = 0;
+            this.btnThoat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnThoat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThoat.Location = new System.Drawing.Point(1111, 3);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(15, 15);
+            this.btnThoat.TabIndex = 17;
+            this.btnThoat.UseVisualStyleBackColor = false;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // labelChildFormText
             // 
@@ -223,7 +269,7 @@ namespace ManageSchedule
             // 
             this.btnAccount.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAccount.Image = global::ManageSchedule.Properties.Resources.user;
-            this.btnAccount.Location = new System.Drawing.Point(1070, 12);
+            this.btnAccount.Location = new System.Drawing.Point(1021, 12);
             this.btnAccount.Name = "btnAccount";
             this.btnAccount.Size = new System.Drawing.Size(51, 47);
             this.btnAccount.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -259,27 +305,12 @@ namespace ManageSchedule
             // 
             // panelButton
             // 
-            this.panelButton.Controls.Add(this.btnThoat);
             this.panelButton.Controls.Add(this.btnDangXuat);
             this.panelButton.Controls.Add(this.btnChinhSua);
-            this.panelButton.Location = new System.Drawing.Point(973, 2);
+            this.panelButton.Location = new System.Drawing.Point(924, 2);
             this.panelButton.Name = "panelButton";
-            this.panelButton.Size = new System.Drawing.Size(156, 114);
+            this.panelButton.Size = new System.Drawing.Size(156, 75);
             this.panelButton.TabIndex = 0;
-            // 
-            // btnThoat
-            // 
-            this.btnThoat.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnThoat.FlatAppearance.BorderSize = 0;
-            this.btnThoat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThoat.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(0, 77);
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(156, 34);
-            this.btnThoat.TabIndex = 2;
-            this.btnThoat.Text = "Thoát";
-            this.btnThoat.UseVisualStyleBackColor = false;
-            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnDangXuat
             // 
@@ -309,14 +340,15 @@ namespace ManageSchedule
             this.btnChinhSua.Text = "Chỉnh sửa thông tin";
             this.btnChinhSua.UseVisualStyleBackColor = false;
             // 
-            // childFormLogo
+            // BoTronBtnThoat
             // 
-            this.childFormLogo.Location = new System.Drawing.Point(8, 21);
-            this.childFormLogo.Name = "childFormLogo";
-            this.childFormLogo.Size = new System.Drawing.Size(32, 32);
-            this.childFormLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.childFormLogo.TabIndex = 2;
-            this.childFormLogo.TabStop = false;
+            this.BoTronBtnThoat.ElipseRadius = 7;
+            this.BoTronBtnThoat.TargetControl = this.btnThoat;
+            // 
+            // BoTronBtnMini
+            // 
+            this.BoTronBtnMini.ElipseRadius = 7;
+            this.BoTronBtnMini.TargetControl = this.btnMini;
             // 
             // FormUngDung
             // 
@@ -334,10 +366,10 @@ namespace ManageSchedule
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).EndInit();
             this.panelBar.ResumeLayout(false);
             this.panelBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.childFormLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAccount)).EndInit();
             this.panelUngDung.ResumeLayout(false);
             this.panelButton.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.childFormLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -358,10 +390,15 @@ namespace ManageSchedule
         private System.Windows.Forms.Panel panelButton;
         private System.Windows.Forms.Button btnDangXuat;
         private System.Windows.Forms.Button btnChinhSua;
-        private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Panel panelMatrix;
         private System.Windows.Forms.DateTimePicker dateTimePickerGetDate;
         private System.Windows.Forms.Label labelChildFormText;
         private System.Windows.Forms.PictureBox childFormLogo;
+        private System.Windows.Forms.Button btnMini;
+        private System.Windows.Forms.Button btnThoat;
+        private Bunifu.Framework.UI.BunifuElipse BoTronBtnThoat;
+        private Bunifu.Framework.UI.BunifuElipse BoTronBtnMini;
+        private System.Windows.Forms.ToolTip toolTipThoat;
+        private System.Windows.Forms.ToolTip toolTipMini;
     }
 }

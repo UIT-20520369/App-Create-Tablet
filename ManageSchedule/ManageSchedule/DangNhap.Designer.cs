@@ -77,7 +77,7 @@ namespace ManageSchedule
             this.textBoxTaiKhoan.Location = new System.Drawing.Point(137, 276);
             this.textBoxTaiKhoan.Name = "textBoxTaiKhoan";
             this.textBoxTaiKhoan.Size = new System.Drawing.Size(246, 27);
-            this.textBoxTaiKhoan.TabIndex = 5;
+            this.textBoxTaiKhoan.TabIndex = 1;
             // 
             // textBoxMatKhau
             // 
@@ -87,7 +87,7 @@ namespace ManageSchedule
             this.textBoxMatKhau.Name = "textBoxMatKhau";
             this.textBoxMatKhau.PasswordChar = '*';
             this.textBoxMatKhau.Size = new System.Drawing.Size(246, 27);
-            this.textBoxMatKhau.TabIndex = 6;
+            this.textBoxMatKhau.TabIndex = 2;
             // 
             // checkBoxNhoMK
             // 
@@ -147,7 +147,7 @@ namespace ManageSchedule
             this.btnDangNhap.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(246, 45);
-            this.btnDangNhap.TabIndex = 8;
+            this.btnDangNhap.TabIndex = 3;
             this.btnDangNhap.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 

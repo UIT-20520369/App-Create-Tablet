@@ -15,7 +15,7 @@ namespace ManageSchedule
 {
     public partial class FormDangKy : Form
     {
-        private string strCon = @"Server=172.107.32.132,10763;Database=manageschedule;User=xuanvuong;Password=Vuong21@!";
+        //private string strCon = @"Server=209.209.40.89,19058;Database=manageschedule;User=team4;Password=Team45678";
         private SqlConnection sqlCon = null;
 
         bool isShowPassMK = false;
@@ -27,6 +27,8 @@ namespace ManageSchedule
             listNganh = new string[] { "Công nghệ Thông tin", "Hệ thống Thông tin", "Khoa học Máy tính", "Kỹ thuật Phần mềm", "Kỹ thuật Máy tính", "Mạng máy tính và Truyền thông", "An toàn Thông tin", "Thương mại điện tử", "Khoa học Dữ liệu"};
             comboBoxNganh.Items.AddRange(listNganh);
             comboBoxNganh.SelectedIndex = 0;
+            comboBoxHeDaoTao.Items.AddRange(new string[] { "Chính quy", "Chất lượng cao" });
+            comboBoxHeDaoTao.SelectedIndex = 0;
             textBoxHoTen.Focus();
         }
 
@@ -144,7 +146,7 @@ namespace ManageSchedule
             }
 
             if (sqlCon == null)
-                sqlCon = new SqlConnection(strCon);
+                sqlCon = new SqlConnection(HangSo.strCon);
 
             if (sqlCon.State == ConnectionState.Closed)
                 sqlCon.Open();
@@ -159,7 +161,7 @@ namespace ManageSchedule
             bool isExists = false;
             while (reader.Read())
             {
-                string dbTaiKhoan = reader.GetString(4);
+                string dbTaiKhoan = reader.GetString(5);
                 if (textBoxTaiKhoan.Text == dbTaiKhoan)
                 {
                     MessageBox.Show("Tài khoản đã được đăng kí", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -187,7 +189,7 @@ namespace ManageSchedule
 
                 SqlCommand sqlCmdInsert = new SqlCommand();
                 sqlCmdInsert.CommandType = CommandType.Text;
-                sqlCmdInsert.CommandText = "insert into dbo.THONGTINTAIKHOAN (HoVaTen, Nganh, KhoaHoc, Email, TaiKhoan, MatKhau) values (@hoten, @nganh, @khoahoc, @email, @taikhoan, @matkhau)";
+                sqlCmdInsert.CommandText = "insert into dbo.THONGTINTAIKHOAN (HoVaTen, Nganh, KhoaHoc, HeDaoTao, Email, TaiKhoan, MatKhau) values (@hoten, @nganh, @khoahoc, @hedaotao, @email, @taikhoan, @matkhau)";
 
                 SqlParameter parHoten = new SqlParameter("@hoten", SqlDbType.NVarChar);
                 parHoten.Value = textBoxHoTen.Text;
@@ -207,9 +209,13 @@ namespace ManageSchedule
                 SqlParameter parMatKhau = new SqlParameter("@matkhau", SqlDbType.VarChar);
                 parMatKhau.Value = hash;
 
+                SqlParameter parHeDaoTao = new SqlParameter("@hedaotao", SqlDbType.NVarChar);
+                parHeDaoTao.Value = comboBoxHeDaoTao.Text;
+
                 sqlCmdInsert.Parameters.Add(parHoten);
                 sqlCmdInsert.Parameters.Add(parNganh);
                 sqlCmdInsert.Parameters.Add(parKhoahoc);
+                sqlCmdInsert.Parameters.Add(parHeDaoTao);
                 sqlCmdInsert.Parameters.Add(parEmail);
                 sqlCmdInsert.Parameters.Add(parTaiKhoan);
                 sqlCmdInsert.Parameters.Add(parMatKhau);
@@ -224,6 +230,7 @@ namespace ManageSchedule
                 textBoxHoTen.Text = "";
                 textBoxKhoaHoc.Text = "";
                 comboBoxNganh.SelectedIndex = 0;
+                comboBoxHeDaoTao.SelectedIndex = 0;
                 textBoxEmail.Text = "";
                 textBoxTaiKhoan.Text = "";
                 textBoxMatKhau.Text = "";

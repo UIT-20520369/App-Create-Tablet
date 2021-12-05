@@ -16,13 +16,17 @@ namespace ManageSchedule
         private Panel leftBorderBtn;
         private Form curChildForm;
 
+        private string hedaotao = string.Empty;
         private int DayOfColumn = 6;
         private int DayOfWeek = 7;
         private List<List<Button>> matrix;
         private List<string> dateOfWeek = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-        public FormUngDung()
+        public FormUngDung(string hdt)
         {
             InitializeComponent();
+            toolTipThoat.SetToolTip(btnThoat, "Thoát");
+            toolTipMini.SetToolTip(btnMini, "Minimize");
+            hedaotao = hdt;
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);
             panelMenu.Controls.Add(leftBorderBtn);
@@ -114,7 +118,7 @@ namespace ManageSchedule
         private void btnTaoLich_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, Color.FromArgb(71, 139, 162), "Tạo lịch học");
-            OpenChildForm(new FormTaoTKB(), 1);
+            OpenChildForm(new FormTaoLich(hedaotao), 1);
         }
 
         private void btnXemLich_Click(object sender, EventArgs e)
@@ -273,6 +277,11 @@ namespace ManageSchedule
             leftBorderBtn.Visible = false;
             labelChildFormText.Text = "";
             childFormLogo.Image = null;
+        }
+
+        private void btnMini_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }

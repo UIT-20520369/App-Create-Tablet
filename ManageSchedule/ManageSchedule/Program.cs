@@ -16,7 +16,7 @@ namespace ManageSchedule
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormTaoTKB());
+            Application.Run(new BatDau());
         }
     }
 }

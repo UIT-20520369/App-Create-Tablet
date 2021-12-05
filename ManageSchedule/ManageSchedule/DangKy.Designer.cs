@@ -53,6 +53,8 @@ namespace ManageSchedule
             this.btnTroVe = new Bunifu.UI.WinForms.BunifuImageButton();
             this.btnShowPassMK = new Bunifu.UI.WinForms.BunifuImageButton();
             this.btnShowPassXacNhan = new Bunifu.UI.WinForms.BunifuImageButton();
+            this.comboBoxHeDaoTao = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,7 +87,7 @@ namespace ManageSchedule
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(85, 338);
+            this.label3.Location = new System.Drawing.Point(85, 376);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 18);
             this.label3.TabIndex = 14;
@@ -95,7 +97,7 @@ namespace ManageSchedule
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(115, 377);
+            this.label4.Location = new System.Drawing.Point(115, 417);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 18);
             this.label4.TabIndex = 15;
@@ -105,7 +107,7 @@ namespace ManageSchedule
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(80, 416);
+            this.label5.Location = new System.Drawing.Point(80, 456);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 18);
             this.label5.TabIndex = 16;
@@ -115,7 +117,7 @@ namespace ManageSchedule
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(85, 455);
+            this.label6.Location = new System.Drawing.Point(85, 495);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(90, 18);
             this.label6.TabIndex = 17;
@@ -125,7 +127,7 @@ namespace ManageSchedule
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(9, 493);
+            this.label7.Location = new System.Drawing.Point(9, 533);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(173, 18);
             this.label7.TabIndex = 18;
@@ -144,7 +146,7 @@ namespace ManageSchedule
             // 
             this.textBoxKhoaHoc.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBoxKhoaHoc.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxKhoaHoc.Location = new System.Drawing.Point(181, 335);
+            this.textBoxKhoaHoc.Location = new System.Drawing.Point(181, 373);
             this.textBoxKhoaHoc.Name = "textBoxKhoaHoc";
             this.textBoxKhoaHoc.Size = new System.Drawing.Size(320, 27);
             this.textBoxKhoaHoc.TabIndex = 2;
@@ -153,7 +155,7 @@ namespace ManageSchedule
             // 
             this.textBoxEmail.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBoxEmail.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEmail.Location = new System.Drawing.Point(181, 374);
+            this.textBoxEmail.Location = new System.Drawing.Point(181, 414);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(320, 27);
             this.textBoxEmail.TabIndex = 3;
@@ -162,7 +164,7 @@ namespace ManageSchedule
             // 
             this.textBoxTaiKhoan.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBoxTaiKhoan.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTaiKhoan.Location = new System.Drawing.Point(181, 413);
+            this.textBoxTaiKhoan.Location = new System.Drawing.Point(181, 453);
             this.textBoxTaiKhoan.Name = "textBoxTaiKhoan";
             this.textBoxTaiKhoan.Size = new System.Drawing.Size(320, 27);
             this.textBoxTaiKhoan.TabIndex = 4;
@@ -171,7 +173,7 @@ namespace ManageSchedule
             // 
             this.textBoxMatKhau.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBoxMatKhau.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxMatKhau.Location = new System.Drawing.Point(181, 452);
+            this.textBoxMatKhau.Location = new System.Drawing.Point(181, 492);
             this.textBoxMatKhau.Name = "textBoxMatKhau";
             this.textBoxMatKhau.PasswordChar = '*';
             this.textBoxMatKhau.Size = new System.Drawing.Size(320, 27);
@@ -181,7 +183,7 @@ namespace ManageSchedule
             // 
             this.textBoxXacNhan.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBoxXacNhan.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxXacNhan.Location = new System.Drawing.Point(181, 490);
+            this.textBoxXacNhan.Location = new System.Drawing.Point(181, 530);
             this.textBoxXacNhan.Name = "textBoxXacNhan";
             this.textBoxXacNhan.PasswordChar = '*';
             this.textBoxXacNhan.Size = new System.Drawing.Size(320, 27);
@@ -203,7 +205,7 @@ namespace ManageSchedule
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label8.Location = new System.Drawing.Point(241, 585);
+            this.label8.Location = new System.Drawing.Point(241, 625);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(119, 16);
             this.label8.TabIndex = 28;
@@ -215,7 +217,7 @@ namespace ManageSchedule
             this.linkLabel1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.linkLabel1.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel1.Location = new System.Drawing.Point(366, 585);
+            this.linkLabel1.Location = new System.Drawing.Point(366, 625);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(78, 16);
             this.linkLabel1.TabIndex = 29;
@@ -252,7 +254,7 @@ namespace ManageSchedule
             this.btnDangKy.IdleFillColor = System.Drawing.Color.Gainsboro;
             this.btnDangKy.IdleForecolor = System.Drawing.Color.Black;
             this.btnDangKy.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
-            this.btnDangKy.Location = new System.Drawing.Point(181, 533);
+            this.btnDangKy.Location = new System.Drawing.Point(181, 573);
             this.btnDangKy.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnDangKy.Name = "btnDangKy";
             this.btnDangKy.Size = new System.Drawing.Size(320, 45);
@@ -316,7 +318,7 @@ namespace ManageSchedule
             this.btnShowPassMK.ImageSize = new System.Drawing.Size(20, 20);
             this.btnShowPassMK.ImageZoomSize = new System.Drawing.Size(40, 40);
             this.btnShowPassMK.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnShowPassMK.InitialImage")));
-            this.btnShowPassMK.Location = new System.Drawing.Point(505, 444);
+            this.btnShowPassMK.Location = new System.Drawing.Point(505, 484);
             this.btnShowPassMK.Name = "btnShowPassMK";
             this.btnShowPassMK.Rotation = 0;
             this.btnShowPassMK.ShowActiveImage = true;
@@ -352,7 +354,7 @@ namespace ManageSchedule
             this.btnShowPassXacNhan.ImageSize = new System.Drawing.Size(20, 20);
             this.btnShowPassXacNhan.ImageZoomSize = new System.Drawing.Size(40, 40);
             this.btnShowPassXacNhan.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnShowPassXacNhan.InitialImage")));
-            this.btnShowPassXacNhan.Location = new System.Drawing.Point(505, 483);
+            this.btnShowPassXacNhan.Location = new System.Drawing.Point(505, 523);
             this.btnShowPassXacNhan.Name = "btnShowPassXacNhan";
             this.btnShowPassXacNhan.Rotation = 0;
             this.btnShowPassXacNhan.ShowActiveImage = true;
@@ -367,12 +369,35 @@ namespace ManageSchedule
             this.btnShowPassXacNhan.ZoomSpeed = 10;
             this.btnShowPassXacNhan.Click += new System.EventHandler(this.btnShowPassXacNhan_Click);
             // 
+            // comboBoxHeDaoTao
+            // 
+            this.comboBoxHeDaoTao.BackColor = System.Drawing.SystemColors.Control;
+            this.comboBoxHeDaoTao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxHeDaoTao.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxHeDaoTao.FormattingEnabled = true;
+            this.comboBoxHeDaoTao.Location = new System.Drawing.Point(181, 335);
+            this.comboBoxHeDaoTao.Name = "comboBoxHeDaoTao";
+            this.comboBoxHeDaoTao.Size = new System.Drawing.Size(320, 26);
+            this.comboBoxHeDaoTao.TabIndex = 35;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(69, 338);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(106, 18);
+            this.label9.TabIndex = 36;
+            this.label9.Text = "Hệ đào tạo:";
+            // 
             // FormDangKy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(231)))), ((int)(((byte)(231)))));
-            this.ClientSize = new System.Drawing.Size(558, 670);
+            this.ClientSize = new System.Drawing.Size(558, 693);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.comboBoxHeDaoTao);
             this.Controls.Add(this.btnShowPassXacNhan);
             this.Controls.Add(this.btnShowPassMK);
             this.Controls.Add(this.btnTroVe);
@@ -428,5 +453,7 @@ namespace ManageSchedule
         private Bunifu.UI.WinForms.BunifuImageButton btnTroVe;
         private Bunifu.UI.WinForms.BunifuImageButton btnShowPassXacNhan;
         private Bunifu.UI.WinForms.BunifuImageButton btnShowPassMK;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox comboBoxHeDaoTao;
     }
 }
