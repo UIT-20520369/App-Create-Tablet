@@ -49,5 +49,15 @@ namespace ManageSchedule
             if (!isThoat)
                 this.Show();
         }
+
+        private void btnKhach_Click(object sender, EventArgs e)
+        {
+            isThoat = false;
+            FormDungNgay dungngay = new FormDungNgay();
+            this.Hide();
+            dungngay.ShowDialog();
+            if (!isThoat)
+                this.Show();
+        }
     }
 }

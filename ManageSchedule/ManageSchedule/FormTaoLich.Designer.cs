@@ -37,21 +37,13 @@ namespace ManageSchedule
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTaoLich));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.BoTronForm = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.DataGridView = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoTC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Thu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tiet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Khoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TextBoxSearch = new Bunifu.UI.WinForms.BunifuTextBox();
             this.btn21 = new System.Windows.Forms.Button();
             this.btn31 = new System.Windows.Forms.Button();
@@ -163,6 +155,16 @@ namespace ManageSchedule
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.btnLamMoi = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoTC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Thu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tiet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Khoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -248,105 +250,7 @@ namespace ManageSchedule
             this.ToolTipAdd.SetToolTip(this.DataGridView, "");
             this.ToolTipAdd.SetToolTipIcon(this.DataGridView, null);
             this.ToolTipAdd.SetToolTipTitle(this.DataGridView, "");
-            // 
-            // STT
-            // 
-            this.STT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.STT.FillWeight = 101.5229F;
-            this.STT.Frozen = true;
-            this.STT.HeaderText = "STT";
-            this.STT.Name = "STT";
-            this.STT.ReadOnly = true;
-            this.STT.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.STT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.STT.Width = 50;
-            // 
-            // MaMon
-            // 
-            this.MaMon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.MaMon.FillWeight = 427.6391F;
-            this.MaMon.Frozen = true;
-            this.MaMon.HeaderText = "MÃ MÔN";
-            this.MaMon.Name = "MaMon";
-            this.MaMon.ReadOnly = true;
-            this.MaMon.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.MaMon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.MaMon.Width = 90;
-            // 
-            // MaLop
-            // 
-            this.MaLop.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.MaLop.FillWeight = 73.51891F;
-            this.MaLop.Frozen = true;
-            this.MaLop.HeaderText = "MÃ LỚP";
-            this.MaLop.Name = "MaLop";
-            this.MaLop.ReadOnly = true;
-            this.MaLop.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.MaLop.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TenMon
-            // 
-            this.TenMon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.TenMon.FillWeight = 20.58662F;
-            this.TenMon.Frozen = true;
-            this.TenMon.HeaderText = "TÊN MÔN HỌC";
-            this.TenMon.Name = "TenMon";
-            this.TenMon.ReadOnly = true;
-            this.TenMon.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.TenMon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.TenMon.Width = 350;
-            // 
-            // SoTC
-            // 
-            this.SoTC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.SoTC.FillWeight = 44.18314F;
-            this.SoTC.Frozen = true;
-            this.SoTC.HeaderText = "SỐ TC";
-            this.SoTC.Name = "SoTC";
-            this.SoTC.ReadOnly = true;
-            this.SoTC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.SoTC.Width = 60;
-            // 
-            // Thu
-            // 
-            this.Thu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Thu.FillWeight = 44.18314F;
-            this.Thu.Frozen = true;
-            this.Thu.HeaderText = "THỨ";
-            this.Thu.Name = "Thu";
-            this.Thu.ReadOnly = true;
-            this.Thu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Thu.Width = 61;
-            // 
-            // Tiet
-            // 
-            this.Tiet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Tiet.FillWeight = 44.18314F;
-            this.Tiet.Frozen = true;
-            this.Tiet.HeaderText = "TIẾT";
-            this.Tiet.Name = "Tiet";
-            this.Tiet.ReadOnly = true;
-            this.Tiet.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Tiet.Width = 50;
-            // 
-            // HDT
-            // 
-            this.HDT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.HDT.FillWeight = 44.18314F;
-            this.HDT.Frozen = true;
-            this.HDT.HeaderText = "HỆ ĐT";
-            this.HDT.Name = "HDT";
-            this.HDT.ReadOnly = true;
-            this.HDT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.HDT.Width = 80;
-            // 
-            // Khoa
-            // 
-            this.Khoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Khoa.Frozen = true;
-            this.Khoa.HeaderText = "KHOA QL";
-            this.Khoa.Name = "Khoa";
-            this.Khoa.ReadOnly = true;
+            this.DataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellClick);
             // 
             // TextBoxSearch
             // 
@@ -376,7 +280,7 @@ namespace ManageSchedule
             this.TextBoxSearch.IconRight = null;
             this.TextBoxSearch.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.TextBoxSearch.Lines = new string[0];
-            this.TextBoxSearch.Location = new System.Drawing.Point(70, 42);
+            this.TextBoxSearch.Location = new System.Drawing.Point(59, 16);
             this.TextBoxSearch.MaxLength = 32767;
             this.TextBoxSearch.MinimumSize = new System.Drawing.Size(1, 1);
             this.TextBoxSearch.Modified = false;
@@ -1835,11 +1739,11 @@ namespace ManageSchedule
             this.btnAdd.ColorContrastOnClick = 45;
             this.btnAdd.ColorContrastOnHover = 45;
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges3.BottomLeft = true;
-            borderEdges3.BottomRight = true;
-            borderEdges3.TopLeft = true;
-            borderEdges3.TopRight = true;
-            this.btnAdd.CustomizableEdges = borderEdges3;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = true;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = true;
+            this.btnAdd.CustomizableEdges = borderEdges4;
             this.btnAdd.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnAdd.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAdd.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -1863,7 +1767,7 @@ namespace ManageSchedule
             this.btnAdd.IdleIconLeftImage = null;
             this.btnAdd.IdleIconRightImage = null;
             this.btnAdd.IndicateFocus = false;
-            this.btnAdd.Location = new System.Drawing.Point(70, 91);
+            this.btnAdd.Location = new System.Drawing.Point(59, 65);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAdd.OnDisabledState.BorderRadius = 30;
@@ -1928,11 +1832,11 @@ namespace ManageSchedule
             this.btnXem.ColorContrastOnClick = 45;
             this.btnXem.ColorContrastOnHover = 45;
             this.btnXem.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.btnXem.CustomizableEdges = borderEdges2;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            this.btnXem.CustomizableEdges = borderEdges3;
             this.btnXem.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnXem.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnXem.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -1956,7 +1860,7 @@ namespace ManageSchedule
             this.btnXem.IdleIconLeftImage = null;
             this.btnXem.IdleIconRightImage = null;
             this.btnXem.IndicateFocus = false;
-            this.btnXem.Location = new System.Drawing.Point(70, 173);
+            this.btnXem.Location = new System.Drawing.Point(59, 188);
             this.btnXem.Name = "btnXem";
             this.btnXem.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnXem.OnDisabledState.BorderRadius = 30;
@@ -2020,11 +1924,11 @@ namespace ManageSchedule
             this.btnXoa.ColorContrastOnClick = 45;
             this.btnXoa.ColorContrastOnHover = 45;
             this.btnXoa.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnXoa.CustomizableEdges = borderEdges1;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnXoa.CustomizableEdges = borderEdges2;
             this.btnXoa.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnXoa.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnXoa.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -2048,7 +1952,7 @@ namespace ManageSchedule
             this.btnXoa.IdleIconLeftImage = null;
             this.btnXoa.IdleIconRightImage = null;
             this.btnXoa.IndicateFocus = false;
-            this.btnXoa.Location = new System.Drawing.Point(70, 132);
+            this.btnXoa.Location = new System.Drawing.Point(59, 106);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnXoa.OnDisabledState.BorderRadius = 30;
@@ -2335,11 +2239,205 @@ namespace ManageSchedule
             this.ToolTipAdd.SetToolTipIcon(this.label19, null);
             this.ToolTipAdd.SetToolTipTitle(this.label19, "");
             // 
+            // btnLamMoi
+            // 
+            this.btnLamMoi.AllowAnimations = true;
+            this.btnLamMoi.AllowMouseEffects = true;
+            this.btnLamMoi.AllowToggling = false;
+            this.btnLamMoi.AnimationSpeed = 200;
+            this.btnLamMoi.AutoGenerateColors = false;
+            this.btnLamMoi.AutoRoundBorders = false;
+            this.btnLamMoi.AutoSizeLeftIcon = true;
+            this.btnLamMoi.AutoSizeRightIcon = true;
+            this.btnLamMoi.BackColor = System.Drawing.Color.Transparent;
+            this.btnLamMoi.BackColor1 = System.Drawing.Color.SeaGreen;
+            this.btnLamMoi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLamMoi.BackgroundImage")));
+            this.btnLamMoi.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnLamMoi.ButtonText = "Làm mới thời khóa biểu";
+            this.btnLamMoi.ButtonTextMarginLeft = 0;
+            this.btnLamMoi.ColorContrastOnClick = 45;
+            this.btnLamMoi.ColorContrastOnHover = 45;
+            this.btnLamMoi.Cursor = System.Windows.Forms.Cursors.Hand;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnLamMoi.CustomizableEdges = borderEdges1;
+            this.btnLamMoi.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnLamMoi.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnLamMoi.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnLamMoi.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnLamMoi.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            this.btnLamMoi.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLamMoi.ForeColor = System.Drawing.Color.White;
+            this.btnLamMoi.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLamMoi.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnLamMoi.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnLamMoi.IconMarginLeft = 11;
+            this.btnLamMoi.IconPadding = 10;
+            this.btnLamMoi.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLamMoi.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnLamMoi.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnLamMoi.IconSize = 25;
+            this.btnLamMoi.IdleBorderColor = System.Drawing.Color.SeaGreen;
+            this.btnLamMoi.IdleBorderRadius = 30;
+            this.btnLamMoi.IdleBorderThickness = 1;
+            this.btnLamMoi.IdleFillColor = System.Drawing.Color.SeaGreen;
+            this.btnLamMoi.IdleIconLeftImage = null;
+            this.btnLamMoi.IdleIconRightImage = null;
+            this.btnLamMoi.IndicateFocus = false;
+            this.btnLamMoi.Location = new System.Drawing.Point(59, 147);
+            this.btnLamMoi.Name = "btnLamMoi";
+            this.btnLamMoi.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnLamMoi.OnDisabledState.BorderRadius = 30;
+            this.btnLamMoi.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnLamMoi.OnDisabledState.BorderThickness = 1;
+            this.btnLamMoi.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnLamMoi.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnLamMoi.OnDisabledState.IconLeftImage = null;
+            this.btnLamMoi.OnDisabledState.IconRightImage = null;
+            this.btnLamMoi.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(82)))), ((int)(((byte)(51)))));
+            this.btnLamMoi.onHoverState.BorderRadius = 30;
+            this.btnLamMoi.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnLamMoi.onHoverState.BorderThickness = 1;
+            this.btnLamMoi.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(82)))), ((int)(((byte)(51)))));
+            this.btnLamMoi.onHoverState.ForeColor = System.Drawing.Color.White;
+            this.btnLamMoi.onHoverState.IconLeftImage = null;
+            this.btnLamMoi.onHoverState.IconRightImage = null;
+            this.btnLamMoi.OnIdleState.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnLamMoi.OnIdleState.BorderRadius = 30;
+            this.btnLamMoi.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnLamMoi.OnIdleState.BorderThickness = 1;
+            this.btnLamMoi.OnIdleState.FillColor = System.Drawing.Color.SeaGreen;
+            this.btnLamMoi.OnIdleState.ForeColor = System.Drawing.Color.White;
+            this.btnLamMoi.OnIdleState.IconLeftImage = null;
+            this.btnLamMoi.OnIdleState.IconRightImage = null;
+            this.btnLamMoi.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(82)))), ((int)(((byte)(51)))));
+            this.btnLamMoi.OnPressedState.BorderRadius = 30;
+            this.btnLamMoi.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnLamMoi.OnPressedState.BorderThickness = 1;
+            this.btnLamMoi.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(82)))), ((int)(((byte)(51)))));
+            this.btnLamMoi.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnLamMoi.OnPressedState.IconLeftImage = null;
+            this.btnLamMoi.OnPressedState.IconRightImage = null;
+            this.btnLamMoi.Size = new System.Drawing.Size(207, 35);
+            this.btnLamMoi.TabIndex = 103;
+            this.btnLamMoi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnLamMoi.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnLamMoi.TextMarginLeft = 0;
+            this.btnLamMoi.TextPadding = new System.Windows.Forms.Padding(0);
+            this.ToolTipAdd.SetToolTip(this.btnLamMoi, "");
+            this.ToolTipAdd.SetToolTipIcon(this.btnLamMoi, null);
+            this.ToolTipAdd.SetToolTipTitle(this.btnLamMoi, "");
+            this.btnLamMoi.UseDefaultRadiusAndThickness = true;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
+            // 
+            // STT
+            // 
+            this.STT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.STT.FillWeight = 101.5229F;
+            this.STT.Frozen = true;
+            this.STT.HeaderText = "STT";
+            this.STT.Name = "STT";
+            this.STT.ReadOnly = true;
+            this.STT.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.STT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.STT.Width = 50;
+            // 
+            // MaMon
+            // 
+            this.MaMon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.MaMon.FillWeight = 427.6391F;
+            this.MaMon.Frozen = true;
+            this.MaMon.HeaderText = "MÃ MÔN";
+            this.MaMon.Name = "MaMon";
+            this.MaMon.ReadOnly = true;
+            this.MaMon.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.MaMon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.MaMon.Width = 90;
+            // 
+            // MaLop
+            // 
+            this.MaLop.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.MaLop.FillWeight = 73.51891F;
+            this.MaLop.Frozen = true;
+            this.MaLop.HeaderText = "MÃ LỚP";
+            this.MaLop.Name = "MaLop";
+            this.MaLop.ReadOnly = true;
+            this.MaLop.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.MaLop.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TenMon
+            // 
+            this.TenMon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.TenMon.FillWeight = 20.58662F;
+            this.TenMon.Frozen = true;
+            this.TenMon.HeaderText = "TÊN MÔN HỌC";
+            this.TenMon.Name = "TenMon";
+            this.TenMon.ReadOnly = true;
+            this.TenMon.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TenMon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TenMon.Width = 350;
+            // 
+            // SoTC
+            // 
+            this.SoTC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.SoTC.FillWeight = 44.18314F;
+            this.SoTC.Frozen = true;
+            this.SoTC.HeaderText = "SỐ TC";
+            this.SoTC.Name = "SoTC";
+            this.SoTC.ReadOnly = true;
+            this.SoTC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.SoTC.Width = 60;
+            // 
+            // Thu
+            // 
+            this.Thu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Thu.FillWeight = 44.18314F;
+            this.Thu.Frozen = true;
+            this.Thu.HeaderText = "THỨ";
+            this.Thu.Name = "Thu";
+            this.Thu.ReadOnly = true;
+            this.Thu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Thu.Width = 61;
+            // 
+            // Tiet
+            // 
+            this.Tiet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Tiet.FillWeight = 44.18314F;
+            this.Tiet.Frozen = true;
+            this.Tiet.HeaderText = "TIẾT";
+            this.Tiet.Name = "Tiet";
+            this.Tiet.ReadOnly = true;
+            this.Tiet.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Tiet.Width = 50;
+            // 
+            // HDT
+            // 
+            this.HDT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.HDT.FillWeight = 44.18314F;
+            this.HDT.Frozen = true;
+            this.HDT.HeaderText = "HỆ ĐT";
+            this.HDT.Name = "HDT";
+            this.HDT.ReadOnly = true;
+            this.HDT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.HDT.Width = 80;
+            // 
+            // Khoa
+            // 
+            this.Khoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Khoa.Frozen = true;
+            this.Khoa.HeaderText = "KHOA QL";
+            this.Khoa.Name = "Khoa";
+            this.Khoa.ReadOnly = true;
+            this.Khoa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // FormTaoLich
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1133, 679);
+            this.Controls.Add(this.btnLamMoi);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnXem);
@@ -2553,15 +2651,6 @@ namespace ManageSchedule
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaMon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaLop;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenMon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoTC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Thu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tiet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HDT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Khoa;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label labelHeDaoTao;
         private System.Windows.Forms.Label labelLichTH;
@@ -2571,5 +2660,15 @@ namespace ManageSchedule
         private System.Windows.Forms.Label labelTenMon;
         private System.Windows.Forms.Label labelMaLop;
         private System.Windows.Forms.Label labelMaMon;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnLamMoi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaMon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaLop;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenMon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoTC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Thu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tiet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HDT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Khoa;
     }
 }

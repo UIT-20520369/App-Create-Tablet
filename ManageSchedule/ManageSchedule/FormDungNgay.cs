@@ -10,22 +10,41 @@ using System.Windows.Forms;
 
 namespace ManageSchedule
 {
-    public partial class FormUngDung : Form
+    public partial class FormDungNgay : Form
     {
         private Button curButton;
         private Panel leftBorderBtn;
         private Form curChildForm;
 
-        private string hedaotao = string.Empty;
-        public FormUngDung(string hdt)
+        public FormDungNgay()
         {
             InitializeComponent();
-            toolTipThoat.SetToolTip(btnThoat, "Thoát");
-            toolTipMini.SetToolTip(btnMini, "Minimize");
-            hedaotao = hdt;
+
+            // ToolTip
+            ToolTip.SetToolTip(btnThoat, "Thoát");
+            ToolTip.SetToolTip(btnMini, "Minimize");
+            ToolTip.SetToolTip(btnTroVe, "Quay về bắt đầu");
+
+            // Animation button
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);
             panelMenu.Controls.Add(leftBorderBtn);
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            BatDau.isThoat = true;
+            Application.Exit();
+        }
+
+        private void btnMini_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnTroVe_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void ActiveButton(object senderBtn, Color color, string s)
@@ -78,75 +97,28 @@ namespace ManageSchedule
             panelUngDung.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-            labelChildFormText.Text = childForm.Text;
             switch (i)
             {
                 case 0:
-                    childFormLogo.Image = Properties.Resources.desktop;
+                    labelChildFormText.Text = "Chính quy";
                     break;
                 case 1:
-                    childFormLogo.Image = Properties.Resources.calendar;
-                    break;
-                case 2:
-                    childFormLogo.Image = Properties.Resources.calendar_check;
-                    break;
-                case 3:
-                    childFormLogo.Image = Properties.Resources.clipboard;
-                    break;
-                case 4:
-                    childFormLogo.Image = Properties.Resources.bug;
-                    break;
-                case 5:
-                    childFormLogo.Image = Properties.Resources.cog;
+                    labelChildFormText.Text = "Chất lượng cao";
                     break;
             }
+            childFormLogo.Image = Properties.Resources.calendar;
         }
 
-        private void btnBangTin_Click(object sender, EventArgs e)
+        private void btnChinhQuy_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Bảng tin");
-            OpenChildForm(new FormBangTin(), 0);
+            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Chính quy");
+            OpenChildForm(new FormTaoLich("CQUI"), 0);
         }
 
-        private void btnTaoLich_Click(object sender, EventArgs e)
+        private void btnCLC_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Tạo lịch học");
-            OpenChildForm(new FormTaoLich(hedaotao), 1);
-        }
-
-        private void btnXemLich_Click(object sender, EventArgs e)
-        {
-            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Xem lịch học");
-            OpenChildForm(new FormXemLich(), 2);
-        }
-
-        private void btnDeadline_Click(object sender, EventArgs e)
-        {
-            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Công việc");
-            OpenChildForm(new FormCongViec(panelUngDung), 3);
-        }
-
-        private void btnBaoloi_Click(object sender, EventArgs e)
-        {
-            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Báo lỗi");
-            OpenChildForm(new FormBaoLoi(), 4);
-        }
-
-        private void btnCaiDat_Click(object sender, EventArgs e)
-        {
-            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Cài đặt");
-            OpenChildForm(new FormBaoLoi(), 5);
-        }
-
-        private void btnDangXuat_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            BatDau.isThoat = true;
-            Application.Exit();
+            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Chất lượng cao");
+            OpenChildForm(new FormTaoLich("CLC"), 0);
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -166,11 +138,6 @@ namespace ManageSchedule
             leftBorderBtn.Visible = false;
             labelChildFormText.Text = "";
             childFormLogo.Image = null;
-        }
-
-        private void btnMini_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
         }
     }
 }
