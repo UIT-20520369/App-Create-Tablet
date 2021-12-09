@@ -397,7 +397,7 @@ namespace ManageSchedule
             spr.Value = curuser;
             cmd.Parameters.Add(spr);
             SqlParameter stt = new SqlParameter("@n", SqlDbType.VarChar);
-            spr.Value = pos.ToString();
+            stt.Value = pos.ToString();
             cmd.Parameters.Add(stt);
             SqlDataReader rd = cmd.ExecuteReader();
             rd.Close();
