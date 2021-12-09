@@ -16,19 +16,16 @@ namespace ManageSchedule
         private Panel leftBorderBtn;
         private Form curChildForm;
 
-        private int DayOfColumn = 6;
-        private int DayOfWeek = 7;
-        private List<List<Button>> matrix;
-        private List<string> dateOfWeek = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-        public FormUngDung()
+        private string hedaotao = string.Empty;
+        public FormUngDung(string hdt)
         {
             InitializeComponent();
+            toolTipThoat.SetToolTip(btnThoat, "Thoát");
+            toolTipMini.SetToolTip(btnMini, "Minimize");
+            hedaotao = hdt;
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);
             panelMenu.Controls.Add(leftBorderBtn);
-            panelButton.Visible = false;
-            //this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-            LoadMatrix();
         }
 
         private void ActiveButton(object senderBtn, Color color, string s)
@@ -51,9 +48,6 @@ namespace ManageSchedule
                 leftBorderBtn.Location = new Point(0, curButton.Location.Y);
                 leftBorderBtn.Visible = true;
                 leftBorderBtn.BringToFront();
-
-                // Icon current child form
-
             }
         }
 
@@ -102,6 +96,9 @@ namespace ManageSchedule
                 case 4:
                     childFormLogo.Image = Properties.Resources.bug;
                     break;
+                case 5:
+                    childFormLogo.Image = Properties.Resources.cog;
+                    break;
             }
         }
 
@@ -114,7 +111,7 @@ namespace ManageSchedule
         private void btnTaoLich_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, Color.FromArgb(71, 139, 162), "Tạo lịch học");
-            OpenChildForm(new FormTaoTKB(), 1);
+            OpenChildForm(new FormTaoLich(hedaotao), 1);
         }
 
         private void btnXemLich_Click(object sender, EventArgs e)
@@ -135,12 +132,10 @@ namespace ManageSchedule
             OpenChildForm(new FormBaoLoi(), 4);
         }
 
-        private void btnAccount_Click(object sender, EventArgs e)
+        private void btnCaiDat_Click(object sender, EventArgs e)
         {
-            if (panelButton.Visible == true)
-                panelButton.Visible = false;
-            else
-                panelButton.Visible = true;
+            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Cài đặt");
+            OpenChildForm(new FormBaoLoi(), 5);
         }
 
         private void btnDangXuat_Click(object sender, EventArgs e)
@@ -152,108 +147,6 @@ namespace ManageSchedule
         {
             BatDau.isThoat = true;
             Application.Exit();
-        }
-
-        private void LoadMatrix()
-        {
-            matrix = new List<List<Button>>();
-
-            Button oldButton = new Button { Width = 0, Height = 0, Location = new Point(-6, 0) };
-            for (int i = 0; i < DayOfColumn; i++)
-            {
-                matrix.Add(new List<Button>());
-                for (int j = 0; j < DayOfWeek; j++)
-                {
-                    Button btn = new Button() { Width = 75, Height = 40 };
-                    btn.Location = new Point(oldButton.Location.X + oldButton.Width + 6, oldButton.Location.Y);
-
-                    panelMatrix.Controls.Add(btn);
-                    matrix[i].Add(btn);
-
-                    oldButton = btn;
-                }
-                oldButton = new Button() { Width = 0, Height = 0, Location = new Point(-6, oldButton.Location.Y + oldButton.Height) };
-            }
-
-            SetDefaultDate();
-        }
-
-        private void ClearMatrix()
-        {
-            for (int i = 0; i < matrix.Count; i++)
-                for (int j = 0; j < matrix.Count; j++)
-                {
-                    Button btn = matrix[i][j];
-                    btn.Text = "";
-                    btn.BackColor = Color.WhiteSmoke;
-                }
-        }
-
-        private void SetDefaultDate()
-        {
-            dateTimePickerGetDate.Value = DateTime.Now;
-        }
-
-        private int DayOfMonth(DateTime date)
-        {
-            switch (date.Month)
-            {
-                case 1:
-                case 3:
-                case 5:
-                case 7:
-                case 8:
-                case 10:
-                case 12:
-                    return 31;
-                case 2:
-                    if (DateTime.IsLeapYear(date.Year))
-                        return 29;
-                    else
-                        return 28;
-                default:
-                    return 30; ;
-            }
-        }
-
-        private bool isEqualDate(DateTime dateA, DateTime dateB)
-        {
-            return dateA.Year == dateB.Year && dateA.Month == dateB.Month && dateA.Day == dateB.Day;
-        }
-
-        private void AddNumberIntoMatrixByDate(DateTime date)
-        {
-            ClearMatrix();
-            DateTime useDate = new DateTime(date.Year, date.Month, 1);
-
-            int line = 0;
-
-            for (int i = 0; i < DayOfMonth(date); i++)
-            {
-                int column = dateOfWeek.IndexOf(useDate.DayOfWeek.ToString());
-                Button btn = matrix[line][column];
-                btn.Text = i.ToString();
-
-                if (isEqualDate(useDate, DateTime.Now))
-                {
-                    btn.BackColor = Color.Yellow;
-                }
-
-                if (isEqualDate(useDate, date))
-                {
-                    btn.BackColor = Color.Aqua;
-                }
-
-                if (column >= 6)
-                    line++;
-
-                useDate = useDate.AddDays(1);
-            }
-        }
-
-        private void dateTimePickerGetDate_ValueChanged(object sender, EventArgs e)
-        {
-            AddNumberIntoMatrixByDate((sender as DateTimePicker).Value);
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -273,6 +166,11 @@ namespace ManageSchedule
             leftBorderBtn.Visible = false;
             labelChildFormText.Text = "";
             childFormLogo.Image = null;
+        }
+
+        private void btnMini_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }
