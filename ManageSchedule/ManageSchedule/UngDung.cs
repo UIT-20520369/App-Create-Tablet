@@ -1,0 +1,187 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+using ExcelDataReader;
+using DevExpress.Spreadsheet;
+using System.IO;
+namespace ManageSchedule
+{
+    public partial class FormUngDung : Form
+    {
+        private Button curButton;
+        private Panel leftBorderBtn;
+        private Form curChildForm;
+
+        static string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
+        string ExcelFile = string.Format(@"{0}\Data\TKB.xlsx", Path.GetFullPath(Path.Combine(RunningPath, @"..\..\")));
+        Workbook wb = new Workbook();
+
+        string curuser = "";
+
+        private string hedaotao = string.Empty;
+        public FormUngDung(string hdt,string us)
+        {
+            InitializeComponent();
+            curuser = us;
+            wb.LoadDocument(ExcelFile, DevExpress.Spreadsheet.DocumentFormat.Xlsx);
+            toolTipThoat.SetToolTip(btnThoat, "Thoát");
+            toolTipMini.SetToolTip(btnMini, "Minimize");
+            hedaotao = hdt;
+            leftBorderBtn = new Panel();
+            leftBorderBtn.Size = new Size(7, 60);
+            panelMenu.Controls.Add(leftBorderBtn);
+        }
+
+        private void ActiveButton(object senderBtn, Color color, string s)
+        {
+            if (senderBtn != null)
+            {
+                DisableButton();
+
+                // Button
+                curButton = (Button)senderBtn;
+                curButton.BackColor = Color.FromArgb(207, 244, 210);
+                curButton.ForeColor = color;
+                curButton.TextAlign = ContentAlignment.MiddleCenter;
+                curButton.TextImageRelation = TextImageRelation.TextBeforeImage;
+                curButton.ImageAlign = ContentAlignment.MiddleRight;
+                curButton.Text = s;
+
+                // Left border button
+                leftBorderBtn.BackColor = color;
+                leftBorderBtn.Location = new Point(0, curButton.Location.Y);
+                leftBorderBtn.Visible = true;
+                leftBorderBtn.BringToFront();
+            }
+        }
+
+        private void DisableButton()
+        {
+            if (curButton != null)
+            {
+                curButton.Text = "  " + curButton.Text;
+                curButton.BackColor = Color.FromArgb(134, 227, 206);
+                curButton.ForeColor = Color.MidnightBlue;
+                curButton.TextAlign = ContentAlignment.MiddleLeft;
+                curButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+                curButton.ImageAlign = ContentAlignment.MiddleLeft;
+            }
+        }
+
+        private void OpenChildForm(Form childForm, int i)
+        {
+            if (curChildForm != null)
+            {
+                curChildForm.Close();
+            }
+
+            curChildForm = childForm;
+            childForm.TopLevel = false;
+            childForm.Dock = DockStyle.Fill;
+            panelUngDung.Controls.Add(childForm);
+            panelUngDung.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+            labelChildFormText.Text = childForm.Text;
+            switch (i)
+            {
+                case 0:
+                    childFormLogo.Image = Properties.Resources.desktop;
+                    break;
+                case 1:
+                    childFormLogo.Image = Properties.Resources.calendar;
+                    break;
+                case 2:
+                    childFormLogo.Image = Properties.Resources.calendar_check;
+                    break;
+                case 3:
+                    childFormLogo.Image = Properties.Resources.clipboard;
+                    break;
+                case 4:
+                    childFormLogo.Image = Properties.Resources.bug;
+                    break;
+                case 5:
+                    childFormLogo.Image = Properties.Resources.cog;
+                    break;
+            }
+        }
+
+        private void btnBangTin_Click(object sender, EventArgs e)
+        {
+            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Bảng tin");
+            OpenChildForm(new FormBangTin(curuser,wb), 0);
+        }
+
+        private void btnTaoLich_Click(object sender, EventArgs e)
+        {
+            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Tạo lịch học");
+            OpenChildForm(new FormTaoLich(hedaotao,curuser,wb), 1);
+        }
+
+        private void btnXemLich_Click(object sender, EventArgs e)
+        {
+            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Xem lịch học");
+            OpenChildForm(new FormXemLich(curuser,wb), 2);
+        }
+
+        private void btnDeadline_Click(object sender, EventArgs e)
+        {
+            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Công việc");
+            OpenChildForm(new FormCongViec(panelUngDung), 3);
+        }
+
+        private void btnBaoloi_Click(object sender, EventArgs e)
+        {
+            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Báo lỗi");
+            OpenChildForm(new FormBaoLoi(), 4);
+        }
+
+        private void btnCaiDat_Click(object sender, EventArgs e)
+        {
+            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Cài đặt");
+            OpenChildForm(new FormBaoLoi(), 5);
+        }
+
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            BatDau.isThoat = true;
+            Application.Exit();
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            if (curChildForm == null)
+            {
+                return;
+            }
+            curChildForm.Close();
+            curChildForm = null;
+            Reset();
+        }
+
+        private void Reset()
+        {
+            DisableButton();
+            leftBorderBtn.Visible = false;
+            labelChildFormText.Text = "";
+            childFormLogo.Image = null;
+        }
+
+        private void btnMini_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+    }
+}
