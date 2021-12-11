@@ -4,11 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 namespace ManageSchedule
 {
@@ -18,20 +16,31 @@ namespace ManageSchedule
         private Panel leftBorderBtn;
         private Form curChildForm;
 
-        private int DayOfColumn = 6;
-        private int DayOfWeek = 7;
-        private List<List<Button>> matrix;
-        private List<string> dateOfWeek = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+        private string hedaotao = string.Empty;
 
-        public FormUngDung()
+        //private int DayOfColumn = 6;
+        //private int DayOfWeek = 7;
+        //private List<List<Button>> matrix;
+        //private List<string> dateOfWeek = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+
+        public FormUngDung(string hdt)
         {
             InitializeComponent();
+            toolTipThoat.SetToolTip(btnThoat, "Thoát");
+            toolTipMini.SetToolTip(btnMini, "Minimize");
+            hedaotao = hdt;
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);
             panelMenu.Controls.Add(leftBorderBtn);
-            panelButton.Visible = false;
+            //panelButton.Visible = false;
             //this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-            LoadMatrix();
+            //LoadMatrix();
+
+            cbxStartup.Checked = false;
+            cbxDeadline.Checked = false;
+            cbxEvent.Checked = false;
+            cbxOther.Checked = false;
+            cbxDarkMode.Checked = false;
         }
 
         private void ActiveButton(object senderBtn, Color color, string s)
@@ -117,7 +126,7 @@ namespace ManageSchedule
         private void btnTaoLich_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, Color.FromArgb(71, 139, 162), "Tạo lịch học");
-            OpenChildForm(new FormTaoTKB(), 1);
+            OpenChildForm(new FormTaoLich(hedaotao), 1);
         }
 
         private void btnXemLich_Click(object sender, EventArgs e)
@@ -132,152 +141,130 @@ namespace ManageSchedule
             OpenChildForm(new FormCongViec(panelUngDung), 3);
         }
 
-
-        private void btnCaiDat_Click(object sender, EventArgs e)
-        {
-            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Cài đặt");
-            OpenChildForm(new FormCaiDat(), 4);
-        }
-
         private void btnBaoloi_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, Color.FromArgb(71, 139, 162), "Báo lỗi");
             OpenChildForm(new FormBaoLoi(), 4);
         }
-
-        private void btnAccount_Click(object sender, EventArgs e)
-        {
-            if (panelButton.Visible == true)
-                panelButton.Visible = false;
-            else
-                panelButton.Visible = true;
-        }
-
+        
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            this.Hide();
-
-            FormDangNhap.setting[3] = "";
-            FormDangNhap.setting[4] = "";
-            File.WriteAllLines(FormDangNhap.SettingFile, FormDangNhap.setting);
-
-            BatDau start = new BatDau();
-            start.Show();
+            CaiDat.SetPreLogin(string.Empty, string.Empty);
+            CaiDat.WriteToTxt(HangSo.txtFilePath);
+            this.Close();
+            Application.Restart();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
             BatDau.isThoat = true;
-            FormDangNhap.setting = File.ReadAllLines(FormDangNhap.SettingFile);
-            FormDangNhap.setting[2] = "ShowInTaskbar: false";
-            File.WriteAllLines(FormDangNhap.SettingFile, FormDangNhap.setting);
+            CaiDat.WriteToTxt(HangSo.txtFilePath);
             Visible = false;
             ShowInTaskbar = false;
-            if (FormDangNhap.setting[0] == "StartupShortcut: false")
-                Application.Exit();
+            //Application.Exit();
         }
 
-        private void LoadMatrix()
-        {
-            matrix = new List<List<Button>>();
+        //private void LoadMatrix()
+        //{
+        //    matrix = new List<List<Button>>();
 
-            Button oldButton = new Button { Width = 0, Height = 0, Location = new Point(-6, 0) };
-            for (int i = 0; i < DayOfColumn; i++)
-            {
-                matrix.Add(new List<Button>());
-                for (int j = 0; j < DayOfWeek; j++)
-                {
-                    Button btn = new Button() { Width = 75, Height = 40 };
-                    btn.Location = new Point(oldButton.Location.X + oldButton.Width + 6, oldButton.Location.Y);
+        //    Button oldButton = new Button { Width = 0, Height = 0, Location = new Point(-6, 0) };
+        //    for (int i = 0; i < DayOfColumn; i++)
+        //    {
+        //        matrix.Add(new List<Button>());
+        //        for (int j = 0; j < DayOfWeek; j++)
+        //        {
+        //            Button btn = new Button() { Width = 75, Height = 40 };
+        //            btn.Location = new Point(oldButton.Location.X + oldButton.Width + 6, oldButton.Location.Y);
 
-                    panelMatrix.Controls.Add(btn);
-                    matrix[i].Add(btn);
+        //            panelMatrix.Controls.Add(btn);
+        //            matrix[i].Add(btn);
 
-                    oldButton = btn;
-                }
-                oldButton = new Button() { Width = 0, Height = 0, Location = new Point(-6, oldButton.Location.Y + oldButton.Height) };
-            }
+        //            oldButton = btn;
+        //        }
+        //        oldButton = new Button() { Width = 0, Height = 0, Location = new Point(-6, oldButton.Location.Y + oldButton.Height) };
+        //    }
 
-            SetDefaultDate();
-        }
+        //    SetDefaultDate();
+        //}
 
-        private void ClearMatrix()
-        {
-            for (int i = 0; i < matrix.Count; i++)
-                for (int j = 0; j < matrix.Count; j++)
-                {
-                    Button btn = matrix[i][j];
-                    btn.Text = "";
-                    btn.BackColor = Color.WhiteSmoke;
-                }
-        }
+        //private void ClearMatrix()
+        //{
+        //    for (int i = 0; i < matrix.Count; i++)
+        //        for (int j = 0; j < matrix.Count; j++)
+        //        {
+        //            Button btn = matrix[i][j];
+        //            btn.Text = "";
+        //            btn.BackColor = Color.WhiteSmoke;
+        //        }
+        //}
 
-        private void SetDefaultDate()
-        {
-            dateTimePickerGetDate.Value = DateTime.Now;
-        }
+        //private void SetDefaultDate()
+        //{
+        //    dateTimePickerGetDate.Value = DateTime.Now;
+        //}
 
-        private int DayOfMonth(DateTime date)
-        {
-            switch (date.Month)
-            {
-                case 1:
-                case 3:
-                case 5:
-                case 7:
-                case 8:
-                case 10:
-                case 12:
-                    return 31;
-                case 2:
-                    if (DateTime.IsLeapYear(date.Year))
-                        return 29;
-                    else
-                        return 28;
-                default:
-                    return 30; ;
-            }
-        }
+        //private int DayOfMonth(DateTime date)
+        //{
+        //    switch (date.Month)
+        //    {
+        //        case 1:
+        //        case 3:
+        //        case 5:
+        //        case 7:
+        //        case 8:
+        //        case 10:
+        //        case 12:
+        //            return 31;
+        //        case 2:
+        //            if (DateTime.IsLeapYear(date.Year))
+        //                return 29;
+        //            else
+        //                return 28;
+        //        default:
+        //            return 30; ;
+        //    }
+        //}
 
-        private bool isEqualDate(DateTime dateA, DateTime dateB)
-        {
-            return dateA.Year == dateB.Year && dateA.Month == dateB.Month && dateA.Day == dateB.Day;
-        }
+        //private bool isEqualDate(DateTime dateA, DateTime dateB)
+        //{
+        //    return dateA.Year == dateB.Year && dateA.Month == dateB.Month && dateA.Day == dateB.Day;
+        //}
 
-        private void AddNumberIntoMatrixByDate(DateTime date)
-        {
-            ClearMatrix();
-            DateTime useDate = new DateTime(date.Year, date.Month, 1);
+        //private void AddNumberIntoMatrixByDate(DateTime date)
+        //{
+        //    ClearMatrix();
+        //    DateTime useDate = new DateTime(date.Year, date.Month, 1);
 
-            int line = 0;
+        //    int line = 0;
 
-            for (int i = 0; i < DayOfMonth(date); i++)
-            {
-                int column = dateOfWeek.IndexOf(useDate.DayOfWeek.ToString());
-                Button btn = matrix[line][column];
-                btn.Text = i.ToString();
+        //    for (int i = 0; i < DayOfMonth(date); i++)
+        //    {
+        //        int column = dateOfWeek.IndexOf(useDate.DayOfWeek.ToString());
+        //        Button btn = matrix[line][column];
+        //        btn.Text = i.ToString();
 
-                if (isEqualDate(useDate, DateTime.Now))
-                {
-                    btn.BackColor = Color.Yellow;
-                }
+        //        if (isEqualDate(useDate, DateTime.Now))
+        //        {
+        //            btn.BackColor = Color.Yellow;
+        //        }
 
-                if (isEqualDate(useDate, date))
-                {
-                    btn.BackColor = Color.Aqua;
-                }
+        //        if (isEqualDate(useDate, date))
+        //        {
+        //            btn.BackColor = Color.Aqua;
+        //        }
 
-                if (column >= 6)
-                    line++;
+        //        if (column >= 6)
+        //            line++;
 
-                useDate = useDate.AddDays(1);
-            }
-        }
+        //        useDate = useDate.AddDays(1);
+        //    }
+        //}
 
-        private void dateTimePickerGetDate_ValueChanged(object sender, EventArgs e)
-        {
-            AddNumberIntoMatrixByDate((sender as DateTimePicker).Value);
-        }
+        //private void dateTimePickerGetDate_ValueChanged(object sender, EventArgs e)
+        //{
+        //    AddNumberIntoMatrixByDate((sender as DateTimePicker).Value);
+        //}
 
         private void btnHome_Click(object sender, EventArgs e)
         {
@@ -298,45 +285,132 @@ namespace ManageSchedule
             childFormLogo.Image = null;
         }
 
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-
-        private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
+        private void btnMini_Click(object sender, EventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+            WindowState = FormWindowState.Minimized;
         }
 
-        private void FormUngDung_Load(object sender, EventArgs e)
+        //
+        // setting event
+        //
+
+        private void cbxStartup_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
+        {            
+        }
+
+        private void cbxNotice_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
         {
-            string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
-            FormDangNhap.SettingFile = string.Format("{0}\\setting.txt", Path.GetFullPath(Path.Combine(RunningPath, @"..\..\")));
-            FormDangNhap.setting = System.IO.File.ReadAllLines(FormDangNhap.SettingFile);
+        }
 
-            if (FormDangNhap.setting[1] == "NotifyIcon: true")
-                notifyIcon.Visible = true;
-            else
-                notifyIcon.Visible = false;
+        private void cbxDarkMode_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
+        {
+        }
 
-            FormDangNhap.setting[2] = "ShowInTaskbar: true";
-            File.WriteAllLines(FormDangNhap.SettingFile, FormDangNhap.setting);
+        //
+        // time event
+        //
+
+        private void tbx_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void numStartHour_ValueChanged(object sender, EventArgs e)
+        {
+            if (numStartHour.Value == 24)
+                numStartHour.Value = 0;
+            if (numStartHour.Value == -1)
+                numStartHour.Value = 23;
+        }
+
+
+        private void numStartMin_ValueChanged(object sender, EventArgs e)
+        {
+            if (numStartMin.Value == 60)
+                numStartMin.Value = 0;
+            if (numStartMin.Value == -1)
+                numStartMin.Value = 59;
+        }
+
+        //
+        // context menu strip
+        //
+
+        private void tsmiOpen_Click(object sender, EventArgs e)
+        {
             Visible = true;
             ShowInTaskbar = true;
         }
 
-        private void tsmiOpen_Click(object sender, EventArgs e)
+        private void tsmiExit_Click(object sender, EventArgs e)
         {
-            if (FormDangNhap.setting[2] == "ShowInTaskbar: false")
+            DialogResult dr = MessageBox.Show("Bạn sẽ không tiếp tục nhận thông báo trong hôm nay\nBạn chắc chắn muốn kết thúc?", "Thông báo", MessageBoxButtons.YesNoCancel);
+            if (dr == DialogResult.Yes) 
             {
-                FormDangNhap.setting[2] = "ShowInTaskbar: true";
-                File.WriteAllLines(FormDangNhap.SettingFile, FormDangNhap.setting);
-                Visible = true;
-                ShowInTaskbar = true;
-            }
-            this.WindowState = FormWindowState.Normal;
+                CaiDat.WriteToTxt(HangSo.txtFilePath);
+                Application.Exit();
+            }           
+        }
+
+        private void tsmiError_Click(object sender, EventArgs e)
+        {
+            Visible = true;
+            ShowInTaskbar = true;
+            btnBaoloi_Click(this, new EventArgs());
+        }
+
+        private void tsmiPlan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Hiển thị thông tin tài khoản
+        private void FormUngDung_Load(object sender, EventArgs e)
+        {
+            new TaiKhoan();
+
+            lblSName.Text = TaiKhoan.GetFullName();
+            lblSUsername.Text = CaiDat.GetPreUsername();
+
+            labelFullName.Text = TaiKhoan.GetFullName();
+            labelYear.Text = TaiKhoan.GetYear();
+            labelEmail.Text = TaiKhoan.GetEmail();
+            labelSpec.Text = TaiKhoan.GetSpec();
+            labelSys.Text = TaiKhoan.GetSys();
+        }
+
+        private void btnEditInfo_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ChildFormChinhSuaThongTin editAcc = new ChildFormChinhSuaThongTin();
+            editAcc.ShowDialog();
+            FormUngDung_Load(this, new EventArgs());
+            this.Show();
+        }
+
+        private void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ChildFormDoiMatKhau changePass = new ChildFormDoiMatKhau();
+            changePass.ShowDialog();
+            this.Show();
+        }
+
+        private void btnChangeSetting_Click(object sender, EventArgs e)
+        {
+            CaiDat.SetDarkMode(cbxDarkMode.Checked);
+
+            bool isStartup = cbxStartup.Checked;
+            CaiDat.SetStartup(ref isStartup);
+            if (isStartup != cbxStartup.Checked)
+                cbxStartup.Checked = isStartup;
+
+            CaiDat.SetNotify(cbxDeadline.Checked, cbxEvent.Checked, cbxOther.Checked);
+
+            CaiDat.SetNoticeTime(int.Parse(numDuringTime.Value.ToString()), int.Parse(numStartHour.Value.ToString()), int.Parse(numStartMin.Value.ToString()));
         }
     }
 }

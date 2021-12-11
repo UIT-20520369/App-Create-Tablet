@@ -10,25 +10,22 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Configuration;
-using System.IO;
 
 namespace ManageSchedule
 {
     public partial class FormDangNhap : Form
     {
         bool isShowPass = false;
-        string strCon = @"Server=172.107.32.132,10763;Database=manageschedule;User=xuanvuong;Password=Vuong21@!";
+        //string strCon = @"Server=209.209.40.89,19058;Database=manageschedule;User=team4;Password=Team45678";
         SqlConnection sqlCon = null;
-        internal static string SettingFile;
-        internal static string[] setting;
-
         public FormDangNhap()
         {
             InitializeComponent();
 
-            string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
-            SettingFile = string.Format("{0}\\setting.txt", Path.GetFullPath(Path.Combine(RunningPath, @"..\..\")));
-            setting = System.IO.File.ReadAllLines(SettingFile);
+            if (CaiDat.isPreLogin())
+            {
+                btnDangNhap_Click(this, new EventArgs());
+            }
         }
 
         private void BtnTroVe_Click(object sender, EventArgs e)
@@ -52,88 +49,101 @@ namespace ManageSchedule
             }
         }
 
-        internal bool KiemTraDangNhap(string _taiKhoan, string _matKhau)
+
+        private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            if (_taiKhoan == string.Empty)
+            string taikhoan;
+            string matkhau;
+            string hedaotao;
+
+            // Kiểm tra có lưu đăng nhập lần trước hay không
+            if (CaiDat.isPreLogin())
+            {
+                taikhoan = CaiDat.GetPreUsername();
+                matkhau = CaiDat.GetPreHash();
+            }
+            else
+            {
+                taikhoan = textBoxTaiKhoan.Text.Trim();
+                matkhau = textBoxMatKhau.Text.Trim();
+            }
+
+            hedaotao = string.Empty;
+
+            // Nếu chưa có đăng nhập lần trước
+            if (taikhoan == string.Empty)
             {
                 textBoxTaiKhoan.Focus();
                 MessageBox.Show("Vui lòng nhập tài khoản", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return false;
+                return;
             }
 
-            if (_matKhau == string.Empty)
+            if (matkhau == string.Empty)
             {
                 textBoxMatKhau.Focus();
                 MessageBox.Show("Vui lòng nhập mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return false;
+                return;
+            }
+            else
+            {
+                if (!CaiDat.isPreLogin())
+                {
+                    SHA256 sha256Hash = SHA256.Create();
+                    matkhau = MaHoa.GetHash(sha256Hash, textBoxMatKhau.Text.Trim());
+                }
             }
 
+            //Kiểm tra đăng nhập
             if (sqlCon == null)
-                sqlCon = new SqlConnection(strCon);
+                sqlCon = new SqlConnection(HangSo.strCon);
 
             if (sqlCon.State == ConnectionState.Closed)
                 sqlCon.Open();
 
-            using (SHA256 sha256Hash = SHA256.Create())
+            SqlCommand sqlCmd = new SqlCommand();
+            sqlCmd.CommandType = CommandType.Text;
+            sqlCmd.CommandText = "select * from dbo.THONGTINTAIKHOAN";
+
+            sqlCmd.Connection = sqlCon;
+
+            SqlDataReader reader = sqlCmd.ExecuteReader();
+            bool isLogin = false;
+
+            while (reader.Read())
             {
-                SqlCommand sqlCmd = new SqlCommand();
-                sqlCmd.CommandType = CommandType.Text;
-                sqlCmd.CommandText = "select * from dbo.THONGTINTAIKHOAN";
+                hedaotao = reader.GetString(3);
+                string dbTaiKhoan = reader.GetString(5);
+                string dbMatKhau = reader.GetString(6);
 
-                sqlCmd.Connection = sqlCon;
-
-                SqlDataReader reader = sqlCmd.ExecuteReader();
-                bool isLogin = false;
-
-                while (reader.Read())
+                if (taikhoan == dbTaiKhoan && matkhau == dbMatKhau)
                 {
-                    string dbTaiKhoan = reader.GetString(4);
-                    string dbMatKhau = reader.GetString(5);
-
-                    if (setting[3] != "" && setting[4] != "")
-                    {
-                        if (_taiKhoan == dbTaiKhoan && _matKhau == dbMatKhau)
-                        {
-                            isLogin = true;
-                            break;
-                        }
-                    }
-                    else if (_taiKhoan == dbTaiKhoan && MaHoa.VerifyHash(sha256Hash, _matKhau, dbMatKhau))
-                    {
-                        isLogin = true;
-                        break;
-                    }
+                    isLogin = true;
+                    break;
                 }
-
-                reader.Close();
-                sqlCmd.Dispose();
-                sqlCon.Close();
-
-                return isLogin;
             }
-        }
 
-        private void btnDangNhap_Click(object sender, EventArgs e)
-        {
-            string taikhoan = textBoxTaiKhoan.Text.Trim();
-            string matkhau = textBoxMatKhau.Text.Trim();
+            reader.Close();
+            sqlCmd.Dispose();
+            sqlCon.Close();
 
-            if (!KiemTraDangNhap(taikhoan, matkhau))
+            if (!isLogin)
             {
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
+                // Thêm phần ghi nhớ đăng nhập = true + nếu true thì mới lưu lại đăng nhập
+                // Lưu đăng nhập
+                CaiDat.SetPreLogin(taikhoan, matkhau);
+
+                // Mở ứng dụng
                 this.Hide();
                 this.Close();
-
-                SHA256 sha256hash = SHA256.Create();
-                string hash = MaHoa.GetHash(sha256hash, matkhau);
-                setting[3] = taikhoan;
-                setting[4] = hash;
-                File.WriteAllLines(SettingFile, setting);
-
-                FormUngDung ungdung = new FormUngDung();
+                if (hedaotao == "Chính quy")
+                    hedaotao = "CQUI";
+                else
+                    hedaotao = "CLC";
+                FormUngDung ungdung = new FormUngDung(hedaotao);
                 ungdung.ShowDialog();
             }
         }
