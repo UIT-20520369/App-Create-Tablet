@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu.Licensing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f89b4760ba7dcb6b, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.UI.WinForms.5.3.0\lib\net40\Bunifu.Licensing.dll</HintPath>
@@ -162,6 +165,7 @@
     <Compile Include="BatDau.Designer.cs">
       <DependentUpon>BatDau.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\CaiDat.cs" />
     <Compile Include="ChildFormCongViec.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,11 +196,23 @@
     <Compile Include="FormBaoLoi.Designer.cs">
       <DependentUpon>FormBaoLoi.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChinhSuaThongTIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChinhSuaThongTIn.Designer.cs">
+      <DependentUpon>FormChinhSuaThongTIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCongViec.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormCongViec.Designer.cs">
       <DependentUpon>FormCongViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDoiMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDoiMatKhau.Designer.cs">
+      <DependentUpon>FormDoiMatKhau.cs</DependentUpon>
     </Compile>
     <Compile Include="FormTaoLich.cs">
       <SubType>Form</SubType>
@@ -216,10 +232,11 @@
     <Compile Include="FormDungNgay.Designer.cs">
       <DependentUpon>FormDungNgay.cs</DependentUpon>
     </Compile>
-    <Compile Include="HangSo.cs" />
-    <Compile Include="MaHoa.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Classes\HangSo.cs" />
+    <Compile Include="Classes\MaHoa.cs" />
+    <Compile Include="Classes\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Classes\TaiKhoan.cs" />
     <Compile Include="UngDung.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,8 +261,14 @@
     <EmbeddedResource Include="FormBaoLoi.resx">
       <DependentUpon>FormBaoLoi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormChinhSuaThongTIn.resx">
+      <DependentUpon>FormChinhSuaThongTIn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCongViec.resx">
       <DependentUpon>FormCongViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDoiMatKhau.resx">
+      <DependentUpon>FormDoiMatKhau.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTaoLich.resx">
       <DependentUpon>FormTaoLich.cs</DependentUpon>
@@ -270,6 +293,7 @@
     <EmbeddedResource Include="UngDung.resx">
       <DependentUpon>UngDung.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="Data\20-21-SEM2.xlsx" />
     <None Include="Data\21-22-SEM1.xlsx" />
     <None Include="packages.config" />
@@ -324,6 +348,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Image\cog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Shell32">
+      <Guid>{50A7E9B0-70EF-11D1-B75A-00A0C90564FE}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

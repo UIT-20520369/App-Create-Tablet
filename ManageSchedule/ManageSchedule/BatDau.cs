@@ -18,6 +18,9 @@ namespace ManageSchedule
             InitializeComponent();
             toolTipBtnThoat.SetToolTip(btnThoat, "Thoát ứng dụng");
             toolTipBtnMini.SetToolTip(btnMini, "Minimize");
+
+            if (CaiDat.isPreLogin())
+                btnDangNhap_Click(this, new EventArgs());
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -35,7 +38,14 @@ namespace ManageSchedule
             isThoat = false;
             FormDangNhap dangnhap = new FormDangNhap();
             this.Hide();
-            dangnhap.ShowDialog();
+            try
+            {
+                dangnhap.ShowDialog();
+            }
+            catch
+            {
+                this.Hide();
+            }
             if (!isThoat)
                 this.Show();
         }

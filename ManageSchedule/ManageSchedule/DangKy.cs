@@ -15,7 +15,6 @@ namespace ManageSchedule
 {
     public partial class FormDangKy : Form
     {
-        //private string strCon = @"Server=209.209.40.89,19058;Database=manageschedule;User=team4;Password=Team45678";
         private SqlConnection sqlCon = null;
 
         bool isShowPassMK = false;
@@ -45,6 +44,7 @@ namespace ManageSchedule
             this.Close();
         }
 
+        #region ShowPassword
         private void btnShowPassMK_Click(object sender, EventArgs e)
         {
             if (isShowPassMK == false)
@@ -76,8 +76,16 @@ namespace ManageSchedule
                 btnShowPassXacNhan.Image = Properties.Resources.eye_slash_solid;
             }
         }
+        #endregion ShowPassword
 
         private void btnDangKy_Click(object sender, EventArgs e)
+        {
+            Register();
+        }
+
+        #region Register
+
+        private void Register()
         {
             string hoten = textBoxHoTen.Text.Trim();
             string nganh = comboBoxNganh.Text;
@@ -128,7 +136,7 @@ namespace ManageSchedule
                 MessageBox.Show("Tài khoản có độ dài ít nhất 4 ký tự, tối đa 20 ký tự bao gồm a-z, A-Z, 0-9, gạch dưới", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            
+
             if (isMatKhau(textBoxMatKhau.Text) == false)
             {
                 textBoxMatKhau.Text = "";
@@ -145,99 +153,109 @@ namespace ManageSchedule
                 return;
             }
 
-            if (sqlCon == null)
-                sqlCon = new SqlConnection(HangSo.strCon);
-
-            if (sqlCon.State == ConnectionState.Closed)
-                sqlCon.Open();
-
-            SqlCommand sqlCmd = new SqlCommand();
-            sqlCmd.CommandType = CommandType.Text;
-            sqlCmd.CommandText = "select * from dbo.THONGTINTAIKHOAN";
-
-            sqlCmd.Connection = sqlCon;
-
-            SqlDataReader reader = sqlCmd.ExecuteReader();
-            bool isExists = false;
-            while (reader.Read())
+            try
             {
-                string dbTaiKhoan = reader.GetString(5);
-                if (textBoxTaiKhoan.Text == dbTaiKhoan)
+
+                if (sqlCon == null)
+                    sqlCon = new SqlConnection(HangSo.strCon);
+
+                if (sqlCon.State == ConnectionState.Closed)
+                    sqlCon.Open();
+
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.CommandType = CommandType.Text;
+                sqlCmd.CommandText = "select * from dbo.THONGTINTAIKHOAN";
+
+                sqlCmd.Connection = sqlCon;
+
+                SqlDataReader reader = sqlCmd.ExecuteReader();
+                bool isExists = false;
+                while (reader.Read())
                 {
-                    MessageBox.Show("Tài khoản đã được đăng kí", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    isExists = true;
-                    break;
+                    string dbTaiKhoan = reader.GetString(5);
+                    if (textBoxTaiKhoan.Text == dbTaiKhoan)
+                    {
+                        MessageBox.Show("Tài khoản đã được đăng kí", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        isExists = true;
+                        break;
+                    }
                 }
-            }
 
-            if (isExists)
-            {
-                textBoxTaiKhoan.Text = "";
-                textBoxTaiKhoan.Focus();
+                if (isExists)
+                {
+                    textBoxTaiKhoan.Text = "";
+                    textBoxTaiKhoan.Focus();
+                    reader.Close();
+                    sqlCmd.Dispose();
+                    sqlCon.Close();
+                    return;
+                }
+
                 reader.Close();
                 sqlCmd.Dispose();
-                sqlCon.Close();
-                return;
+
+                using (SHA256 sha256hash = SHA256.Create())
+                {
+                    string hash = MaHoa.GetHash(sha256hash, textBoxMatKhau.Text);
+
+                    SqlCommand sqlCmdInsert = new SqlCommand();
+                    sqlCmdInsert.CommandType = CommandType.Text;
+                    sqlCmdInsert.CommandText = "insert into dbo.THONGTINTAIKHOAN (HoVaTen, Nganh, KhoaHoc, HeDaoTao, Email, TaiKhoan, MatKhau) values (@hoten, @nganh, @khoahoc, @hedaotao, @email, @taikhoan, @matkhau)";
+
+                    SqlParameter parHoten = new SqlParameter("@hoten", SqlDbType.NVarChar);
+                    parHoten.Value = textBoxHoTen.Text;
+
+                    SqlParameter parNganh = new SqlParameter("@nganh", SqlDbType.NVarChar);
+                    parNganh.Value = nganh;
+
+                    SqlParameter parKhoahoc = new SqlParameter("@khoahoc", SqlDbType.TinyInt);
+                    parKhoahoc.Value = khoa;
+
+                    SqlParameter parEmail = new SqlParameter("@email", SqlDbType.VarChar);
+                    parEmail.Value = textBoxEmail.Text;
+
+                    SqlParameter parTaiKhoan = new SqlParameter("@taikhoan", SqlDbType.VarChar);
+                    parTaiKhoan.Value = textBoxTaiKhoan.Text;
+
+                    SqlParameter parMatKhau = new SqlParameter("@matkhau", SqlDbType.VarChar);
+                    parMatKhau.Value = hash;
+
+                    SqlParameter parHeDaoTao = new SqlParameter("@hedaotao", SqlDbType.NVarChar);
+                    parHeDaoTao.Value = comboBoxHeDaoTao.Text;
+
+                    sqlCmdInsert.Parameters.Add(parHoten);
+                    sqlCmdInsert.Parameters.Add(parNganh);
+                    sqlCmdInsert.Parameters.Add(parKhoahoc);
+                    sqlCmdInsert.Parameters.Add(parHeDaoTao);
+                    sqlCmdInsert.Parameters.Add(parEmail);
+                    sqlCmdInsert.Parameters.Add(parTaiKhoan);
+                    sqlCmdInsert.Parameters.Add(parMatKhau);
+
+                    sqlCmdInsert.Connection = sqlCon;
+                    int kq = sqlCmdInsert.ExecuteNonQuery();
+                    if (kq > 0)
+                        MessageBox.Show("Đăng ký thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Đăng ký không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    textBoxHoTen.Text = "";
+                    textBoxKhoaHoc.Text = "";
+                    comboBoxNganh.SelectedIndex = 0;
+                    comboBoxHeDaoTao.SelectedIndex = 0;
+                    textBoxEmail.Text = "";
+                    textBoxTaiKhoan.Text = "";
+                    textBoxMatKhau.Text = "";
+                    textBoxXacNhan.Text = "";
+                    textBoxHoTen.Focus();
+                    sqlCmdInsert.Dispose();
+                    sqlCon.Close();
+                }
             }
-
-            reader.Close();
-            sqlCmd.Dispose();
-
-            using (SHA256 sha256hash = SHA256.Create())
+            catch
             {
-                string hash = MaHoa.GetHash(sha256hash, textBoxMatKhau.Text);
-
-                SqlCommand sqlCmdInsert = new SqlCommand();
-                sqlCmdInsert.CommandType = CommandType.Text;
-                sqlCmdInsert.CommandText = "insert into dbo.THONGTINTAIKHOAN (HoVaTen, Nganh, KhoaHoc, HeDaoTao, Email, TaiKhoan, MatKhau) values (@hoten, @nganh, @khoahoc, @hedaotao, @email, @taikhoan, @matkhau)";
-
-                SqlParameter parHoten = new SqlParameter("@hoten", SqlDbType.NVarChar);
-                parHoten.Value = textBoxHoTen.Text;
-
-                SqlParameter parNganh = new SqlParameter("@nganh", SqlDbType.NVarChar);
-                parNganh.Value = nganh;
-
-                SqlParameter parKhoahoc = new SqlParameter("@khoahoc", SqlDbType.TinyInt);
-                parKhoahoc.Value = khoa;
-
-                SqlParameter parEmail = new SqlParameter("@email", SqlDbType.VarChar);
-                parEmail.Value = textBoxEmail.Text;
-
-                SqlParameter parTaiKhoan = new SqlParameter("@taikhoan", SqlDbType.VarChar);
-                parTaiKhoan.Value = textBoxTaiKhoan.Text;
-
-                SqlParameter parMatKhau = new SqlParameter("@matkhau", SqlDbType.VarChar);
-                parMatKhau.Value = hash;
-
-                SqlParameter parHeDaoTao = new SqlParameter("@hedaotao", SqlDbType.NVarChar);
-                parHeDaoTao.Value = comboBoxHeDaoTao.Text;
-
-                sqlCmdInsert.Parameters.Add(parHoten);
-                sqlCmdInsert.Parameters.Add(parNganh);
-                sqlCmdInsert.Parameters.Add(parKhoahoc);
-                sqlCmdInsert.Parameters.Add(parHeDaoTao);
-                sqlCmdInsert.Parameters.Add(parEmail);
-                sqlCmdInsert.Parameters.Add(parTaiKhoan);
-                sqlCmdInsert.Parameters.Add(parMatKhau);
-
-                sqlCmdInsert.Connection = sqlCon;
-                int kq = sqlCmdInsert.ExecuteNonQuery();
-                if (kq > 0)
-                    MessageBox.Show("Đăng ký thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else
-                    MessageBox.Show("Đăng ký không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                textBoxHoTen.Text = "";
-                textBoxKhoaHoc.Text = "";
-                comboBoxNganh.SelectedIndex = 0;
-                comboBoxHeDaoTao.SelectedIndex = 0;
-                textBoxEmail.Text = "";
-                textBoxTaiKhoan.Text = "";
-                textBoxMatKhau.Text = "";
-                textBoxXacNhan.Text = "";
-                textBoxHoTen.Focus();
-                sqlCmdInsert.Dispose();
-                sqlCon.Close();
+                MessageBox.Show("Lỗi mạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BatDau.isThoat = true;
+                Application.Exit();
             }
         }
 
@@ -271,10 +289,7 @@ namespace ManageSchedule
             else
                 return (false);
         }
-
-        public static bool IsUnicode(string input)
-        {
-            return Encoding.ASCII.GetByteCount(input) != Encoding.UTF8.GetByteCount(input);
-        }
     }
+
+    #endregion Register
 }

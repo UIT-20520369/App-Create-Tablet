@@ -234,7 +234,7 @@ namespace ManageSchedule
             this.DataGridView.EnableHeadersVisualStyles = false;
             this.DataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
             this.DataGridView.HeaderBackColor = System.Drawing.Color.Teal;
-            this.DataGridView.HeaderBgColor = System.Drawing.Color.Empty;
+            this.DataGridView.HeaderBackColor = System.Drawing.Color.Empty;
             this.DataGridView.HeaderForeColor = System.Drawing.Color.White;
             this.DataGridView.Location = new System.Drawing.Point(84, 235);
             this.DataGridView.MultiSelect = false;
