@@ -1,8 +1,0 @@
-20521719
-28d1fa732a8f4df8b9dc68443db3c95eb8a6ca2c26a089650cc2e72f3b16ccf3
-Startup: false
-Dark Mode: false
-Notify: None
-60
-0
-0

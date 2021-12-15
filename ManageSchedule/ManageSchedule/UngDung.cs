@@ -17,12 +17,6 @@ namespace ManageSchedule
         private Form curChildForm;
 
         private string hedaotao = string.Empty;
-
-        //private int DayOfColumn = 6;
-        //private int DayOfWeek = 7;
-        //private List<List<Button>> matrix;
-        //private List<string> dateOfWeek = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-
         public FormUngDung(string hdt)
         {
             InitializeComponent();
@@ -32,16 +26,26 @@ namespace ManageSchedule
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);
             panelMenu.Controls.Add(leftBorderBtn);
-            //panelButton.Visible = false;
-            //this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-            //LoadMatrix();
 
-            cbxStartup.Checked = false;
-            cbxDeadline.Checked = false;
-            cbxEvent.Checked = false;
-            cbxOther.Checked = false;
-            cbxDarkMode.Checked = false;
+            CheckBoxStartUp.Checked = false;
+            CheckBoxDeadline.Checked = false;
+            CheckBoxEvent.Checked = false;
+            CheckBoxOther.Checked = false;
+            SetupDay();
+
+            timer.Interval = 60000;
+            timer.Start();
         }
+
+        private void FormUngDung_Closing(object sender, CancelEventArgs e)
+        {
+            if (!CaiDat.GetAutoLogin())
+                CaiDat.SetPreLogin(string.Empty, string.Empty);
+            BatDau.isThoat = true;
+            CaiDat.WriteToTxt(HangSo.txtFilePath);
+        }
+
+        #region AnimationOfFeatureButton
 
         private void ActiveButton(object senderBtn, Color color, string s)
         {
@@ -63,9 +67,6 @@ namespace ManageSchedule
                 leftBorderBtn.Location = new Point(0, curButton.Location.Y);
                 leftBorderBtn.Visible = true;
                 leftBorderBtn.BringToFront();
-
-                // Icon current child form
-
             }
         }
 
@@ -114,8 +115,15 @@ namespace ManageSchedule
                 case 4:
                     childFormLogo.Image = Properties.Resources.bug;
                     break;
+                case 5:
+                    childFormLogo.Image = Properties.Resources.cog;
+                    break;
             }
         }
+
+        #endregion AnimationOfFeatureButton
+
+        #region FeatureButtonClick
 
         private void btnBangTin_Click(object sender, EventArgs e)
         {
@@ -146,7 +154,15 @@ namespace ManageSchedule
             ActiveButton(sender, Color.FromArgb(71, 139, 162), "Báo lỗi");
             OpenChildForm(new FormBaoLoi(), 4);
         }
-        
+
+        private void btnCaiDat_Click(object sender, EventArgs e)
+        {
+            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Cài đặt");
+            OpenChildForm(new FormBaoLoi(), 5);
+        }
+
+        #endregion FeatureButtonClick
+
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
             CaiDat.SetPreLogin(string.Empty, string.Empty);
@@ -163,108 +179,6 @@ namespace ManageSchedule
             ShowInTaskbar = false;
             //Application.Exit();
         }
-
-        //private void LoadMatrix()
-        //{
-        //    matrix = new List<List<Button>>();
-
-        //    Button oldButton = new Button { Width = 0, Height = 0, Location = new Point(-6, 0) };
-        //    for (int i = 0; i < DayOfColumn; i++)
-        //    {
-        //        matrix.Add(new List<Button>());
-        //        for (int j = 0; j < DayOfWeek; j++)
-        //        {
-        //            Button btn = new Button() { Width = 75, Height = 40 };
-        //            btn.Location = new Point(oldButton.Location.X + oldButton.Width + 6, oldButton.Location.Y);
-
-        //            panelMatrix.Controls.Add(btn);
-        //            matrix[i].Add(btn);
-
-        //            oldButton = btn;
-        //        }
-        //        oldButton = new Button() { Width = 0, Height = 0, Location = new Point(-6, oldButton.Location.Y + oldButton.Height) };
-        //    }
-
-        //    SetDefaultDate();
-        //}
-
-        //private void ClearMatrix()
-        //{
-        //    for (int i = 0; i < matrix.Count; i++)
-        //        for (int j = 0; j < matrix.Count; j++)
-        //        {
-        //            Button btn = matrix[i][j];
-        //            btn.Text = "";
-        //            btn.BackColor = Color.WhiteSmoke;
-        //        }
-        //}
-
-        //private void SetDefaultDate()
-        //{
-        //    dateTimePickerGetDate.Value = DateTime.Now;
-        //}
-
-        //private int DayOfMonth(DateTime date)
-        //{
-        //    switch (date.Month)
-        //    {
-        //        case 1:
-        //        case 3:
-        //        case 5:
-        //        case 7:
-        //        case 8:
-        //        case 10:
-        //        case 12:
-        //            return 31;
-        //        case 2:
-        //            if (DateTime.IsLeapYear(date.Year))
-        //                return 29;
-        //            else
-        //                return 28;
-        //        default:
-        //            return 30; ;
-        //    }
-        //}
-
-        //private bool isEqualDate(DateTime dateA, DateTime dateB)
-        //{
-        //    return dateA.Year == dateB.Year && dateA.Month == dateB.Month && dateA.Day == dateB.Day;
-        //}
-
-        //private void AddNumberIntoMatrixByDate(DateTime date)
-        //{
-        //    ClearMatrix();
-        //    DateTime useDate = new DateTime(date.Year, date.Month, 1);
-
-        //    int line = 0;
-
-        //    for (int i = 0; i < DayOfMonth(date); i++)
-        //    {
-        //        int column = dateOfWeek.IndexOf(useDate.DayOfWeek.ToString());
-        //        Button btn = matrix[line][column];
-        //        btn.Text = i.ToString();
-
-        //        if (isEqualDate(useDate, DateTime.Now))
-        //        {
-        //            btn.BackColor = Color.Yellow;
-        //        }
-
-        //        if (isEqualDate(useDate, date))
-        //        {
-        //            btn.BackColor = Color.Aqua;
-        //        }
-
-        //        if (column >= 6)
-        //            line++;
-
-        //        useDate = useDate.AddDays(1);
-        //    }
-        //}
-
-        //private void dateTimePickerGetDate_ValueChanged(object sender, EventArgs e)
-        //{
-        //    AddNumberIntoMatrixByDate((sender as DateTimePicker).Value);
-        //}
 
         private void btnHome_Click(object sender, EventArgs e)
         {
@@ -290,54 +204,35 @@ namespace ManageSchedule
             WindowState = FormWindowState.Minimized;
         }
 
-        //
-        // setting event
-        //
+        #region Setting Event
 
-        private void cbxStartup_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
-        {            
-        }
 
-        private void cbxNotice_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
+
+        #endregion Setting Event
+
+        #region Time Event
+
+        private void NumStartHour_ValueChanged(object sender, EventArgs e)
         {
+            if (NumStartHour.Value == 24)
+                NumStartHour.Value = 0;
+            if (NumStartHour.Value == -1)
+                NumStartHour.Value = 23;
         }
 
-        private void cbxDarkMode_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
+        private void NumStartMin_ValueChanged(object sender, EventArgs e)
         {
+            if (NumStartMin.Value == 60)
+                NumStartMin.Value = 0;
+            if (NumStartMin.Value == -1)
+                NumStartMin.Value = 59;
         }
 
-        //
-        // time event
-        //
+        
 
-        private void tbx_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-        }
+        #endregion Time Event
 
-        private void numStartHour_ValueChanged(object sender, EventArgs e)
-        {
-            if (numStartHour.Value == 24)
-                numStartHour.Value = 0;
-            if (numStartHour.Value == -1)
-                numStartHour.Value = 23;
-        }
-
-
-        private void numStartMin_ValueChanged(object sender, EventArgs e)
-        {
-            if (numStartMin.Value == 60)
-                numStartMin.Value = 0;
-            if (numStartMin.Value == -1)
-                numStartMin.Value = 59;
-        }
-
-        //
-        // context menu strip
-        //
+        #region Context Menu Strip
 
         private void tsmiOpen_Click(object sender, EventArgs e)
         {
@@ -348,11 +243,12 @@ namespace ManageSchedule
         private void tsmiExit_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Bạn sẽ không tiếp tục nhận thông báo trong hôm nay\nBạn chắc chắn muốn kết thúc?", "Thông báo", MessageBoxButtons.YesNoCancel);
-            if (dr == DialogResult.Yes) 
+            if (dr == DialogResult.Yes)
             {
                 CaiDat.WriteToTxt(HangSo.txtFilePath);
+                BatDau.isThoat = true;
                 Application.Exit();
-            }           
+            }
         }
 
         private void tsmiError_Click(object sender, EventArgs e)
@@ -367,13 +263,15 @@ namespace ManageSchedule
 
         }
 
-        // Hiển thị thông tin tài khoản
+        #endregion Context Menu Strip
+
+        #region Show info
         private void FormUngDung_Load(object sender, EventArgs e)
         {
             new TaiKhoan();
 
-            lblSName.Text = TaiKhoan.GetFullName();
-            lblSUsername.Text = CaiDat.GetPreUsername();
+            labelFullNameAva.Text = TaiKhoan.GetFullName();
+            labelSUsername.Text = CaiDat.GetPreUsername();
 
             labelFullName.Text = TaiKhoan.GetFullName();
             labelYear.Text = TaiKhoan.GetYear();
@@ -381,12 +279,14 @@ namespace ManageSchedule
             labelSpec.Text = TaiKhoan.GetSpec();
             labelSys.Text = TaiKhoan.GetSys();
         }
+        #endregion Show info
 
+        #region Form App Button
         private void btnEditInfo_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ChildFormChinhSuaThongTin editAcc = new ChildFormChinhSuaThongTin();
-            editAcc.ShowDialog();
+            FormChinhSuaThongTIn EditAccount = new FormChinhSuaThongTIn();
+            EditAccount.ShowDialog();
             FormUngDung_Load(this, new EventArgs());
             this.Show();
         }
@@ -394,23 +294,100 @@ namespace ManageSchedule
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ChildFormDoiMatKhau changePass = new ChildFormDoiMatKhau();
-            changePass.ShowDialog();
+            FormDoiMatKhau ChangePass = new FormDoiMatKhau();
+            ChangePass.ShowDialog();
             this.Show();
         }
 
         private void btnChangeSetting_Click(object sender, EventArgs e)
         {
-            CaiDat.SetDarkMode(cbxDarkMode.Checked);
+            bool isStartUp = CheckBoxStartUp.Checked;
 
-            bool isStartup = cbxStartup.Checked;
-            CaiDat.SetStartup(ref isStartup);
-            if (isStartup != cbxStartup.Checked)
-                cbxStartup.Checked = isStartup;
+            try
+            {
+                CaiDat.SetStartup(ref isStartUp);
 
-            CaiDat.SetNotify(cbxDeadline.Checked, cbxEvent.Checked, cbxOther.Checked);
+                CaiDat.SetNotify(CheckBoxDeadline.Checked, CheckBoxEvent.Checked, CheckBoxOther.Checked);
 
-            CaiDat.SetNoticeTime(int.Parse(numDuringTime.Value.ToString()), int.Parse(numStartHour.Value.ToString()), int.Parse(numStartMin.Value.ToString()));
+                CaiDat.SetNoticeTime(int.Parse(NumDuringTime.Value.ToString()), int.Parse(NumStartHour.Value.ToString()), int.Parse(NumStartMin.Value.ToString()));
+
+                MessageBox.Show("Thay đổi cài đặt thành công!", "Thông báo", MessageBoxButtons.OK);
+            }
+            catch
+            {
+                if (isStartUp != CheckBoxStartUp.Checked)
+                    CheckBoxStartUp.Checked = isStartUp;
+                MessageBox.Show("Thay đổi cài đặt không thành công!", "Thông báo", MessageBoxButtons.OK);
+            }
+        }
+        #endregion Form App Button
+
+        #region SetupDay
+
+        private void SetupDay()
+        {
+            DateTime datetime = DateTime.Now;
+            switch (datetime.DayOfWeek.ToString())
+            {
+                case "Monday":
+                    labelDay.Text = "Thứ hai, ";
+                    break;
+                case "Tuesday":
+                    labelDay.Text = "Thứ ba, ";
+                    break;
+                case "Wednesday":
+                    labelDay.Text = "Thứ tư, ";
+                    break;
+                case "Thursday":
+                    labelDay.Text = "Thứ năm, ";
+                    break;
+                case "Friday":
+                    labelDay.Text = "Thứ sáu, ";
+                    break;
+                case "Saturday":
+                    labelDay.Text = "Thứ bảy, ";
+                    break;
+                case "Sunday":
+                    labelDay.Text = "Chủ nhật, ";
+                    break;
+            }
+
+            labelDay.Text += "ngày " + datetime.Day + " tháng " + datetime.Month + " năm " + datetime.Year;
+        }
+
+        #endregion SetupDay
+
+        #region Show Plan
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            DateTime startTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 
+                CaiDat.GetNoticeTime(), CaiDat.GetNotifyMinute(), 0);
+            if (DateTime.Now.Hour > startTime.Hour || 
+                (DateTime.Now.Hour == startTime.Hour && DateTime.Now.Minute > startTime.Minute))
+            {
+                // cộng thêm during time vào start time
+                do
+                {
+                    startTime = startTime.AddMinutes(+Convert.ToDouble(NumDuringTime.Value));
+                } while (DateTime.Now.Hour > startTime.Hour || 
+                (DateTime.Now.Hour == startTime.Hour && DateTime.Now.Minute > startTime.Minute));
+            }
+            if (DateTime.Now.Hour == startTime.Hour && DateTime.Now.Minute == startTime.Minute)
+            {
+                this.Visible = true;
+                FormThongBao Notice = new FormThongBao();
+                Notice.ShowDialog();
+                this.Visible = false;
+            }
+        }
+        #endregion Show Plan
+    }
+
+    public class TimeNumericUD : NumericUpDown
+    {
+        protected override void UpdateEditText()
+        {
+            this.Text = this.Value.ToString().PadLeft(2, '0');
         }
     }
 }

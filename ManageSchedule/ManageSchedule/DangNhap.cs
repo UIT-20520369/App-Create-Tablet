@@ -16,16 +16,13 @@ namespace ManageSchedule
     public partial class FormDangNhap : Form
     {
         bool isShowPass = false;
-        //string strCon = @"Server=209.209.40.89,19058;Database=manageschedule;User=team4;Password=Team45678";
         SqlConnection sqlCon = null;
         public FormDangNhap()
         {
             InitializeComponent();
 
             if (CaiDat.isPreLogin())
-            {
                 btnDangNhap_Click(this, new EventArgs());
-            }
         }
 
         private void BtnTroVe_Click(object sender, EventArgs e)
@@ -49,14 +46,20 @@ namespace ManageSchedule
             }
         }
 
-
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            string taikhoan;
-            string matkhau;
-            string hedaotao;
+            Login();
+        }
 
-            // Kiểm tra có lưu đăng nhập lần trước hay không
+        #region Login
+
+        private void Login()
+        {
+            string taikhoan = string.Empty;
+            string matkhau = string.Empty;
+            string hedaotao = string.Empty;
+
+            // Kiểm tra lưu đăng nhập
             if (CaiDat.isPreLogin())
             {
                 taikhoan = CaiDat.GetPreUsername();
@@ -68,9 +71,7 @@ namespace ManageSchedule
                 matkhau = textBoxMatKhau.Text.Trim();
             }
 
-            hedaotao = string.Empty;
-
-            // Nếu chưa có đăng nhập lần trước
+            // Không lưu đăng nhập
             if (taikhoan == string.Empty)
             {
                 textBoxTaiKhoan.Focus();
@@ -88,70 +89,188 @@ namespace ManageSchedule
             {
                 if (!CaiDat.isPreLogin())
                 {
-                    SHA256 sha256Hash = SHA256.Create();
-                    matkhau = MaHoa.GetHash(sha256Hash, textBoxMatKhau.Text.Trim());
+                    SHA256 sha256hash = SHA256.Create();
+                    matkhau = MaHoa.GetHash(sha256hash, textBoxMatKhau.Text.Trim());
                 }
             }
 
-            //Kiểm tra đăng nhập
-            if (sqlCon == null)
-                sqlCon = new SqlConnection(HangSo.strCon);
-
-            if (sqlCon.State == ConnectionState.Closed)
-                sqlCon.Open();
-
-            SqlCommand sqlCmd = new SqlCommand();
-            sqlCmd.CommandType = CommandType.Text;
-            sqlCmd.CommandText = "select * from dbo.THONGTINTAIKHOAN";
-
-            sqlCmd.Connection = sqlCon;
-
-            SqlDataReader reader = sqlCmd.ExecuteReader();
-            bool isLogin = false;
-
-            while (reader.Read())
+            // Kiểm tra đăng nhập
+            try
             {
-                hedaotao = reader.GetString(3);
-                string dbTaiKhoan = reader.GetString(5);
-                string dbMatKhau = reader.GetString(6);
+                if (sqlCon == null)
+                    sqlCon = new SqlConnection(HangSo.strCon);
 
-                if (taikhoan == dbTaiKhoan && matkhau == dbMatKhau)
+                if (sqlCon.State == ConnectionState.Closed)
+                    sqlCon.Open();
+
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.CommandType = CommandType.Text;
+                sqlCmd.CommandText = "select * from dbo.THONGTINTAIKHOAN";
+
+                sqlCmd.Connection = sqlCon;
+
+                SqlDataReader reader = sqlCmd.ExecuteReader();
+                bool isLogin = false;
+
+                while (reader.Read())
                 {
-                    isLogin = true;
-                    break;
+                    string dbTaiKhoan = "";
+                    string dbMatKhau = "";
+                    try
+                    {
+                        hedaotao = reader.GetString(3);
+                        dbTaiKhoan = reader.GetString(5);
+                        dbMatKhau = reader.GetString(6);
+                    }
+                    catch
+                    {
+                        continue;
+                    }
+
+                    if (taikhoan == dbTaiKhoan && matkhau == dbMatKhau)
+                    {
+                        isLogin = true;
+                        break;
+                    }
+                }
+
+                reader.Close();
+                sqlCmd.Dispose();
+                sqlCon.Close();
+
+                if (!isLogin)
+                {
+                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    // Thêm phần ghi nhớ đăng nhập = true + nếu true thì mới lưu lại đăng nhập
+                    // Lưu đăng nhập
+                    CaiDat.SetPreLogin(taikhoan, matkhau);
+
+                    // Mở ứng dụng
+                    this.Hide();
+                    this.Close();
+                    if (hedaotao == "Chính quy")
+                        hedaotao = "CQUI";
+                    else
+                        hedaotao = "CLC";
+                    FormUngDung ungdung = new FormUngDung(hedaotao);
+                    ungdung.ShowDialog();
                 }
             }
-
-            reader.Close();
-            sqlCmd.Dispose();
-            sqlCon.Close();
-
-            if (!isLogin)
+            catch
             {
-                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Lỗi mạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BatDau.isThoat = true;
+                Application.Exit();
             }
-            else
-            {
-                // Thêm phần ghi nhớ đăng nhập = true + nếu true thì mới lưu lại đăng nhập
-                // Lưu đăng nhập
-                CaiDat.SetPreLogin(taikhoan, matkhau);
 
-                // Mở ứng dụng
-                this.Hide();
-                this.Close();
-                if (hedaotao == "Chính quy")
-                    hedaotao = "CQUI";
-                else
-                    hedaotao = "CLC";
-                FormUngDung ungdung = new FormUngDung(hedaotao);
-                ungdung.ShowDialog();
+            /*string taikhoan = textBoxTaiKhoan.Text.Trim();
+            string matkhau = textBoxMatKhau.Text.Trim();
+            string hedaotao = string.Empty;
+
+            if (taikhoan == string.Empty)
+            {
+                textBoxTaiKhoan.Focus();
+                MessageBox.Show("Vui lòng nhập tài khoản", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
+
+            if (matkhau == string.Empty)
+            {
+                textBoxMatKhau.Focus();
+                MessageBox.Show("Vui lòng nhập mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            try
+            {
+                if (sqlCon == null)
+                    sqlCon = new SqlConnection(HangSo.strCon);
+
+                if (sqlCon.State == ConnectionState.Closed)
+                    sqlCon.Open();
+
+                using (SHA256 sha256Hash = SHA256.Create())
+                {
+                    SqlCommand sqlCmd = new SqlCommand();
+                    sqlCmd.CommandType = CommandType.Text;
+                    sqlCmd.CommandText = "select * from dbo.THONGTINTAIKHOAN";
+
+                    sqlCmd.Connection = sqlCon;
+
+                    SqlDataReader reader = sqlCmd.ExecuteReader();
+                    bool isLogin = false;
+
+                    while (reader.Read())
+                    {
+                        hedaotao = reader.GetString(3);
+                        string dbTaiKhoan = reader.GetString(5);
+                        string dbMatKhau = reader.GetString(6);
+
+                        if (textBoxTaiKhoan.Text == dbTaiKhoan && MaHoa.VerifyHash(sha256Hash, textBoxMatKhau.Text, dbMatKhau))
+                        {
+                            isLogin = true;
+                            break;
+                        }
+                    }
+
+                    reader.Close();
+                    sqlCmd.Dispose();
+                    sqlCon.Close();
+
+                    if (!isLogin)
+                    {
+                        MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        this.Hide();
+                        this.Close();
+                        if (hedaotao == "Chính quy")
+                            hedaotao = "CQUI";
+                        else
+                            hedaotao = "CLC";
+                        FormUngDung ungdung = new FormUngDung(hedaotao);
+                        ungdung.ShowDialog();
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi mạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BatDau.isThoat = true;
+                Application.Exit();
+            }*/
         }
+
+        #endregion Login
 
         private void textBoxMatKhau_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
                 btnDangNhap_Click(this, new EventArgs());
+        }
+
+        private void checkBoxNhoMK_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!checkBoxNhoMK.Checked)
+            {
+                DialogResult dr = MessageBox.Show("Bạn sẽ phải đăng nhập lại vào lần tiếp theo sử dụng ứng dụng\nBạn chắc chắn muốn tắt tự động đăng nhập?", "Thông báo", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
+                {
+                    CaiDat.SetAutoLogin(false);
+                }
+                else
+                {
+                    checkBoxNhoMK.Checked = true;
+                }
+            }
+            else
+            {
+                CaiDat.SetAutoLogin(true);
+            }
         }
     }
 }

@@ -20,9 +20,7 @@ namespace ManageSchedule
             toolTipBtnMini.SetToolTip(btnMini, "Minimize");
 
             if (CaiDat.isPreLogin())
-            {
                 btnDangNhap_Click(this, new EventArgs());
-            }
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -38,13 +36,16 @@ namespace ManageSchedule
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             isThoat = false;
-            this.Hide();
             FormDangNhap dangnhap = new FormDangNhap();
+            this.Hide();
             try
             {
                 dangnhap.ShowDialog();
             }
-            catch { this.Hide(); }
+            catch
+            {
+                this.Hide();
+            }
             if (!isThoat)
                 this.Show();
         }
@@ -55,6 +56,16 @@ namespace ManageSchedule
             FormDangKy dangky = new FormDangKy();
             this.Hide();
             dangky.ShowDialog();
+            if (!isThoat)
+                this.Show();
+        }
+
+        private void btnKhach_Click(object sender, EventArgs e)
+        {
+            isThoat = false;
+            FormDungNgay dungngay = new FormDungNgay();
+            this.Hide();
+            dungngay.ShowDialog();
             if (!isThoat)
                 this.Show();
         }

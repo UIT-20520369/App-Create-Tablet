@@ -162,6 +162,7 @@ namespace ManageSchedule
             this.btnKhach.TabIndex = 17;
             this.btnKhach.Text = "Dùng ngay";
             this.btnKhach.UseVisualStyleBackColor = false;
+            this.btnKhach.Click += new System.EventHandler(this.btnKhach_Click);
             // 
             // BoTronBtnKhach
             // 

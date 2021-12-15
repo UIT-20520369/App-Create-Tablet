@@ -120,10 +120,27 @@
   <metadata name="BoTronForm.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnLamMoi.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAM8AAAAjCAYAAAAzB16mAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKFSURBVHhe7d2xb9NAFMdxj4yMbDAilHMYGRmZgKE+wwQj
+        4i9ggwGpzTkSEgNDNmb+AaauFZNHJIZKDFUrQkULailkgPfsiyq7Z8cNLI2/T/qoSuycO/in53PsODpP
+        mQ17y2Tpi9ilW3GW5iazU/n7B7iI/P6bq3K/Xrvjd/X/U8NX9y7L4JPY2UPZwLdyw/bMPwJcdMbp/m1n
+        sq+/G66n13wElivj7IYGRhI6C20MWFWy72ujmFx9/uiSj0O30m4jofkgSfxZHxToi6JpjNNPN1xyxUej
+        vbRdSdv6KO3rV2hAoG+kkewOXXLTRyRcxfymCE54EKCvJEBfWudBeqhGxwHCZBqzrQ3Gx+W0JDivzcgy
+        xwEaGJf8lgC995EpSydEMjk6DH0AwClpMgeV+Y+8OeF0NNCBK/5uFsHR89jy4ntlBQBtjorT13pJQvnN
+        anAlADVy6HYUj5InkRyuvQmtAKDB/NCtvMiTa9WA87E7kZ67Di8E0ERyc6zhOQ4tBNBOT1MHFwBoR3iA
+        JREeYEkSHq4sAJah4dkJLQDQxs70sE1/ACGwEEATk9mp3orw1n9jCqATq1cZbOn3PI/lxY/wSgDq9A6E
+        QWZf+luv05PQSgDOqtzTI29scugGdKOXtBXB0dIUaZpCKwKoOBiM7H0fnbLkTboPsECl68xL74yThZ/r
+        KwOYs3uD8cPrPjLV8odvX8MfBHptX7pO4qMSLjNau0uAgIp9k9mnPiLt5TvQbmAQoGfs3sKOUy8/B8rj
+        8tfiA4MCq8voI3Vcut04x+lSwyy9rYMUz+cZcwU2VpsccekjdabScR74CPx7aQJjlz6TDeQyMCHCqskH
+        mc306Yd+l19QUfQXr5S3WUCFA98AAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="ToolTipAdd.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>136, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnXoa.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAM8AAAAjCAYAAAAzB16mAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

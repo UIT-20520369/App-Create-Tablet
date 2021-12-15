@@ -93,14 +93,17 @@ namespace ManageSchedule
             // checkBoxNhoMK
             // 
             this.checkBoxNhoMK.AutoSize = true;
+            this.checkBoxNhoMK.Checked = true;
+            this.checkBoxNhoMK.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxNhoMK.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBoxNhoMK.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxNhoMK.Location = new System.Drawing.Point(137, 347);
             this.checkBoxNhoMK.Name = "checkBoxNhoMK";
-            this.checkBoxNhoMK.Size = new System.Drawing.Size(150, 20);
+            this.checkBoxNhoMK.Size = new System.Drawing.Size(156, 20);
             this.checkBoxNhoMK.TabIndex = 7;
-            this.checkBoxNhoMK.Text = "Ghi nhớ đăng nhập";
+            this.checkBoxNhoMK.Text = "Tự động đăng nhập";
             this.checkBoxNhoMK.UseVisualStyleBackColor = true;
+            this.checkBoxNhoMK.CheckedChanged += new System.EventHandler(this.checkBoxNhoMK_CheckedChanged);
             // 
             // linkLabel1
             // 

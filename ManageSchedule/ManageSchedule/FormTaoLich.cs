@@ -41,6 +41,7 @@ namespace ManageSchedule
             ToolTipAdd.SetToolTip(btnAdd, "Thêm lớp đã chọn từ danh sách vào thời khóa biểu");
             ToolTipAdd.SetToolTip(btnXoa, "Xóa lớp đã chọn trên thời khóa biểu mini");
             ToolTipAdd.SetToolTip(btnXem, "Xem thời khóa biểu chi tiết");
+            ToolTipAdd.SetToolTip(btnLamMoi, "Tạo thời khóa biểu lại từ đầu");
 
             // Variable
             HeDaoTao = hdt;
@@ -86,7 +87,7 @@ namespace ManageSchedule
         private void FormTaoLich_Load(object sender, EventArgs e)
         {
             string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
-            string ExcelFile = string.Format(@"{0}\Data\21-22-SEM1.xlsx", Path.GetFullPath(Path.Combine(RunningPath, @"..\..\")));
+            string ExcelFile = string.Format(@"{0}\Data\21-22-SEM1.xlsx", Path.GetFullPath(Path.Combine(RunningPath, @"..\")));
 
             using (var stream = File.Open(ExcelFile, FileMode.Open, FileAccess.Read))
             {
@@ -243,7 +244,8 @@ namespace ManageSchedule
                     string result = CheckTKB(row.ItemArray[10].ToString(), row.ItemArray[11].ToString());
                     if (result != "true")
                     {
-                        string message = MaLop + "\n trùng lịch với \n" + result;
+                        string[] arr = result.Split(' ');
+                        string message = MaLop + " trùng lịch với " + arr[0] + " thứ " + arr[1] + " tiết " + arr[2];
                         MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
@@ -265,7 +267,8 @@ namespace ManageSchedule
                     string result = CheckTKB(row.ItemArray[10].ToString(), row.ItemArray[11].ToString());
                     if (result != "true")
                     {
-                        string message = MaLop + " trùng lịch với " + result;
+                        string[] arr = result.Split(' ');
+                        string message = MaLop + " trùng lịch với " + arr[0] + " thứ " + arr[1] + " tiết " + arr[2];
                         MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
@@ -337,7 +340,7 @@ namespace ManageSchedule
                                 if (labelLichTH.Text == string.Empty)
                                     labelLichTH.Text = "Thứ " + row.ItemArray[10].ToString() + " tiết " + row.ItemArray[11].ToString();
                                 else
-                                    labelLichHoc.Text += ", thứ " + row.ItemArray[10].ToString() + " tiết " + row.ItemArray[11].ToString();
+                                    labelLichTH.Text += ", thứ " + row.ItemArray[10].ToString() + " tiết " + row.ItemArray[11].ToString();
 
                                 CoLopTH = true;
                             }
@@ -348,8 +351,6 @@ namespace ManageSchedule
                             labelThucHanh.Text = "Không";
                             labelLichTH.Text = "Không";
                         }
-
-                        return;
                     }
                 }
         }
@@ -399,7 +400,7 @@ namespace ManageSchedule
                 tiet = tiet == 0 ? 10 : tiet;
 
                 if (strTKB[tiet, thu] != string.Empty)
-                    return strTKB[tiet, thu];
+                    return strTKB[tiet, thu] + " " + Thu + " " + tiets[i];
             }
 
             return "true";
@@ -428,6 +429,79 @@ namespace ManageSchedule
             labelThucHanh.Text = string.Empty;
             labelLichTH.Text = string.Empty;
             labelHeDaoTao.Text = string.Empty;
+        }
+
+        private void btnLamMoi_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 12; i++)
+                for (int j = 0; j < 10; j++)
+                    strTKB[i, j] = string.Empty;
+
+            foreach (List<Button> listButton in TKBMini)
+                foreach (Button button in listButton)
+                    button.BackColor = Color.Silver;
+
+            DanhSachLopHocLTDaChon.Clear();
+            DanhSachLopHocTHDaChon.Clear();
+            DanhSachMaMonDaChon.Clear();
+            posColor = -1;
+        }
+
+        private void DataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int selectedRowCount = DataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (selectedRowCount <= 0 || DataGridView.SelectedRows[0].Cells[3].Value == null)
+                return;
+
+            ResetInfo();
+
+            string MaLop = DataGridView.SelectedRows[0].Cells[2].Value.ToString();
+            labelMaMon.Text = DataGridView.SelectedRows[0].Cells[1].Value.ToString();
+            labelMaLop.Text = MaLop;
+            labelTenMon.Text = DataGridView.SelectedRows[0].Cells[3].Value.ToString();
+            labelSoTC.Text = DataGridView.SelectedRows[0].Cells[4].Value.ToString();
+            labelHeDaoTao.Text = DataGridView.SelectedRows[0].Cells[7].Value.ToString();
+
+            foreach (DataRow row in DanhSachMonHocLyThuyet)
+            {
+                if (MaLop == row.ItemArray[2].ToString())
+                {
+                    if (labelLichHoc.Text == string.Empty)
+                        labelLichHoc.Text = "Thứ " + row.ItemArray[10].ToString() + " tiết " + row.ItemArray[11].ToString();
+                    else
+                        labelLichHoc.Text += ", thứ " + row.ItemArray[10].ToString() + " tiết " + row.ItemArray[11].ToString();
+                }
+            }
+
+            string MaLopTH = string.Empty;
+            bool CoLopTH = false;
+
+            foreach (DataRow row in DanhSachMonHocThucHanh)
+            {
+                if (row.ItemArray[2].ToString().Contains(MaLop) && MaLopTH == string.Empty)
+                {
+                    MaLopTH = row.ItemArray[2].ToString();
+                    labelThucHanh.Text = MaLopTH;
+                }
+
+                if (MaLopTH == row.ItemArray[2].ToString())
+                {
+                    if (labelLichTH.Text == string.Empty)
+                        labelLichTH.Text = "Thứ " + row.ItemArray[10].ToString() + " tiết " + row.ItemArray[11].ToString();
+                    else
+                        labelLichTH.Text += ", thứ " + row.ItemArray[10].ToString() + " tiết " + row.ItemArray[11].ToString();
+
+                    CoLopTH = true;
+                }
+            }
+
+            if (CoLopTH == false)
+            {
+                labelThucHanh.Text = "Không";
+                labelLichTH.Text = "Không";
+            }
+
+            //DataGridView.SelectedRows[0].Selected = false;
         }
     }
 }
