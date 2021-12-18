@@ -31,6 +31,8 @@ namespace ManageSchedule
             panelMenu.Controls.Add(leftBorderBtn);
         }
 
+        #region Help Button Click
+
         private void btnThoat_Click(object sender, EventArgs e)
         {
             BatDau.isThoat = true;
@@ -47,6 +49,9 @@ namespace ManageSchedule
             this.Close();
         }
 
+        #endregion Help Button Click
+
+        #region Animation Button Click
         private void ActiveButton(object senderBtn, Color color, string s)
         {
             if (senderBtn != null)
@@ -109,16 +114,18 @@ namespace ManageSchedule
             childFormLogo.Image = Properties.Resources.calendar;
         }
 
+        #endregion Animation Button Click
+
         private void btnChinhQuy_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, Color.FromArgb(71, 139, 162), "Chính quy");
-            OpenChildForm(new FormTaoLich("CQUI"), 0);
+            OpenChildForm(new FormTaoLich("CQUI", ""), 0);
         }
 
         private void btnCLC_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, Color.FromArgb(71, 139, 162), "Chất lượng cao");
-            OpenChildForm(new FormTaoLich("CLC"), 0);
+            OpenChildForm(new FormTaoLich("CLC", ""), 0);
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -138,6 +145,11 @@ namespace ManageSchedule
             leftBorderBtn.Visible = false;
             labelChildFormText.Text = "";
             childFormLogo.Image = null;
+        }
+
+        private void linkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Application.Restart();
         }
     }
 }

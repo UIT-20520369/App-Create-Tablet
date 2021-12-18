@@ -30,7 +30,6 @@ namespace ManageSchedule
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDungNgay));
             this.BoTronForm = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnCLC = new System.Windows.Forms.Button();
@@ -43,16 +42,24 @@ namespace ManageSchedule
             this.btnThoat = new System.Windows.Forms.Button();
             this.labelChildFormText = new System.Windows.Forms.Label();
             this.panelUngDung = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bunifuPictureBox2 = new Bunifu.UI.WinForms.BunifuPictureBox();
+            this.bunifuPictureBox1 = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.BoTronBtnThoat = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.BoTronBtnMini = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.BoTronTroVe = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.linkLabel = new System.Windows.Forms.LinkLabel();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).BeginInit();
             this.panelBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.childFormLogo)).BeginInit();
             this.panelUngDung.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // BoTronForm
@@ -208,12 +215,71 @@ namespace ManageSchedule
             // 
             // panelUngDung
             // 
-            this.panelUngDung.Controls.Add(this.bunifuLabel1);
+            this.panelUngDung.Controls.Add(this.linkLabel);
+            this.panelUngDung.Controls.Add(this.label4);
+            this.panelUngDung.Controls.Add(this.label3);
+            this.panelUngDung.Controls.Add(this.label2);
+            this.panelUngDung.Controls.Add(this.label1);
+            this.panelUngDung.Controls.Add(this.bunifuPictureBox2);
+            this.panelUngDung.Controls.Add(this.bunifuPictureBox1);
             this.panelUngDung.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelUngDung.Location = new System.Drawing.Point(220, 73);
             this.panelUngDung.Name = "panelUngDung";
             this.panelUngDung.Size = new System.Drawing.Size(1133, 679);
             this.panelUngDung.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(267, 356);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(593, 36);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Đây là bản dùng ngay, không cần phải đăng ký tài khoản. Ứng dụng hỗ trợ việc\r\ntạo" +
+    " thời khóa biểu, nhằm thuận tiện hơn cho việc đăng ký học phần.\r\n";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(403, 294);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(341, 25);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "PHẦN MỀM QUẢN LÝ LỊCH HỌC";
+            // 
+            // bunifuPictureBox2
+            // 
+            this.bunifuPictureBox2.AllowFocused = false;
+            this.bunifuPictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.bunifuPictureBox2.AutoSizeHeight = true;
+            this.bunifuPictureBox2.BorderRadius = 145;
+            this.bunifuPictureBox2.Image = global::ManageSchedule.Properties.Resources.UIT2;
+            this.bunifuPictureBox2.IsCircle = true;
+            this.bunifuPictureBox2.Location = new System.Drawing.Point(601, 6);
+            this.bunifuPictureBox2.Name = "bunifuPictureBox2";
+            this.bunifuPictureBox2.Size = new System.Drawing.Size(291, 291);
+            this.bunifuPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuPictureBox2.TabIndex = 1;
+            this.bunifuPictureBox2.TabStop = false;
+            this.bunifuPictureBox2.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
+            // 
+            // bunifuPictureBox1
+            // 
+            this.bunifuPictureBox1.AllowFocused = false;
+            this.bunifuPictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.bunifuPictureBox1.AutoSizeHeight = true;
+            this.bunifuPictureBox1.BorderRadius = 156;
+            this.bunifuPictureBox1.Image = global::ManageSchedule.Properties.Resources.LogoAppNoneBG;
+            this.bunifuPictureBox1.IsCircle = true;
+            this.bunifuPictureBox1.Location = new System.Drawing.Point(194, 6);
+            this.bunifuPictureBox1.Name = "bunifuPictureBox1";
+            this.bunifuPictureBox1.Size = new System.Drawing.Size(313, 313);
+            this.bunifuPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuPictureBox1.TabIndex = 0;
+            this.bunifuPictureBox1.TabStop = false;
+            this.bunifuPictureBox1.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
             // 
             // BoTronBtnThoat
             // 
@@ -230,21 +296,39 @@ namespace ManageSchedule
             this.BoTronTroVe.ElipseRadius = 7;
             this.BoTronTroVe.TargetControl = this.btnTroVe;
             // 
-            // bunifuLabel1
+            // label3
             // 
-            this.bunifuLabel1.AllowParentOverrides = false;
-            this.bunifuLabel1.AutoEllipsis = false;
-            this.bunifuLabel1.CursorType = System.Windows.Forms.Cursors.Default;
-            this.bunifuLabel1.Font = new System.Drawing.Font("Verdana", 18F);
-            this.bunifuLabel1.Location = new System.Drawing.Point(199, 259);
-            this.bunifuLabel1.Name = "bunifuLabel1";
-            this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel1.Size = new System.Drawing.Size(770, 58);
-            this.bunifuLabel1.TabIndex = 0;
-            this.bunifuLabel1.Text = "Bạn đang sử dụng ứng dụng ở chế độ không đăng ký tài khoản. \r\nĐể sử dụng đầy đủ c" +
-    "ác tính năng xin vui lòng đăng ký tài khoản.\r\n";
-            this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(267, 414);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(630, 36);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Ứng dụng đã chia sẵn hai hệ đào tạo chính quy và chất lượng cao để người dùng có " +
+    "\r\nthể tiện sử dụng.";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(267, 474);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(589, 18);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Để sử dụng đầy đủ tính năng của ứng dụng Quản lý lịch học vui lòng đăng kí tại\r\n";
+            // 
+            // linkLabel
+            // 
+            this.linkLabel.AutoSize = true;
+            this.linkLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel.LinkColor = System.Drawing.Color.Red;
+            this.linkLabel.Location = new System.Drawing.Point(855, 474);
+            this.linkLabel.Name = "linkLabel";
+            this.linkLabel.Size = new System.Drawing.Size(42, 18);
+            this.linkLabel.TabIndex = 6;
+            this.linkLabel.TabStop = true;
+            this.linkLabel.Text = "đây.";
+            this.linkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_LinkClicked);
             // 
             // FormDungNgay
             // 
@@ -265,6 +349,8 @@ namespace ManageSchedule
             ((System.ComponentModel.ISupportInitialize)(this.childFormLogo)).EndInit();
             this.panelUngDung.ResumeLayout(false);
             this.panelUngDung.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -286,6 +372,12 @@ namespace ManageSchedule
         private System.Windows.Forms.ToolTip ToolTip;
         private System.Windows.Forms.Button btnTroVe;
         private Bunifu.Framework.UI.BunifuElipse BoTronTroVe;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
+        private System.Windows.Forms.Label label1;
+        private Bunifu.UI.WinForms.BunifuPictureBox bunifuPictureBox2;
+        private Bunifu.UI.WinForms.BunifuPictureBox bunifuPictureBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.LinkLabel linkLabel;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
     }
 }

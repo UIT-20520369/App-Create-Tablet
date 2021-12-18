@@ -67,17 +67,18 @@ namespace ManageSchedule
             this.btnTroVe.ActiveImage = null;
             this.btnTroVe.ImageLocation = null;
             this.btnTroVe.ImageMargin = 10;
-            this.btnTroVe.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnTroVe.ImageZoomSize = new System.Drawing.Size(50, 50);
+            this.btnTroVe.ImageSize = new System.Drawing.Size(57, 52);
+            this.btnTroVe.ImageZoomSize = new System.Drawing.Size(67, 62);
             this.btnTroVe.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnTroVe.InitialImage")));
-            this.btnTroVe.Location = new System.Drawing.Point(12, 12);
+            this.btnTroVe.Location = new System.Drawing.Point(16, 15);
+            this.btnTroVe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnTroVe.Name = "btnTroVe";
             this.btnTroVe.Rotation = 0;
             this.btnTroVe.ShowActiveImage = true;
             this.btnTroVe.ShowCursorChanges = true;
             this.btnTroVe.ShowImageBorders = true;
             this.btnTroVe.ShowSizeMarkers = false;
-            this.btnTroVe.Size = new System.Drawing.Size(50, 50);
+            this.btnTroVe.Size = new System.Drawing.Size(67, 62);
             this.btnTroVe.TabIndex = 14;
             this.btnTroVe.ToolTipText = "";
             this.btnTroVe.WaitOnLoad = false;
@@ -89,9 +90,10 @@ namespace ManageSchedule
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 113);
+            this.label1.Location = new System.Drawing.Point(32, 139);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(159, 18);
+            this.label1.Size = new System.Drawing.Size(199, 25);
             this.label1.TabIndex = 15;
             this.label1.Text = "Mật khẩu hiện tại:";
             // 
@@ -99,9 +101,10 @@ namespace ManageSchedule
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(57, 156);
+            this.label2.Location = new System.Drawing.Point(76, 192);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 18);
+            this.label2.Size = new System.Drawing.Size(159, 25);
             this.label2.TabIndex = 16;
             this.label2.Text = "Mật khẩu mới:";
             // 
@@ -109,34 +112,41 @@ namespace ManageSchedule
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(10, 199);
+            this.label3.Location = new System.Drawing.Point(13, 245);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(173, 18);
+            this.label3.Size = new System.Drawing.Size(218, 25);
             this.label3.TabIndex = 17;
             this.label3.Text = "Xác nhận mật khẩu:";
             // 
             // TextBoxMatKhauHienTai
             // 
             this.TextBoxMatKhauHienTai.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBoxMatKhauHienTai.Location = new System.Drawing.Point(189, 110);
+            this.TextBoxMatKhauHienTai.Location = new System.Drawing.Point(252, 135);
+            this.TextBoxMatKhauHienTai.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TextBoxMatKhauHienTai.Name = "TextBoxMatKhauHienTai";
-            this.TextBoxMatKhauHienTai.Size = new System.Drawing.Size(320, 27);
+            this.TextBoxMatKhauHienTai.PasswordChar = '*';
+            this.TextBoxMatKhauHienTai.Size = new System.Drawing.Size(425, 32);
             this.TextBoxMatKhauHienTai.TabIndex = 20;
             // 
             // TextBoxMatKhauMoi
             // 
             this.TextBoxMatKhauMoi.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBoxMatKhauMoi.Location = new System.Drawing.Point(189, 153);
+            this.TextBoxMatKhauMoi.Location = new System.Drawing.Point(252, 188);
+            this.TextBoxMatKhauMoi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TextBoxMatKhauMoi.Name = "TextBoxMatKhauMoi";
-            this.TextBoxMatKhauMoi.Size = new System.Drawing.Size(320, 27);
+            this.TextBoxMatKhauMoi.PasswordChar = '*';
+            this.TextBoxMatKhauMoi.Size = new System.Drawing.Size(425, 32);
             this.TextBoxMatKhauMoi.TabIndex = 21;
             // 
             // TextBoxXacNhanMatKhau
             // 
             this.TextBoxXacNhanMatKhau.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBoxXacNhanMatKhau.Location = new System.Drawing.Point(189, 196);
+            this.TextBoxXacNhanMatKhau.Location = new System.Drawing.Point(252, 241);
+            this.TextBoxXacNhanMatKhau.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TextBoxXacNhanMatKhau.Name = "TextBoxXacNhanMatKhau";
-            this.TextBoxXacNhanMatKhau.Size = new System.Drawing.Size(320, 27);
+            this.TextBoxXacNhanMatKhau.PasswordChar = '*';
+            this.TextBoxXacNhanMatKhau.Size = new System.Drawing.Size(425, 32);
             this.TextBoxXacNhanMatKhau.TabIndex = 22;
             // 
             // btnShowPassHienTai
@@ -157,17 +167,18 @@ namespace ManageSchedule
             this.btnShowPassHienTai.ActiveImage = null;
             this.btnShowPassHienTai.ImageLocation = null;
             this.btnShowPassHienTai.ImageMargin = 20;
-            this.btnShowPassHienTai.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnShowPassHienTai.ImageZoomSize = new System.Drawing.Size(40, 40);
+            this.btnShowPassHienTai.ImageSize = new System.Drawing.Size(33, 29);
+            this.btnShowPassHienTai.ImageZoomSize = new System.Drawing.Size(53, 49);
             this.btnShowPassHienTai.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnShowPassHienTai.InitialImage")));
-            this.btnShowPassHienTai.Location = new System.Drawing.Point(515, 104);
+            this.btnShowPassHienTai.Location = new System.Drawing.Point(687, 128);
+            this.btnShowPassHienTai.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnShowPassHienTai.Name = "btnShowPassHienTai";
             this.btnShowPassHienTai.Rotation = 0;
             this.btnShowPassHienTai.ShowActiveImage = true;
             this.btnShowPassHienTai.ShowCursorChanges = false;
             this.btnShowPassHienTai.ShowImageBorders = true;
             this.btnShowPassHienTai.ShowSizeMarkers = false;
-            this.btnShowPassHienTai.Size = new System.Drawing.Size(40, 40);
+            this.btnShowPassHienTai.Size = new System.Drawing.Size(53, 49);
             this.btnShowPassHienTai.TabIndex = 23;
             this.btnShowPassHienTai.ToolTipText = "";
             this.btnShowPassHienTai.WaitOnLoad = false;
@@ -193,17 +204,18 @@ namespace ManageSchedule
             this.btnShowPassMoi.ActiveImage = null;
             this.btnShowPassMoi.ImageLocation = null;
             this.btnShowPassMoi.ImageMargin = 20;
-            this.btnShowPassMoi.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnShowPassMoi.ImageZoomSize = new System.Drawing.Size(40, 40);
+            this.btnShowPassMoi.ImageSize = new System.Drawing.Size(33, 29);
+            this.btnShowPassMoi.ImageZoomSize = new System.Drawing.Size(53, 49);
             this.btnShowPassMoi.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnShowPassMoi.InitialImage")));
-            this.btnShowPassMoi.Location = new System.Drawing.Point(515, 146);
+            this.btnShowPassMoi.Location = new System.Drawing.Point(687, 180);
+            this.btnShowPassMoi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnShowPassMoi.Name = "btnShowPassMoi";
             this.btnShowPassMoi.Rotation = 0;
             this.btnShowPassMoi.ShowActiveImage = true;
             this.btnShowPassMoi.ShowCursorChanges = false;
             this.btnShowPassMoi.ShowImageBorders = true;
             this.btnShowPassMoi.ShowSizeMarkers = false;
-            this.btnShowPassMoi.Size = new System.Drawing.Size(40, 40);
+            this.btnShowPassMoi.Size = new System.Drawing.Size(53, 49);
             this.btnShowPassMoi.TabIndex = 24;
             this.btnShowPassMoi.ToolTipText = "";
             this.btnShowPassMoi.WaitOnLoad = false;
@@ -229,17 +241,18 @@ namespace ManageSchedule
             this.btnShowPassXacNhan.ActiveImage = null;
             this.btnShowPassXacNhan.ImageLocation = null;
             this.btnShowPassXacNhan.ImageMargin = 20;
-            this.btnShowPassXacNhan.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnShowPassXacNhan.ImageZoomSize = new System.Drawing.Size(40, 40);
+            this.btnShowPassXacNhan.ImageSize = new System.Drawing.Size(33, 29);
+            this.btnShowPassXacNhan.ImageZoomSize = new System.Drawing.Size(53, 49);
             this.btnShowPassXacNhan.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnShowPassXacNhan.InitialImage")));
-            this.btnShowPassXacNhan.Location = new System.Drawing.Point(515, 189);
+            this.btnShowPassXacNhan.Location = new System.Drawing.Point(687, 233);
+            this.btnShowPassXacNhan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnShowPassXacNhan.Name = "btnShowPassXacNhan";
             this.btnShowPassXacNhan.Rotation = 0;
             this.btnShowPassXacNhan.ShowActiveImage = true;
             this.btnShowPassXacNhan.ShowCursorChanges = false;
             this.btnShowPassXacNhan.ShowImageBorders = true;
             this.btnShowPassXacNhan.ShowSizeMarkers = false;
-            this.btnShowPassXacNhan.Size = new System.Drawing.Size(40, 40);
+            this.btnShowPassXacNhan.Size = new System.Drawing.Size(53, 49);
             this.btnShowPassXacNhan.TabIndex = 25;
             this.btnShowPassXacNhan.ToolTipText = "";
             this.btnShowPassXacNhan.WaitOnLoad = false;
@@ -265,19 +278,19 @@ namespace ManageSchedule
             this.btnChange.IdleFillColor = System.Drawing.Color.Gainsboro;
             this.btnChange.IdleForecolor = System.Drawing.Color.Black;
             this.btnChange.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
-            this.btnChange.Location = new System.Drawing.Point(119, 266);
-            this.btnChange.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnChange.Location = new System.Drawing.Point(159, 327);
+            this.btnChange.Margin = new System.Windows.Forms.Padding(7, 5, 7, 5);
             this.btnChange.Name = "btnChange";
-            this.btnChange.Size = new System.Drawing.Size(320, 45);
+            this.btnChange.Size = new System.Drawing.Size(427, 55);
             this.btnChange.TabIndex = 26;
             this.btnChange.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
             // 
             // FormDoiMatKhau
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(558, 360);
+            this.ClientSize = new System.Drawing.Size(744, 443);
             this.Controls.Add(this.btnChange);
             this.Controls.Add(this.btnShowPassXacNhan);
             this.Controls.Add(this.btnShowPassMoi);
@@ -290,6 +303,7 @@ namespace ManageSchedule
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnTroVe);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormDoiMatKhau";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đổi mật khẩu";

@@ -44,6 +44,15 @@ namespace ManageSchedule
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.BoTronForm = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.DataGridView = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoTC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Thu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tiet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Khoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TextBoxSearch = new Bunifu.UI.WinForms.BunifuTextBox();
             this.btn21 = new System.Windows.Forms.Button();
             this.btn31 = new System.Windows.Forms.Button();
@@ -156,15 +165,6 @@ namespace ManageSchedule
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.btnLamMoi = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoTC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Thu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tiet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Khoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -251,6 +251,106 @@ namespace ManageSchedule
             this.ToolTipAdd.SetToolTipIcon(this.DataGridView, null);
             this.ToolTipAdd.SetToolTipTitle(this.DataGridView, "");
             this.DataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellClick);
+            // 
+            // STT
+            // 
+            this.STT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.STT.FillWeight = 101.5229F;
+            this.STT.Frozen = true;
+            this.STT.HeaderText = "STT";
+            this.STT.Name = "STT";
+            this.STT.ReadOnly = true;
+            this.STT.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.STT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.STT.Width = 50;
+            // 
+            // MaMon
+            // 
+            this.MaMon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.MaMon.FillWeight = 427.6391F;
+            this.MaMon.Frozen = true;
+            this.MaMon.HeaderText = "MÃ MÔN";
+            this.MaMon.Name = "MaMon";
+            this.MaMon.ReadOnly = true;
+            this.MaMon.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.MaMon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.MaMon.Width = 90;
+            // 
+            // MaLop
+            // 
+            this.MaLop.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.MaLop.FillWeight = 73.51891F;
+            this.MaLop.Frozen = true;
+            this.MaLop.HeaderText = "MÃ LỚP";
+            this.MaLop.Name = "MaLop";
+            this.MaLop.ReadOnly = true;
+            this.MaLop.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.MaLop.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TenMon
+            // 
+            this.TenMon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.TenMon.FillWeight = 20.58662F;
+            this.TenMon.Frozen = true;
+            this.TenMon.HeaderText = "TÊN MÔN HỌC";
+            this.TenMon.Name = "TenMon";
+            this.TenMon.ReadOnly = true;
+            this.TenMon.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TenMon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TenMon.Width = 350;
+            // 
+            // SoTC
+            // 
+            this.SoTC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.SoTC.FillWeight = 44.18314F;
+            this.SoTC.Frozen = true;
+            this.SoTC.HeaderText = "SỐ TC";
+            this.SoTC.Name = "SoTC";
+            this.SoTC.ReadOnly = true;
+            this.SoTC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.SoTC.Width = 60;
+            // 
+            // Thu
+            // 
+            this.Thu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Thu.FillWeight = 44.18314F;
+            this.Thu.Frozen = true;
+            this.Thu.HeaderText = "THỨ";
+            this.Thu.Name = "Thu";
+            this.Thu.ReadOnly = true;
+            this.Thu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Thu.Width = 61;
+            // 
+            // Tiet
+            // 
+            this.Tiet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Tiet.FillWeight = 44.18314F;
+            this.Tiet.Frozen = true;
+            this.Tiet.HeaderText = "TIẾT";
+            this.Tiet.Name = "Tiet";
+            this.Tiet.ReadOnly = true;
+            this.Tiet.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Tiet.Width = 50;
+            // 
+            // HDT
+            // 
+            this.HDT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.HDT.FillWeight = 44.18314F;
+            this.HDT.Frozen = true;
+            this.HDT.HeaderText = "HỆ ĐT";
+            this.HDT.Name = "HDT";
+            this.HDT.ReadOnly = true;
+            this.HDT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.HDT.Width = 80;
+            // 
+            // Khoa
+            // 
+            this.Khoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Khoa.Frozen = true;
+            this.Khoa.HeaderText = "KHOA QL";
+            this.Khoa.Name = "Khoa";
+            this.Khoa.ReadOnly = true;
+            this.Khoa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // TextBoxSearch
             // 
@@ -1904,6 +2004,7 @@ namespace ManageSchedule
             this.ToolTipAdd.SetToolTipIcon(this.btnXem, null);
             this.ToolTipAdd.SetToolTipTitle(this.btnXem, "");
             this.btnXem.UseDefaultRadiusAndThickness = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
             // btnXoa
             // 
@@ -2331,106 +2432,6 @@ namespace ManageSchedule
             this.ToolTipAdd.SetToolTipTitle(this.btnLamMoi, "");
             this.btnLamMoi.UseDefaultRadiusAndThickness = true;
             this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
-            // 
-            // STT
-            // 
-            this.STT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.STT.FillWeight = 101.5229F;
-            this.STT.Frozen = true;
-            this.STT.HeaderText = "STT";
-            this.STT.Name = "STT";
-            this.STT.ReadOnly = true;
-            this.STT.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.STT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.STT.Width = 50;
-            // 
-            // MaMon
-            // 
-            this.MaMon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.MaMon.FillWeight = 427.6391F;
-            this.MaMon.Frozen = true;
-            this.MaMon.HeaderText = "MÃ MÔN";
-            this.MaMon.Name = "MaMon";
-            this.MaMon.ReadOnly = true;
-            this.MaMon.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.MaMon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.MaMon.Width = 90;
-            // 
-            // MaLop
-            // 
-            this.MaLop.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.MaLop.FillWeight = 73.51891F;
-            this.MaLop.Frozen = true;
-            this.MaLop.HeaderText = "MÃ LỚP";
-            this.MaLop.Name = "MaLop";
-            this.MaLop.ReadOnly = true;
-            this.MaLop.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.MaLop.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TenMon
-            // 
-            this.TenMon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.TenMon.FillWeight = 20.58662F;
-            this.TenMon.Frozen = true;
-            this.TenMon.HeaderText = "TÊN MÔN HỌC";
-            this.TenMon.Name = "TenMon";
-            this.TenMon.ReadOnly = true;
-            this.TenMon.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.TenMon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.TenMon.Width = 350;
-            // 
-            // SoTC
-            // 
-            this.SoTC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.SoTC.FillWeight = 44.18314F;
-            this.SoTC.Frozen = true;
-            this.SoTC.HeaderText = "SỐ TC";
-            this.SoTC.Name = "SoTC";
-            this.SoTC.ReadOnly = true;
-            this.SoTC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.SoTC.Width = 60;
-            // 
-            // Thu
-            // 
-            this.Thu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Thu.FillWeight = 44.18314F;
-            this.Thu.Frozen = true;
-            this.Thu.HeaderText = "THỨ";
-            this.Thu.Name = "Thu";
-            this.Thu.ReadOnly = true;
-            this.Thu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Thu.Width = 61;
-            // 
-            // Tiet
-            // 
-            this.Tiet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Tiet.FillWeight = 44.18314F;
-            this.Tiet.Frozen = true;
-            this.Tiet.HeaderText = "TIẾT";
-            this.Tiet.Name = "Tiet";
-            this.Tiet.ReadOnly = true;
-            this.Tiet.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Tiet.Width = 50;
-            // 
-            // HDT
-            // 
-            this.HDT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.HDT.FillWeight = 44.18314F;
-            this.HDT.Frozen = true;
-            this.HDT.HeaderText = "HỆ ĐT";
-            this.HDT.Name = "HDT";
-            this.HDT.ReadOnly = true;
-            this.HDT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.HDT.Width = 80;
-            // 
-            // Khoa
-            // 
-            this.Khoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Khoa.Frozen = true;
-            this.Khoa.HeaderText = "KHOA QL";
-            this.Khoa.Name = "Khoa";
-            this.Khoa.ReadOnly = true;
-            this.Khoa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // FormTaoLich
             // 

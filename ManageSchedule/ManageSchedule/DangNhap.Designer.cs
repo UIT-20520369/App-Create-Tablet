@@ -36,8 +36,7 @@ namespace ManageSchedule
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxTaiKhoan = new System.Windows.Forms.TextBox();
             this.textBoxMatKhau = new System.Windows.Forms.TextBox();
-            this.checkBoxNhoMK = new System.Windows.Forms.CheckBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.LinkLabelQuenMatKhau = new System.Windows.Forms.LinkLabel();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.btnDangNhap = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btnTroVe = new Bunifu.UI.WinForms.BunifuImageButton();
@@ -90,31 +89,20 @@ namespace ManageSchedule
             this.textBoxMatKhau.TabIndex = 2;
             this.textBoxMatKhau.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxMatKhau_KeyDown);
             // 
-            // checkBoxNhoMK
+            // LinkLabelQuenMatKhau
             // 
-            this.checkBoxNhoMK.AutoSize = true;
-            this.checkBoxNhoMK.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBoxNhoMK.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxNhoMK.Location = new System.Drawing.Point(137, 347);
-            this.checkBoxNhoMK.Name = "checkBoxNhoMK";
-            this.checkBoxNhoMK.Size = new System.Drawing.Size(150, 20);
-            this.checkBoxNhoMK.TabIndex = 7;
-            this.checkBoxNhoMK.Text = "Ghi nhớ đăng nhập";
-            this.checkBoxNhoMK.UseVisualStyleBackColor = true;
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.linkLabel1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.linkLabel1.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel1.Location = new System.Drawing.Point(188, 423);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(143, 18);
-            this.linkLabel1.TabIndex = 9;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Quên mật khẩu?";
+            this.LinkLabelQuenMatKhau.AutoSize = true;
+            this.LinkLabelQuenMatKhau.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LinkLabelQuenMatKhau.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LinkLabelQuenMatKhau.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.LinkLabelQuenMatKhau.LinkColor = System.Drawing.Color.Black;
+            this.LinkLabelQuenMatKhau.Location = new System.Drawing.Point(188, 413);
+            this.LinkLabelQuenMatKhau.Name = "LinkLabelQuenMatKhau";
+            this.LinkLabelQuenMatKhau.Size = new System.Drawing.Size(143, 18);
+            this.LinkLabelQuenMatKhau.TabIndex = 9;
+            this.LinkLabelQuenMatKhau.TabStop = true;
+            this.LinkLabelQuenMatKhau.Text = "Quên mật khẩu?";
+            this.LinkLabelQuenMatKhau.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabelQuenMatKhau_LinkClicked);
             // 
             // pictureBoxLogo
             // 
@@ -144,7 +132,7 @@ namespace ManageSchedule
             this.btnDangNhap.IdleFillColor = System.Drawing.Color.Gainsboro;
             this.btnDangNhap.IdleForecolor = System.Drawing.Color.Black;
             this.btnDangNhap.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
-            this.btnDangNhap.Location = new System.Drawing.Point(137, 374);
+            this.btnDangNhap.Location = new System.Drawing.Point(137, 364);
             this.btnDangNhap.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(246, 45);
@@ -232,8 +220,7 @@ namespace ManageSchedule
             this.Controls.Add(this.btnShowPass);
             this.Controls.Add(this.btnTroVe);
             this.Controls.Add(this.btnDangNhap);
-            this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.checkBoxNhoMK);
+            this.Controls.Add(this.LinkLabelQuenMatKhau);
             this.Controls.Add(this.textBoxMatKhau);
             this.Controls.Add(this.textBoxTaiKhoan);
             this.Controls.Add(this.label3);
@@ -258,8 +245,7 @@ namespace ManageSchedule
         private System.Windows.Forms.TextBox textBoxTaiKhoan;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBoxNhoMK;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel LinkLabelQuenMatKhau;
         private Bunifu.Framework.UI.BunifuThinButton2 btnDangNhap;
         private Bunifu.UI.WinForms.BunifuImageButton btnTroVe;
         private Bunifu.UI.WinForms.BunifuImageButton btnShowPass;

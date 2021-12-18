@@ -9,14 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using ExcelDataReader;
+using System.Configuration;
 
 namespace ManageSchedule
 {
     public partial class FormTaoLich : Form
     {
+        #region Declare
         // Variable
         private string HeDaoTao;
         private int posColor;
+        private string curUser = string.Empty;
 
         // Dataset
         private DataSet ds = new DataSet();
@@ -33,8 +36,12 @@ namespace ManageSchedule
         private List<string> DanhSachMaMonDaChon;
         private List<Color> DanhSachMau;
         private List<List<Button>> TKBMini;
-       
-        public FormTaoLich(string hdt)
+
+        #endregion Declare
+
+        #region Constructor
+
+        public FormTaoLich(string hdt, string x)
         {
             InitializeComponent();
             ToolTipAdd.SetToolTip(TextBoxSearch, "Tìm kiếm theo mã môn hoặc mã lớp");
@@ -46,6 +53,7 @@ namespace ManageSchedule
             // Variable
             HeDaoTao = hdt;
             posColor = -1;
+            curUser = x;
 
             // Array
             strTKB = new string[12, 10];
@@ -70,6 +78,8 @@ namespace ManageSchedule
             };
 
             // Tạo list button TKB mini
+            #region Create TKB Mini
+
             Button tempBtn = new Button();
             List<Button> buttons1 = new List<Button>() { tempBtn, btn21, btn31, btn41, btn51, btn61, btn71, btnCN1 };
             List<Button> buttons2 = new List<Button>() { tempBtn, btn22, btn32, btn42, btn52, btn62, btn72, btnCN2 };
@@ -82,12 +92,19 @@ namespace ManageSchedule
             List<Button> buttons9 = new List<Button>() { tempBtn, btn29, btn39, btn49, btn59, btn69, btn79, btnCN9 };
             List<Button> buttons10 = new List<Button>() { tempBtn, btn210, btn310, btn410, btn510, btn610, btn710, btnCN10 };
             TKBMini = new List<List<Button>>() { buttons1, buttons2, buttons3, buttons4, buttons5, buttons6, buttons7, buttons8, buttons9, buttons10 };
+
+            #endregion Create TKB Mini
         }
+
+        #endregion Constructor
+
+        #region Form Load
 
         private void FormTaoLich_Load(object sender, EventArgs e)
         {
             string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
-            string ExcelFile = string.Format(@"{0}\Data\21-22-SEM1.xlsx", Path.GetFullPath(Path.Combine(RunningPath, @"..\")));
+            string FileName = ConfigurationManager.AppSettings["Path"];
+            string ExcelFile = string.Format(@"{0}\Data{1}", Path.GetFullPath(Path.Combine(RunningPath, @"..\")), FileName);
 
             using (var stream = File.Open(ExcelFile, FileMode.Open, FileAccess.Read))
             {
@@ -175,6 +192,10 @@ namespace ManageSchedule
             DataGridView.Rows[idx].Selected = false;
         }
 
+        #endregion Form Load
+
+        #region Search
+
         private void TextBoxSearch_TextChange(object sender, EventArgs e)
         {
             DataGridView.Rows.Clear();
@@ -207,6 +228,10 @@ namespace ManageSchedule
                 }
             }
         }
+
+        #endregion Search
+
+        #region Add Class
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -292,6 +317,10 @@ namespace ManageSchedule
             DanhSachMaMonDaChon.Add(tempListLT[0].ItemArray[1].ToString());
         }
 
+        #endregion Add Class
+
+        #region Show Info Click TKB Mini
+
         private void ShowInfo(object sender, EventArgs e)
         {
             ResetInfo();
@@ -355,6 +384,10 @@ namespace ManageSchedule
                 }
         }
 
+        #endregion Show Info Click TKB Mini
+
+        #region Delete Class
+
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (labelMaMon.Text == string.Empty)
@@ -390,6 +423,8 @@ namespace ManageSchedule
             DanhSachMaMonDaChon.Remove(MaMon);
             ResetInfo();
         }
+
+        #endregion Delete Class
 
         private string CheckTKB(string Thu, string tiets)
         {
@@ -431,6 +466,8 @@ namespace ManageSchedule
             labelHeDaoTao.Text = string.Empty;
         }
 
+        #region Lam Moi
+
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < 12; i++)
@@ -446,6 +483,10 @@ namespace ManageSchedule
             DanhSachMaMonDaChon.Clear();
             posColor = -1;
         }
+
+        #endregion Lam Moi
+
+        #region Show Info Click DTGV
 
         private void DataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -502,6 +543,15 @@ namespace ManageSchedule
             }
 
             //DataGridView.SelectedRows[0].Selected = false;
+        }
+
+        #endregion Show Info Click DTGV
+
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            FormXemTKB formShow = new FormXemTKB(strTKB, DanhSachLopHocLTDaChon, DanhSachLopHocTHDaChon, curUser);
+            formShow.ShowDialog();
+            //formShow.Dispose();
         }
     }
 }

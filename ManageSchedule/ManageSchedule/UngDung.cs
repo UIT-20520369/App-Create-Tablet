@@ -12,14 +12,24 @@ namespace ManageSchedule
 {
     public partial class FormUngDung : Form
     {
+        #region Declare
+
         private Button curButton;
         private Panel leftBorderBtn;
         private Form curChildForm;
 
         private string hedaotao = string.Empty;
-        public FormUngDung(string hdt)
+        private string curUser = string.Empty;
+
+        #endregion Declare
+
+        #region Constructor
+
+        public FormUngDung(string hdt, string us)
         {
             InitializeComponent();
+
+            curUser = us;
             toolTipThoat.SetToolTip(btnThoat, "Thoát");
             toolTipMini.SetToolTip(btnMini, "Minimize");
             hedaotao = hdt;
@@ -33,6 +43,8 @@ namespace ManageSchedule
             CheckBoxOther.Checked = false;
             SetupDay();
         }
+
+        #endregion Constructor
 
         #region AnimationOfFeatureButton
 
@@ -117,19 +129,19 @@ namespace ManageSchedule
         private void btnBangTin_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, Color.FromArgb(71, 139, 162), "Bảng tin");
-            OpenChildForm(new FormBangTin(), 0);
+            OpenChildForm(new FormBangTin(curUser), 0);
         }
 
         private void btnTaoLich_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, Color.FromArgb(71, 139, 162), "Tạo lịch học");
-            OpenChildForm(new FormTaoLich(hedaotao), 1);
+            OpenChildForm(new FormTaoLich(hedaotao, curUser), 1);
         }
 
         private void btnXemLich_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, Color.FromArgb(71, 139, 162), "Xem lịch học");
-            OpenChildForm(new FormXemLich(), 2);
+            OpenChildForm(new FormXemLich(curUser), 2);
         }
 
         private void btnDeadline_Click(object sender, EventArgs e)
@@ -152,6 +164,8 @@ namespace ManageSchedule
 
         #endregion FeatureButtonClick
 
+        #region Dang Xuat
+
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
             CaiDat.SetPreLogin(string.Empty, string.Empty);
@@ -160,6 +174,9 @@ namespace ManageSchedule
             Application.Restart();
         }
 
+        #endregion Dang Xuat
+
+        #region Thoat
         private void btnThoat_Click(object sender, EventArgs e)
         {
             BatDau.isThoat = true;
@@ -168,6 +185,10 @@ namespace ManageSchedule
             ShowInTaskbar = false;
             //Application.Exit();
         }
+
+        #endregion Thoat
+
+        #region Home
 
         private void btnHome_Click(object sender, EventArgs e)
         {
@@ -179,6 +200,8 @@ namespace ManageSchedule
             curChildForm = null;
             Reset();
         }
+
+        #endregion Home
 
         private void Reset()
         {

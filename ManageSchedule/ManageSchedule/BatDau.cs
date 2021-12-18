@@ -50,7 +50,7 @@ namespace ManageSchedule
                 this.Show();
         }
 
-        private void btnDangKy_Click(object sender, EventArgs e)
+        internal void btnDangKy_Click(object sender, EventArgs e)
         {
             isThoat = false;
             FormDangKy dangky = new FormDangKy();

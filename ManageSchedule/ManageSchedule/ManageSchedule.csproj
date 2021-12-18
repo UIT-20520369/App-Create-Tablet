@@ -144,6 +144,15 @@
     <Reference Include="ExcelDataReader.DataSet, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelDataReader.DataSet.3.6.0\lib\net35\ExcelDataReader.DataSet.dll</HintPath>
     </Reference>
+    <Reference Include="Spire.License, Version=1.4.0.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.XLS.11.8.6\lib\net40\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=7.8.9.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.XLS.11.8.6\lib\net40\Spire.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.XLS, Version=11.8.6.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.XLS.11.8.6\lib\net40\Spire.XLS.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -214,6 +223,12 @@
     <Compile Include="FormDoiMatKhau.Designer.cs">
       <DependentUpon>FormDoiMatKhau.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormQuenMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormQuenMatKhau.Designer.cs">
+      <DependentUpon>FormQuenMatKhau.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTaoLich.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +250,12 @@
     <Compile Include="Classes\HangSo.cs" />
     <Compile Include="Classes\MaHoa.cs" />
     <Compile Include="Classes\Program.cs" />
+    <Compile Include="FormXemTKB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormXemTKB.Designer.cs">
+      <DependentUpon>FormXemTKB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\TaiKhoan.cs" />
     <Compile Include="UngDung.cs">
@@ -270,6 +291,9 @@
     <EmbeddedResource Include="FormDoiMatKhau.resx">
       <DependentUpon>FormDoiMatKhau.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormQuenMatKhau.resx">
+      <DependentUpon>FormQuenMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormTaoLich.resx">
       <DependentUpon>FormTaoLich.cs</DependentUpon>
     </EmbeddedResource>
@@ -278,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDungNgay.resx">
       <DependentUpon>FormDungNgay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormXemTKB.resx">
+      <DependentUpon>FormXemTKB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -368,6 +395,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\chevron-circle-right.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

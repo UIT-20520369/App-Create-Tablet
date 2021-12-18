@@ -17,6 +17,7 @@ namespace ManageSchedule
     {
         bool isShowPass = false;
         SqlConnection sqlCon = null;
+        string curUser = "";
         public FormDangNhap()
         {
             InitializeComponent();
@@ -114,6 +115,9 @@ namespace ManageSchedule
 
                 while (reader.Read())
                 {
+                    if (reader.GetString(3) == "null")
+                        continue;
+
                     hedaotao = reader.GetString(3);
                     string dbTaiKhoan = reader.GetString(5);
                     string dbMatKhau = reader.GetString(6);
@@ -121,6 +125,7 @@ namespace ManageSchedule
                     if (taikhoan == dbTaiKhoan && matkhau == dbMatKhau)
                     {
                         isLogin = true;
+                        curUser = dbTaiKhoan;
                         break;
                     }
                 }
@@ -146,7 +151,7 @@ namespace ManageSchedule
                         hedaotao = "CQUI";
                     else
                         hedaotao = "CLC";
-                    FormUngDung ungdung = new FormUngDung(hedaotao);
+                    FormUngDung ungdung = new FormUngDung(hedaotao, curUser);
                     ungdung.ShowDialog();
                 }
             }
@@ -156,84 +161,6 @@ namespace ManageSchedule
                 BatDau.isThoat = true;
                 Application.Exit();
             }
-
-            /*string taikhoan = textBoxTaiKhoan.Text.Trim();
-            string matkhau = textBoxMatKhau.Text.Trim();
-            string hedaotao = string.Empty;
-
-            if (taikhoan == string.Empty)
-            {
-                textBoxTaiKhoan.Focus();
-                MessageBox.Show("Vui lòng nhập tài khoản", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            if (matkhau == string.Empty)
-            {
-                textBoxMatKhau.Focus();
-                MessageBox.Show("Vui lòng nhập mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            try
-            {
-                if (sqlCon == null)
-                    sqlCon = new SqlConnection(HangSo.strCon);
-
-                if (sqlCon.State == ConnectionState.Closed)
-                    sqlCon.Open();
-
-                using (SHA256 sha256Hash = SHA256.Create())
-                {
-                    SqlCommand sqlCmd = new SqlCommand();
-                    sqlCmd.CommandType = CommandType.Text;
-                    sqlCmd.CommandText = "select * from dbo.THONGTINTAIKHOAN";
-
-                    sqlCmd.Connection = sqlCon;
-
-                    SqlDataReader reader = sqlCmd.ExecuteReader();
-                    bool isLogin = false;
-
-                    while (reader.Read())
-                    {
-                        hedaotao = reader.GetString(3);
-                        string dbTaiKhoan = reader.GetString(5);
-                        string dbMatKhau = reader.GetString(6);
-
-                        if (textBoxTaiKhoan.Text == dbTaiKhoan && MaHoa.VerifyHash(sha256Hash, textBoxMatKhau.Text, dbMatKhau))
-                        {
-                            isLogin = true;
-                            break;
-                        }
-                    }
-
-                    reader.Close();
-                    sqlCmd.Dispose();
-                    sqlCon.Close();
-
-                    if (!isLogin)
-                    {
-                        MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        this.Hide();
-                        this.Close();
-                        if (hedaotao == "Chính quy")
-                            hedaotao = "CQUI";
-                        else
-                            hedaotao = "CLC";
-                        FormUngDung ungdung = new FormUngDung(hedaotao);
-                        ungdung.ShowDialog();
-                    }
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Lỗi mạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                BatDau.isThoat = true;
-                Application.Exit();
-            }*/
         }
 
         #endregion Login
@@ -242,6 +169,14 @@ namespace ManageSchedule
         {
             if (e.KeyCode == Keys.Enter)
                 btnDangNhap_Click(this, new EventArgs());
+        }
+
+        private void LinkLabelQuenMatKhau_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            FormQuenMatKhau newForm = new FormQuenMatKhau();
+            newForm.ShowDialog();
+            this.Show();
         }
     }
 }
