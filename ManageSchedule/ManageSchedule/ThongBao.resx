@@ -117,47 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="BoTronBaoLoi.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnSend.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnDelete.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAJYAAAAnCAYAAADtl7EyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALHSURBVHhe7Zy/axRBFMevtExpsT8sLS0tU1pJGnvLINj5
-        B1hYWMjNroqFjVgLdgErIVVKC4uARUAQTjxDLtEYyXFvfN/ZUcjdu7g/LkXuvg8+OS7zdm5hvrw382Zn
-        e20td349df5hXsibrJAPFd6Ty0w1jhhTjG3i/EYc7ou1vJSbUUi/lAP75sgSMUoLGWelbF2IyDQ6Xcuc
-        vE9LimmFGYVo5vyNKItuljp5oqqloEgghcBKeZu/8leiRJoZLlSFvlNh/bB+gKwuiZucagb7mD/3V6Nc
-        6hlSn6a9T6EDo2NCgGayQe3UiEgFUVkdETKNZrRvCERRPvNN09920mekIvVBIDp3zhUm6pxTkYZUgUi2
-        o4zOGnJlWky+WxcSUoORWetCncpwJqQ2mu32opwq02i1zko66YquEo+yUu5HWWm0KmXLciSkKSqu3SCq
-        UF4o5MRyIqQpWPyF8kNSyi3uAZLFIccaqDaRBl/bDoS0RBeCXA2ShRPmWfhjNRLSFtXUEMIaWo2EdKFn
-        /ZOQriBiHVoNhHQBG897VgMhbUGwwmMyO1YjIW0Je4bVqRvbgZB2yI6mQn+Xz2CRRaFaGid9eYQnG9b0
-        y2/LiZCm4BQPnu0LG9EauniKmSyEUBz9a/plE5uHliMhdUmLyVh15KKsKmPZgXRFAxRO7KxFSVWG55W1
-        cTTtTEgdVFQ/s1IeRDmdNc61SFtUWIO5R8DCCrGQL9aFhMwjLeVr/tRfjzKyDQ5wtDogZBbZ1887UT7n
-        W/pMbvOMIfk/sp8Uci/Kpp6hyKWR67PdISEy0M96kWra8JoanXPtKkezHZNVJHFygnn4v+p6F8MhxBD2
-        tFPrx8jyk7rJWAV1kPX945laVRcLL2LTTrXzIfaDsNlo3QBZLnA0UMf8UHm5UEFZhjCIHWzUvSA064bI
-        5aUa0/AG5Rd4oXEc9gbW6/0BvYMSuNGLsh0AAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC/SURBVDhPvZI9CsJAEIWnTOkRLC09ibVHsPEsgmfIFWzT
+        5gjWKYKgiESIgiHGb5INrsuwpHLhY2f3vcewP+KPt8gaMrh0Ip3OkMPGWb4Dw8yJlZpD2K/hSD13kb5D
+        Hhot8BXMiQa2cA8NFq3IE+9+cpcR/KWGHpYYQy/BFGL8McSZGkuIoSF9NFO0wF9paMf9T+6G/6BnSihO
+        oWiB78Y8fCWKJRtnePkmH7QrrPrAOBD006bw89isG8ioF4NT5AOB9FiRO/E1CQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnOpenFile.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAJYAAAAnCAYAAADtl7EyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALHSURBVHhe7Zy/axRBFMevtExpsT8sLS0tU1pJGnvLINj5
-        B1hYWMjNroqFjVgLdgErIVVKC4uARUAQTjxDLtEYyXFvfN/ZUcjdu7g/LkXuvg8+OS7zdm5hvrw382Zn
-        e20td349df5hXsibrJAPFd6Ty0w1jhhTjG3i/EYc7ou1vJSbUUi/lAP75sgSMUoLGWelbF2IyDQ6Xcuc
-        vE9LimmFGYVo5vyNKItuljp5oqqloEgghcBKeZu/8leiRJoZLlSFvlNh/bB+gKwuiZucagb7mD/3V6Nc
-        6hlSn6a9T6EDo2NCgGayQe3UiEgFUVkdETKNZrRvCERRPvNN09920mekIvVBIDp3zhUm6pxTkYZUgUi2
-        o4zOGnJlWky+WxcSUoORWetCncpwJqQ2mu32opwq02i1zko66YquEo+yUu5HWWm0KmXLciSkKSqu3SCq
-        UF4o5MRyIqQpWPyF8kNSyi3uAZLFIccaqDaRBl/bDoS0RBeCXA2ShRPmWfhjNRLSFtXUEMIaWo2EdKFn
-        /ZOQriBiHVoNhHQBG897VgMhbUGwwmMyO1YjIW0Je4bVqRvbgZB2yI6mQn+Xz2CRRaFaGid9eYQnG9b0
-        y2/LiZCm4BQPnu0LG9EauniKmSyEUBz9a/plE5uHliMhdUmLyVh15KKsKmPZgXRFAxRO7KxFSVWG55W1
-        cTTtTEgdVFQ/s1IeRDmdNc61SFtUWIO5R8DCCrGQL9aFhMwjLeVr/tRfjzKyDQ5wtDogZBbZ1887UT7n
-        W/pMbvOMIfk/sp8Uci/Kpp6hyKWR67PdISEy0M96kWra8JoanXPtKkezHZNVJHFygnn4v+p6F8MhxBD2
-        tFPrx8jyk7rJWAV1kPX945laVRcLL2LTTrXzIfaDsNlo3QBZLnA0UMf8UHm5UEFZhjCIHWzUvSA064bI
-        5aUa0/AG5Rd4oXEc9gbW6/0BvYMSuNGLsh0AAAAASUVORK5CYII=
-</value>
-  </data>
-  <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>145, 17</value>
-  </metadata>
 </root>

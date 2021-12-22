@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 
 namespace ManageSchedule
 {
@@ -228,6 +229,20 @@ namespace ManageSchedule
         {
             try
             {
+                if (string.IsNullOrEmpty(TextBoxMatKhau.Text) || string.IsNullOrEmpty(TextBoxNhapLai.Text))
+                {
+                    MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (isMatKhau(TextBoxMatKhau.Text) == false)
+                {
+                    TextBoxMatKhau.Text = "";
+                    TextBoxMatKhau.Focus();
+                    MessageBox.Show("Mật khẩu có độ dài ít nhất 5 ký tự, tối đa 20 ký tự bao gồm a-z, A-Z, 0-9", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 if (TextBoxMatKhau.Text == TextBoxNhapLai.Text)
                 {
                     if (sqlCon == null)
@@ -258,15 +273,25 @@ namespace ManageSchedule
                 }
                 else
                 {
-                    MessageBox.Show("Mật khẩu xác nhận không trùng khớp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Mật khẩu xác nhận không trùng khớp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch
             {
-                MessageBox.Show("Lỗi mạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Lỗi mạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 BatDau.isThoat = true;
                 Application.Exit();
             }
+        }
+
+        public static bool isMatKhau(string input)
+        {
+            string strRegex = @"^[a-zA-Z0-9]{5,20}$";
+            Regex re = new Regex(strRegex);
+            if (re.IsMatch(input))
+                return (true);
+            else
+                return (false);
         }
     }
 }

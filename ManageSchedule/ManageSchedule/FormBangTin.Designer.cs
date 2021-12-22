@@ -70,7 +70,7 @@ namespace ManageSchedule
             this.btnXuat.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
             this.btnXuat.IdleForecolor = System.Drawing.Color.Black;
             this.btnXuat.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
-            this.btnXuat.Location = new System.Drawing.Point(314, 599);
+            this.btnXuat.Location = new System.Drawing.Point(330, 594);
             this.btnXuat.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnXuat.Name = "btnXuat";
             this.btnXuat.Size = new System.Drawing.Size(210, 45);
@@ -96,7 +96,7 @@ namespace ManageSchedule
             this.btnHuy.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
             this.btnHuy.IdleForecolor = System.Drawing.Color.Black;
             this.btnHuy.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
-            this.btnHuy.Location = new System.Drawing.Point(614, 600);
+            this.btnHuy.Location = new System.Drawing.Point(594, 594);
             this.btnHuy.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(210, 45);

@@ -97,7 +97,7 @@ namespace ManageSchedule
 
             if (hoten == string.Empty || khoahoc == string.Empty || email == string.Empty || taikhoan == string.Empty || matkhau == string.Empty || xacnhan == string.Empty)
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -107,7 +107,7 @@ namespace ManageSchedule
             {
                 if (khoa < 1 || khoa > khoahochientai)
                 {
-                    MessageBox.Show("Khóa học phải là số nguyên từ 1 đến " + khoahochientai.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Khóa học phải là số nguyên từ 1 đến " + khoahochientai.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBoxKhoaHoc.Text = "";
                     textBoxKhoaHoc.Focus();
                     return;
@@ -117,7 +117,7 @@ namespace ManageSchedule
             {
                 textBoxKhoaHoc.Text = "";
                 textBoxKhoaHoc.Focus();
-                MessageBox.Show("Khóa học phải là số nguyên từ 1 đến " + khoahochientai.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Khóa học phải là số nguyên từ 1 đến " + khoahochientai.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -125,7 +125,7 @@ namespace ManageSchedule
             {
                 textBoxEmail.Text = "";
                 textBoxEmail.Focus();
-                MessageBox.Show("Email không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Email không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -133,7 +133,7 @@ namespace ManageSchedule
             {
                 textBoxTaiKhoan.Text = "";
                 textBoxTaiKhoan.Focus();
-                MessageBox.Show("Tài khoản có độ dài ít nhất 4 ký tự, tối đa 20 ký tự bao gồm a-z, A-Z, 0-9, gạch dưới", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Tài khoản có độ dài ít nhất 4 ký tự, tối đa 20 ký tự bao gồm a-z, A-Z, 0-9, gạch dưới", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -141,7 +141,7 @@ namespace ManageSchedule
             {
                 textBoxMatKhau.Text = "";
                 textBoxMatKhau.Focus();
-                MessageBox.Show("Mật khẩu có độ dài ít nhất 5 ký tự, tối đa 20 ký tự bao gồm a-z, A-Z, 0-9", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Mật khẩu có độ dài ít nhất 5 ký tự, tối đa 20 ký tự bao gồm a-z, A-Z, 0-9", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -149,7 +149,7 @@ namespace ManageSchedule
             {
                 textBoxXacNhan.Text = "";
                 textBoxXacNhan.Focus();
-                MessageBox.Show("Xác nhận mật khẩu không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Xác nhận mật khẩu không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -175,7 +175,7 @@ namespace ManageSchedule
                     string dbTaiKhoan = reader.GetString(5);
                     if (textBoxTaiKhoan.Text == dbTaiKhoan)
                     {
-                        MessageBox.Show("Tài khoản đã được đăng kí", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Tài khoản đã được đăng kí", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         isExists = true;
                         break;
                     }
@@ -236,7 +236,7 @@ namespace ManageSchedule
                     if (kq > 0)
                         MessageBox.Show("Đăng ký thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
-                        MessageBox.Show("Đăng ký không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Đăng ký không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                     textBoxHoTen.Text = "";
                     textBoxKhoaHoc.Text = "";
@@ -253,7 +253,7 @@ namespace ManageSchedule
             }
             catch
             {
-                MessageBox.Show("Lỗi mạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Lỗi mạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 BatDau.isThoat = true;
                 Application.Exit();
             }

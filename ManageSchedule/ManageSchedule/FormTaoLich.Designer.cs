@@ -177,6 +177,8 @@ namespace ManageSchedule
             // DataGridView
             // 
             this.DataGridView.AllowCustomTheming = false;
+            this.DataGridView.AllowUserToAddRows = false;
+            this.DataGridView.AllowUserToDeleteRows = false;
             this.DataGridView.AllowUserToResizeColumns = false;
             this.DataGridView.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
@@ -1938,9 +1940,9 @@ namespace ManageSchedule
             borderEdges3.TopRight = true;
             this.btnXem.CustomizableEdges = borderEdges3;
             this.btnXem.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnXem.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnXem.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnXem.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnXem.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(82)))), ((int)(((byte)(51)))));
+            this.btnXem.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(82)))), ((int)(((byte)(51)))));
+            this.btnXem.DisabledForecolor = System.Drawing.Color.White;
             this.btnXem.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
             this.btnXem.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXem.ForeColor = System.Drawing.Color.White;
@@ -1962,12 +1964,12 @@ namespace ManageSchedule
             this.btnXem.IndicateFocus = false;
             this.btnXem.Location = new System.Drawing.Point(59, 188);
             this.btnXem.Name = "btnXem";
-            this.btnXem.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnXem.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(82)))), ((int)(((byte)(51)))));
             this.btnXem.OnDisabledState.BorderRadius = 30;
             this.btnXem.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             this.btnXem.OnDisabledState.BorderThickness = 1;
-            this.btnXem.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnXem.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnXem.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(82)))), ((int)(((byte)(51)))));
+            this.btnXem.OnDisabledState.ForeColor = System.Drawing.Color.White;
             this.btnXem.OnDisabledState.IconLeftImage = null;
             this.btnXem.OnDisabledState.IconRightImage = null;
             this.btnXem.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(82)))), ((int)(((byte)(51)))));

@@ -77,7 +77,7 @@ namespace ManageSchedule
         {
             if (TextBoxMatKhauHienTai.Text == string.Empty || TextBoxMatKhauMoi.Text == string.Empty || TextBoxXacNhanMatKhau.Text.Trim() == string.Empty)
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -88,7 +88,7 @@ namespace ManageSchedule
             {
                 TextBoxMatKhauHienTai.Text = "";
                 TextBoxMatKhauHienTai.Focus();
-                MessageBox.Show("Mật khẩu hiện tại không chính xác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Mật khẩu hiện tại không chính xác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -96,7 +96,7 @@ namespace ManageSchedule
             {
                 TextBoxMatKhauMoi.Text = "";
                 TextBoxMatKhauMoi.Focus();
-                MessageBox.Show("Mật khẩu mới phải có độ dài ít nhất 5 ký tự, tối đa 20 ký tự bao gồm a-z, A-Z, 0-9", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Mật khẩu mới phải có độ dài ít nhất 5 ký tự, tối đa 20 ký tự bao gồm a-z, A-Z, 0-9", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -104,7 +104,7 @@ namespace ManageSchedule
             {
                 TextBoxXacNhanMatKhau.Text = "";
                 TextBoxXacNhanMatKhau.Focus();
-                MessageBox.Show("Xác nhận mật khẩu không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Xác nhận mật khẩu không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -115,7 +115,7 @@ namespace ManageSchedule
             }
             else
             {
-                MessageBox.Show("Đổi mật khẩu không thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Đổi mật khẩu không thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             this.Close();

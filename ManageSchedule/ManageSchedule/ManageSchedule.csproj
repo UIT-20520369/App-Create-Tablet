@@ -181,6 +181,9 @@
     <Compile Include="ChildFormCongViec.Designer.cs">
       <DependentUpon>ChildFormCongViec.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\ItemThongBao.cs" />
+    <Compile Include="Classes\OneDay.cs" />
+    <Compile Include="Classes\OneEvent.cs" />
     <Compile Include="DangKy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,17 +220,47 @@
     <Compile Include="FormCongViec.Designer.cs">
       <DependentUpon>FormCongViec.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDayView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDayView.Designer.cs">
+      <DependentUpon>FormDayView.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDoiMatKhau.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormDoiMatKhau.Designer.cs">
       <DependentUpon>FormDoiMatKhau.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormEditEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditEvent.Designer.cs">
+      <DependentUpon>FormEditEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGoiY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGoiY.Designer.cs">
+      <DependentUpon>FormGoiY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMonthView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMonthView.Designer.cs">
+      <DependentUpon>FormMonthView.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormQuenMatKhau.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormQuenMatKhau.Designer.cs">
       <DependentUpon>FormQuenMatKhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormShowSuKien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormShowSuKien.Designer.cs">
+      <DependentUpon>FormShowSuKien.cs</DependentUpon>
     </Compile>
     <Compile Include="FormTaoLich.cs">
       <SubType>Form</SubType>
@@ -256,8 +289,50 @@
     <Compile Include="FormXemTKB.Designer.cs">
       <DependentUpon>FormXemTKB.cs</DependentUpon>
     </Compile>
+    <Compile Include="ItemGoiY\FormChonMaLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemGoiY\FormChonMaLop.Designer.cs">
+      <DependentUpon>FormChonMaLop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemGoiY\FormChonMaMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemGoiY\FormChonMaMon.Designer.cs">
+      <DependentUpon>FormChonMaMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemGoiY\FormChonRangBuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemGoiY\FormChonRangBuoc.Designer.cs">
+      <DependentUpon>FormChonRangBuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemGoiY\FormKetQua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemGoiY\FormKetQua.Designer.cs">
+      <DependentUpon>FormKetQua.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemGoiY\FormXemKetQua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemGoiY\FormXemKetQua.Designer.cs">
+      <DependentUpon>FormXemKetQua.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MotSuKien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MotSuKien.Designer.cs">
+      <DependentUpon>MotSuKien.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\TaiKhoan.cs" />
+    <Compile Include="ThongBao.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ThongBao.Designer.cs">
+      <DependentUpon>ThongBao.cs</DependentUpon>
+    </Compile>
     <Compile Include="UngDung.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,11 +363,26 @@
     <EmbeddedResource Include="FormCongViec.resx">
       <DependentUpon>FormCongViec.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormDayView.resx">
+      <DependentUpon>FormDayView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDoiMatKhau.resx">
       <DependentUpon>FormDoiMatKhau.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormEditEvent.resx">
+      <DependentUpon>FormEditEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGoiY.resx">
+      <DependentUpon>FormGoiY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMonthView.resx">
+      <DependentUpon>FormMonthView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormQuenMatKhau.resx">
       <DependentUpon>FormQuenMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormShowSuKien.resx">
+      <DependentUpon>FormShowSuKien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTaoLich.resx">
       <DependentUpon>FormTaoLich.cs</DependentUpon>
@@ -306,6 +396,24 @@
     <EmbeddedResource Include="FormXemTKB.resx">
       <DependentUpon>FormXemTKB.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ItemGoiY\FormChonMaLop.resx">
+      <DependentUpon>FormChonMaLop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemGoiY\FormChonMaMon.resx">
+      <DependentUpon>FormChonMaMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemGoiY\FormChonRangBuoc.resx">
+      <DependentUpon>FormChonRangBuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemGoiY\FormKetQua.resx">
+      <DependentUpon>FormKetQua.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemGoiY\FormXemKetQua.resx">
+      <DependentUpon>FormXemKetQua.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MotSuKien.resx">
+      <DependentUpon>MotSuKien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -317,6 +425,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ThongBao.resx">
+      <DependentUpon>ThongBao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UngDung.resx">
       <DependentUpon>UngDung.cs</DependentUpon>
     </EmbeddedResource>
@@ -398,6 +509,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Image\chevron-circle-right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\chevron-circle-right-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\chevron-circle-left-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\lightbulb.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

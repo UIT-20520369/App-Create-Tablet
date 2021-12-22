@@ -32,9 +32,7 @@ namespace ManageSchedule
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUngDung));
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.btnBaoLoi = new System.Windows.Forms.Button();
-            this.btnCaiDat = new System.Windows.Forms.Button();
-            this.btnDeadline = new System.Windows.Forms.Button();
+            this.btnGoiY = new System.Windows.Forms.Button();
             this.btnXemLich = new System.Windows.Forms.Button();
             this.btnTaoLich = new System.Windows.Forms.Button();
             this.btnBangTin = new System.Windows.Forms.Button();
@@ -107,6 +105,8 @@ namespace ManageSchedule
             this.tsmiError = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDeadline = new System.Windows.Forms.Button();
+            this.btnBaoLoi = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).BeginInit();
             this.panelBar.SuspendLayout();
@@ -131,8 +131,8 @@ namespace ManageSchedule
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(227)))), ((int)(((byte)(206)))));
             this.panelMenu.Controls.Add(this.btnBaoLoi);
-            this.panelMenu.Controls.Add(this.btnCaiDat);
             this.panelMenu.Controls.Add(this.btnDeadline);
+            this.panelMenu.Controls.Add(this.btnGoiY);
             this.panelMenu.Controls.Add(this.btnXemLich);
             this.panelMenu.Controls.Add(this.btnTaoLich);
             this.panelMenu.Controls.Add(this.btnBangTin);
@@ -143,68 +143,26 @@ namespace ManageSchedule
             this.panelMenu.Size = new System.Drawing.Size(220, 752);
             this.panelMenu.TabIndex = 0;
             // 
-            // btnBaoLoi
+            // btnGoiY
             // 
-            this.btnBaoLoi.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBaoLoi.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBaoLoi.FlatAppearance.BorderSize = 0;
-            this.btnBaoLoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBaoLoi.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBaoLoi.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnBaoLoi.Image = global::ManageSchedule.Properties.Resources.bug;
-            this.btnBaoLoi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBaoLoi.Location = new System.Drawing.Point(0, 429);
-            this.btnBaoLoi.Name = "btnBaoLoi";
-            this.btnBaoLoi.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnBaoLoi.Size = new System.Drawing.Size(220, 60);
-            this.btnBaoLoi.TabIndex = 7;
-            this.btnBaoLoi.Text = "  Báo lỗi";
-            this.btnBaoLoi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBaoLoi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnBaoLoi.UseVisualStyleBackColor = true;
-            this.btnBaoLoi.Click += new System.EventHandler(this.btnBaoloi_Click);
-            // 
-            // btnCaiDat
-            // 
-            this.btnCaiDat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCaiDat.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCaiDat.FlatAppearance.BorderSize = 0;
-            this.btnCaiDat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCaiDat.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCaiDat.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnCaiDat.Image = global::ManageSchedule.Properties.Resources.cog;
-            this.btnCaiDat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCaiDat.Location = new System.Drawing.Point(0, 369);
-            this.btnCaiDat.Name = "btnCaiDat";
-            this.btnCaiDat.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnCaiDat.Size = new System.Drawing.Size(220, 60);
-            this.btnCaiDat.TabIndex = 6;
-            this.btnCaiDat.Text = "  Cài đặt";
-            this.btnCaiDat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCaiDat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCaiDat.UseVisualStyleBackColor = true;
-            this.btnCaiDat.Click += new System.EventHandler(this.btnCaiDat_Click);
-            // 
-            // btnDeadline
-            // 
-            this.btnDeadline.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDeadline.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDeadline.FlatAppearance.BorderSize = 0;
-            this.btnDeadline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeadline.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeadline.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnDeadline.Image = global::ManageSchedule.Properties.Resources.clipboard;
-            this.btnDeadline.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeadline.Location = new System.Drawing.Point(0, 309);
-            this.btnDeadline.Name = "btnDeadline";
-            this.btnDeadline.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnDeadline.Size = new System.Drawing.Size(220, 60);
-            this.btnDeadline.TabIndex = 4;
-            this.btnDeadline.Text = "  Công việc";
-            this.btnDeadline.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeadline.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDeadline.UseVisualStyleBackColor = true;
-            this.btnDeadline.Click += new System.EventHandler(this.btnDeadline_Click);
+            this.btnGoiY.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGoiY.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGoiY.FlatAppearance.BorderSize = 0;
+            this.btnGoiY.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGoiY.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoiY.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnGoiY.Image = global::ManageSchedule.Properties.Resources.lightbulb;
+            this.btnGoiY.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGoiY.Location = new System.Drawing.Point(0, 309);
+            this.btnGoiY.Name = "btnGoiY";
+            this.btnGoiY.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnGoiY.Size = new System.Drawing.Size(220, 60);
+            this.btnGoiY.TabIndex = 8;
+            this.btnGoiY.Text = "  Gợi ý lịch học";
+            this.btnGoiY.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGoiY.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGoiY.UseVisualStyleBackColor = true;
+            this.btnGoiY.Click += new System.EventHandler(this.btnGoiY_Click);
             // 
             // btnXemLich
             // 
@@ -264,7 +222,7 @@ namespace ManageSchedule
             this.btnBangTin.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnBangTin.Size = new System.Drawing.Size(220, 60);
             this.btnBangTin.TabIndex = 1;
-            this.btnBangTin.Text = "  Bảng tin";
+            this.btnBangTin.Text = "  Lịch học";
             this.btnBangTin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBangTin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBangTin.UseVisualStyleBackColor = true;
@@ -1241,6 +1199,48 @@ namespace ManageSchedule
             this.tsmiExit.Text = "Kết thúc";
             this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
             // 
+            // btnDeadline
+            // 
+            this.btnDeadline.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeadline.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDeadline.FlatAppearance.BorderSize = 0;
+            this.btnDeadline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeadline.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeadline.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnDeadline.Image = global::ManageSchedule.Properties.Resources.clipboard;
+            this.btnDeadline.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeadline.Location = new System.Drawing.Point(0, 369);
+            this.btnDeadline.Name = "btnDeadline";
+            this.btnDeadline.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnDeadline.Size = new System.Drawing.Size(220, 60);
+            this.btnDeadline.TabIndex = 9;
+            this.btnDeadline.Text = "  Công việc";
+            this.btnDeadline.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeadline.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDeadline.UseVisualStyleBackColor = true;
+            this.btnDeadline.Click += new System.EventHandler(this.btnDeadline_Click);
+            // 
+            // btnBaoLoi
+            // 
+            this.btnBaoLoi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBaoLoi.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBaoLoi.FlatAppearance.BorderSize = 0;
+            this.btnBaoLoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBaoLoi.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBaoLoi.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnBaoLoi.Image = global::ManageSchedule.Properties.Resources.bug;
+            this.btnBaoLoi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBaoLoi.Location = new System.Drawing.Point(0, 429);
+            this.btnBaoLoi.Name = "btnBaoLoi";
+            this.btnBaoLoi.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnBaoLoi.Size = new System.Drawing.Size(220, 60);
+            this.btnBaoLoi.TabIndex = 10;
+            this.btnBaoLoi.Text = "  Báo lỗi";
+            this.btnBaoLoi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBaoLoi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBaoLoi.UseVisualStyleBackColor = true;
+            this.btnBaoLoi.Click += new System.EventHandler(this.btnBaoloi_Click);
+            // 
             // FormUngDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1290,7 +1290,6 @@ namespace ManageSchedule
         private System.Windows.Forms.Button btnBangTin;
         private System.Windows.Forms.Button btnTaoLich;
         private System.Windows.Forms.Panel panelUngDung;
-        private System.Windows.Forms.Button btnDeadline;
         private System.Windows.Forms.Button btnXemLich;
         private System.Windows.Forms.Label labelChildFormText;
         private System.Windows.Forms.PictureBox childFormLogo;
@@ -1300,8 +1299,6 @@ namespace ManageSchedule
         private Bunifu.Framework.UI.BunifuElipse BoTronBtnMini;
         private System.Windows.Forms.ToolTip toolTipThoat;
         private System.Windows.Forms.ToolTip toolTipMini;
-        private System.Windows.Forms.Button btnCaiDat;
-        private System.Windows.Forms.Button btnBaoLoi;
         private System.Windows.Forms.Panel panelDetailInfo;
         private System.Windows.Forms.Panel panelSetting;
         private System.Windows.Forms.Panel panelAvatar;
@@ -1359,5 +1356,8 @@ namespace ManageSchedule
         private System.Windows.Forms.ToolStripMenuItem tsmiError;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem tsmiExit;
+        private System.Windows.Forms.Button btnGoiY;
+        private System.Windows.Forms.Button btnBaoLoi;
+        private System.Windows.Forms.Button btnDeadline;
     }
 }

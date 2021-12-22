@@ -138,8 +138,9 @@ namespace ManageSchedule
                 }
                 wb.Worksheets[0].Range[colin + rowins + ":" + colin + rowine].Style.Color = Color.FromArgb(255, 255, 255);
                 wb.Worksheets[0].Range[colin + rowins + ":" + colin + rowine].Merge();
-                wb.Worksheets[0].Range[colin + rowins].Value = (rd.GetString(3) + Environment.NewLine + rd.GetString(2)).ToString();
-                int y = rd.GetString(3).Length - 1;
+                string MaLop = rd.GetString(3);
+                wb.Worksheets[0].Range[colin + rowins].Value = (MaLop + Environment.NewLine + rd.GetString(2)).ToString();
+                int y = MaLop.Length - 1;
                 ExcelFont z = wb.CreateFont();
                 z.IsBold = true;
                 z.Size = 13;
@@ -161,24 +162,24 @@ namespace ManageSchedule
             if (PictureBoxTKB.Image != null)
             {
                 PictureBoxTKB.Image.Dispose();
-                wb.Worksheets[0].ToImage(2, 2, 12, 8).Save("TKB.png", ImageFormat.Png);
+                wb.Worksheets[0].ToImage(2, 2, 12, 8).Save("TKB2.png", ImageFormat.Png);
             }
             else
                 try
                 {
-                    wb.Worksheets[0].ToImage(2, 2, 12, 8).Save("TKB.png", ImageFormat.Png);
+                    wb.Worksheets[0].ToImage(2, 2, 12, 8).Save("TKB2.png", ImageFormat.Png);
                 }
                 catch
                 {
                     if (PictureBoxTKB.Image != null)
                     {
                         PictureBoxTKB.Image.Dispose();
-                        wb.Worksheets[0].ToImage(2, 2, 12, 8).Save("TKB.png", ImageFormat.Png);
+                        wb.Worksheets[0].ToImage(2, 2, 12, 8).Save("TKB2.png", ImageFormat.Png);
                     }
                 }
 
             wbExport = wb;
-            PictureBoxTKB.Image = Image.FromFile("TKB.png");
+            PictureBoxTKB.Image = Image.FromFile("TKB2.png");
         }
 
         #endregion Show TKB
@@ -233,6 +234,7 @@ namespace ManageSchedule
 
         private void FormBangTin_FormClosing(object sender, FormClosingEventArgs e)
         {
+            this.Dispose();
             if (PictureBoxTKB.Image != null)
                 PictureBoxTKB.Image.Dispose();
         }

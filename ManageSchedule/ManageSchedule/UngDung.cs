@@ -117,7 +117,7 @@ namespace ManageSchedule
                     childFormLogo.Image = Properties.Resources.bug;
                     break;
                 case 5:
-                    childFormLogo.Image = Properties.Resources.cog;
+                    childFormLogo.Image = Properties.Resources.lightbulb;
                     break;
             }
         }
@@ -128,7 +128,7 @@ namespace ManageSchedule
 
         private void btnBangTin_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Bảng tin");
+            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Lịch học");
             OpenChildForm(new FormBangTin(curUser), 0);
         }
 
@@ -147,7 +147,7 @@ namespace ManageSchedule
         private void btnDeadline_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, Color.FromArgb(71, 139, 162), "Công việc");
-            OpenChildForm(new FormCongViec(panelUngDung), 3);
+            OpenChildForm(new FormCongViec(), 3);
         }
 
         private void btnBaoloi_Click(object sender, EventArgs e)
@@ -156,10 +156,10 @@ namespace ManageSchedule
             OpenChildForm(new FormBaoLoi(), 4);
         }
 
-        private void btnCaiDat_Click(object sender, EventArgs e)
+        private void btnGoiY_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Cài đặt");
-            OpenChildForm(new FormBaoLoi(), 5);
+            ActiveButton(sender, Color.FromArgb(71, 139, 162), "Gợi ý lịch học");
+            OpenChildForm(new FormGoiY(hedaotao, curUser), 5);
         }
 
         #endregion FeatureButtonClick
@@ -361,6 +361,5 @@ namespace ManageSchedule
         }
 
         #endregion SetupDay
-
     }
 }

@@ -44,11 +44,16 @@ namespace ManageSchedule
         public FormTaoLich(string hdt, string x)
         {
             InitializeComponent();
+
+            #region Tooltip
+
             ToolTipAdd.SetToolTip(TextBoxSearch, "Tìm kiếm theo mã môn hoặc mã lớp");
             ToolTipAdd.SetToolTip(btnAdd, "Thêm lớp đã chọn từ danh sách vào thời khóa biểu");
             ToolTipAdd.SetToolTip(btnXoa, "Xóa lớp đã chọn trên thời khóa biểu mini");
             ToolTipAdd.SetToolTip(btnXem, "Xem thời khóa biểu chi tiết");
             ToolTipAdd.SetToolTip(btnLamMoi, "Tạo thời khóa biểu lại từ đầu");
+
+            #endregion Tooltip
 
             // Variable
             HeDaoTao = hdt;
@@ -102,94 +107,103 @@ namespace ManageSchedule
 
         private void FormTaoLich_Load(object sender, EventArgs e)
         {
-            string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
-            string FileName = ConfigurationManager.AppSettings["Path"];
-            string ExcelFile = string.Format(@"{0}\Data{1}", Path.GetFullPath(Path.Combine(RunningPath, @"..\")), FileName);
-
-            using (var stream = File.Open(ExcelFile, FileMode.Open, FileAccess.Read))
+            try
             {
-                IExcelDataReader reader;
+                string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
+                string FileName = ConfigurationManager.AppSettings["Path"];
+                string ExcelFile = string.Format(@"{0}\Data{1}", Path.GetFullPath(Path.Combine(RunningPath, @"..\")), FileName);
 
-                reader = ExcelReaderFactory.CreateOpenXmlReader(stream);
-
-                ds = reader.AsDataSet();
-
-                reader.Close();
-            }
-
-            string MaMon = string.Empty;
-            string MaLop = string.Empty;
-            string TenMon = string.Empty;
-            string Thu = string.Empty;
-            string Tiet = string.Empty;
-            string HDT = string.Empty;
-
-            DataTable dt = ds.Tables[0];
-            bool isRowNull = true;
-            foreach (DataRow row in dt.Rows)
-            {
-                if (row.ItemArray[0].ToString() == "1")
-                    isRowNull = false;
-
-                if (isRowNull == true)
-                    continue;
-
-                MaMon = row.ItemArray[1].ToString();
-                Thu = row.ItemArray[10].ToString();
-                Tiet = row.ItemArray[11].ToString();
-                HDT = row.ItemArray[17].ToString();
-
-                if ((Thu != "*" && Tiet != "*" && HDT == HeDaoTao) || DanhSachMonChinhTri.IndexOf(MaMon) != -1)
-                    DanhSachMonHocLyThuyet.Add(row);
-            }
-
-            int count = 0;
-            int SoTC = 0;
-
-            List<DataRow> DanhSachLopHocBiXoa = new List<DataRow>();
-            foreach (DataRow row in DanhSachMonHocLyThuyet)
-            {
-                bool isThucHanh = false;
-                bool isAdd = false;
-                SoTC = int.Parse(row.ItemArray[7].ToString());
-                MaLop = row.ItemArray[2].ToString();
-                HDT = row.ItemArray[17].ToString();
-                foreach (DataRow rowTH in ds.Tables[1].Rows)
+                using (var stream = File.Open(ExcelFile, FileMode.Open, FileAccess.Read))
                 {
-                    string hdt = rowTH.ItemArray[17].ToString();
-                    string malop = rowTH.ItemArray[2].ToString();
-                    if (hdt == HDT && malop.Contains(MaLop))
-                    {
-                        isThucHanh = true;
-                        if (rowTH.ItemArray[10].ToString() != "*" && rowTH.ItemArray[11].ToString() != "*")
-                        {
-                            if (isAdd == false)
-                                SoTC += int.Parse(rowTH.ItemArray[7].ToString());
-                            DanhSachMonHocThucHanh.Add(rowTH);
-                            isAdd = true;
-                        }
-                    }
+                    IExcelDataReader reader;
+
+                    reader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+
+                    ds = reader.AsDataSet();
+
+                    reader.Close();
                 }
 
-                if (isThucHanh == false || (isThucHanh == true && isAdd == true))
+                string MaMon = string.Empty;
+                string MaLop = string.Empty;
+                string TenMon = string.Empty;
+                string Thu = string.Empty;
+                string Tiet = string.Empty;
+                string HDT = string.Empty;
+
+                DataTable dt = ds.Tables[0];
+                bool isRowNull = true;
+                foreach (DataRow row in dt.Rows)
                 {
-                    count++;
+                    if (row.ItemArray[0].ToString() == "1")
+                        isRowNull = false;
+
+                    if (isRowNull == true)
+                        continue;
+
                     MaMon = row.ItemArray[1].ToString();
-                    TenMon = row.ItemArray[3].ToString();
                     Thu = row.ItemArray[10].ToString();
                     Tiet = row.ItemArray[11].ToString();
-                    row[7] = SoTC;
-                    DataGridView.Rows.Add(new string[] { count.ToString(), MaMon, MaLop, TenMon, SoTC.ToString(), Thu, Tiet, HDT, row.ItemArray[18].ToString() });
+                    HDT = row.ItemArray[17].ToString();
+
+                    if ((Thu != "*" && Tiet != "*" && HDT == HeDaoTao) || DanhSachMonChinhTri.IndexOf(MaMon) != -1)
+                        DanhSachMonHocLyThuyet.Add(row);
                 }
-                else
-                    DanhSachLopHocBiXoa.Add(row);
+
+                int count = 0;
+                int SoTC = 0;
+
+                List<DataRow> DanhSachLopHocBiXoa = new List<DataRow>();
+                foreach (DataRow row in DanhSachMonHocLyThuyet)
+                {
+                    bool isThucHanh = false;
+                    bool isAdd = false;
+                    SoTC = int.Parse(row.ItemArray[7].ToString());
+                    MaLop = row.ItemArray[2].ToString();
+                    HDT = row.ItemArray[17].ToString();
+                    foreach (DataRow rowTH in ds.Tables[1].Rows)
+                    {
+                        string hdt = rowTH.ItemArray[17].ToString();
+                        string malop = rowTH.ItemArray[2].ToString();
+                        if (hdt == HDT && malop.Contains(MaLop))
+                        {
+                            isThucHanh = true;
+                            if (rowTH.ItemArray[10].ToString() != "*" && rowTH.ItemArray[11].ToString() != "*")
+                            {
+                                if (isAdd == false)
+                                    SoTC += int.Parse(rowTH.ItemArray[7].ToString());
+                                DanhSachMonHocThucHanh.Add(rowTH);
+                                isAdd = true;
+                            }
+                        }
+                    }
+
+                    if (isThucHanh == false || (isThucHanh == true && isAdd == true))
+                    {
+                        count++;
+                        MaMon = row.ItemArray[1].ToString();
+                        TenMon = row.ItemArray[3].ToString();
+                        Thu = row.ItemArray[10].ToString();
+                        Tiet = row.ItemArray[11].ToString();
+                        row[7] = SoTC;
+                        DataGridView.Rows.Add(new string[] { count.ToString(), MaMon, MaLop, TenMon, SoTC.ToString(), Thu, Tiet, HDT, row.ItemArray[18].ToString() });
+                    }
+                    else
+                        DanhSachLopHocBiXoa.Add(row);
+                }
+
+                foreach (DataRow row in DanhSachLopHocBiXoa)
+                    DanhSachMonHocLyThuyet.Remove(row);
+
+                int idx = DataGridView.SelectedRows[0].Index;
+                DataGridView.Rows[idx].Selected = false;
             }
-
-            foreach (DataRow row in DanhSachLopHocBiXoa)
-                DanhSachMonHocLyThuyet.Remove(row);
-
-            int idx = DataGridView.SelectedRows[0].Index;
-            DataGridView.Rows[idx].Selected = false;
+            catch
+            {
+                MessageBox.Show("File đang được sử dụng ở một tiến trình khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                BatDau.isThoat = true;
+                Application.Exit();
+            }
         }
 
         #endregion Form Load
@@ -257,6 +271,7 @@ namespace ManageSchedule
             AddClass(MaLop);
 
             DataGridView.Rows[idx].Selected = false;
+            btnAdd.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Idle;
         }
 
         private void AddClass(string MaLop)
@@ -422,6 +437,8 @@ namespace ManageSchedule
 
             DanhSachMaMonDaChon.Remove(MaMon);
             ResetInfo();
+
+            btnXoa.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Idle;
         }
 
         #endregion Delete Class
@@ -482,6 +499,8 @@ namespace ManageSchedule
             DanhSachLopHocTHDaChon.Clear();
             DanhSachMaMonDaChon.Clear();
             posColor = -1;
+
+            btnLamMoi.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Idle;
         }
 
         #endregion Lam Moi

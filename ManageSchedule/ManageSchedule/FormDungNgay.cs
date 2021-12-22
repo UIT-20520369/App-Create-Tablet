@@ -125,7 +125,7 @@ namespace ManageSchedule
         private void btnCLC_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, Color.FromArgb(71, 139, 162), "Chất lượng cao");
-            OpenChildForm(new FormTaoLich("CLC", ""), 0);
+            OpenChildForm(new FormTaoLich("CLC", ""), 1);
         }
 
         private void btnHome_Click(object sender, EventArgs e)

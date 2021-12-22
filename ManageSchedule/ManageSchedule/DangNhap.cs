@@ -76,14 +76,14 @@ namespace ManageSchedule
             if (taikhoan == string.Empty)
             {
                 textBoxTaiKhoan.Focus();
-                MessageBox.Show("Vui lòng nhập tài khoản", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Vui lòng nhập tài khoản", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (matkhau == string.Empty)
             {
                 textBoxMatKhau.Focus();
-                MessageBox.Show("Vui lòng nhập mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Vui lòng nhập mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else
@@ -136,7 +136,7 @@ namespace ManageSchedule
 
                 if (!isLogin)
                 {
-                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
@@ -155,9 +155,9 @@ namespace ManageSchedule
                     ungdung.ShowDialog();
                 }
             }
-            catch
+            catch 
             {
-                MessageBox.Show("Lỗi mạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Lỗi mạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 BatDau.isThoat = true;
                 Application.Exit();
             }

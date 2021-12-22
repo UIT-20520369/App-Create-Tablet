@@ -21,7 +21,7 @@ namespace ManageSchedule
         private string curUser = "";
         private string chooseUser = string.Empty;
         private string sttc = string.Empty;
-        private static int pos = 1;
+        private int pos = 1;
         private int maxSL = 0;
         private int Count = 0;
         Workbook wbExport;
@@ -104,9 +104,9 @@ namespace ManageSchedule
                 if (maxSL != 0)
                     Input();
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Lỗi mạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 BatDau.isThoat = true;
                 Application.Exit();
             }
@@ -446,9 +446,9 @@ namespace ManageSchedule
                 labelPos.Text = pos.ToString() + " / " + Count.ToString();
                 PictureBoxTKB.Image = Image.FromFile("TKB.png");
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Lỗi mạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 BatDau.isThoat = true;
                 Application.Exit();
             }
