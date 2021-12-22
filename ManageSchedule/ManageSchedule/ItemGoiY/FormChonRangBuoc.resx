@@ -117,56 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="logoApp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\logoApp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="eye-solid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\eye-solid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bug" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\bug.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="eye-slash-solid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\eye-slash-solid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="calendar-check" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\calendar-check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UIT2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\UIT2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="chevron-circle-left-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\chevron-circle-left-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="desktop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\desktop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="chevron-circle-right" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\chevron-circle-right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="clipboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\clipboard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="chevron-circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\chevron-circle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LogoAppNoneBG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\LogoAppNoneBG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="chevron-circle-right-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\chevron-circle-right-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cog" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\cog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="calendar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\calendar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="lightbulb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\lightbulb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnConfirm.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAH4AAAAhCAYAAAAf+x+qAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF0SURBVHhe7du/SkMxFMfxjI6ODs2No4/gI/gSgovg6Kib
+        DyAkKdJVOju7dnTtGwgOIvgf6j+Qnnhye1tRzgvcc36Bz5TcLt8mt0Pj/o9wXtZ8LHtNohGbNqkU6CNu
+        l2nsEx2EWNa7vPIImbZ9pBs2kz8M+ofeOf79INNOl/nv4NjHPtOL/DD0Xds2UupyL0a70xFdPd75z3z8
+        7y6i13d6ojtpIWhEj+GsbNQj/pB9yYtAJxq5kOhCngS9aFp3/LU8CXrRh5MnQDuENwrhjUJ4oxDeKIQ3
+        CuGNQnijEN4ohDcK4Y1CeKMQ3iiENwrhjUJ4oxDeKOcTPUgToBc3/3ZNpIk0CXrVv9vxji9H9RsgLQCl
+        Mo1diGWTw+MyhRH14ky9QNNequDjfp93/qu0EPTgI37GTtvoy1Hf9T7N36QHoP8Gcf7ZJLqqN6e65L/D
+        53LCk0/Sg9Bf9Xj3QxqK0ZcjDMtWvV2DixYa0C3/kLtcvdNXw7kf84zr39OzbpAAAAAASUVORK5CYII=
+</value>
   </data>
 </root>

@@ -117,56 +117,69 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="logoApp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\logoApp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <metadata name="MaMon.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="TenMon.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="SoTC.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Khoa.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="TextBoxSearch.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAQQAAAAqCAYAAABV2SX4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALWSURBVHhe7d0xa1pRGMbxO2bM2LEfIWPGfoKSMR+hdOtY
+        6Afo1i1DIUOnDoVuhU7V6zFWRAwioaYkRhERsaJG2ksiYt/35s0pUmlip+j5/+AMyb3XTM/jufcYTwQA
+        K8tkMnv5fP7D0dHRsY5sNjtnMBgPc9zmVDMr2d2XsWVR/n/yItvOuddxHE+r1eqo2+3Oh8NhOgA8XLc5
+        1czWarVxLpdLpCDeSqYfWbxXI83yVMbw/Pw8mc1m9mcArCPNcKvVmkqmx1IMzy3m9yMXvahUKoPpdGov
+        B2ATaDGcnJwMCoXCocX937QM9AK7HsAGajQaiZTCe4v9cnqboDMDuwbABjs9PR07515a/Bfpwwa9v+B5
+        ARAGzXqxWPwh2d+xGvhDn0DqQwc7F0AA+v2+LlF+sRq4oWuUuizB7AAIjxTCRDrgsdVBWgj7ulZpxwEE
+        5OzsLInj+JXVQXq78KnX69lhACHRDzBJBxxbHaSrC9/GYyYIQIiSJJk75/pWB1GkP+gvAYRJ///B6iCK
+        9AcA4aIQAHgUAgCPQgDgUQgAPAoBgEchAPAoBAAehQDAoxAAeBQCAI9CAOBRCAA8CgGAt1AIuVxufHV1
+        ZYcAhGahEPL5fGMymdghACHRyYBOCqwO0q9Q+zoYsB0DECKdDOikwOog/ZLVZ/V6/acdBxCQi4sL3fPx
+        jdXBzSYtzjkKAQhQqVQaSgfsWh3c0M0adNMGAOH463bhljTETrFYHNl5AAJQrVZHkv09q4FFhULhQO4n
+        Lu1cABus0+lcy53BR4v/clIKcbfbvbZrAGwg3YdFsl6T2cGWRX85PUFLodls/rJrAWwQfcOXmcF3yfq2
+        xf5uUgqH5XJ5qNs8AVh/+gBRnxlItj/fOTNYRi56onu+6bJEu91Ot3wCsD40s51OZ65v7rqaIJle/gBx
+        FfIiu865A93yTT/zzGAw1mNoZqUI3umbu8UZAO4jin4DzWr7hvP5sJMAAAAASUVORK5CYII=
+</value>
   </data>
-  <data name="eye-solid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\eye-solid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnSelect.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAH0AAAAeCAYAAAAB4BHRAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHBSURBVGhD7ZuhTgNBEIZPIpGI27tKHgGJRCKRGN4CwQMQ
+        9q7B8wAkOBIUCaqyAk9SUQNpaAMpSZvOMnO3hECnBNnO/pN8ave24tvZm2tms1VRXoWtvKKjoqbboqK+
+        q+ilqEIA60nrh/qFp3vnw3Hpw3ZU+b/IazrgBUa80ET7AbDeOE9v7O6VN8BJVLo6ZHdwZt+4mh9QFgOb
+        havCmJO3V16Gnaj4Z4hw3iGD3C9m2gJgc+EkHrDfTlT9HZLhEG4Z6kfVbcg7HEe6bVy1eHd1OGuES5Uu
+        RZs2EViDRmU37GZS3ku1p08CluBsn7N4n8l3nTYB2IQT/Clj80NtENiEv9/nIn2qDQK7sHR9ANgF0hME
+        0hME0hME0hME0hME0hME0hMkk39otAFgF5GO3rfE4OOdetoAsAoNs6JLp66mD30CsEZZ0bX0xnWazkll
+        AjDHOPfhsOmecZ7O0Uhhm7b/ke4a4RJNy5SnR20ysAGf5s9LFyCkdwqVvE34PT5i4ftR9c8oa9qLve8o
+        7AyQXyxmMcN14V8hR73rUpfPfxR3GwzLnrDDh6Uj/a+Q3SHlffuwvjBYR2gql07l8mlU+Suy7BPyHkc1
+        JjuaBAAAAABJRU5ErkJggg==
+</value>
   </data>
-  <data name="bug" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\bug.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="eye-slash-solid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\eye-slash-solid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="calendar-check" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\calendar-check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UIT2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\UIT2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="chevron-circle-left-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\chevron-circle-left-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="desktop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\desktop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="chevron-circle-right" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\chevron-circle-right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="clipboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\clipboard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="chevron-circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\chevron-circle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LogoAppNoneBG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\LogoAppNoneBG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="chevron-circle-right-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\chevron-circle-right-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cog" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\cog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="calendar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\calendar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="lightbulb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\lightbulb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnDelete.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAH0AAAAeCAYAAAAB4BHRAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHBSURBVGhD7ZuhTgNBEIZPIpGI27tKHgGJRCKRGN4CwQMQ
+        9q7B8wAkOBIUCaqyAk9SUQNpaAMpSZvOMnO3hECnBNnO/pN8ave24tvZm2tms1VRXoWtvKKjoqbboqK+
+        q+ilqEIA60nrh/qFp3vnw3Hpw3ZU+b/IazrgBUa80ET7AbDeOE9v7O6VN8BJVLo6ZHdwZt+4mh9QFgOb
+        havCmJO3V16Gnaj4Z4hw3iGD3C9m2gJgc+EkHrDfTlT9HZLhEG4Z6kfVbcg7HEe6bVy1eHd1OGuES5Uu
+        RZs2EViDRmU37GZS3ku1p08CluBsn7N4n8l3nTYB2IQT/Clj80NtENiEv9/nIn2qDQK7sHR9ANgF0hME
+        0hME0hME0hME0hME0hME0hMkk39otAFgF5GO3rfE4OOdetoAsAoNs6JLp66mD30CsEZZ0bX0xnWazkll
+        AjDHOPfhsOmecZ7O0Uhhm7b/ke4a4RJNy5SnR20ysAGf5s9LFyCkdwqVvE34PT5i4ftR9c8oa9qLve8o
+        7AyQXyxmMcN14V8hR73rUpfPfxR3GwzLnrDDh6Uj/a+Q3SHlffuwvjBYR2gql07l8mlU+Suy7BPyHkc1
+        JjuaBAAAAABJRU5ErkJggg==
+</value>
   </data>
 </root>
