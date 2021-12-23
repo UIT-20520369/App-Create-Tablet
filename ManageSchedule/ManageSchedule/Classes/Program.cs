@@ -22,7 +22,6 @@ namespace ManageSchedule
                 Application.Run(new BatDau());
             }
             catch { }
-            //Application.Run(new FormGoiY("CQUI"));
         }
     }
 }
