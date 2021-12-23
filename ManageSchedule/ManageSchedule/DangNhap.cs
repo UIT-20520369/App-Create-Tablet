@@ -14,7 +14,7 @@ using System.Configuration;
 namespace ManageSchedule
 {
     public partial class FormDangNhap : Form
-    {
+    {      
         bool isShowPass = false;
         SqlConnection sqlCon = null;
         public FormDangNhap()
@@ -69,7 +69,7 @@ namespace ManageSchedule
             {
                 taikhoan = textBoxTaiKhoan.Text.Trim();
                 matkhau = textBoxMatKhau.Text.Trim();
-            }
+            }     
 
             // Không lưu đăng nhập
             if (taikhoan == string.Empty)
@@ -95,7 +95,7 @@ namespace ManageSchedule
             }
 
             // Kiểm tra đăng nhập
-            try
+           try
             {
                 if (sqlCon == null)
                     sqlCon = new SqlConnection(HangSo.strCon);
@@ -114,18 +114,9 @@ namespace ManageSchedule
 
                 while (reader.Read())
                 {
-                    string dbTaiKhoan = "";
-                    string dbMatKhau = "";
-                    try
-                    {
-                        hedaotao = reader.GetString(3);
-                        dbTaiKhoan = reader.GetString(5);
-                        dbMatKhau = reader.GetString(6);
-                    }
-                    catch
-                    {
-                        continue;
-                    }
+                    hedaotao = reader.GetString(3);
+                    string dbTaiKhoan = reader.GetString(5);
+                    string dbMatKhau = reader.GetString(6);
 
                     if (taikhoan == dbTaiKhoan && matkhau == dbMatKhau)
                     {
@@ -251,26 +242,6 @@ namespace ManageSchedule
         {
             if (e.KeyCode == Keys.Enter)
                 btnDangNhap_Click(this, new EventArgs());
-        }
-
-        private void checkBoxNhoMK_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!checkBoxNhoMK.Checked)
-            {
-                DialogResult dr = MessageBox.Show("Bạn sẽ phải đăng nhập lại vào lần tiếp theo sử dụng ứng dụng\nBạn chắc chắn muốn tắt tự động đăng nhập?", "Thông báo", MessageBoxButtons.YesNo);
-                if (dr == DialogResult.Yes)
-                {
-                    CaiDat.SetAutoLogin(false);
-                }
-                else
-                {
-                    checkBoxNhoMK.Checked = true;
-                }
-            }
-            else
-            {
-                CaiDat.SetAutoLogin(true);
-            }
         }
     }
 }

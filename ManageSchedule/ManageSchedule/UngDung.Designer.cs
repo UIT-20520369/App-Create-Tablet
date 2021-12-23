@@ -47,6 +47,7 @@ namespace ManageSchedule
             this.labelChildFormText = new System.Windows.Forms.Label();
             this.panelUngDung = new System.Windows.Forms.Panel();
             this.panelDetailInfo = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.btnChangePassword = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btnEditInfo = new Bunifu.Framework.UI.BunifuThinButton2();
             this.labelSys = new System.Windows.Forms.Label();
@@ -60,12 +61,8 @@ namespace ManageSchedule
             this.labelFullName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelSetting = new System.Windows.Forms.Panel();
-            this.btnChangeSetting = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.label10 = new System.Windows.Forms.Label();
-            this.NumDuringTime = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnChangeSetting = new Bunifu.Framework.UI.BunifuThinButton2();
             this.labelEvent = new System.Windows.Forms.Label();
             this.labelOther = new System.Windows.Forms.Label();
             this.labelDeadline = new System.Windows.Forms.Label();
@@ -81,17 +78,10 @@ namespace ManageSchedule
             this.labelFullNameAva = new System.Windows.Forms.Label();
             this.PictureBoxAvatar = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.panelPlan = new System.Windows.Forms.Panel();
-            this.panelWeelMissedPlan = new System.Windows.Forms.Panel();
+            this.panelWeeklyGraphics = new System.Windows.Forms.Panel();
+            this.panelFrequency = new System.Windows.Forms.Panel();
             this.labelMissed = new System.Windows.Forms.Label();
-            this.btnSeeMissed = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.panelTodayPlan = new System.Windows.Forms.Panel();
-            this.btnSeePlan = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.labelTodayPlan = new System.Windows.Forms.Label();
-            this.panelTodayTablet = new System.Windows.Forms.Panel();
-            this.panelNote = new System.Windows.Forms.Panel();
-            this.panelTodayDeadline = new System.Windows.Forms.Panel();
-            this.panelAfternoon = new System.Windows.Forms.Panel();
-            this.panelMorning = new System.Windows.Forms.Panel();
+            this.btnToWork = new Bunifu.Framework.UI.BunifuThinButton2();
             this.labelDay = new System.Windows.Forms.Label();
             this.BoTronBtnThoat = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.BoTronBtnMini = new Bunifu.Framework.UI.BunifuElipse(this.components);
@@ -106,8 +96,6 @@ namespace ManageSchedule
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.NumStartMin = new ManageSchedule.TimeNumericUD();
-            this.NumStartHour = new ManageSchedule.TimeNumericUD();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).BeginInit();
             this.panelBar.SuspendLayout();
@@ -115,17 +103,12 @@ namespace ManageSchedule
             this.panelUngDung.SuspendLayout();
             this.panelDetailInfo.SuspendLayout();
             this.panelSetting.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumDuringTime)).BeginInit();
             this.panelAvatar.SuspendLayout();
             this.panelSInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxAvatar)).BeginInit();
             this.panelPlan.SuspendLayout();
-            this.panelWeelMissedPlan.SuspendLayout();
-            this.panelTodayPlan.SuspendLayout();
-            this.panelTodayTablet.SuspendLayout();
+            this.panelFrequency.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumStartMin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumStartHour)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -366,6 +349,7 @@ namespace ManageSchedule
             // 
             // panelDetailInfo
             // 
+            this.panelDetailInfo.Controls.Add(this.label6);
             this.panelDetailInfo.Controls.Add(this.btnChangePassword);
             this.panelDetailInfo.Controls.Add(this.btnEditInfo);
             this.panelDetailInfo.Controls.Add(this.labelSys);
@@ -378,10 +362,21 @@ namespace ManageSchedule
             this.panelDetailInfo.Controls.Add(this.label2);
             this.panelDetailInfo.Controls.Add(this.labelFullName);
             this.panelDetailInfo.Controls.Add(this.label1);
-            this.panelDetailInfo.Location = new System.Drawing.Point(523, 362);
+            this.panelDetailInfo.Location = new System.Drawing.Point(31, 34);
             this.panelDetailInfo.Name = "panelDetailInfo";
-            this.panelDetailInfo.Size = new System.Drawing.Size(598, 275);
+            this.panelDetailInfo.Size = new System.Drawing.Size(658, 322);
             this.panelDetailInfo.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label6.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(658, 23);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "THÔNG TIN TÀI KHOẢN";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnChangePassword
             // 
@@ -401,10 +396,10 @@ namespace ManageSchedule
             this.btnChangePassword.IdleFillColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnChangePassword.IdleForecolor = System.Drawing.Color.Black;
             this.btnChangePassword.IdleLineColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnChangePassword.Location = new System.Drawing.Point(391, 226);
+            this.btnChangePassword.Location = new System.Drawing.Point(331, 271);
             this.btnChangePassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnChangePassword.Name = "btnChangePassword";
-            this.btnChangePassword.Size = new System.Drawing.Size(207, 48);
+            this.btnChangePassword.Size = new System.Drawing.Size(205, 44);
             this.btnChangePassword.TabIndex = 10;
             this.btnChangePassword.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
@@ -427,10 +422,10 @@ namespace ManageSchedule
             this.btnEditInfo.IdleFillColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnEditInfo.IdleForecolor = System.Drawing.Color.Black;
             this.btnEditInfo.IdleLineColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnEditInfo.Location = new System.Drawing.Point(178, 227);
+            this.btnEditInfo.Location = new System.Drawing.Point(117, 271);
             this.btnEditInfo.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnEditInfo.Name = "btnEditInfo";
-            this.btnEditInfo.Size = new System.Drawing.Size(207, 48);
+            this.btnEditInfo.Size = new System.Drawing.Size(205, 44);
             this.btnEditInfo.TabIndex = 0;
             this.btnEditInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnEditInfo.Click += new System.EventHandler(this.btnEditInfo_Click);
@@ -439,7 +434,7 @@ namespace ManageSchedule
             // 
             this.labelSys.AutoSize = true;
             this.labelSys.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSys.Location = new System.Drawing.Point(196, 178);
+            this.labelSys.Location = new System.Drawing.Point(308, 214);
             this.labelSys.Name = "labelSys";
             this.labelSys.Size = new System.Drawing.Size(89, 18);
             this.labelSys.TabIndex = 9;
@@ -449,7 +444,7 @@ namespace ManageSchedule
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(20, 178);
+            this.label5.Location = new System.Drawing.Point(132, 214);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(106, 18);
             this.label5.TabIndex = 8;
@@ -459,7 +454,7 @@ namespace ManageSchedule
             // 
             this.labelSpec.AutoSize = true;
             this.labelSpec.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSpec.Location = new System.Drawing.Point(196, 138);
+            this.labelSpec.Location = new System.Drawing.Point(308, 174);
             this.labelSpec.Name = "labelSpec";
             this.labelSpec.Size = new System.Drawing.Size(170, 18);
             this.labelSpec.TabIndex = 7;
@@ -469,7 +464,7 @@ namespace ManageSchedule
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(20, 138);
+            this.label4.Location = new System.Drawing.Point(132, 174);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 18);
             this.label4.TabIndex = 6;
@@ -479,7 +474,7 @@ namespace ManageSchedule
             // 
             this.labelEmail.AutoSize = true;
             this.labelEmail.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEmail.Location = new System.Drawing.Point(196, 98);
+            this.labelEmail.Location = new System.Drawing.Point(308, 134);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(200, 18);
             this.labelEmail.TabIndex = 5;
@@ -489,7 +484,7 @@ namespace ManageSchedule
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(20, 98);
+            this.label3.Location = new System.Drawing.Point(132, 134);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 18);
             this.label3.TabIndex = 4;
@@ -499,7 +494,7 @@ namespace ManageSchedule
             // 
             this.labelYear.AutoSize = true;
             this.labelYear.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelYear.Location = new System.Drawing.Point(196, 58);
+            this.labelYear.Location = new System.Drawing.Point(308, 94);
             this.labelYear.Name = "labelYear";
             this.labelYear.Size = new System.Drawing.Size(28, 18);
             this.labelYear.TabIndex = 3;
@@ -509,7 +504,7 @@ namespace ManageSchedule
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(20, 58);
+            this.label2.Location = new System.Drawing.Point(132, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 18);
             this.label2.TabIndex = 2;
@@ -519,7 +514,7 @@ namespace ManageSchedule
             // 
             this.labelFullName.AutoSize = true;
             this.labelFullName.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFullName.Location = new System.Drawing.Point(196, 18);
+            this.labelFullName.Location = new System.Drawing.Point(308, 54);
             this.labelFullName.Name = "labelFullName";
             this.labelFullName.Size = new System.Drawing.Size(168, 18);
             this.labelFullName.TabIndex = 1;
@@ -529,7 +524,7 @@ namespace ManageSchedule
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(20, 18);
+            this.label1.Location = new System.Drawing.Point(132, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 18);
             this.label1.TabIndex = 0;
@@ -537,14 +532,8 @@ namespace ManageSchedule
             // 
             // panelSetting
             // 
-            this.panelSetting.Controls.Add(this.NumStartMin);
-            this.panelSetting.Controls.Add(this.NumStartHour);
-            this.panelSetting.Controls.Add(this.btnChangeSetting);
-            this.panelSetting.Controls.Add(this.label10);
-            this.panelSetting.Controls.Add(this.NumDuringTime);
-            this.panelSetting.Controls.Add(this.label9);
-            this.panelSetting.Controls.Add(this.label8);
             this.panelSetting.Controls.Add(this.label7);
+            this.panelSetting.Controls.Add(this.btnChangeSetting);
             this.panelSetting.Controls.Add(this.labelEvent);
             this.panelSetting.Controls.Add(this.labelOther);
             this.panelSetting.Controls.Add(this.labelDeadline);
@@ -553,10 +542,21 @@ namespace ManageSchedule
             this.panelSetting.Controls.Add(this.CheckBoxDeadline);
             this.panelSetting.Controls.Add(this.CheckBoxStartUp);
             this.panelSetting.Controls.Add(this.labelStartUp);
-            this.panelSetting.Location = new System.Drawing.Point(523, 56);
+            this.panelSetting.Location = new System.Drawing.Point(31, 400);
             this.panelSetting.Name = "panelSetting";
-            this.panelSetting.Size = new System.Drawing.Size(385, 300);
+            this.panelSetting.Size = new System.Drawing.Size(476, 256);
             this.panelSetting.TabIndex = 2;
+            // 
+            // label7
+            // 
+            this.label7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label7.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(0, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(476, 35);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "CÀI ĐẶT";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnChangeSetting
             // 
@@ -576,7 +576,7 @@ namespace ManageSchedule
             this.btnChangeSetting.IdleFillColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnChangeSetting.IdleForecolor = System.Drawing.Color.Black;
             this.btnChangeSetting.IdleLineColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnChangeSetting.Location = new System.Drawing.Point(176, 252);
+            this.btnChangeSetting.Location = new System.Drawing.Point(131, 212);
             this.btnChangeSetting.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnChangeSetting.Name = "btnChangeSetting";
             this.btnChangeSetting.Size = new System.Drawing.Size(205, 44);
@@ -584,84 +584,13 @@ namespace ManageSchedule
             this.btnChangeSetting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnChangeSetting.Click += new System.EventHandler(this.btnChangeSetting_Click);
             // 
-            // label10
-            // 
-            this.label10.AccessibleRole = System.Windows.Forms.AccessibleRole.CheckButton;
-            this.label10.AutoSize = true;
-            this.label10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label10.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(328, 203);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(38, 16);
-            this.label10.TabIndex = 14;
-            this.label10.Text = "phút";
-            // 
-            // NumDuringTime
-            // 
-            this.NumDuringTime.Location = new System.Drawing.Point(267, 202);
-            this.NumDuringTime.Maximum = new decimal(new int[] {
-            720,
-            0,
-            0,
-            0});
-            this.NumDuringTime.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.NumDuringTime.Name = "NumDuringTime";
-            this.NumDuringTime.Size = new System.Drawing.Size(55, 20);
-            this.NumDuringTime.TabIndex = 13;
-            this.NumDuringTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.NumDuringTime.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label9
-            // 
-            this.label9.AccessibleRole = System.Windows.Forms.AccessibleRole.CheckButton;
-            this.label9.AutoSize = true;
-            this.label9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label9.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(20, 203);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(241, 16);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "Khoảng cách giữa 2 lần thông báo:";
-            // 
-            // label8
-            // 
-            this.label8.AccessibleRole = System.Windows.Forms.AccessibleRole.CheckButton;
-            this.label8.AutoSize = true;
-            this.label8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label8.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(225, 163);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(14, 18);
-            this.label8.TabIndex = 10;
-            this.label8.Text = ":";
-            // 
-            // label7
-            // 
-            this.label7.AccessibleRole = System.Windows.Forms.AccessibleRole.CheckButton;
-            this.label7.AutoSize = true;
-            this.label7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label7.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(20, 164);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(151, 16);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Bắt đầu thông báo từ";
-            // 
             // labelEvent
             // 
             this.labelEvent.AccessibleRole = System.Windows.Forms.AccessibleRole.CheckButton;
             this.labelEvent.AutoSize = true;
             this.labelEvent.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelEvent.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEvent.Location = new System.Drawing.Point(57, 95);
+            this.labelEvent.Location = new System.Drawing.Point(132, 128);
             this.labelEvent.Name = "labelEvent";
             this.labelEvent.Size = new System.Drawing.Size(121, 16);
             this.labelEvent.TabIndex = 7;
@@ -673,7 +602,7 @@ namespace ManageSchedule
             this.labelOther.AutoSize = true;
             this.labelOther.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelOther.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOther.Location = new System.Drawing.Point(57, 125);
+            this.labelOther.Location = new System.Drawing.Point(132, 158);
             this.labelOther.Name = "labelOther";
             this.labelOther.Size = new System.Drawing.Size(183, 16);
             this.labelOther.TabIndex = 6;
@@ -685,7 +614,7 @@ namespace ManageSchedule
             this.labelDeadline.AutoSize = true;
             this.labelDeadline.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelDeadline.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDeadline.Location = new System.Drawing.Point(57, 65);
+            this.labelDeadline.Location = new System.Drawing.Point(132, 98);
             this.labelDeadline.Name = "labelDeadline";
             this.labelDeadline.Size = new System.Drawing.Size(138, 16);
             this.labelDeadline.TabIndex = 5;
@@ -710,7 +639,7 @@ namespace ManageSchedule
             this.CheckBoxOther.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked;
             this.CheckBoxOther.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CheckBoxOther.CustomCheckmarkImage = null;
-            this.CheckBoxOther.Location = new System.Drawing.Point(33, 121);
+            this.CheckBoxOther.Location = new System.Drawing.Point(108, 154);
             this.CheckBoxOther.MinimumSize = new System.Drawing.Size(17, 17);
             this.CheckBoxOther.Name = "CheckBoxOther";
             this.CheckBoxOther.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue;
@@ -764,7 +693,7 @@ namespace ManageSchedule
             this.CheckBoxEvent.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked;
             this.CheckBoxEvent.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CheckBoxEvent.CustomCheckmarkImage = null;
-            this.CheckBoxEvent.Location = new System.Drawing.Point(33, 91);
+            this.CheckBoxEvent.Location = new System.Drawing.Point(108, 124);
             this.CheckBoxEvent.MinimumSize = new System.Drawing.Size(17, 17);
             this.CheckBoxEvent.Name = "CheckBoxEvent";
             this.CheckBoxEvent.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue;
@@ -818,7 +747,7 @@ namespace ManageSchedule
             this.CheckBoxDeadline.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked;
             this.CheckBoxDeadline.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CheckBoxDeadline.CustomCheckmarkImage = null;
-            this.CheckBoxDeadline.Location = new System.Drawing.Point(33, 61);
+            this.CheckBoxDeadline.Location = new System.Drawing.Point(108, 94);
             this.CheckBoxDeadline.MinimumSize = new System.Drawing.Size(17, 17);
             this.CheckBoxDeadline.Name = "CheckBoxDeadline";
             this.CheckBoxDeadline.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue;
@@ -872,7 +801,7 @@ namespace ManageSchedule
             this.CheckBoxStartUp.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked;
             this.CheckBoxStartUp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CheckBoxStartUp.CustomCheckmarkImage = null;
-            this.CheckBoxStartUp.Location = new System.Drawing.Point(33, 30);
+            this.CheckBoxStartUp.Location = new System.Drawing.Point(108, 63);
             this.CheckBoxStartUp.MinimumSize = new System.Drawing.Size(17, 17);
             this.CheckBoxStartUp.Name = "CheckBoxStartUp";
             this.CheckBoxStartUp.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue;
@@ -913,7 +842,7 @@ namespace ManageSchedule
             this.labelStartUp.AutoSize = true;
             this.labelStartUp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelStartUp.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStartUp.Location = new System.Drawing.Point(57, 34);
+            this.labelStartUp.Location = new System.Drawing.Point(132, 67);
             this.labelStartUp.Name = "labelStartUp";
             this.labelStartUp.Size = new System.Drawing.Size(237, 16);
             this.labelStartUp.TabIndex = 0;
@@ -924,9 +853,9 @@ namespace ManageSchedule
             this.panelAvatar.Controls.Add(this.btnLogOut);
             this.panelAvatar.Controls.Add(this.panelSInfo);
             this.panelAvatar.Controls.Add(this.PictureBoxAvatar);
-            this.panelAvatar.Location = new System.Drawing.Point(914, 0);
+            this.panelAvatar.Location = new System.Drawing.Point(794, 0);
             this.panelAvatar.Name = "panelAvatar";
-            this.panelAvatar.Size = new System.Drawing.Size(207, 356);
+            this.panelAvatar.Size = new System.Drawing.Size(325, 356);
             this.panelAvatar.TabIndex = 1;
             // 
             // btnLogOut
@@ -947,7 +876,7 @@ namespace ManageSchedule
             this.btnLogOut.IdleFillColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnLogOut.IdleForecolor = System.Drawing.Color.Black;
             this.btnLogOut.IdleLineColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnLogOut.Location = new System.Drawing.Point(2, 308);
+            this.btnLogOut.Location = new System.Drawing.Point(60, 305);
             this.btnLogOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(205, 44);
@@ -959,9 +888,9 @@ namespace ManageSchedule
             // 
             this.panelSInfo.Controls.Add(this.labelSUsername);
             this.panelSInfo.Controls.Add(this.labelFullNameAva);
-            this.panelSInfo.Location = new System.Drawing.Point(3, 176);
+            this.panelSInfo.Location = new System.Drawing.Point(2, 186);
             this.panelSInfo.Name = "panelSInfo";
-            this.panelSInfo.Size = new System.Drawing.Size(200, 125);
+            this.panelSInfo.Size = new System.Drawing.Size(321, 102);
             this.panelSInfo.TabIndex = 2;
             // 
             // labelSUsername
@@ -969,9 +898,9 @@ namespace ManageSchedule
             this.labelSUsername.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelSUsername.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSUsername.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelSUsername.Location = new System.Drawing.Point(0, 74);
+            this.labelSUsername.Location = new System.Drawing.Point(0, 59);
             this.labelSUsername.Name = "labelSUsername";
-            this.labelSUsername.Size = new System.Drawing.Size(200, 51);
+            this.labelSUsername.Size = new System.Drawing.Size(321, 43);
             this.labelSUsername.TabIndex = 2;
             this.labelSUsername.Text = "Username";
             this.labelSUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -982,7 +911,7 @@ namespace ManageSchedule
             this.labelFullNameAva.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFullNameAva.Location = new System.Drawing.Point(0, 0);
             this.labelFullNameAva.Name = "labelFullNameAva";
-            this.labelFullNameAva.Size = new System.Drawing.Size(200, 74);
+            this.labelFullNameAva.Size = new System.Drawing.Size(321, 59);
             this.labelFullNameAva.TabIndex = 1;
             this.labelFullNameAva.Text = "Họ và tên";
             this.labelFullNameAva.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -993,160 +922,89 @@ namespace ManageSchedule
             this.PictureBoxAvatar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PictureBoxAvatar.AutoSizeHeight = true;
             this.PictureBoxAvatar.BorderRadius = 75;
+            this.PictureBoxAvatar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PictureBoxAvatar.Image = ((System.Drawing.Image)(resources.GetObject("PictureBoxAvatar.Image")));
             this.PictureBoxAvatar.IsCircle = true;
-            this.PictureBoxAvatar.Location = new System.Drawing.Point(30, 20);
+            this.PictureBoxAvatar.Location = new System.Drawing.Point(89, 20);
             this.PictureBoxAvatar.Name = "PictureBoxAvatar";
             this.PictureBoxAvatar.Size = new System.Drawing.Size(150, 150);
             this.PictureBoxAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PictureBoxAvatar.TabIndex = 0;
             this.PictureBoxAvatar.TabStop = false;
             this.PictureBoxAvatar.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
+            this.PictureBoxAvatar.Click += new System.EventHandler(this.PictureBoxAvatar_Click);
             // 
             // panelPlan
             // 
-            this.panelPlan.Controls.Add(this.panelWeelMissedPlan);
-            this.panelPlan.Controls.Add(this.panelTodayPlan);
-            this.panelPlan.Controls.Add(this.panelTodayTablet);
+            this.panelPlan.Controls.Add(this.panelWeeklyGraphics);
+            this.panelPlan.Controls.Add(this.panelFrequency);
             this.panelPlan.Controls.Add(this.labelDay);
-            this.panelPlan.Location = new System.Drawing.Point(8, 56);
+            this.panelPlan.Location = new System.Drawing.Point(513, 362);
             this.panelPlan.Name = "panelPlan";
-            this.panelPlan.Size = new System.Drawing.Size(509, 581);
+            this.panelPlan.Size = new System.Drawing.Size(608, 294);
             this.panelPlan.TabIndex = 0;
             // 
-            // panelWeelMissedPlan
+            // panelWeeklyGraphics
             // 
-            this.panelWeelMissedPlan.Controls.Add(this.labelMissed);
-            this.panelWeelMissedPlan.Controls.Add(this.btnSeeMissed);
-            this.panelWeelMissedPlan.Location = new System.Drawing.Point(3, 460);
-            this.panelWeelMissedPlan.Name = "panelWeelMissedPlan";
-            this.panelWeelMissedPlan.Size = new System.Drawing.Size(503, 120);
-            this.panelWeelMissedPlan.TabIndex = 3;
+            this.panelWeeklyGraphics.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelWeeklyGraphics.Location = new System.Drawing.Point(0, 38);
+            this.panelWeeklyGraphics.Name = "panelWeeklyGraphics";
+            this.panelWeeklyGraphics.Size = new System.Drawing.Size(608, 212);
+            this.panelWeeklyGraphics.TabIndex = 4;
+            // 
+            // panelFrequency
+            // 
+            this.panelFrequency.Controls.Add(this.labelMissed);
+            this.panelFrequency.Controls.Add(this.btnToWork);
+            this.panelFrequency.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelFrequency.Location = new System.Drawing.Point(0, 250);
+            this.panelFrequency.Name = "panelFrequency";
+            this.panelFrequency.Size = new System.Drawing.Size(608, 44);
+            this.panelFrequency.TabIndex = 3;
             // 
             // labelMissed
             // 
             this.labelMissed.AutoSize = true;
             this.labelMissed.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMissed.Location = new System.Drawing.Point(20, 30);
+            this.labelMissed.Location = new System.Drawing.Point(27, 13);
             this.labelMissed.Name = "labelMissed";
-            this.labelMissed.Size = new System.Drawing.Size(302, 18);
+            this.labelMissed.Size = new System.Drawing.Size(294, 18);
             this.labelMissed.TabIndex = 12;
-            this.labelMissed.Text = "Bạn đã bỏ lỡ 0 công việc trong tuần\r\n";
+            this.labelMissed.Text = "Bạn có ... công việc trong hôm nay";
             // 
-            // btnSeeMissed
+            // btnToWork
             // 
-            this.btnSeeMissed.ActiveBorderThickness = 1;
-            this.btnSeeMissed.ActiveCornerRadius = 25;
-            this.btnSeeMissed.ActiveFillColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnSeeMissed.ActiveForecolor = System.Drawing.Color.Black;
-            this.btnSeeMissed.ActiveLineColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSeeMissed.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSeeMissed.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSeeMissed.BackgroundImage")));
-            this.btnSeeMissed.ButtonText = "Xem công việc đã bỏ lỡ";
-            this.btnSeeMissed.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSeeMissed.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSeeMissed.ForeColor = System.Drawing.Color.Black;
-            this.btnSeeMissed.IdleBorderThickness = 1;
-            this.btnSeeMissed.IdleCornerRadius = 25;
-            this.btnSeeMissed.IdleFillColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnSeeMissed.IdleForecolor = System.Drawing.Color.Black;
-            this.btnSeeMissed.IdleLineColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnSeeMissed.Location = new System.Drawing.Point(276, 72);
-            this.btnSeeMissed.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnSeeMissed.Name = "btnSeeMissed";
-            this.btnSeeMissed.Size = new System.Drawing.Size(222, 48);
-            this.btnSeeMissed.TabIndex = 12;
-            this.btnSeeMissed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panelTodayPlan
-            // 
-            this.panelTodayPlan.Controls.Add(this.btnSeePlan);
-            this.panelTodayPlan.Controls.Add(this.labelTodayPlan);
-            this.panelTodayPlan.Location = new System.Drawing.Point(3, 337);
-            this.panelTodayPlan.Name = "panelTodayPlan";
-            this.panelTodayPlan.Size = new System.Drawing.Size(503, 120);
-            this.panelTodayPlan.TabIndex = 2;
-            // 
-            // btnSeePlan
-            // 
-            this.btnSeePlan.ActiveBorderThickness = 1;
-            this.btnSeePlan.ActiveCornerRadius = 25;
-            this.btnSeePlan.ActiveFillColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnSeePlan.ActiveForecolor = System.Drawing.Color.Black;
-            this.btnSeePlan.ActiveLineColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSeePlan.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSeePlan.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSeePlan.BackgroundImage")));
-            this.btnSeePlan.ButtonText = "Xem công việc hôm nay";
-            this.btnSeePlan.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSeePlan.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSeePlan.ForeColor = System.Drawing.Color.Black;
-            this.btnSeePlan.IdleBorderThickness = 1;
-            this.btnSeePlan.IdleCornerRadius = 25;
-            this.btnSeePlan.IdleFillColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnSeePlan.IdleForecolor = System.Drawing.Color.Black;
-            this.btnSeePlan.IdleLineColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnSeePlan.Location = new System.Drawing.Point(276, 72);
-            this.btnSeePlan.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnSeePlan.Name = "btnSeePlan";
-            this.btnSeePlan.Size = new System.Drawing.Size(222, 48);
-            this.btnSeePlan.TabIndex = 11;
-            this.btnSeePlan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // labelTodayPlan
-            // 
-            this.labelTodayPlan.AutoSize = true;
-            this.labelTodayPlan.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTodayPlan.Location = new System.Drawing.Point(20, 30);
-            this.labelTodayPlan.Name = "labelTodayPlan";
-            this.labelTodayPlan.Size = new System.Drawing.Size(247, 18);
-            this.labelTodayPlan.TabIndex = 0;
-            this.labelTodayPlan.Text = "Bạn còn 0 công việc hôm nay";
-            // 
-            // panelTodayTablet
-            // 
-            this.panelTodayTablet.Controls.Add(this.panelNote);
-            this.panelTodayTablet.Controls.Add(this.panelTodayDeadline);
-            this.panelTodayTablet.Controls.Add(this.panelAfternoon);
-            this.panelTodayTablet.Controls.Add(this.panelMorning);
-            this.panelTodayTablet.Location = new System.Drawing.Point(3, 41);
-            this.panelTodayTablet.Name = "panelTodayTablet";
-            this.panelTodayTablet.Size = new System.Drawing.Size(503, 293);
-            this.panelTodayTablet.TabIndex = 1;
-            // 
-            // panelNote
-            // 
-            this.panelNote.Location = new System.Drawing.Point(5, 224);
-            this.panelNote.Name = "panelNote";
-            this.panelNote.Size = new System.Drawing.Size(493, 63);
-            this.panelNote.TabIndex = 3;
-            // 
-            // panelTodayDeadline
-            // 
-            this.panelTodayDeadline.Location = new System.Drawing.Point(293, 3);
-            this.panelTodayDeadline.Name = "panelTodayDeadline";
-            this.panelTodayDeadline.Size = new System.Drawing.Size(205, 215);
-            this.panelTodayDeadline.TabIndex = 2;
-            // 
-            // panelAfternoon
-            // 
-            this.panelAfternoon.Location = new System.Drawing.Point(149, 3);
-            this.panelAfternoon.Name = "panelAfternoon";
-            this.panelAfternoon.Size = new System.Drawing.Size(140, 215);
-            this.panelAfternoon.TabIndex = 1;
-            // 
-            // panelMorning
-            // 
-            this.panelMorning.Location = new System.Drawing.Point(5, 3);
-            this.panelMorning.Name = "panelMorning";
-            this.panelMorning.Size = new System.Drawing.Size(140, 215);
-            this.panelMorning.TabIndex = 0;
+            this.btnToWork.ActiveBorderThickness = 1;
+            this.btnToWork.ActiveCornerRadius = 25;
+            this.btnToWork.ActiveFillColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnToWork.ActiveForecolor = System.Drawing.Color.Black;
+            this.btnToWork.ActiveLineColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnToWork.BackColor = System.Drawing.SystemColors.Control;
+            this.btnToWork.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnToWork.BackgroundImage")));
+            this.btnToWork.ButtonText = "Xem công việc hôm nay";
+            this.btnToWork.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnToWork.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnToWork.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToWork.ForeColor = System.Drawing.Color.Black;
+            this.btnToWork.IdleBorderThickness = 1;
+            this.btnToWork.IdleCornerRadius = 25;
+            this.btnToWork.IdleFillColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnToWork.IdleForecolor = System.Drawing.Color.Black;
+            this.btnToWork.IdleLineColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnToWork.Location = new System.Drawing.Point(403, 0);
+            this.btnToWork.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnToWork.Name = "btnToWork";
+            this.btnToWork.Size = new System.Drawing.Size(205, 44);
+            this.btnToWork.TabIndex = 12;
+            this.btnToWork.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelDay
             // 
+            this.labelDay.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelDay.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDay.Location = new System.Drawing.Point(3, 0);
+            this.labelDay.Location = new System.Drawing.Point(0, 0);
             this.labelDay.Name = "labelDay";
-            this.labelDay.Size = new System.Drawing.Size(503, 38);
+            this.labelDay.Size = new System.Drawing.Size(608, 38);
             this.labelDay.TabIndex = 0;
             this.labelDay.Text = "Thứ hai, ngày 1 tháng 12 năm 2021";
             this.labelDay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1165,8 +1023,9 @@ namespace ManageSchedule
             // 
             this.notifyIcon.ContextMenuStrip = this.contextMenuStrip;
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
-            this.notifyIcon.Text = "UIT Calender";
+            this.notifyIcon.Text = "ASSM Schedule";
             this.notifyIcon.Visible = true;
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             // 
             // contextMenuStrip
             // 
@@ -1226,34 +1085,6 @@ namespace ManageSchedule
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // NumStartMin
-            // 
-            this.NumStartMin.Location = new System.Drawing.Point(239, 164);
-            this.NumStartMin.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.NumStartMin.Name = "NumStartMin";
-            this.NumStartMin.Size = new System.Drawing.Size(46, 20);
-            this.NumStartMin.TabIndex = 15;
-            this.NumStartMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.NumStartMin.ValueChanged += new System.EventHandler(this.NumStartMin_ValueChanged);
-            // 
-            // NumStartHour
-            // 
-            this.NumStartHour.Location = new System.Drawing.Point(177, 164);
-            this.NumStartHour.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.NumStartHour.Name = "NumStartHour";
-            this.NumStartHour.Size = new System.Drawing.Size(46, 20);
-            this.NumStartHour.TabIndex = 15;
-            this.NumStartHour.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.NumStartHour.ValueChanged += new System.EventHandler(this.NumStartHour_ValueChanged);
-            // 
             // FormUngDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1277,19 +1108,13 @@ namespace ManageSchedule
             this.panelDetailInfo.PerformLayout();
             this.panelSetting.ResumeLayout(false);
             this.panelSetting.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumDuringTime)).EndInit();
             this.panelAvatar.ResumeLayout(false);
             this.panelSInfo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxAvatar)).EndInit();
             this.panelPlan.ResumeLayout(false);
-            this.panelWeelMissedPlan.ResumeLayout(false);
-            this.panelWeelMissedPlan.PerformLayout();
-            this.panelTodayPlan.ResumeLayout(false);
-            this.panelTodayPlan.PerformLayout();
-            this.panelTodayTablet.ResumeLayout(false);
+            this.panelFrequency.ResumeLayout(false);
+            this.panelFrequency.PerformLayout();
             this.contextMenuStrip.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.NumStartMin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumStartHour)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1336,24 +1161,11 @@ namespace ManageSchedule
         private System.Windows.Forms.Label labelSUsername;
         private System.Windows.Forms.Label labelFullNameAva;
         private Bunifu.UI.WinForms.BunifuPictureBox PictureBoxAvatar;
-        private System.Windows.Forms.Panel panelWeelMissedPlan;
+        private System.Windows.Forms.Panel panelFrequency;
         private System.Windows.Forms.Label labelMissed;
-        private Bunifu.Framework.UI.BunifuThinButton2 btnSeeMissed;
-        private System.Windows.Forms.Panel panelTodayPlan;
-        private Bunifu.Framework.UI.BunifuThinButton2 btnSeePlan;
-        private System.Windows.Forms.Label labelTodayPlan;
-        private System.Windows.Forms.Panel panelTodayTablet;
-        private System.Windows.Forms.Panel panelNote;
-        private System.Windows.Forms.Panel panelTodayDeadline;
-        private System.Windows.Forms.Panel panelAfternoon;
-        private System.Windows.Forms.Panel panelMorning;
+        private Bunifu.Framework.UI.BunifuThinButton2 btnToWork;
         private System.Windows.Forms.Label labelDay;
         private Bunifu.Framework.UI.BunifuThinButton2 btnChangeSetting;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown NumDuringTime;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label labelEvent;
         private System.Windows.Forms.Label labelOther;
         private System.Windows.Forms.Label labelDeadline;
@@ -1370,8 +1182,9 @@ namespace ManageSchedule
         private System.Windows.Forms.ToolStripMenuItem tsmiError;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem tsmiExit;
-        private TimeNumericUD NumStartHour;
-        private TimeNumericUD NumStartMin;
+        private System.Windows.Forms.Panel panelWeeklyGraphics;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Timer timer;
     }
 }

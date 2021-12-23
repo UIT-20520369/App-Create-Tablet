@@ -16,16 +16,15 @@ namespace ManageSchedule
     {
         #region Param
         private static bool Startup = false;
+        private static bool FirstOpen = false;
         private static bool DeadlineNotify = false;
         private static bool EventNotify = false;
         private static bool OtherNotify = false;
-        //private static bool DarkMode = false;
-        private static int NotifyTime = 60;
-        private static int NoticeStartHour = 0;
-        private static int NoticeStartMinute = 0;
+        //private static int NotifyTime = 60;
+        //private static int NoticeStartHour = 0;
+        //private static int NoticeStartMinute = 0;
         private static string PreUsername = string.Empty;
         private static string PreHashPassword = string.Empty;
-        private static bool AutoLogin = false;
         private static IWshRuntimeLibrary.IWshShortcut shortcut;
         #endregion Param
 
@@ -36,9 +35,9 @@ namespace ManageSchedule
 
             PreUsername = setting[0];
             PreHashPassword = setting[1];
-            NotifyTime = int.Parse(setting[5]);
-            NoticeStartHour = int.Parse(setting[6]);
-            NoticeStartMinute = int.Parse(setting[7]);
+            //NotifyTime = int.Parse(setting[5]);
+            //NoticeStartHour = int.Parse(setting[6]);
+            //NoticeStartMinute = int.Parse(setting[7]);
 
             if (setting[2] == "Startup: false")
             {
@@ -49,14 +48,14 @@ namespace ManageSchedule
                 Startup = true;
             }
 
-            //if (setting[3] == "Dark Mode: false")
-            //{
-            //    DarkMode = false;
-            //}
-            //else
-            //{
-            //    DarkMode = true;
-            //}
+            if (setting[3] == "First Open: false")
+            {
+                FirstOpen = false;
+            }
+            else
+            {
+                FirstOpen = true;
+            }
 
             if (setting[4].Contains("Deadline"))
             {
@@ -112,25 +111,25 @@ namespace ManageSchedule
             return OtherNotify;
         }
 
-        //public static bool GetDarkMode()
+        public static bool GetFirstOpen()
+        {
+            return FirstOpen;
+        }
+
+        //public static int GetNoticeTime()
         //{
-        //    return DarkMode;
+        //    return NotifyTime;
         //}
 
-        public static int GetNoticeTime()
-        {
-            return NotifyTime;
-        }
+        //public static int GetNotifyHour()
+        //{
+        //    return NoticeStartHour;
+        //}
 
-        public static int GetNotifyHour()
-        {
-            return NoticeStartHour;
-        }
-
-        public static int GetNotifyMinute()
-        {
-            return NoticeStartMinute;
-        }
+        //public static int GetNotifyMinute()
+        //{
+        //    return NoticeStartMinute;
+        //}
 
         public static string GetPreUsername()
         {
@@ -140,11 +139,6 @@ namespace ManageSchedule
         public static string GetPreHash()
         {
             return PreHashPassword;
-        }
-
-        public static bool GetAutoLogin()
-        {
-            return AutoLogin;
         }
 
         #endregion Get Method
@@ -182,21 +176,10 @@ namespace ManageSchedule
             }
         }
 
-        //public static void SetDarkMode(bool isDark)
-        //{
-        //    // nếu isDark = true thì chạy darkmode, nếu không đặt lại bình thường
-        //    // sự kiện checkbox darkmode
-        //    // thay đổi ngay khi change mode
-        //    DarkMode = isDark;
-        //    if (DarkMode)
-        //    {
-        //        DarkApp();
-        //    }
-        //    else
-        //    {
-        //        LightApp();
-        //    }
-        //}
+        public static void SetFirstOpen(bool isFirst)
+        {
+            FirstOpen = isFirst;
+        }
 
         public static void SetNotify(bool _deadline, bool _event, bool _other)
         {
@@ -210,23 +193,23 @@ namespace ManageSchedule
             EventNotify = _event;
             OtherNotify = _other;
 
-            Deadline();
-            Event();
-            Other();
+            //Deadline();
+            //Event();
+            //Other();
         }
 
-        public static void SetNoticeTime(int time, int hour, int minute)
-        {
-            // lấy dữ liệu từ numeric up down
-            // time là khoảng cách giữa 2 lần thông báo
-            // hour:minute là thời gian bắt đầu thông báo
-            // vd hour=7, minute=30 thì bắt đầu thông báo từ 7h30 mỗi ngày
-            NotifyTime = time;
-            NoticeStartHour = hour;
-            NoticeStartMinute = minute;
+        //public static void SetNoticeTime(int time, int hour, int minute)
+        //{
+        //    // lấy dữ liệu từ numeric up down
+        //    // time là khoảng cách giữa 2 lần thông báo
+        //    // hour:minute là thời gian bắt đầu thông báo
+        //    // vd hour=7, minute=30 thì bắt đầu thông báo từ 7h30 mỗi ngày
+        //    NotifyTime = time;
+        //    NoticeStartHour = hour;
+        //    NoticeStartMinute = minute;
 
-            Time();
-        }
+        //    Time();
+        //}
 
         public static void SetPreLogin(string username, string password)
         {
@@ -248,11 +231,6 @@ namespace ManageSchedule
             {
                 return false;
             }
-        }
-
-        public static void SetAutoLogin(bool isAutoLogin)
-        {
-            AutoLogin = isAutoLogin;
         }
 
         #endregion Set Method
@@ -358,44 +336,6 @@ namespace ManageSchedule
         }
         #endregion Startup
 
-        //#region Dark Mode
-
-        //public static void LightApp()
-        //{
-
-        //}
-
-        //public static void DarkApp()
-        //{
-
-        //}
-
-        //#endregion Dark Mode
-
-        #region Notify
-
-        public static void Deadline()
-        {
-
-        }
-
-        public static void Event()
-        {
-
-        }
-
-        public static void Other()
-        {
-
-        }
-
-        public static void Time()
-        {
-
-        }
-
-        #endregion Notify
-
         // ghi vào file txt   
         public static void WriteToTxt(string filePath)
         {
@@ -403,9 +343,9 @@ namespace ManageSchedule
 
             setting[0] = PreUsername;
             setting[1] = PreHashPassword;
-            setting[5] = NotifyTime.ToString();
-            setting[6] = NoticeStartHour.ToString();
-            setting[7] = NoticeStartMinute.ToString();
+            //setting[5] = NotifyTime.ToString();
+            //setting[6] = NoticeStartHour.ToString();
+            //setting[7] = NoticeStartMinute.ToString();
 
             if (!Startup)
             {
@@ -416,14 +356,14 @@ namespace ManageSchedule
                 setting[2] = "Startup: true";
             }
 
-            //if (!DarkMode)
-            //{
-            //    setting[3] = "Dark Mode: false";
-            //}
-            //else
-            //{
-            //    setting[3] = "Dark Mode: true";
-            //}
+            if (!FirstOpen)
+            {
+                setting[3] = "First Open: false";
+            }
+            else
+            {
+                setting[3] = "First Open: true";
+            }
 
             setting[4] = "Notify:";
 

@@ -31,7 +31,6 @@ namespace ManageSchedule
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDangNhap));
-            this.BoTronDangNhap = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxTaiKhoan = new System.Windows.Forms.TextBox();
@@ -42,13 +41,9 @@ namespace ManageSchedule
             this.btnDangNhap = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btnTroVe = new Bunifu.UI.WinForms.BunifuImageButton();
             this.btnShowPass = new Bunifu.UI.WinForms.BunifuImageButton();
+            this.BoTronDangNhap = new Bunifu.Framework.UI.BunifuElipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
-            // 
-            // BoTronDangNhap
-            // 
-            this.BoTronDangNhap.ElipseRadius = 10;
-            this.BoTronDangNhap.TargetControl = this;
             // 
             // label2
             // 
@@ -93,17 +88,14 @@ namespace ManageSchedule
             // checkBoxNhoMK
             // 
             this.checkBoxNhoMK.AutoSize = true;
-            this.checkBoxNhoMK.Checked = true;
-            this.checkBoxNhoMK.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxNhoMK.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBoxNhoMK.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxNhoMK.Location = new System.Drawing.Point(137, 347);
             this.checkBoxNhoMK.Name = "checkBoxNhoMK";
-            this.checkBoxNhoMK.Size = new System.Drawing.Size(156, 20);
+            this.checkBoxNhoMK.Size = new System.Drawing.Size(150, 20);
             this.checkBoxNhoMK.TabIndex = 7;
-            this.checkBoxNhoMK.Text = "Tự động đăng nhập";
+            this.checkBoxNhoMK.Text = "Ghi nhớ đăng nhập";
             this.checkBoxNhoMK.UseVisualStyleBackColor = true;
-            this.checkBoxNhoMK.CheckedChanged += new System.EventHandler(this.checkBoxNhoMK_CheckedChanged);
             // 
             // linkLabel1
             // 
@@ -226,6 +218,11 @@ namespace ManageSchedule
             this.btnShowPass.ZoomSpeed = 10;
             this.btnShowPass.Click += new System.EventHandler(this.btnShowPass_Click);
             // 
+            // BoTronDangNhap
+            // 
+            this.BoTronDangNhap.ElipseRadius = 10;
+            this.BoTronDangNhap.TargetControl = this;
+            // 
             // FormDangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -254,8 +251,6 @@ namespace ManageSchedule
         }
 
         #endregion
-
-        private Bunifu.Framework.UI.BunifuElipse BoTronDangNhap;
         private System.Windows.Forms.PictureBox pictureBoxLogo;
         private System.Windows.Forms.TextBox textBoxMatKhau;
         private System.Windows.Forms.TextBox textBoxTaiKhoan;
@@ -266,6 +261,7 @@ namespace ManageSchedule
         private Bunifu.Framework.UI.BunifuThinButton2 btnDangNhap;
         private Bunifu.UI.WinForms.BunifuImageButton btnTroVe;
         private Bunifu.UI.WinForms.BunifuImageButton btnShowPass;
+        private Bunifu.Framework.UI.BunifuElipse BoTronDangNhap;
     }
 }
 

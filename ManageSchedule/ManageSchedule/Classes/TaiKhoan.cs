@@ -17,6 +17,7 @@ namespace ManageSchedule
         private static string Email;
         private static string Spec;
         private static string Sys;
+        private static string strAvatar;
 
         public TaiKhoan()
         {
@@ -52,6 +53,55 @@ namespace ManageSchedule
 
                 reader.Close();
                 sqlCmd.Dispose();
+
+                bool hasAvatar = false;
+
+                SqlCommand sqlCmdAvatar = new SqlCommand();
+                sqlCmdAvatar.CommandType = CommandType.Text;
+                sqlCmdAvatar.CommandText = "select * from dbo.AVATAR";
+
+                sqlCmdAvatar.Connection = sqlCon;
+
+                SqlDataReader reader2 = sqlCmdAvatar.ExecuteReader();
+
+                while (reader2.Read())
+                {
+                    if (CaiDat.GetPreUsername() == reader2.GetString(0))
+                    {
+                        strAvatar = reader2.GetString(1);
+                        hasAvatar = true;
+                        break;
+                    }
+                }
+                reader2.Close();
+                sqlCmdAvatar.Dispose();
+
+                if (!hasAvatar)
+                {
+                    SqlCommand sqlCmdInsert = new SqlCommand();
+                    sqlCmdInsert.CommandType = CommandType.Text;
+                    sqlCmdInsert.CommandText = "insert into dbo.AVATAR (TaiKhoan, strAVATAR) values (@TaiKhoan,@strAvatar)";
+
+                    SqlParameter parAva = new SqlParameter("@strAvatar", SqlDbType.Text);
+                    parAva.Value = string.Empty;
+                    SqlParameter parTK = new SqlParameter("@TaiKhoan", SqlDbType.VarChar);
+                    parTK.Value = CaiDat.GetPreUsername();
+
+                    sqlCmdInsert.Parameters.Add(parAva);
+                    sqlCmdInsert.Parameters.Add(parTK);
+
+                    sqlCmdInsert.Connection = sqlCon;
+
+                    sqlCmdInsert.ExecuteNonQuery();
+
+                    sqlCmdInsert.Dispose();
+
+                    strAvatar = string.Empty;
+                }
+
+                //string[] setting = System.IO.File.ReadAllLines(HangSo.txtFilePath);
+                //strAvatar = setting[8];
+
                 sqlCon.Close();
             } 
             catch (Exception)
@@ -86,6 +136,10 @@ namespace ManageSchedule
         public static string GetSys()
         {
             return Sys;
+        }
+        public static string GetAvatar()
+        {
+            return strAvatar;
         }
         #endregion Get Method
 
@@ -138,6 +192,8 @@ namespace ManageSchedule
 
                 sqlCmdUpdate.ExecuteNonQuery();
 
+                sqlCmdUpdate.Dispose();
+
                 sqlCon.Close();
 
                 FullName = _fullName;
@@ -151,6 +207,57 @@ namespace ManageSchedule
             catch
             {
                 sqlCon.Close();
+
+                return false;
+            }
+        }
+
+        public static void SetAvatar(string _strAva)
+        {
+            strAvatar = _strAva;
+        }
+
+        public static bool ChangeAvatar(string _srtAva)
+        {
+            SqlConnection sqlCon = null;
+            if (sqlCon == null)
+                sqlCon = new SqlConnection(HangSo.strCon);
+
+            if (sqlCon.State == ConnectionState.Closed)
+                sqlCon.Open();
+            try
+            {
+                SqlCommand sqlCmdUpdate = new SqlCommand();
+                sqlCmdUpdate.CommandType = CommandType.Text;
+                sqlCmdUpdate.CommandText = "update dbo.AVATAR " +
+                    "set strAVATAR=@strAvatar " +
+                    "where TaiKhoan=@TaiKhoan";
+
+                SqlParameter parAva = new SqlParameter("@strAvatar", SqlDbType.Text);
+                parAva.Value = _srtAva;
+                SqlParameter parTK = new SqlParameter("@TaiKhoan", SqlDbType.VarChar);
+                parTK.Value = CaiDat.GetPreUsername();
+
+                sqlCmdUpdate.Parameters.Add(parAva);
+                sqlCmdUpdate.Parameters.Add(parTK);
+
+                sqlCmdUpdate.Connection = sqlCon;
+                sqlCmdUpdate.ExecuteNonQuery();            
+                sqlCmdUpdate.Dispose();
+
+                sqlCon.Close();
+
+                strAvatar = _srtAva;
+
+                MessageBox.Show("Thay đổi Avatar thành công!", "Thông báo", MessageBoxButtons.OK);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                sqlCon.Close();
+
+                MessageBox.Show(e.ToString());
 
                 return false;
             }

@@ -30,60 +30,147 @@ namespace ManageSchedule
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
             this.BoTronCongViec = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnAddEvent = new System.Windows.Forms.Button();
+            this.cbViewOption = new System.Windows.Forms.ComboBox();
+            this.btnToday = new System.Windows.Forms.Button();
+            this.dtpkDate = new System.Windows.Forms.DateTimePicker();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(450, 194);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(201, 29);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Form Cong Viec";
             // 
             // BoTronCongViec
             // 
             this.BoTronCongViec.ElipseRadius = 10;
             this.BoTronCongViec.TargetControl = this;
             // 
-            // button1
+            // panel1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(427, 276);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(224, 51);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Click vào để mở child form";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(4, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1124, 673);
+            this.panel1.TabIndex = 4;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.btnAddEvent);
+            this.panel2.Controls.Add(this.cbViewOption);
+            this.panel2.Controls.Add(this.btnToday);
+            this.panel2.Controls.Add(this.dtpkDate);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1124, 49);
+            this.panel2.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(21, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(134, 18);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Chế độ hiển thị";
+            // 
+            // btnAddEvent
+            // 
+            this.btnAddEvent.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAddEvent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(227)))), ((int)(((byte)(206)))));
+            this.btnAddEvent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddEvent.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddEvent.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnAddEvent.Location = new System.Drawing.Point(956, 0);
+            this.btnAddEvent.Name = "btnAddEvent";
+            this.btnAddEvent.Size = new System.Drawing.Size(137, 46);
+            this.btnAddEvent.TabIndex = 16;
+            this.btnAddEvent.Text = "Thêm sự kiện";
+            this.btnAddEvent.UseVisualStyleBackColor = false;
+            this.btnAddEvent.Click += new System.EventHandler(this.btnAddEvent_Click);
+            // 
+            // cbViewOption
+            // 
+            this.cbViewOption.FormattingEnabled = true;
+            this.cbViewOption.Items.AddRange(new object[] {
+            "Tháng",
+            "Ngày",
+            "Lịch"});
+            this.cbViewOption.Location = new System.Drawing.Point(161, 11);
+            this.cbViewOption.Name = "cbViewOption";
+            this.cbViewOption.Size = new System.Drawing.Size(104, 26);
+            this.cbViewOption.TabIndex = 4;
+            this.cbViewOption.SelectedIndexChanged += new System.EventHandler(this.cbViewOption_SelectedIndexChanged);
+            // 
+            // btnToday
+            // 
+            this.btnToday.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnToday.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(227)))), ((int)(((byte)(206)))));
+            this.btnToday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnToday.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToday.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnToday.Location = new System.Drawing.Point(811, 0);
+            this.btnToday.Name = "btnToday";
+            this.btnToday.Size = new System.Drawing.Size(118, 45);
+            this.btnToday.TabIndex = 15;
+            this.btnToday.Text = "Hôm nay";
+            this.btnToday.UseVisualStyleBackColor = false;
+            this.btnToday.Click += new System.EventHandler(this.btnToday_Click);
+            // 
+            // dtpkDate
+            // 
+            this.dtpkDate.CalendarTitleForeColor = System.Drawing.Color.MidnightBlue;
+            this.dtpkDate.CustomFormat = "";
+            this.dtpkDate.Location = new System.Drawing.Point(432, 10);
+            this.dtpkDate.Name = "dtpkDate";
+            this.dtpkDate.Size = new System.Drawing.Size(313, 27);
+            this.dtpkDate.TabIndex = 1;
+            this.dtpkDate.ValueChanged += new System.EventHandler(this.dtpkDate_ValueChanged);
+            // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 10;
+            this.bunifuElipse1.TargetControl = this;
+            // 
+            // panel5
+            // 
+            this.panel5.Location = new System.Drawing.Point(4, 55);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1124, 621);
+            this.panel5.TabIndex = 5;
             // 
             // FormCongViec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1133, 679);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormCongViec";
             this.Text = "Công việc";
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private Bunifu.Framework.UI.BunifuElipse BoTronCongViec;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnAddEvent;
+        private System.Windows.Forms.ComboBox cbViewOption;
+        private System.Windows.Forms.Button btnToday;
+        private System.Windows.Forms.DateTimePicker dtpkDate;
+        private System.Windows.Forms.Panel panel5;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+        private System.Windows.Forms.Label label1;
     }
 }
