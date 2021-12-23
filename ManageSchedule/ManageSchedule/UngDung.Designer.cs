@@ -92,8 +92,6 @@ namespace ManageSchedule
             this.tsmiPlan = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiError = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.panelMenu.SuspendLayout();
@@ -1033,15 +1031,13 @@ namespace ManageSchedule
             this.contextMenuStrip.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiOpen,
             this.tsmiPlan,
             this.toolStripSeparator1,
-            this.tsmiOpen,
-            this.tsmiError,
-            this.toolStripSeparator2,
             this.tsmiExit});
             this.contextMenuStrip.Name = "contextMenuStrip";
             this.contextMenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.contextMenuStrip.Size = new System.Drawing.Size(203, 104);
+            this.contextMenuStrip.Size = new System.Drawing.Size(203, 98);
             // 
             // tsmiPlan
             // 
@@ -1061,18 +1057,6 @@ namespace ManageSchedule
             this.tsmiOpen.Size = new System.Drawing.Size(202, 22);
             this.tsmiOpen.Text = "Mở ứng dụng";
             this.tsmiOpen.Click += new System.EventHandler(this.tsmiOpen_Click);
-            // 
-            // tsmiError
-            // 
-            this.tsmiError.Name = "tsmiError";
-            this.tsmiError.Size = new System.Drawing.Size(202, 22);
-            this.tsmiError.Text = "Báo lỗi";
-            this.tsmiError.Click += new System.EventHandler(this.tsmiError_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(199, 6);
             // 
             // tsmiExit
             // 
@@ -1179,8 +1163,6 @@ namespace ManageSchedule
         private System.Windows.Forms.ToolStripMenuItem tsmiPlan;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem tsmiOpen;
-        private System.Windows.Forms.ToolStripMenuItem tsmiError;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem tsmiExit;
         private System.Windows.Forms.Panel panelWeeklyGraphics;
         private System.Windows.Forms.Label label6;

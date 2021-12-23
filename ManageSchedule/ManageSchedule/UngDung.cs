@@ -30,10 +30,7 @@ namespace ManageSchedule
             panelMenu.Controls.Add(leftBorderBtn);
 
             this.FormClosing += new FormClosingEventHandler(FormUngDung_Closing);
-
-            timer.Interval = 1000;
-            timer.Start();
-
+            
             SetupDay();
         }
 
@@ -273,14 +270,14 @@ namespace ManageSchedule
             }
         }
 
-        private void tsmiError_Click(object sender, EventArgs e)
-        {
-            this.Show();
-            WindowState = FormWindowState.Normal;
-            //Visible = true;
-            ShowInTaskbar = true;
-            btnBaoloi_Click(this, new EventArgs());
-        }
+        //private void tsmiError_Click(object sender, EventArgs e)
+        //{
+        //    this.Show();
+        //    WindowState = FormWindowState.Normal;
+        //    //Visible = true;
+        //    ShowInTaskbar = true;
+        //    btnBaoloi_Click(this, new EventArgs());
+        //}
 
         private void tsmiPlan_Click(object sender, EventArgs e)
         {
@@ -330,7 +327,17 @@ namespace ManageSchedule
                 CaiDat.SetFirstOpen(false);
             }
 
-            new FormThongBaoTrongNgay();
+            if (CaiDat.GetDeadlineNotify() || CaiDat.GetEventNotify() || CaiDat.GetOtherNotify())
+            {
+                new FormThongBaoTrongNgay();
+
+                timer.Interval = 1000;
+                timer.Start();
+            }
+            else
+            {
+                timer.Stop();
+            }
         }
 
         private void btnEditInfo_Click(object sender, EventArgs e)
@@ -364,6 +371,8 @@ namespace ManageSchedule
                 //CaiDat.SetNoticeTime(int.Parse(NumDuringTime.Value.ToString()), int.Parse(NumStartHour.Value.ToString()), int.Parse(NumStartMin.Value.ToString()));
 
                 MessageBox.Show("Thay đổi cài đặt thành công!", "Thông báo");
+
+                FormUngDung_Load(this, new EventArgs());
             }
             catch
             {
@@ -420,6 +429,7 @@ namespace ManageSchedule
                 if (TaiKhoan.GetAvatar() != string.Empty)
                 {
                     Image i = ByteToImg(TaiKhoan.GetAvatar());
+                    i = ResizeImage(i, new Size(PictureBoxAvatar.Width, PictureBoxAvatar.Height));
                     PictureBoxAvatar.Image = i;
                 }
             }
@@ -473,8 +483,41 @@ namespace ManageSchedule
             Image image = Image.FromStream(ms, true);
             return image;
         }
+
+        public static Image ResizeImage(Image imgToResize, Size destinationSize)
+        {
+            var originalWidth = imgToResize.Width;
+            var originalHeight = imgToResize.Height;
+
+            var hRatio = (float)originalHeight / destinationSize.Height;
+            var wRatio = (float)originalWidth / destinationSize.Width;
+
+            var ratio = Math.Min(hRatio, wRatio);
+
+            var hScale = Convert.ToInt32(destinationSize.Height * ratio);
+            var wScale = Convert.ToInt32(destinationSize.Width * ratio);
+
+            var startX = (originalWidth - wScale) / 2;
+            var startY = (originalHeight - hScale) / 2;
+
+            var sourceRectangle = new Rectangle(startX, startY, wScale, hScale);
+
+            var bitmap = new Bitmap(destinationSize.Width, destinationSize.Height);
+
+            var destinationRectangle = new Rectangle(0, 0, bitmap.Width, bitmap.Height);
+
+            using (var g = Graphics.FromImage(bitmap))
+            {
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.DrawImage(imgToResize, destinationRectangle, sourceRectangle, GraphicsUnit.Pixel);
+            }
+
+            return bitmap;
+
+        }
         #endregion Avatar
 
+        #region Timer To Notice
         private void timer_Tick(object sender, EventArgs e)
         {
             if (DateTime.Now.Second == 0)
@@ -529,6 +572,7 @@ namespace ManageSchedule
             }
             //new FormThongBaoSuKien();
         }
+        #endregion Timer To Notice
     }
 
     public class TimeNUD : NumericUpDown

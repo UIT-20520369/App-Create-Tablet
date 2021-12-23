@@ -54,21 +54,36 @@ namespace ManageSchedule
             this.y = Screen.PrimaryScreen.WorkingArea.Height - this.Height - 5;
             this.Location = new Point(this.x, this.y);
 
-            List<MotThongBaoNgay> ThongBao = new List<MotThongBaoNgay>();
-            foreach (OneEvent ev in listSKToday.ListOfDay)
+            if (listSKToday.ListOfDay.Count > 0)
             {
-                ThongBao.Add(new MotThongBaoNgay(ev));
+                List<MotThongBaoNgay> ThongBao = new List<MotThongBaoNgay>();
+                foreach (OneEvent ev in listSKToday.ListOfDay)
+                {
+                    ThongBao.Add(new MotThongBaoNgay(ev));
+                }
+
+                FlowLayoutPanel fPanel = new FlowLayoutPanel();
+                fPanel.Width = panelNotice.Width;
+                fPanel.Height = panelNotice.Height;
+                fPanel.AutoScroll = true;
+                panelNotice.Controls.Add(fPanel);
+
+                foreach (MotThongBaoNgay notice in ThongBao)
+                {
+                    fPanel.Controls.Add(notice);
+                }
             }
-
-            FlowLayoutPanel fPanel = new FlowLayoutPanel();
-            fPanel.Width = panelNotice.Width;
-            fPanel.Height = panelNotice.Height;
-            fPanel.AutoScroll = true;
-            panelNotice.Controls.Add(fPanel);
-
-            foreach (MotThongBaoNgay notice in ThongBao)
+            else
             {
-                fPanel.Controls.Add(notice);
+                Label noWork = new Label();
+                noWork.AutoSize = false;
+                noWork.TextAlign = ContentAlignment.MiddleCenter;
+                noWork.Text = "Bạn không có công việc nào \n trong hôm nay!";
+                panelNotice.Controls.Add(noWork);
+                noWork.Dock = DockStyle.Fill;
+                noWork.Location = new System.Drawing.Point(0, 0);
+                noWork.ForeColor = Color.Black;
+                noWork.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             }
 
             this.Show();
