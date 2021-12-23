@@ -38,6 +38,9 @@ namespace ManageSchedule.ItemGoiY
             dtsth = y;
             curUser = user;
 
+            if (curUser == "")
+                btnSaveTKB.Enabled = false;
+
             if (listTKB.Count == 1)
             {
                 btnNext.Enabled = false;
@@ -269,7 +272,8 @@ namespace ManageSchedule.ItemGoiY
         private void btnNext_Click(object sender, EventArgs e)
         {
             pos++;
-            btnSaveTKB.Enabled = true;
+            if (curUser != "")
+                btnSaveTKB.Enabled = true;
 
             if (btnPrevious.Enabled == false)
                 btnPrevious.Enabled = true;
@@ -284,7 +288,8 @@ namespace ManageSchedule.ItemGoiY
         private void btnPrevious_Click(object sender, EventArgs e)
         {
             pos--;
-            btnSaveTKB.Enabled = true;
+            if (curUser != "")
+                btnSaveTKB.Enabled = true;
 
             if (btnNext.Enabled == false)
                 btnNext.Enabled = true;
@@ -302,6 +307,8 @@ namespace ManageSchedule.ItemGoiY
                 PictureBoxTKB.Image.Dispose();
         }
 
+        #region Export excel
+
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
             SaveFileDialog dialog = new SaveFileDialog();
@@ -312,8 +319,13 @@ namespace ManageSchedule.ItemGoiY
             if (dialog.FileName != "")
             {
                 wbExport.SaveToFile(dialog.FileName);
+                MessageBox.Show("Xuất file excel thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        #endregion Export excel
+
+        #region Save
 
         private void btnSaveTKB_Click(object sender, EventArgs e)
         {
@@ -459,6 +471,8 @@ namespace ManageSchedule.ItemGoiY
                 Application.Exit();
             }
         }
+
+        #endregion Save
 
         #region Count TKB
         private void CountTKB()

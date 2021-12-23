@@ -182,10 +182,10 @@ namespace ManageSchedule.ItemGoiY
                 FormGoiY.DanhSachMaMonDaChon.Remove(row);
 
             foreach (DataRow row in FormGoiY.DanhSachMaMonDaChon)
-                DataGridViewMaMon.Rows.Add(new string[] { row.ItemArray[1].ToString(), row.ItemArray[1].ToString() });
+                DataGridViewMaMon.Rows.Add(new string[] { row.ItemArray[1].ToString(), row.ItemArray[3].ToString() });
 
             foreach (DataRow row in FormGoiY.DanhSachMaLopDaChon)
-                DataGridViewMaLop.Rows.Add(new string[] { row.ItemArray[2].ToString(), row.ItemArray[1].ToString() });
+                DataGridViewMaLop.Rows.Add(new string[] { row.ItemArray[2].ToString(), row.ItemArray[3].ToString() });
         }
 
         #endregion Set up

@@ -43,6 +43,7 @@ namespace ManageSchedule.ItemGoiY
             this.LabelPos = new System.Windows.Forms.Label();
             this.btnExportExcel = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.btnSaveTKB = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            this.BoTronForm = new Bunifu.Framework.UI.BunifuElipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxTKB)).BeginInit();
             this.SuspendLayout();
             // 
@@ -443,6 +444,11 @@ namespace ManageSchedule.ItemGoiY
             this.btnSaveTKB.UseDefaultRadiusAndThickness = true;
             this.btnSaveTKB.Click += new System.EventHandler(this.btnSaveTKB_Click);
             // 
+            // BoTronForm
+            // 
+            this.BoTronForm.ElipseRadius = 10;
+            this.BoTronForm.TargetControl = this;
+            // 
             // FormXemKetQua
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -476,5 +482,6 @@ namespace ManageSchedule.ItemGoiY
         private System.Windows.Forms.Label LabelPos;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnExportExcel;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnSaveTKB;
+        private Bunifu.Framework.UI.BunifuElipse BoTronForm;
     }
 }
