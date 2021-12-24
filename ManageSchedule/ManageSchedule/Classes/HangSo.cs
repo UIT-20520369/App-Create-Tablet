@@ -15,6 +15,7 @@ namespace ManageSchedule
         public static string txtFilePath = string.Format("{0}\\Data\\setting.txt", Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\")));
 
         #region PropertyOfMonthView
+
         public static int DayofWeek = 7;
         public static int DayofColumn = 6;
 
@@ -23,6 +24,7 @@ namespace ManageSchedule
         public static int Margin_MV = 2;
         public static readonly string[] DayofWeek_vn = { "Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm", "Thứ sáu", "Thứ bảy" };
         public static readonly string[] Month_vn = { "Tháng một", "Tháng hai", "Tháng ba", "Tháng tư", "Tháng năm", "Tháng sáu", "Tháng bảy", "Tháng tám", "Tháng chín", "Tháng mười", "Tháng mười một", "Tháng mười hai" };
+
         #endregion PropertyOfMonthView
 
         public static void SqlSetDateFormat()

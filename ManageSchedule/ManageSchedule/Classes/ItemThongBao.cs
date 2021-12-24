@@ -35,10 +35,10 @@ namespace ManageSchedule.Classes
             {
                 return compare_DonVi;
             }
-            else 
+            else
             {
                 return this.giaTri.CompareTo(obj.GiaTri);
-            }          
+            }
         }
 
         public static readonly string[] listDonVi = { "phút", "tiếng", "ngày", "tuần" };
@@ -94,7 +94,7 @@ namespace ManageSchedule.Classes
                     temp = date.AddDays(-(GiaTri * 7));
                     date = new DateTime(temp.Year, temp.Month, temp.Day, 0, 0, 0);
                     break;
-            }         
+            }
             return date;
         }
     }

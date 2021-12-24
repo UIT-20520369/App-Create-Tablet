@@ -16,13 +16,13 @@ namespace ManageSchedule
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             new CaiDat(HangSo.txtFilePath);
 
             try
             {
                 Application.Run(new BatDau());
             }
-
             catch { }
         }
     }

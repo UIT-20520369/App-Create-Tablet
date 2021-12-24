@@ -11,13 +11,48 @@ namespace ManageSchedule
 {
     class TaiKhoan
     {
-        private static string FullName;
-        //private static string StudentID;
-        private static string Year;
-        private static string Email;
-        private static string Spec;
-        private static string Sys;
+        #region Properties
+        private static string fullName;
+        public static string FullName
+        {
+            get { return fullName; }
+            set { fullName = value; }
+        }
+
+        private static string year;
+        public static string Year
+        {
+            get { return year; }
+            set { year = value; }
+        }
+
+        private static string email;
+        public static string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+
+        private static string spec;
+        public static string Spec
+        {
+            get { return spec; }
+            set { spec = value; }
+        }
+        private static string sys;
+        public static string Sys
+        {
+            get { return sys; }
+            set { sys = value; }
+        }
+
         private static string strAvatar;
+        public static string Avatar
+        {
+            get { return strAvatar; }
+            set { strAvatar = value; }
+        }
+        #endregion Properties
 
         public TaiKhoan()
         {
@@ -39,10 +74,9 @@ namespace ManageSchedule
 
                 while (reader.Read())
                 {
-                    if (CaiDat.GetPreUsername() == reader.GetString(5))
+                    if (CaiDat.PreUsername == reader.GetString(5))
                     {
                         FullName = reader.GetString(0);
-                        //StudentID = "";
                         Year = reader.GetByte(2).ToString();
                         Email = reader.GetString(4);
                         Spec = reader.GetString(1);
@@ -66,7 +100,7 @@ namespace ManageSchedule
 
                 while (reader2.Read())
                 {
-                    if (CaiDat.GetPreUsername() == reader2.GetString(0))
+                    if (CaiDat.PreUsername == reader2.GetString(0))
                     {
                         strAvatar = reader2.GetString(1);
                         hasAvatar = true;
@@ -85,7 +119,7 @@ namespace ManageSchedule
                     SqlParameter parAva = new SqlParameter("@strAvatar", SqlDbType.Text);
                     parAva.Value = string.Empty;
                     SqlParameter parTK = new SqlParameter("@TaiKhoan", SqlDbType.VarChar);
-                    parTK.Value = CaiDat.GetPreUsername();
+                    parTK.Value = CaiDat.PreUsername;
 
                     sqlCmdInsert.Parameters.Add(parAva);
                     sqlCmdInsert.Parameters.Add(parTK);
@@ -103,7 +137,7 @@ namespace ManageSchedule
                 //strAvatar = setting[8];
 
                 sqlCon.Close();
-            } 
+            }
             catch (Exception)
             {
                 MessageBox.Show("Lỗi mạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -112,38 +146,8 @@ namespace ManageSchedule
             }
         }
 
-        #region Get Method
-        public static string GetFullName()
-        {
-            return FullName;
-        }
-        //public static string GetID()
-        //{
-        //    return StudentID;
-        //}
-        public static string GetYear()
-        {
-            return Year;
-        }
-        public static string GetEmail()
-        {
-            return Email;
-        }
-        public static string GetSpec()
-        {
-            return Spec;
-        }
-        public static string GetSys()
-        {
-            return Sys;
-        }
-        public static string GetAvatar()
-        {
-            return strAvatar;
-        }
-        #endregion Get Method
-
-        public static bool ChangeAccountInfo(string _fullName, /*string _studentID,*/ int _year, string _email, string _spec, string _sys)
+        #region Change Account
+        public static bool ChangeAccountInfo(string _fullName, int _year, string _email, string _spec, string _sys)
         {
             SqlConnection sqlCon = null;
             if (sqlCon == null)
@@ -179,7 +183,7 @@ namespace ManageSchedule
                 parHe.Value = _sys;
 
                 SqlParameter parTK = new SqlParameter("@TaiKhoan", SqlDbType.VarChar);
-                parTK.Value = CaiDat.GetPreUsername();
+                parTK.Value = CaiDat.PreUsername;
 
                 sqlCmdUpdate.Parameters.Add(parHoTen);
                 sqlCmdUpdate.Parameters.Add(parNganh);
@@ -212,9 +216,50 @@ namespace ManageSchedule
             }
         }
 
-        public static void SetAvatar(string _strAva)
+        public static bool ChangePassword(string _hash)
         {
-            strAvatar = _strAva;
+            SqlConnection sqlCon = null;
+            if (sqlCon == null)
+                sqlCon = new SqlConnection(HangSo.strCon);
+
+            if (sqlCon.State == ConnectionState.Closed)
+                sqlCon.Open();
+
+            try
+            {
+                SqlCommand sqlCmdUpdate = new SqlCommand();
+                sqlCmdUpdate.CommandType = CommandType.Text;
+                sqlCmdUpdate.CommandText = "update dbo.Thongtintaikhoan " +
+                    "set MatKhau=@MatKhau " +
+                    "where TaiKhoan=@TaiKhoan";
+
+                SqlParameter parMK = new SqlParameter("@MatKhau", SqlDbType.VarChar);
+                parMK.Value = _hash;
+
+                SqlParameter parTK = new SqlParameter("@TaiKhoan", SqlDbType.VarChar);
+                parTK.Value = CaiDat.PreUsername;
+
+                sqlCmdUpdate.Parameters.Add(parMK);
+                sqlCmdUpdate.Parameters.Add(parTK);
+
+                sqlCmdUpdate.Connection = sqlCon;
+
+                sqlCmdUpdate.ExecuteNonQuery();
+
+                sqlCmdUpdate.Dispose();
+
+                sqlCon.Close();
+
+                CaiDat.PreHashPassword = _hash;
+
+                return true;
+            }
+            catch
+            {
+                sqlCon.Close();
+
+                return false;
+            }
         }
 
         public static bool ChangeAvatar(string _srtAva)
@@ -236,31 +281,30 @@ namespace ManageSchedule
                 SqlParameter parAva = new SqlParameter("@strAvatar", SqlDbType.Text);
                 parAva.Value = _srtAva;
                 SqlParameter parTK = new SqlParameter("@TaiKhoan", SqlDbType.VarChar);
-                parTK.Value = CaiDat.GetPreUsername();
+                parTK.Value = CaiDat.PreUsername;
 
                 sqlCmdUpdate.Parameters.Add(parAva);
                 sqlCmdUpdate.Parameters.Add(parTK);
 
                 sqlCmdUpdate.Connection = sqlCon;
-                sqlCmdUpdate.ExecuteNonQuery();            
+                sqlCmdUpdate.ExecuteNonQuery();
                 sqlCmdUpdate.Dispose();
 
                 sqlCon.Close();
 
                 strAvatar = _srtAva;
 
-                MessageBox.Show("Thay đổi Avatar thành công!", "Thông báo", MessageBoxButtons.OK);
-
                 return true;
             }
-            catch (Exception e)
+            catch
             {
                 sqlCon.Close();
-
-                MessageBox.Show(e.ToString());
 
                 return false;
             }
         }
+        #endregion Change Account
     }
 }
+
+

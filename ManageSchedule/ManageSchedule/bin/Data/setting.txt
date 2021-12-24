@@ -2,7 +2,4 @@
 
 Startup: false
 First Open: false
-Notify: Deadline
-
-
-
+Notify: true

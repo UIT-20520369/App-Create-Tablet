@@ -38,7 +38,13 @@ namespace ManageSchedule.Classes
             }
         }
 
-
+        public OneDay(bool isGetEvent, DateTime day)
+        {
+            listOfDay = new List<OneEvent>();
+            this.day = DateTime.Now;
+            if (isGetEvent)
+                GetDayEvent(day);
+        }
 
         public void UploadData(ref SqlConnection sqlCon)
         {
@@ -51,7 +57,7 @@ namespace ManageSchedule.Classes
 
             SqlCommand sqlSelect = new SqlCommand("select * from dbo.SUKIEN where USERNAME = @username and NGAY >= @ngay1 and NGAY <= @ngay2 order by NGAY asc", sqlCon);
             sqlSelect.Parameters.Add("@username", SqlDbType.VarChar);
-            sqlSelect.Parameters["@username"].Value = CaiDat.GetPreUsername();
+            sqlSelect.Parameters["@username"].Value = CaiDat.PreUsername;
 
             sqlSelect.Parameters.Add("@ngay1", SqlDbType.DateTime);
             sqlSelect.Parameters["@ngay1"].Value = new DateTime(Day.Year, Day.Month, Day.Day, 0, 0, 0);
@@ -121,7 +127,7 @@ namespace ManageSchedule.Classes
             sqlCon.Open();
             SqlCommand sqlSet = new SqlCommand("select IDSK, THOIGIAN from dbo.THONGBAO where USERNAME = @user AND THOIGIAN >= @thoigianbd AND THOIGIAN <= @thoigiankt", sqlCon);
             sqlSet.Parameters.Add("@user", SqlDbType.VarChar);
-            sqlSet.Parameters["@user"].Value = CaiDat.GetPreUsername();
+            sqlSet.Parameters["@user"].Value = CaiDat.PreUsername;
             sqlSet.Parameters.Add("@thoigianbd", SqlDbType.DateTime);
             sqlSet.Parameters["@thoigianbd"].Value = new DateTime(day.Year, day.Month, day.Day, 0, 0, 0);
             sqlSet.Parameters.Add("@thoigiankt", SqlDbType.DateTime);
@@ -178,6 +184,57 @@ namespace ManageSchedule.Classes
                 reader1.Close();
             }
             sqlSK.Dispose();
+        }
+
+        private void GetDayEvent(DateTime day)
+        {
+            HangSo.SqlSetDateFormat();
+            SqlConnection sqlCon = new SqlConnection(HangSo.strCon);
+            sqlCon.Open();
+
+            SqlCommand sqlSet = new SqlCommand("select * from dbo.SUKIEN where USERNAME=@user", sqlCon);
+            sqlSet.Parameters.Add("@user", SqlDbType.VarChar);
+            sqlSet.Parameters["@user"].Value = CaiDat.PreUsername;
+
+            var reader = sqlSet.ExecuteReader();
+            while (reader.Read())
+            {
+                OneEvent one = new OneEvent();
+                //one.ID = reader.GetInt32(0);
+                one.TieuDe = reader.GetString(2);
+                one.Ngay = reader.GetDateTime(3);
+                if (reader.GetValue(4) != DBNull.Value)
+                {
+                    one.ToiNgay = reader.GetDateTime(4);
+                }
+                if (reader.GetValue(5) != DBNull.Value)
+                {
+                    one.MonHoc = reader.GetString(5);
+                }
+                if (reader.GetValue(6) != DBNull.Value)
+                {
+                    one.MoTa = reader.GetString(6);
+                }
+
+                DateTime start = new DateTime(one.Ngay.Year, one.Ngay.Month, one.Ngay.Day, 0, 0, 0);
+                DateTime end = new DateTime(one.ToiNgay.Year, one.ToiNgay.Month, one.ToiNgay.Day, 23, 59, 59);
+
+                if (one.ToiNgay == new DateTime())
+                {
+                    if (day.ToShortDateString() != one.Ngay.ToShortDateString())
+                        continue;
+                }
+                else
+                {
+                    if (day < start || day > end)
+                        continue;
+                }
+
+                listOfDay.Add(one);
+            }
+
+            reader.Close();
+            sqlSet.Dispose();
         }
     }
 }

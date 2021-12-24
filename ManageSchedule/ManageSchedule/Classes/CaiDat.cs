@@ -14,19 +14,43 @@ namespace ManageSchedule
 {
     class CaiDat
     {
-        #region Param
-        private static bool Startup = false;
-        private static bool FirstOpen = false;
-        private static bool DeadlineNotify = false;
-        private static bool EventNotify = false;
-        private static bool OtherNotify = false;
-        //private static int NotifyTime = 60;
-        //private static int NoticeStartHour = 0;
-        //private static int NoticeStartMinute = 0;
-        private static string PreUsername = string.Empty;
-        private static string PreHashPassword = string.Empty;
+        #region Properties
+        private static bool startup = true;
+        public static bool Startup
+        {
+            get { return startup; }
+            set { startup = value; }
+        }
+
+        private static bool firstOpen = false;
+        public static bool FirstOpen
+        {
+            get { return firstOpen; }
+            set { firstOpen = value; }
+        }
+
+        private static bool eventNotify = false;
+        public static bool EventNotify
+        {
+            get { return eventNotify; }
+            set { eventNotify = value; }
+        }
+
+        private static string preUsername = string.Empty;
+        public static string PreUsername
+        {
+            get { return preUsername; }
+            set { preUsername = value; }
+        }
+        private static string preHashPassword = string.Empty;
+        public static string PreHashPassword
+        {
+            get { return preHashPassword; }
+            set { preHashPassword = value; }
+        }
+
         private static IWshRuntimeLibrary.IWshShortcut shortcut;
-        #endregion Param
+        #endregion Properties
 
         #region Constructor
         public CaiDat(string filePath)
@@ -35,9 +59,6 @@ namespace ManageSchedule
 
             PreUsername = setting[0];
             PreHashPassword = setting[1];
-            //NotifyTime = int.Parse(setting[5]);
-            //NoticeStartHour = int.Parse(setting[6]);
-            //NoticeStartMinute = int.Parse(setting[7]);
 
             if (setting[2] == "Startup: false")
             {
@@ -48,25 +69,16 @@ namespace ManageSchedule
                 Startup = true;
             }
 
-            if (setting[3] == "First Open: false")
-            {
-                FirstOpen = false;
-            }
-            else
+            if (setting[3] == "First Open: true") 
             {
                 FirstOpen = true;
             }
-
-            if (setting[4].Contains("Deadline"))
-            {
-                DeadlineNotify = true;
-            }
             else
             {
-                DeadlineNotify = false;
+                FirstOpen = false;
             }
 
-            if (setting[4].Contains("Enevt"))
+            if (setting[4] == "Notify: true")
             {
                 EventNotify = true;
             }
@@ -74,74 +86,10 @@ namespace ManageSchedule
             {
                 EventNotify = false;
             }
-
-            if (setting[4].Contains("Other"))
-            {
-                OtherNotify = true;
-            }
-            else
-            {
-                OtherNotify = false;
-            }
         }
         #endregion Constructor
 
-        #region Get Method
-        //
-        // get method
-        //
-
-        public static bool GetStartup()
-        {
-            return Startup;
-        }
-
-        public static bool GetDeadlineNotify()
-        {
-            return DeadlineNotify;
-        }
-
-        public static bool GetEventNotify()
-        {
-            return EventNotify;
-        }
-
-        public static bool GetOtherNotify()
-        {
-            return OtherNotify;
-        }
-
-        public static bool GetFirstOpen()
-        {
-            return FirstOpen;
-        }
-
-        //public static int GetNoticeTime()
-        //{
-        //    return NotifyTime;
-        //}
-
-        //public static int GetNotifyHour()
-        //{
-        //    return NoticeStartHour;
-        //}
-
-        //public static int GetNotifyMinute()
-        //{
-        //    return NoticeStartMinute;
-        //}
-
-        public static string GetPreUsername()
-        {
-            return PreUsername;
-        }
-
-        public static string GetPreHash()
-        {
-            return PreHashPassword;
-        }
-
-        #endregion Get Method
+        
 
         #region Set Method
 
@@ -175,48 +123,9 @@ namespace ManageSchedule
                 }
             }
         }
-
-        public static void SetFirstOpen(bool isFirst)
-        {
-            FirstOpen = isFirst;
-        }
-
-        public static void SetNotify(bool _deadline, bool _event, bool _other)
-        {
-            // type là deadline, event other, deadline event other, ...
-            // sự kiện checkbox deadline/event/other
-            // nếu chưa bật startup vẫn có thể lựa chọn
-            // nếu không có bất cứ checkbox nào bật vẫn chạy background
-            // không xóa khi đăng xuất
-            // không xóa khi kết thúc từ notify icon (== application.exit)
-            DeadlineNotify = _deadline;
-            EventNotify = _event;
-            OtherNotify = _other;
-
-            //Deadline();
-            //Event();
-            //Other();
-        }
-
-        //public static void SetNoticeTime(int time, int hour, int minute)
-        //{
-        //    // lấy dữ liệu từ numeric up down
-        //    // time là khoảng cách giữa 2 lần thông báo
-        //    // hour:minute là thời gian bắt đầu thông báo
-        //    // vd hour=7, minute=30 thì bắt đầu thông báo từ 7h30 mỗi ngày
-        //    NotifyTime = time;
-        //    NoticeStartHour = hour;
-        //    NoticeStartMinute = minute;
-
-        //    Time();
-        //}
-
+        
         public static void SetPreLogin(string username, string password)
-        {
-            // gọi khi đăng nhập
-            // xóa khi đăng xuất
-            // không xóa khi thoát
-            // thay đổi khi đổi mật khẩu
+        {           
             PreUsername = username;
             PreHashPassword = password;
         }
@@ -239,51 +148,7 @@ namespace ManageSchedule
         //
         // setting method
         //
-
-        public static bool ChangePassword(string _hash)
-        {
-            SqlConnection sqlCon = null;
-            if (sqlCon == null)
-                sqlCon = new SqlConnection(HangSo.strCon);
-
-            if (sqlCon.State == ConnectionState.Closed)
-                sqlCon.Open();
-
-            try
-            {
-                SqlCommand sqlCmdUpdate = new SqlCommand();
-                sqlCmdUpdate.CommandType = CommandType.Text;
-                sqlCmdUpdate.CommandText = "update dbo.Thongtintaikhoan " +
-                    "set MatKhau=@MatKhau " +
-                    "where TaiKhoan=@TaiKhoan";
-
-                SqlParameter parMK = new SqlParameter("@MatKhau", SqlDbType.VarChar);
-                parMK.Value = _hash;
-
-                SqlParameter parTK = new SqlParameter("@TaiKhoan", SqlDbType.VarChar);
-                parTK.Value = CaiDat.GetPreUsername();
-
-                sqlCmdUpdate.Parameters.Add(parMK);
-                sqlCmdUpdate.Parameters.Add(parTK);
-
-                sqlCmdUpdate.Connection = sqlCon;
-
-                sqlCmdUpdate.ExecuteNonQuery();
-
-                sqlCon.Close();
-
-                PreHashPassword = _hash;
-
-                return true;
-            }
-            catch
-            {
-                sqlCon.Close();
-
-                return false;
-            }
-        }
-
+        
         #region Startup
         // tạo shortcut startup
         public static void CreateStartupShortcut()
@@ -336,16 +201,14 @@ namespace ManageSchedule
         }
         #endregion Startup
 
+
         // ghi vào file txt   
         public static void WriteToTxt(string filePath)
         {
-            string[] setting = new string[8];
+            string[] setting = new string[5];
 
             setting[0] = PreUsername;
             setting[1] = PreHashPassword;
-            //setting[5] = NotifyTime.ToString();
-            //setting[6] = NoticeStartHour.ToString();
-            //setting[7] = NoticeStartMinute.ToString();
 
             if (!Startup)
             {
@@ -365,50 +228,13 @@ namespace ManageSchedule
                 setting[3] = "First Open: true";
             }
 
-            setting[4] = "Notify:";
-
-            if (DeadlineNotify)
-            {
-                if (!setting[4].Contains("Deadline"))
-                    setting[4] += " Deadline";
-            }
-            else
-            {
-                if (setting[4].Contains("Deadline"))
-                {
-                    setting[4].Remove(setting[4].IndexOf("Deadline"), 9);
-                }
-            }
-
             if (EventNotify)
             {
-                if (!setting[4].Contains("Event"))
-                    setting[4] += " Event";
+                setting[4] = "Notify: true";
             }
             else
             {
-                if (setting[4].Contains("Event"))
-                {
-                    setting[4].Remove(setting[4].IndexOf("Event"), 6);
-                }
-            }
-
-            if (OtherNotify)
-            {
-                if (!setting[4].Contains("Other"))
-                    setting[4] += " Other";
-            }
-            else
-            {
-                if (setting[4].Contains("Other"))
-                {
-                    setting[4].Remove(setting[4].IndexOf("Other"), 6);
-                }
-            }
-
-            if (!DeadlineNotify && !EventNotify && !OtherNotify)
-            {
-                setting[4] += " None";
+                setting[4] = "Notify: false";
             }
 
             System.IO.File.WriteAllLines(filePath, setting);
