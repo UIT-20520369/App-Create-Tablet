@@ -26,7 +26,7 @@ namespace ManageSchedule
 
         private List<OneDay> listMonth;
 
-        // private Point chosenDay;
+        private int indexOfCurButton;
         private DateTime dateMonth;
         public DateTime DateMonth
         {
@@ -61,6 +61,9 @@ namespace ManageSchedule
             dateMonth = _date;
             LoadMatrix();
             isFromOutSide = false;
+            //
+            indexOfCurButton = -1;
+            //
         }
 
 
@@ -138,24 +141,7 @@ namespace ManageSchedule
 
                 if (!flag)
                 {
-                    Button btnDay = new Button();
-                    btnDay.Click += btnDay_Click;
-                    //
-                    btnDay.FlatStyle = FlatStyle.Flat;
-                    btnDay.FlatAppearance.BorderSize = 0;
-                    //
-                    btnDay.AutoSize = false;
-                    btnDay.Size = new System.Drawing.Size(37, 23);
-                    btnDay.Margin = new System.Windows.Forms.Padding(53, 0, 53, 1);
-                    //btnDay.Width = btn.Width;
-                    btnDay.Font = lblMonday.Font;
-                    btnDay.Text = i.ToString();
-                    btnDay.TextAlign = ContentAlignment.TopCenter;
-                    //using (Graphics g = CreateGraphics())
-                    //{
-                    //    SizeF size = g.MeasureString(btnDay.Text, btnDay.Font, btnDay.Width);
-                    //    btnDay.Height = (int)Math.Ceiling(size.Height);
-                    //}
+                    Button btnDay = CreateBtnDay(i);
 
                     btn.Controls.Add(btnDay);
                     int index = listMonth.FindIndex(c => c.Day.Day == i);
@@ -186,6 +172,24 @@ namespace ManageSchedule
 
                 useDate = useDate.AddDays(1);
             }
+        }
+
+        private Button CreateBtnDay(int day)
+        {
+            Button btnDay = new Button();
+            btnDay.Click += btnDay_Click;
+            //
+            btnDay.FlatStyle = FlatStyle.Flat;
+            btnDay.FlatAppearance.BorderSize = 0;
+            //
+            btnDay.AutoSize = false;
+            btnDay.Size = new System.Drawing.Size(37, 23);
+            btnDay.Margin = new System.Windows.Forms.Padding(53, 0, 53, 1);
+            //btnDay.Width = btn.Width;
+            btnDay.Font = lblMonday.Font;
+            btnDay.Text = day.ToString();
+            btnDay.TextAlign = ContentAlignment.TopCenter;
+            return btnDay;
         }
 
         //click vào btn 1 ngày thì thêm sự kiện
@@ -222,7 +226,7 @@ namespace ManageSchedule
 
             SqlCommand sqlGet = new SqlCommand("select * from dbo.SUKIEN where USERNAME = @username and NGAY >= @ngaybd and NGAY <= @ngaykt order by NGAY asc", sqlCon);
             sqlGet.Parameters.Add("@username", SqlDbType.VarChar);
-            sqlGet.Parameters["@username"].Value = CaiDat.GetPreUsername();
+            sqlGet.Parameters["@username"].Value = CaiDat.PreUsername;
             sqlGet.Parameters.Add("@ngaybd", SqlDbType.DateTime);
             sqlGet.Parameters["@ngaybd"].Value = new DateTime(this.dateMonth.Year, dateMonth.Month, 1, 0, 0, 0);
             sqlGet.Parameters.Add("@ngaykt", SqlDbType.DateTime);
@@ -280,6 +284,11 @@ namespace ManageSchedule
         {
             int height = 0;
             int quantity = oneDay.ListOfDay.Count;
+
+            pnl.Controls.Clear();
+            Button btnDay = CreateBtnDay(oneDay.Day.Day);
+            pnl.Controls.Add(btnDay);
+
             pnl.Size = new Size(HangSo.dateButtonWidth_MV, HangSo.dateButtonHeight_MV);
             for (int i = 0; i < quantity; i++)
             {
@@ -487,10 +496,12 @@ namespace ManageSchedule
         private void BtnEvent_Click(object sender, EventArgs e)
         {
             int day = Convert.ToInt32((sender as Button).Parent.Controls[0].Text);
-            int indexOfBtn = (sender as Button).Parent.Controls.IndexOf(sender as Button);
+            indexOfCurButton = (sender as Button).Parent.Controls.IndexOf(sender as Button);
             int index = listMonth.FindIndex(c => c.Day.Day == day);
-
-            FormShowSuKien form = new FormShowSuKien(listMonth[index].ListOfDay[indexOfBtn - 1]);
+            //
+            DateChange(new DateTime(dateMonth.Year, dateMonth.Month, day));
+            //
+            FormShowSuKien form = new FormShowSuKien(listMonth[index].ListOfDay[indexOfCurButton - 1]);
             form.Show();
 
             form.Deleted += FormShowSK_Deleted;
@@ -522,6 +533,40 @@ namespace ManageSchedule
         private void EditSk_Edited(object sender, EventArgs e)
         {
             OneEvent one = (sender as FormEditEvent).ItemEvent;
+            //
+            if (!isEqualDate(dateMonth, one.Ngay))
+            {
+                DateTime useDate = new DateTime(dateMonth.Year, dateMonth.Month, 1);
+                int line = 0;
+                int dayOfMonth = DayOfMonth(dateMonth);
+
+                int column = dateOfWeek.IndexOf(useDate.DayOfWeek.ToString());
+                for (int i = 1; i <= dayOfMonth; i++)
+                {
+                    if (column > 6)
+                    {
+                        line++;
+                        column = 0;
+                    }
+                    FlowLayoutPanel btn = Matrix[line][column];
+
+                    if (btn.Controls.Count > 0)
+                    {
+                        if (dateMonth.Day == Convert.ToInt32(btn.Controls[0].Text))
+                        {
+                            int index = listMonth.FindIndex(c => c.Day.Day == dateMonth.Day);
+                            listMonth[index].ListOfDay.RemoveAt(indexOfCurButton - 1);
+                            btn.Controls.RemoveAt(indexOfCurButton);
+                            SetButtonEventsForOneDay(ref btn, listMonth[index]);
+                            break;
+                        }
+                    }
+                    column++;
+                    useDate = useDate.AddDays(1);
+                }
+            }
+            indexOfCurButton = -1;
+            //
             EditSk_Update(one);
         }
 

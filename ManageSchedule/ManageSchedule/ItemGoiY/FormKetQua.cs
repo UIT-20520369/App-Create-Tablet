@@ -194,6 +194,13 @@ namespace ManageSchedule.ItemGoiY
 
         private void btnDeleteIdSubject_Click(object sender, EventArgs e)
         {
+            if (FormGoiY.DanhSachMaMonDaChon.Count == 0)
+            {
+                MessageBox.Show("Danh sách không có mã môn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnDeleteIdSubject.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Idle;
+                return;
+            }
+
             int selectedRowCount = DataGridViewMaMon.Rows.GetRowCount(DataGridViewElementStates.Selected);
             if (selectedRowCount <= 0)
                 return;
@@ -220,10 +227,18 @@ namespace ManageSchedule.ItemGoiY
             MessageBox.Show("Xóa mã môn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             isSearch = true;
             btnDeleteIdSubject.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Idle;
+            LabelResult.Text = "";
         }
 
         private void btnDeleteIdClass_Click(object sender, EventArgs e)
         {
+            if (FormGoiY.DanhSachMaLopDaChon.Count == 0)
+            {
+                MessageBox.Show("Danh sách không có mã lớp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnDeleteIdClass.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Idle;
+                return;
+            }
+
             int selectedRowCount = DataGridViewMaLop.Rows.GetRowCount(DataGridViewElementStates.Selected);
             if (selectedRowCount <= 0)
                 return;
@@ -250,6 +265,7 @@ namespace ManageSchedule.ItemGoiY
             MessageBox.Show("Xóa mã lớp thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             isSearch = true;
             btnDeleteIdClass.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Idle;
+            LabelResult.Text = "";
         }
 
         #endregion Delete
@@ -261,6 +277,14 @@ namespace ManageSchedule.ItemGoiY
             if (!isSearch)
             {
                 MessageBox.Show("Đã xong", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnStart.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Idle;
+                return;
+            }
+
+            if (FormGoiY.DanhSachMaLopDaChon.Count == 0 && FormGoiY.DanhSachMaMonDaChon.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn mã lớp hoặc mã môn để bắt đầu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnStart.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Idle;
                 return;
             }
 

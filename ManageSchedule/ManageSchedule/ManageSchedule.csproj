@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>ManageSchedule</RootNamespace>
     <AssemblyName>ManageSchedule</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -157,6 +158,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -202,17 +204,23 @@
     <Compile Include="Forms\FormBaoLoi.Designer.cs">
       <DependentUpon>FormBaoLoi.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormChinhSuaThongTIn.cs">
+    <Compile Include="Forms\FormChinhSuaThongTin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormChinhSuaThongTIn.Designer.cs">
-      <DependentUpon>FormChinhSuaThongTIn.cs</DependentUpon>
+    <Compile Include="Forms\FormChinhSuaThongTin.Designer.cs">
+      <DependentUpon>FormChinhSuaThongTin.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormCongViec.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormCongViec.Designer.cs">
       <DependentUpon>FormCongViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormThongBao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormThongBao.Designer.cs">
+      <DependentUpon>FormThongBao.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemCongViec\FormDayView.cs">
       <SubType>Form</SubType>
@@ -321,6 +329,12 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\TaiKhoan.cs" />
+    <Compile Include="UserControls\MotThongBao.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MotThongBao.Designer.cs">
+      <DependentUpon>MotThongBao.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ThongBao.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -348,11 +362,14 @@
     <EmbeddedResource Include="Forms\FormBaoLoi.resx">
       <DependentUpon>FormBaoLoi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormChinhSuaThongTIn.resx">
-      <DependentUpon>FormChinhSuaThongTIn.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormChinhSuaThongTin.resx">
+      <DependentUpon>FormChinhSuaThongTin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormCongViec.resx">
       <DependentUpon>FormCongViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormThongBao.resx">
+      <DependentUpon>FormThongBao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ItemCongViec\FormDayView.resx">
       <DependentUpon>FormDayView.cs</DependentUpon>
@@ -416,6 +433,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\MotThongBao.resx">
+      <DependentUpon>MotThongBao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ThongBao.resx">
       <DependentUpon>ThongBao.cs</DependentUpon>
     </EmbeddedResource>

@@ -295,7 +295,7 @@ namespace ManageSchedule.ItemGoiY
             this.btnDeleteIdSubject.ButtonTextMarginLeft = 0;
             this.btnDeleteIdSubject.ColorContrastOnClick = 45;
             this.btnDeleteIdSubject.ColorContrastOnHover = 45;
-            this.btnDeleteIdSubject.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnDeleteIdSubject.Cursor = System.Windows.Forms.Cursors.Hand;
             borderEdges1.BottomLeft = true;
             borderEdges1.BottomRight = true;
             borderEdges1.TopLeft = true;
@@ -385,7 +385,7 @@ namespace ManageSchedule.ItemGoiY
             this.btnDeleteIdClass.ButtonTextMarginLeft = 0;
             this.btnDeleteIdClass.ColorContrastOnClick = 45;
             this.btnDeleteIdClass.ColorContrastOnHover = 45;
-            this.btnDeleteIdClass.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnDeleteIdClass.Cursor = System.Windows.Forms.Cursors.Hand;
             borderEdges2.BottomLeft = true;
             borderEdges2.BottomRight = true;
             borderEdges2.TopLeft = true;
@@ -475,7 +475,7 @@ namespace ManageSchedule.ItemGoiY
             this.btnStart.ButtonTextMarginLeft = 0;
             this.btnStart.ColorContrastOnClick = 45;
             this.btnStart.ColorContrastOnHover = 45;
-            this.btnStart.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnStart.Cursor = System.Windows.Forms.Cursors.Hand;
             borderEdges3.BottomLeft = true;
             borderEdges3.BottomRight = true;
             borderEdges3.TopLeft = true;
@@ -565,7 +565,7 @@ namespace ManageSchedule.ItemGoiY
             this.btnShowResult.ButtonTextMarginLeft = 0;
             this.btnShowResult.ColorContrastOnClick = 45;
             this.btnShowResult.ColorContrastOnHover = 45;
-            this.btnShowResult.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnShowResult.Cursor = System.Windows.Forms.Cursors.Hand;
             borderEdges4.BottomLeft = true;
             borderEdges4.BottomRight = true;
             borderEdges4.TopLeft = true;

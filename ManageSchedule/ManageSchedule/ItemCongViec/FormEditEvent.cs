@@ -48,12 +48,16 @@ namespace ManageSchedule
             dtpkToiNgay.Value = dateTime;
             raBtnNoTimeTo.Checked = true;
             isMinSize = true;
+            lbNoEmpty.Visible = false;
+            btnDelete.Visible = false;
         }
 
         public FormEditEvent(OneEvent suKien)
         {
             InitializeComponent();
             ItemEvent = suKien;
+
+            lbNoEmpty.Visible = false;
 
             isMinSize = true;
             ShowEvent();
@@ -289,7 +293,7 @@ namespace ManageSchedule
                 sqlCon.Open();
             SqlCommand sqlIns = new SqlCommand("insert into dbo.SUKIEN (USERNAME, TIEUDE, NGAY, TOINGAY, MONHOC, MOTA) VALUES (@username, @tieude, @ngay, @toingay, @monhoc, @mota)", sqlCon);
             sqlIns.Parameters.Add("@username", SqlDbType.VarChar);
-            sqlIns.Parameters["@username"].Value = CaiDat.GetPreUsername();
+            sqlIns.Parameters["@username"].Value = CaiDat.PreUsername;
 
             SetValueOfTableSK(ref sqlIns);
             sqlIns.ExecuteNonQuery();
@@ -328,7 +332,7 @@ namespace ManageSchedule
             sqlInsertTB.Parameters.Add("@giatri", SqlDbType.Int);
             sqlInsertTB.Parameters.Add("@donvi", SqlDbType.NChar);
             sqlInsertTB.Parameters.Add("@thoigian", SqlDbType.DateTime);
-            string username = CaiDat.GetPreUsername();
+            string username = CaiDat.PreUsername;
             int ID = itemEvent.ID;
 
             int count = ItemEvent.ListTB.Count;

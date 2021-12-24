@@ -79,6 +79,8 @@ namespace ManageSchedule
 
         public void Update(OneEvent _one)
         {
+            if (oneDay.ListOfDay.Count == 0)
+                flPnlListDay.Controls.Clear();
             this.One_Day.ListOfDay.Add(_one);
             this.One_Day.ListOfDay.Sort();
             int index = oneDay.ListOfDay.IndexOf(_one);
@@ -93,6 +95,7 @@ namespace ManageSchedule
             OneEvent one = (sender as MotSuKien).SuKien;
             oneDay.ListOfDay.Remove(one);
             flPnlListDay.Controls.Remove(sender as MotSuKien);
+            ShowEvents();
         }
 
         private void btnPre_Click(object sender, EventArgs e)

@@ -57,6 +57,7 @@ namespace ManageSchedule
             this.pnlSukien.AutoScroll = true;
             this.pnlSukien.AutoScrollMargin = new System.Drawing.Size(3, 3);
             this.pnlSukien.AutoScrollMinSize = new System.Drawing.Size(3, 3);
+            this.pnlSukien.BackColor = System.Drawing.SystemColors.Control;
             this.pnlSukien.Location = new System.Drawing.Point(0, 30);
             this.pnlSukien.Margin = new System.Windows.Forms.Padding(0);
             this.pnlSukien.Name = "pnlSukien";

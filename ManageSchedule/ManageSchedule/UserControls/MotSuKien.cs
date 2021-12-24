@@ -13,6 +13,7 @@ namespace ManageSchedule
 {
     public partial class MotSuKien : UserControl
     {
+        private DateTime date;
         private int type;
         private OneEvent suKien;
         public OneEvent SuKien
@@ -39,6 +40,8 @@ namespace ManageSchedule
             InitializeComponent();
             type = i;
             suKien = oneEvent;
+            date = SuKien.Ngay;
+            Margin = new Padding(25, 3, 25, 3);
             flPnlTotal = new FlowLayoutPanel();
             flPnlTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             flPnlTotal.FlowDirection = FlowDirection.TopDown;
@@ -112,6 +115,16 @@ namespace ManageSchedule
 
         private void FormEdit_Edited(object sender, EventArgs e)
         {
+            DateTime dateTime = SuKien.Ngay;
+            if (!(date.Year == dateTime.Year && date.Month == dateTime.Month && date.Day == dateTime.Day))
+            {
+                if (deleted != null)
+                    deleted(this, new EventArgs());
+                return;
+
+            }
+            date = SuKien.Ngay;
+
             sizeUC = new Size(this.Width, 0);
             flPnlTotal.Controls.Clear();
             ShowSuKien();

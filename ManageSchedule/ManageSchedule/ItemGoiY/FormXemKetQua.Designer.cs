@@ -74,7 +74,7 @@ namespace ManageSchedule.ItemGoiY
             this.btnNext.ButtonTextMarginLeft = 0;
             this.btnNext.ColorContrastOnClick = 45;
             this.btnNext.ColorContrastOnHover = 45;
-            this.btnNext.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
             borderEdges1.BottomLeft = true;
             borderEdges1.BottomRight = true;
             borderEdges1.TopLeft = true;
@@ -164,7 +164,7 @@ namespace ManageSchedule.ItemGoiY
             this.btnPrevious.ButtonTextMarginLeft = 0;
             this.btnPrevious.ColorContrastOnClick = 45;
             this.btnPrevious.ColorContrastOnHover = 45;
-            this.btnPrevious.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnPrevious.Cursor = System.Windows.Forms.Cursors.Hand;
             borderEdges2.BottomLeft = true;
             borderEdges2.BottomRight = true;
             borderEdges2.TopLeft = true;
@@ -282,7 +282,7 @@ namespace ManageSchedule.ItemGoiY
             this.btnExportExcel.ButtonTextMarginLeft = 0;
             this.btnExportExcel.ColorContrastOnClick = 45;
             this.btnExportExcel.ColorContrastOnHover = 45;
-            this.btnExportExcel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnExportExcel.Cursor = System.Windows.Forms.Cursors.Hand;
             borderEdges3.BottomLeft = true;
             borderEdges3.BottomRight = true;
             borderEdges3.TopLeft = true;
@@ -372,7 +372,7 @@ namespace ManageSchedule.ItemGoiY
             this.btnSaveTKB.ButtonTextMarginLeft = 0;
             this.btnSaveTKB.ColorContrastOnClick = 45;
             this.btnSaveTKB.ColorContrastOnHover = 45;
-            this.btnSaveTKB.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnSaveTKB.Cursor = System.Windows.Forms.Cursors.Hand;
             borderEdges4.BottomLeft = true;
             borderEdges4.BottomRight = true;
             borderEdges4.TopLeft = true;

@@ -35,12 +35,17 @@ namespace ManageSchedule
             remove { edited -= value; }
         }
 
-        public FormShowSuKien(OneEvent oneEvent)
+        public FormShowSuKien(OneEvent oneEvent, bool fromNoticeForm = false)
         {
             InitializeComponent();
             this.MaximumSize = new Size(421, 536);
             isClickButton = false;
-            CreatePnlButton();
+
+            if (!fromNoticeForm)
+                CreatePnlButton();
+            else
+                flPnl1.Visible = false;
+
             suKien = new MotSuKien(oneEvent, this.Width - 3, 1);
 
 
@@ -54,7 +59,14 @@ namespace ManageSchedule
                 pnlSukien.Height = suKien.Height + 3;
             }
             pnlSukien.Controls.Add(suKien);
-            flPnlTotal.Size = new Size(this.Width, flPnl1.Height + pnlSukien.Height);
+
+            if (!fromNoticeForm)
+                flPnlTotal.Size = new Size(this.Width, flPnl1.Height + pnlSukien.Height);
+            else
+            {
+                flPnlTotal.Size = new Size(this.Width, pnlSukien.Height);
+                pnlSukien.BackColor = System.Drawing.Color.FromArgb(255, 192, 192);
+            }
             this.Size = flPnlTotal.Size;
         }
 

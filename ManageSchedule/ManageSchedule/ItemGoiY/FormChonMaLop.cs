@@ -250,6 +250,13 @@ namespace ManageSchedule.ItemGoiY
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (FormGoiY.DanhSachMaLopDaChon.Count == 0)
+            {
+                MessageBox.Show("Danh sách không có mã lớp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnDelete.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Idle;
+                return;
+            }
+
             int selectedRowCount = DataGridViewSelected.Rows.GetRowCount(DataGridViewElementStates.Selected);
             if (selectedRowCount <= 0)
                 return;

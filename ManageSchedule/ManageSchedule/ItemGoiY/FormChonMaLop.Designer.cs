@@ -118,7 +118,7 @@ namespace ManageSchedule.ItemGoiY
             this.DataGridViewMaLop.EnableHeadersVisualStyles = false;
             this.DataGridViewMaLop.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.DataGridViewMaLop.HeaderBackColor = System.Drawing.Color.DodgerBlue;
-            this.DataGridViewMaLop.HeaderBackColor = System.Drawing.Color.Empty;
+            this.DataGridViewMaLop.HeaderBgColor = System.Drawing.Color.Empty;
             this.DataGridViewMaLop.HeaderForeColor = System.Drawing.Color.White;
             this.DataGridViewMaLop.Location = new System.Drawing.Point(1, 55);
             this.DataGridViewMaLop.MultiSelect = false;
@@ -237,7 +237,7 @@ namespace ManageSchedule.ItemGoiY
             this.DataGridViewSelected.EnableHeadersVisualStyles = false;
             this.DataGridViewSelected.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.DataGridViewSelected.HeaderBackColor = System.Drawing.Color.DodgerBlue;
-            this.DataGridViewSelected.HeaderBackColor = System.Drawing.Color.Empty;
+            this.DataGridViewSelected.HeaderBgColor = System.Drawing.Color.Empty;
             this.DataGridViewSelected.HeaderForeColor = System.Drawing.Color.White;
             this.DataGridViewSelected.Location = new System.Drawing.Point(705, 55);
             this.DataGridViewSelected.MultiSelect = false;
@@ -385,7 +385,7 @@ namespace ManageSchedule.ItemGoiY
             this.btnSelect.ButtonTextMarginLeft = 0;
             this.btnSelect.ColorContrastOnClick = 45;
             this.btnSelect.ColorContrastOnHover = 45;
-            this.btnSelect.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnSelect.Cursor = System.Windows.Forms.Cursors.Hand;
             borderEdges1.BottomLeft = true;
             borderEdges1.BottomRight = true;
             borderEdges1.TopLeft = true;
@@ -475,7 +475,7 @@ namespace ManageSchedule.ItemGoiY
             this.btnDelete.ButtonTextMarginLeft = 0;
             this.btnDelete.ColorContrastOnClick = 45;
             this.btnDelete.ColorContrastOnHover = 45;
-            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             borderEdges2.BottomLeft = true;
             borderEdges2.BottomRight = true;
             borderEdges2.TopLeft = true;
