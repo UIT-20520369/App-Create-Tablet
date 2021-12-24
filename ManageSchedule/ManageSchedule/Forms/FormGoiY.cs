@@ -169,5 +169,88 @@ namespace ManageSchedule
             childForm.BringToFront();
             childForm.Show();
         }
+
+        #region Shape Click
+
+        private void CircleMaLop_Click(object sender, EventArgs e)
+        {
+            pos = 2;
+
+            if (btnNext.Enabled == false)
+            {
+                btnNext.Enabled = true;
+                btnNext.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Idle;
+            }
+            if (btnPrevious.Enabled == false)
+            {
+                btnPrevious.Enabled = true;
+                btnPrevious.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Idle;
+            }
+
+            curShape.FillColor = Color.Transparent;
+            listShape[1].FillColor = Color.Pink;
+            curShape = listShape[1];
+            OpenChildForm(new ItemGoiY.FormChonMaLop(HeDaoTao));
+        }
+
+        private void CircleMaMon_Click(object sender, EventArgs e)
+        {
+            pos = 1;
+
+            if (btnNext.Enabled == false)
+            {
+                btnNext.Enabled = true;
+                btnNext.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Idle;
+            }
+
+            btnPrevious.Enabled = false;
+            curShape.FillColor = Color.Transparent;
+            listShape[0].FillColor = Color.Pink;
+            curShape = listShape[0];
+
+            OpenChildForm(new ItemGoiY.FormChonMaMon(HeDaoTao));
+        }
+
+        private void CircleRangBuoc_Click(object sender, EventArgs e)
+        {
+            pos = 3;
+
+            if (btnNext.Enabled == false)
+            {
+                btnNext.Enabled = true;
+                btnNext.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Idle;
+            }
+            if (btnPrevious.Enabled == false)
+            {
+                btnPrevious.Enabled = true;
+                btnPrevious.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Idle;
+            }
+
+            curShape.FillColor = Color.Transparent;
+            listShape[2].FillColor = Color.Pink;
+            curShape = listShape[2];
+
+            OpenChildForm(new ItemGoiY.FormChonRangBuoc());
+        }
+
+        private void CircleKetQua_Click(object sender, EventArgs e)
+        {
+            pos = 4;
+
+            if (btnPrevious.Enabled == false)
+            {
+                btnPrevious.Enabled = true;
+                btnPrevious.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Idle;
+            }
+
+            btnNext.Enabled = false;
+            curShape.FillColor = Color.Transparent;
+            listShape[3].FillColor = Color.Pink;
+            curShape = listShape[3];
+
+            OpenChildForm(new ItemGoiY.FormKetQua(HeDaoTao, curUser));
+        }
+
+        #endregion Shape Click
     }
 }

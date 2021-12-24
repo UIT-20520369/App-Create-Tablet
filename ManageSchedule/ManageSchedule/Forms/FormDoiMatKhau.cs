@@ -84,7 +84,7 @@ namespace ManageSchedule
             SHA256 sha256hash = SHA256.Create();
             string preHash = MaHoa.GetHash(sha256hash, TextBoxMatKhauHienTai.Text);
 
-            if (preHash != CaiDat.GetPreHash())
+            if (preHash != CaiDat.PreHashPassword)
             {
                 TextBoxMatKhauHienTai.Text = "";
                 TextBoxMatKhauHienTai.Focus();
@@ -109,7 +109,7 @@ namespace ManageSchedule
             }
 
             string hash = MaHoa.GetHash(sha256hash, TextBoxMatKhauMoi.Text);
-            if (CaiDat.ChangePassword(hash))
+            if (TaiKhoan.ChangePassword(hash))
             {
                 MessageBox.Show("Đổi mật khẩu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

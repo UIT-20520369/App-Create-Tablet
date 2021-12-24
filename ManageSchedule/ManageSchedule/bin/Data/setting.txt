@@ -1,8 +1,5 @@
 
 
 Startup: false
-Dark Mode: false
-Notify: None
-60
-0
-0
+First Open: false
+Notify: true

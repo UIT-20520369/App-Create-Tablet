@@ -57,6 +57,13 @@ namespace ManageSchedule.Classes
             set { donVi = value; }
         }
 
+        private DateTime thoiGian;
+        public DateTime ThoiGian
+        {
+            get { return thoiGian; }
+            set { thoiGian = value; }
+        }
+
         public ItemThongBao()
         {
         }

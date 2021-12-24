@@ -1,8 +1,10 @@
-﻿using System;
+﻿using ManageSchedule.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,10 +39,8 @@ namespace ManageSchedule
             leftBorderBtn.Size = new Size(7, 60);
             panelMenu.Controls.Add(leftBorderBtn);
 
-            CheckBoxStartUp.Checked = false;
-            CheckBoxDeadline.Checked = false;
-            CheckBoxEvent.Checked = false;
-            CheckBoxOther.Checked = false;
+            this.FormClosing += new FormClosingEventHandler(FormUngDung_Closing);
+
             SetupDay();
         }
 
@@ -169,7 +169,9 @@ namespace ManageSchedule
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
             CaiDat.SetPreLogin(string.Empty, string.Empty);
+            CaiDat.FirstOpen = false;
             CaiDat.WriteToTxt(HangSo.txtFilePath);
+
             this.Close();
             Application.Restart();
         }
@@ -180,10 +182,41 @@ namespace ManageSchedule
         private void btnThoat_Click(object sender, EventArgs e)
         {
             BatDau.isThoat = true;
+            CaiDat.FirstOpen = false;
             CaiDat.WriteToTxt(HangSo.txtFilePath);
-            Visible = false;
+            //this.Hide();
+            WindowState = FormWindowState.Minimized;
             ShowInTaskbar = false;
             //Application.Exit();
+        }
+
+        private void FormUngDung_Closing(object sender, FormClosingEventArgs e)
+        {
+            //var dr = MessageBox.Show("Close it?", "Notice", MessageBoxButtons.YesNoCancel);
+            //if (dr == DialogResult.No)
+            //    e.Cancel = true;
+            //else
+            //    e.Cancel = false;
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+            }
+            else if (e.CloseReason == CloseReason.TaskManagerClosing || e.CloseReason == CloseReason.WindowsShutDown)
+            {
+                //if (CaiDat.Startup)
+                //    CaiDat.FirstOpen = true;
+                //else
+                //    CaiDat.FirstOpen = false;
+                e.Cancel = false;
+            }
+            else if (e.CloseReason == CloseReason.ApplicationExitCall)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
 
         #endregion Thoat
@@ -209,6 +242,7 @@ namespace ManageSchedule
             leftBorderBtn.Visible = false;
             labelChildFormText.Text = "";
             childFormLogo.Image = null;
+            LoadChartEvent();
         }
 
         private void btnMini_Click(object sender, EventArgs e)
@@ -216,43 +250,13 @@ namespace ManageSchedule
             WindowState = FormWindowState.Minimized;
         }
 
-        #region Setting Event
-
-        private void CheckBoxStartUp_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
-        {
-        }
-
-        private void CheckBoxNotice_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
-        {
-        }
-
-        #endregion Setting Event
-
-        #region Time Event
-
-        private void NumStartHour_ValueChanged(object sender, EventArgs e)
-        {
-            if (NumStartHour.Value == 24)
-                NumStartHour.Value = 0;
-            if (NumStartHour.Value == -1)
-                NumStartHour.Value = 23;
-        }
-
-        private void NumStartMin_ValueChanged(object sender, EventArgs e)
-        {
-            if (NumStartMin.Value == 60)
-                NumStartMin.Value = 0;
-            if (NumStartMin.Value == -1)
-                NumStartMin.Value = 59;
-        }
-
-        #endregion Time Event
-
         #region Context Menu Strip
 
         private void tsmiOpen_Click(object sender, EventArgs e)
         {
-            Visible = true;
+            this.Show();
+            WindowState = FormWindowState.Normal;
+            //Visible = true;
             ShowInTaskbar = true;
         }
 
@@ -261,22 +265,21 @@ namespace ManageSchedule
             DialogResult dr = MessageBox.Show("Bạn sẽ không tiếp tục nhận thông báo trong hôm nay\nBạn chắc chắn muốn kết thúc?", "Thông báo", MessageBoxButtons.YesNoCancel);
             if (dr == DialogResult.Yes)
             {
-                CaiDat.WriteToTxt(HangSo.txtFilePath);
                 BatDau.isThoat = true;
+                CaiDat.FirstOpen = true;
+                CaiDat.WriteToTxt(HangSo.txtFilePath);
                 Application.Exit();
             }
         }
 
-        private void tsmiError_Click(object sender, EventArgs e)
-        {
-            Visible = true;
-            ShowInTaskbar = true;
-            btnBaoloi_Click(this, new EventArgs());
-        }
-
         private void tsmiPlan_Click(object sender, EventArgs e)
         {
+            new ManageSchedule.Forms.FormThongBao();
+        }
 
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            tsmiOpen_Click(this, new EventArgs());
         }
 
         #endregion Context Menu Strip
@@ -286,22 +289,60 @@ namespace ManageSchedule
         {
             new TaiKhoan();
 
-            labelFullNameAva.Text = TaiKhoan.GetFullName();
-            labelSUsername.Text = CaiDat.GetPreUsername();
+            labelFullNameAva.Text = TaiKhoan.FullName;
+            labelSUsername.Text = CaiDat.PreUsername;
 
-            labelFullName.Text = TaiKhoan.GetFullName();
-            labelYear.Text = TaiKhoan.GetYear();
-            labelEmail.Text = TaiKhoan.GetEmail();
-            labelSpec.Text = TaiKhoan.GetSpec();
-            labelSys.Text = TaiKhoan.GetSys();
+            labelFullName.Text = TaiKhoan.FullName;
+            labelYear.Text = TaiKhoan.Year;
+            labelEmail.Text = TaiKhoan.Email;
+            labelSpec.Text = TaiKhoan.Spec;
+            labelSys.Text = TaiKhoan.Sys;
+
+            if (TaiKhoan.Avatar != string.Empty)
+            {
+                Image i = ByteToImg(TaiKhoan.Avatar);
+                ResizeImage(i, new Size(PictureBoxAvatar.Width, PictureBoxAvatar.Height));
+                PictureBoxAvatar.Image = i;
+            }
+
+            LoadChartEvent();
+
+            CheckBoxStartUp.Checked = CaiDat.Startup;
+            CheckBoxEvent.Checked = CaiDat.EventNotify;
+
+            if (CaiDat.FirstOpen)
+            {
+                btnThoat_Click(this, new EventArgs());
+                CaiDat.FirstOpen = false;
+            }
+
+            if (CaiDat.EventNotify)
+            {
+                new ManageSchedule.Forms.FormThongBao();
+                timer.Interval = 60 * 1000;
+                timer.Start();
+            }
+            else
+            {
+                timer.Stop();
+            }
         }
 
         private void btnEditInfo_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FormChinhSuaThongTIn EditAccount = new FormChinhSuaThongTIn();
+            FormChinhSuaThongTin EditAccount = new FormChinhSuaThongTin();
             EditAccount.ShowDialog();
-            FormUngDung_Load(this, new EventArgs());
+
+            labelFullNameAva.Text = TaiKhoan.FullName;
+            labelSUsername.Text = CaiDat.PreUsername;
+
+            labelFullName.Text = TaiKhoan.FullName;
+            labelYear.Text = TaiKhoan.Year;
+            labelEmail.Text = TaiKhoan.Email;
+            labelSpec.Text = TaiKhoan.Spec;
+            labelSys.Text = TaiKhoan.Sys;
+
             this.Show();
         }
 
@@ -315,14 +356,38 @@ namespace ManageSchedule
 
         private void btnChangeSetting_Click(object sender, EventArgs e)
         {
-            bool isStartUp = CheckBoxStartUp.Checked;
-            CaiDat.SetStartup(ref isStartUp);
-            if (isStartUp != CheckBoxStartUp.Checked)
-                CheckBoxStartUp.Checked = isStartUp;
+            try
+            {
+                bool isStartUp = CheckBoxStartUp.Checked;
+                CaiDat.SetStartup(ref isStartUp);
+                if (isStartUp != CheckBoxStartUp.Checked)
+                    CheckBoxStartUp.Checked = isStartUp;
 
-            CaiDat.SetNotify(CheckBoxDeadline.Checked, CheckBoxEvent.Checked, CheckBoxOther.Checked);
+                CaiDat.EventNotify = CheckBoxEvent.Checked;
 
-            CaiDat.SetNoticeTime(int.Parse(NumDuringTime.Value.ToString()), int.Parse(NumStartHour.Value.ToString()), int.Parse(NumStartMin.Value.ToString()));
+                MessageBox.Show("Thay đổi cài đặt thành công!", "Thông báo", MessageBoxButtons.OK);
+            }
+            catch
+            {
+                CheckBoxStartUp.Checked = CaiDat.Startup;
+                CheckBoxEvent.Checked = CaiDat.EventNotify;
+                MessageBox.Show("Thay đổi cài đặt không thành công!", "Thông báo", MessageBoxButtons.OK);
+            }
+        }
+
+        private void LoadChartEvent()
+        {
+            foreach (var series in chartWeekEvent.Series)
+            {
+                series.Points.Clear();
+            }
+
+            for (int i = 0; i < 7; i++)
+            {
+                DateTime day = DateTime.Now.AddDays(i);
+                OneDay listSK = new OneDay(true, day);
+                chartWeekEvent.Series["Event"].Points.AddXY(day.ToString("dd/MM"), listSK.ListOfDay.Count);
+            }
         }
 
         #endregion Show info
@@ -360,6 +425,162 @@ namespace ManageSchedule
             labelDay.Text += "ngày " + datetime.Day + " tháng " + datetime.Month + " năm " + datetime.Year;
         }
 
-        #endregion SetupDay
+        #endregion SetupDay      
+
+        #region Avatar
+
+        private void PictureBoxAvatar_Click(object sender, EventArgs e)
+        {
+            string fileName = UploadPicture();
+
+            if (fileName != string.Empty)
+            {
+                bool isChange = TaiKhoan.ChangeAvatar(Convert.ToBase64String(converImgToByte(fileName)));
+
+                if (isChange)
+                {
+                    MessageBox.Show("Thay đổi ảnh đại diện thành công!", "Thông báo", MessageBoxButtons.OK);
+
+                    Image i = ByteToImg(TaiKhoan.Avatar);
+                    i = ResizeImage(i, new Size(PictureBoxAvatar.Width, PictureBoxAvatar.Height));
+                    PictureBoxAvatar.Image = i;
+                }
+                else
+                {
+                    MessageBox.Show("Thay đổi ảnh đại diện không thành công!", "Thông báo", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        private string UploadPicture()
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "Pictures files (*.jpg, *.jpeg, *.jpe, *.png)|*.jpg; *.jpeg; *.jpe; *.png|All files (*.*)|*.*";
+            openFile.FilterIndex = 1;
+            openFile.RestoreDirectory = true;
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                return openFile.FileName;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+        private byte[] converImgToByte(string fileName)
+        {
+            FileStream fs;
+            fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            byte[] picbyte = new byte[fs.Length];
+            fs.Read(picbyte, 0, System.Convert.ToInt32(fs.Length));
+            fs.Close();
+            return picbyte;
+        }
+
+        private Image ByteToImg(string byteString)
+        {
+            byte[] imgBytes = Convert.FromBase64String(byteString);
+            MemoryStream ms = new MemoryStream(imgBytes, 0, imgBytes.Length);
+            ms.Write(imgBytes, 0, imgBytes.Length);
+            Image image = Image.FromStream(ms, true);
+            return image;
+        }
+
+        public static Image ResizeImage(Image imgToResize, Size destinationSize)
+        {
+            var originalWidth = imgToResize.Width;
+            var originalHeight = imgToResize.Height;
+
+            var hRatio = (float)originalHeight / destinationSize.Height;
+            var wRatio = (float)originalWidth / destinationSize.Width;
+
+            var ratio = Math.Min(hRatio, wRatio);
+
+            var hScale = Convert.ToInt32(destinationSize.Height * ratio);
+            var wScale = Convert.ToInt32(destinationSize.Width * ratio);
+
+            var startX = (originalWidth - wScale) / 2;
+            var startY = (originalHeight - hScale) / 2;
+
+            var sourceRectangle = new Rectangle(startX, startY, wScale, hScale);
+
+            var bitmap = new Bitmap(destinationSize.Width, destinationSize.Height);
+
+            var destinationRectangle = new Rectangle(0, 0, bitmap.Width, bitmap.Height);
+
+            using (var g = Graphics.FromImage(bitmap))
+            {
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.DrawImage(imgToResize, destinationRectangle, sourceRectangle, GraphicsUnit.Pixel);
+            }
+
+            return bitmap;
+
+        }
+
+        #endregion Avatar
+
+        #region Timer To Notice
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            if (DateTime.Now.Second != 0)
+            {
+                timer.Interval = (60 - DateTime.Now.Second) * 1000;
+            }
+            else
+            {
+                timer.Interval = 60 * 1000;
+            }
+
+            OneDay listSK = new OneDay(DateTime.Now, true);
+            List<OneEvent> eventNow = new List<OneEvent>();
+            eventNow.Clear();
+
+            foreach (OneEvent ev in listSK.ListOfDay)
+            {
+                foreach (ItemThongBao item in ev.ListTB)
+                {
+                    if (item.ThoiGian.Hour == DateTime.Now.Hour && item.ThoiGian.Minute == DateTime.Now.Minute)
+                    {
+                        eventNow.Add(ev);
+                        break;
+                    }
+                }
+            }
+
+            if (eventNow.Count == 0)
+                return;
+
+            //new System.Threading.Thread(() =>
+            //{
+            //    foreach (OneEvent ev in eventNow)
+            //    {
+            //        string detail;
+            //        if (ev.ToiNgay == new DateTime())
+            //            detail = ev.Ngay.ToString("dd-MM-yyyy HH:mm") + "\n" + ev.MoTa;
+            //        else
+            //            detail = ev.Ngay.ToString("dd-MM-yyyy HH:mm") + " - "
+            //                + ev.ToiNgay.ToString("dd-MM-yyyy HH:mm") + "\n" + ev.MoTa;
+            //        NotifyIcon ni = new NotifyIcon();
+            //        ni.ShowBalloonTip(5000, ev.TieuDe, detail, ToolTipIcon.Info);
+            //        System.Threading.Thread.Sleep(5000);
+            //    }
+            //}).Start();
+
+            foreach (OneEvent ev in eventNow)
+            {
+                string detail;
+                if (ev.ToiNgay == new DateTime())
+                    detail = ev.Ngay.ToString("dd-MM-yyyy HH:mm") + "\n" + ev.MoTa;
+                else
+                    detail = ev.Ngay.ToString("dd-MM-yyyy HH:mm") + " - " + ev.ToiNgay.ToString("dd-MM-yyyy HH:mm")
+                        + "\n" + ev.MoTa;
+                notifyIcon.ShowBalloonTip(3000, ev.TieuDe, detail, ToolTipIcon.Info);
+            }
+        }
+
+        #endregion Timer To Notice
     }
 }

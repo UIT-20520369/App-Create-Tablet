@@ -72,8 +72,8 @@ namespace ManageSchedule
             // Kiểm tra lưu đăng nhập
             if (CaiDat.isPreLogin())
             {
-                taikhoan = CaiDat.GetPreUsername();
-                matkhau = CaiDat.GetPreHash();
+                taikhoan = CaiDat.PreUsername;
+                matkhau = CaiDat.PreHashPassword;
             }
             else
             {

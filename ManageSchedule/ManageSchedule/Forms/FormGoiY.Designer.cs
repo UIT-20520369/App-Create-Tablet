@@ -30,8 +30,8 @@ namespace ManageSchedule
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGoiY));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges6 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.panelContent = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -101,6 +101,7 @@ namespace ManageSchedule
             this.CircleMaMon.BackColor = System.Drawing.Color.Transparent;
             this.CircleMaMon.BorderColor = System.Drawing.Color.Silver;
             this.CircleMaMon.BorderThickness = 2;
+            this.CircleMaMon.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CircleMaMon.FillColor = System.Drawing.Color.Transparent;
             this.CircleMaMon.FillShape = true;
             this.CircleMaMon.Location = new System.Drawing.Point(56, 4);
@@ -110,6 +111,7 @@ namespace ManageSchedule
             this.CircleMaMon.Size = new System.Drawing.Size(30, 30);
             this.CircleMaMon.TabIndex = 0;
             this.CircleMaMon.Text = "bunifuShapes1";
+            this.CircleMaMon.Click += new System.EventHandler(this.CircleMaMon_Click);
             // 
             // CircleMaLop
             // 
@@ -117,6 +119,7 @@ namespace ManageSchedule
             this.CircleMaLop.BackColor = System.Drawing.Color.Transparent;
             this.CircleMaLop.BorderColor = System.Drawing.Color.Silver;
             this.CircleMaLop.BorderThickness = 2;
+            this.CircleMaLop.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CircleMaLop.FillColor = System.Drawing.Color.Transparent;
             this.CircleMaLop.FillShape = true;
             this.CircleMaLop.Location = new System.Drawing.Point(347, 4);
@@ -126,6 +129,7 @@ namespace ManageSchedule
             this.CircleMaLop.Size = new System.Drawing.Size(30, 30);
             this.CircleMaLop.TabIndex = 5;
             this.CircleMaLop.Text = "bunifuShapes2";
+            this.CircleMaLop.Click += new System.EventHandler(this.CircleMaLop_Click);
             // 
             // CircleRangBuoc
             // 
@@ -133,6 +137,7 @@ namespace ManageSchedule
             this.CircleRangBuoc.BackColor = System.Drawing.Color.Transparent;
             this.CircleRangBuoc.BorderColor = System.Drawing.Color.Silver;
             this.CircleRangBuoc.BorderThickness = 2;
+            this.CircleRangBuoc.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CircleRangBuoc.FillColor = System.Drawing.Color.Transparent;
             this.CircleRangBuoc.FillShape = true;
             this.CircleRangBuoc.Location = new System.Drawing.Point(649, 4);
@@ -142,6 +147,7 @@ namespace ManageSchedule
             this.CircleRangBuoc.Size = new System.Drawing.Size(30, 30);
             this.CircleRangBuoc.TabIndex = 6;
             this.CircleRangBuoc.Text = "bunifuShapes3";
+            this.CircleRangBuoc.Click += new System.EventHandler(this.CircleRangBuoc_Click);
             // 
             // CircleKetQua
             // 
@@ -149,6 +155,7 @@ namespace ManageSchedule
             this.CircleKetQua.BackColor = System.Drawing.Color.Transparent;
             this.CircleKetQua.BorderColor = System.Drawing.Color.Silver;
             this.CircleKetQua.BorderThickness = 2;
+            this.CircleKetQua.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CircleKetQua.FillColor = System.Drawing.Color.Transparent;
             this.CircleKetQua.FillShape = true;
             this.CircleKetQua.Location = new System.Drawing.Point(952, 4);
@@ -158,6 +165,7 @@ namespace ManageSchedule
             this.CircleKetQua.Size = new System.Drawing.Size(30, 30);
             this.CircleKetQua.TabIndex = 7;
             this.CircleKetQua.Text = "bunifuShapes4";
+            this.CircleKetQua.Click += new System.EventHandler(this.CircleKetQua_Click);
             // 
             // bunifuSeparator1
             // 
@@ -222,12 +230,12 @@ namespace ManageSchedule
             this.btnPrevious.ButtonTextMarginLeft = 0;
             this.btnPrevious.ColorContrastOnClick = 45;
             this.btnPrevious.ColorContrastOnHover = 45;
-            this.btnPrevious.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnPrevious.CustomizableEdges = borderEdges1;
+            this.btnPrevious.Cursor = System.Windows.Forms.Cursors.Hand;
+            borderEdges5.BottomLeft = true;
+            borderEdges5.BottomRight = true;
+            borderEdges5.TopLeft = true;
+            borderEdges5.TopRight = true;
+            this.btnPrevious.CustomizableEdges = borderEdges5;
             this.btnPrevious.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnPrevious.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnPrevious.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -312,12 +320,12 @@ namespace ManageSchedule
             this.btnNext.ButtonTextMarginLeft = 0;
             this.btnNext.ColorContrastOnClick = 45;
             this.btnNext.ColorContrastOnHover = 45;
-            this.btnNext.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.btnNext.CustomizableEdges = borderEdges2;
+            this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
+            borderEdges6.BottomLeft = true;
+            borderEdges6.BottomRight = true;
+            borderEdges6.TopLeft = true;
+            borderEdges6.TopRight = true;
+            this.btnNext.CustomizableEdges = borderEdges6;
             this.btnNext.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnNext.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnNext.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));

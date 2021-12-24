@@ -276,7 +276,7 @@ namespace ManageSchedule
             this.btnTroVe.FadeWhenInactive = false;
             this.btnTroVe.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
             this.btnTroVe.Image = global::ManageSchedule.Properties.Resources.chevron_circle;
-            this.btnTroVe.ActiveImage = null;
+            this.btnTroVe.ImageActive = null;
             this.btnTroVe.ImageLocation = null;
             this.btnTroVe.ImageMargin = 10;
             this.btnTroVe.ImageSize = new System.Drawing.Size(40, 40);
@@ -293,7 +293,7 @@ namespace ManageSchedule
             this.btnTroVe.TabIndex = 32;
             this.btnTroVe.ToolTipText = "";
             this.btnTroVe.WaitOnLoad = false;
-            this.btnTroVe.ImageMargin = 10;
+            this.btnTroVe.Zoom = 10;
             this.btnTroVe.ZoomSpeed = 10;
             this.btnTroVe.Click += new System.EventHandler(this.BtnTroVe_Click);
             // 
@@ -312,7 +312,7 @@ namespace ManageSchedule
             this.btnShowPassMK.FadeWhenInactive = false;
             this.btnShowPassMK.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
             this.btnShowPassMK.Image = global::ManageSchedule.Properties.Resources.eye_slash_solid;
-            this.btnShowPassMK.ActiveImage = null;
+            this.btnShowPassMK.ImageActive = null;
             this.btnShowPassMK.ImageLocation = null;
             this.btnShowPassMK.ImageMargin = 20;
             this.btnShowPassMK.ImageSize = new System.Drawing.Size(20, 20);
@@ -329,7 +329,7 @@ namespace ManageSchedule
             this.btnShowPassMK.TabIndex = 33;
             this.btnShowPassMK.ToolTipText = "";
             this.btnShowPassMK.WaitOnLoad = false;
-            this.btnShowPassMK.ImageMargin = 20;
+            this.btnShowPassMK.Zoom = 20;
             this.btnShowPassMK.ZoomSpeed = 10;
             this.btnShowPassMK.Click += new System.EventHandler(this.btnShowPassMK_Click);
             // 
@@ -348,7 +348,7 @@ namespace ManageSchedule
             this.btnShowPassXacNhan.FadeWhenInactive = false;
             this.btnShowPassXacNhan.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
             this.btnShowPassXacNhan.Image = global::ManageSchedule.Properties.Resources.eye_slash_solid;
-            this.btnShowPassXacNhan.ActiveImage = null;
+            this.btnShowPassXacNhan.ImageActive = null;
             this.btnShowPassXacNhan.ImageLocation = null;
             this.btnShowPassXacNhan.ImageMargin = 20;
             this.btnShowPassXacNhan.ImageSize = new System.Drawing.Size(20, 20);
@@ -365,7 +365,7 @@ namespace ManageSchedule
             this.btnShowPassXacNhan.TabIndex = 34;
             this.btnShowPassXacNhan.ToolTipText = "";
             this.btnShowPassXacNhan.WaitOnLoad = false;
-            this.btnShowPassXacNhan.ImageMargin = 20;
+            this.btnShowPassXacNhan.Zoom = 20;
             this.btnShowPassXacNhan.ZoomSpeed = 10;
             this.btnShowPassXacNhan.Click += new System.EventHandler(this.btnShowPassXacNhan_Click);
             // 

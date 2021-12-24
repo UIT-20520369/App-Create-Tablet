@@ -13,7 +13,7 @@ namespace ManageSchedule
 {
     public partial class FormCongViec : Form
     {
-        #region Peoperties
+        #region Properties
         private List<List<Button>> matrix;
         public List<List<Button>> Matrix
         {
