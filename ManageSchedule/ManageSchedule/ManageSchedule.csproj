@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>ManageSchedule</RootNamespace>
     <AssemblyName>ManageSchedule</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +32,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu.Licensing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f89b4760ba7dcb6b, processorArchitecture=MSIL">
@@ -141,10 +145,20 @@
     <Reference Include="ExcelDataReader.DataSet, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelDataReader.DataSet.3.6.0\lib\net35\ExcelDataReader.DataSet.dll</HintPath>
     </Reference>
+    <Reference Include="Spire.License, Version=1.4.0.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.XLS.11.8.6\lib\net40\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=7.8.9.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.XLS.11.8.6\lib\net40\Spire.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.XLS, Version=11.8.6.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.XLS.11.8.6\lib\net40\Spire.XLS.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -156,105 +170,257 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BatDau.cs">
+    <Compile Include="Forms\BatDau.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BatDau.Designer.cs">
+    <Compile Include="Forms\BatDau.Designer.cs">
       <DependentUpon>BatDau.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChildFormCongViec.cs">
+    <Compile Include="Classes\CaiDat.cs" />
+    <Compile Include="Classes\ItemThongBao.cs" />
+    <Compile Include="Classes\OneDay.cs" />
+    <Compile Include="Classes\OneEvent.cs" />
+    <Compile Include="Forms\DangKy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChildFormCongViec.Designer.cs">
-      <DependentUpon>ChildFormCongViec.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DangKy.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DangKy.Designer.cs">
+    <Compile Include="Forms\DangKy.Designer.cs">
       <DependentUpon>DangKy.cs</DependentUpon>
     </Compile>
-    <Compile Include="DangNhap.cs">
+    <Compile Include="Forms\DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DangNhap.Designer.cs">
+    <Compile Include="Forms\DangNhap.Designer.cs">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormBangTin.cs">
+    <Compile Include="Forms\FormBangTin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormBangTin.Designer.cs">
+    <Compile Include="Forms\FormBangTin.Designer.cs">
       <DependentUpon>FormBangTin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormBaoLoi.cs">
+    <Compile Include="Forms\FormBaoLoi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormBaoLoi.Designer.cs">
+    <Compile Include="Forms\FormBaoLoi.Designer.cs">
       <DependentUpon>FormBaoLoi.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCongViec.cs">
+    <Compile Include="Forms\FormChinhSuaThongTin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCongViec.Designer.cs">
+    <Compile Include="Forms\FormChinhSuaThongTin.Designer.cs">
+      <DependentUpon>FormChinhSuaThongTin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormCongViec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCongViec.Designer.cs">
       <DependentUpon>FormCongViec.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTaoLich.cs">
+    <Compile Include="Forms\FormThongBao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTaoLich.Designer.cs">
+    <Compile Include="Forms\FormThongBao.Designer.cs">
+      <DependentUpon>FormThongBao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemCongViec\FormDayView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemCongViec\FormDayView.Designer.cs">
+      <DependentUpon>FormDayView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormDoiMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormDoiMatKhau.Designer.cs">
+      <DependentUpon>FormDoiMatKhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemCongViec\FormEditEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemCongViec\FormEditEvent.Designer.cs">
+      <DependentUpon>FormEditEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormGoiY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormGoiY.Designer.cs">
+      <DependentUpon>FormGoiY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemCongViec\FormMonthView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemCongViec\FormMonthView.Designer.cs">
+      <DependentUpon>FormMonthView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormQuenMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormQuenMatKhau.Designer.cs">
+      <DependentUpon>FormQuenMatKhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemCongViec\FormShowSuKien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemCongViec\FormShowSuKien.Designer.cs">
+      <DependentUpon>FormShowSuKien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormTaoLich.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormTaoLich.Designer.cs">
       <DependentUpon>FormTaoLich.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormXemLich.cs">
+    <Compile Include="Forms\FormXemLich.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormXemLich.Designer.cs">
+    <Compile Include="Forms\FormXemLich.Designer.cs">
       <DependentUpon>FormXemLich.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDungNgay.cs">
+    <Compile Include="Forms\FormDungNgay.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDungNgay.Designer.cs">
+    <Compile Include="Forms\FormDungNgay.Designer.cs">
       <DependentUpon>FormDungNgay.cs</DependentUpon>
     </Compile>
-    <Compile Include="HangSo.cs" />
-    <Compile Include="MaHoa.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UngDung.cs">
+    <Compile Include="Classes\HangSo.cs" />
+    <Compile Include="Classes\MaHoa.cs" />
+    <Compile Include="Classes\Program.cs" />
+    <Compile Include="Forms\FormXemTKB.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UngDung.Designer.cs">
+    <Compile Include="Forms\FormXemTKB.Designer.cs">
+      <DependentUpon>FormXemTKB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemGoiY\FormChonMaLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemGoiY\FormChonMaLop.Designer.cs">
+      <DependentUpon>FormChonMaLop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemGoiY\FormChonMaMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemGoiY\FormChonMaMon.Designer.cs">
+      <DependentUpon>FormChonMaMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemGoiY\FormChonRangBuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemGoiY\FormChonRangBuoc.Designer.cs">
+      <DependentUpon>FormChonRangBuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemGoiY\FormKetQua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemGoiY\FormKetQua.Designer.cs">
+      <DependentUpon>FormKetQua.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemGoiY\FormXemKetQua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemGoiY\FormXemKetQua.Designer.cs">
+      <DependentUpon>FormXemKetQua.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MotSuKien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MotSuKien.Designer.cs">
+      <DependentUpon>MotSuKien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Classes\TaiKhoan.cs" />
+    <Compile Include="UserControls\MotThongBao.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MotThongBao.Designer.cs">
+      <DependentUpon>MotThongBao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ThongBao.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ThongBao.Designer.cs">
+      <DependentUpon>ThongBao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UngDung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UngDung.Designer.cs">
       <DependentUpon>UngDung.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BatDau.resx">
+    <EmbeddedResource Include="Forms\BatDau.resx">
       <DependentUpon>BatDau.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChildFormCongViec.resx">
-      <DependentUpon>ChildFormCongViec.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DangKy.resx">
+    <EmbeddedResource Include="Forms\DangKy.resx">
       <DependentUpon>DangKy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DangNhap.resx">
+    <EmbeddedResource Include="Forms\DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormBangTin.resx">
+    <EmbeddedResource Include="Forms\FormBangTin.resx">
       <DependentUpon>FormBangTin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormBaoLoi.resx">
+    <EmbeddedResource Include="Forms\FormBaoLoi.resx">
       <DependentUpon>FormBaoLoi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCongViec.resx">
+    <EmbeddedResource Include="Forms\FormChinhSuaThongTin.resx">
+      <DependentUpon>FormChinhSuaThongTin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormCongViec.resx">
       <DependentUpon>FormCongViec.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTaoLich.resx">
+    <EmbeddedResource Include="Forms\FormThongBao.resx">
+      <DependentUpon>FormThongBao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemCongViec\FormDayView.resx">
+      <DependentUpon>FormDayView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormDoiMatKhau.resx">
+      <DependentUpon>FormDoiMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemCongViec\FormEditEvent.resx">
+      <DependentUpon>FormEditEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormGoiY.resx">
+      <DependentUpon>FormGoiY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemCongViec\FormMonthView.resx">
+      <DependentUpon>FormMonthView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormQuenMatKhau.resx">
+      <DependentUpon>FormQuenMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemCongViec\FormShowSuKien.resx">
+      <DependentUpon>FormShowSuKien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormTaoLich.resx">
       <DependentUpon>FormTaoLich.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormXemLich.resx">
+    <EmbeddedResource Include="Forms\FormXemLich.resx">
       <DependentUpon>FormXemLich.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormDungNgay.resx">
+    <EmbeddedResource Include="Forms\FormDungNgay.resx">
       <DependentUpon>FormDungNgay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormXemTKB.resx">
+      <DependentUpon>FormXemTKB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemGoiY\FormChonMaLop.resx">
+      <DependentUpon>FormChonMaLop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemGoiY\FormChonMaMon.resx">
+      <DependentUpon>FormChonMaMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemGoiY\FormChonRangBuoc.resx">
+      <DependentUpon>FormChonRangBuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemGoiY\FormKetQua.resx">
+      <DependentUpon>FormKetQua.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemGoiY\FormXemKetQua.resx">
+      <DependentUpon>FormXemKetQua.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MotSuKien.resx">
+      <DependentUpon>MotSuKien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -267,9 +433,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UngDung.resx">
+    <EmbeddedResource Include="UserControls\MotThongBao.resx">
+      <DependentUpon>MotThongBao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ThongBao.resx">
+      <DependentUpon>ThongBao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UngDung.resx">
       <DependentUpon>UngDung.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="Data\20-21-SEM2.xlsx" />
     <None Include="Data\21-22-SEM1.xlsx" />
     <None Include="packages.config" />
@@ -324,6 +497,38 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Image\cog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Shell32">
+      <Guid>{50A7E9B0-70EF-11D1-B75A-00A0C90564FE}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\chevron-circle-right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\chevron-circle-right-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\chevron-circle-left-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\lightbulb.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
